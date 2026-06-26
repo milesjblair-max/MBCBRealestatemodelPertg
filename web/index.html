@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como-Anchored Perth Home Model</title>
+<style>
+  :root{
+    --ink:#0c1b2a;        /* deep water navy - primary text/bg */
+    --ink-2:#13293d;      /* panel navy */
+    --ink-3:#1c3a52;      /* raised panel */
+    --line:#26465f;       /* hairlines on dark */
+    --paper:#f3f1e9;      /* warm paper for light surfaces */
+    --paper-2:#e7e3d6;    /* paper shadow */
+    --teal:#3aa6a0;       /* river teal - base/primary accent */
+    --teal-bright:#5fd0c8;
+    --sand:#d8a657;       /* signal / buy-window / trough warm */
+    --sand-deep:#c4863a;
+    --bull:#6fae8f;       /* bull green */
+    --bear:#cf7a63;       /* bear clay */
+    --muted:#9fb3c4;      /* muted text on dark */
+    --muted-2:#6f8aa0;    /* dimmer */
+    --ok:#5fd0c8;
+    --shadow:0 10px 40px rgba(0,0,0,.35);
+    --r:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #163049 0%, transparent 60%),
+      radial-gradient(900px 500px at 0% 110%, #11283a 0%, transparent 55%),
+      var(--ink);
+    color:var(--paper);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    padding:0 0 80px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:"Fraunces","Georgia",serif;font-weight:600;letter-spacing:-.01em;line-height:1.12}
+
+  /* ---------- header ---------- */
+  header{padding:48px 0 28px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:14px}
+  h1{font-size:clamp(30px,4.4vw,52px);max-width:18ch}
+  h1 .accent{color:var(--sand);font-style:italic}
+  .sub{margin-top:16px;color:var(--muted);font-size:17px;max-width:62ch}
+  .anchorpill{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:7px 14px;border:1px solid var(--line);border-radius:100px;background:rgba(58,166,160,.08);font-size:13px;color:var(--paper)}
+  .anchorpill b{color:var(--teal-bright)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--sand);box-shadow:0 0 0 4px rgba(216,166,87,.18)}
+
+  /* ---------- macro strip ---------- */
+  .macro{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:28px 0 8px}
+  .macro .cell{background:var(--ink-2);padding:14px 16px}
+  .macro .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
+  .macro .v{font-family:"Fraunces",serif;font-size:21px;margin-top:4px;color:var(--paper)}
+  .macro .v small{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif}
+
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  .sec-num{font-family:"Fraunces",serif;font-size:14px;color:var(--sand);font-variant-numeric:tabular-nums}
+  h2{font-size:clamp(22px,3vw,30px)}
+  .sec-lead{color:var(--muted);max-width:64ch;margin:10px 0 26px;font-size:16px}
+
+  .panel{background:linear-gradient(180deg,var(--ink-2),var(--ink-2)) padding-box;border:1px solid var(--line);border-radius:var(--r);padding:24px}
+
+  /* ---------- forecast layout ---------- */
+  .forecast-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+  @media(max-width:880px){.forecast-grid{grid-template-columns:1fr}}
+  .chart-card{position:relative}
+  .chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .chart-title h3{font-size:18px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .sw{width:12px;height:3px;border-radius:2px;display:inline-block}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .axis text{fill:var(--muted-2);font-size:11px;font-family:"Inter",sans-serif}
+  .axis line{stroke:var(--line)}
+  .gridline{stroke:rgba(255,255,255,.05)}
+  .path-band{opacity:.16}
+  .path-line{fill:none;stroke-width:2.5}
+  .exp-line{fill:none;stroke:var(--paper);stroke-width:3}
+  .exp-dot{fill:var(--paper)}
+  .trough-marker{fill:var(--sand)}
+  .buywin{fill:rgba(216,166,87,.12);stroke:rgba(216,166,87,.4);stroke-dasharray:4 3}
+  .buywin-label{fill:var(--sand);font-size:11px;font-weight:600;font-family:"Inter",sans-serif;letter-spacing:.04em}
+  .pt-label{fill:var(--muted);font-size:10px;font-family:"Inter",sans-serif}
+
+  /* ---------- controls ---------- */
+  .controls h3{font-size:15px;margin-bottom:4px}
+  .controls .hint{font-size:12px;color:var(--muted-2);margin-bottom:18px}
+  .ctl{margin-bottom:20px}
+  .ctl label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;color:var(--paper)}
+  .ctl label b{color:var(--teal-bright);font-variant-numeric:tabular-nums}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:var(--line);outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--teal-bright);cursor:pointer;border:3px solid var(--ink-2);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--teal-bright);cursor:pointer;border:3px solid var(--ink-2)}
+  input[type=range].sand::-webkit-slider-thumb{background:var(--sand)}
+  input[type=range].sand::-moz-range-thumb{background:var(--sand)}
+  .scale-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-2);margin-top:6px}
+  .btn-reset{width:100%;margin-top:6px;padding:11px;border-radius:10px;border:1px solid var(--teal);background:rgba(58,166,160,.1);color:var(--teal-bright);font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:background .15s}
+  .btn-reset:hover{background:rgba(58,166,160,.2)}
+  .btn-reset:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
+
+  .readout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:22px}
+  .readout .cell{background:var(--ink-3);padding:12px 14px}
+  .readout .k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
+  .readout .v{font-family:"Fraunces",serif;font-size:19px;margin-top:3px}
+  .v.bear{color:var(--bear)} .v.bull{color:var(--bull)} .v.exp{color:var(--paper)} .v.win{color:var(--sand)}
+
+  /* ---------- heat map ---------- */
+  .heat-grid{display:grid;grid-template-columns:1fr 300px;gap:20px}
+  @media(max-width:880px){.heat-grid{grid-template-columns:1fr}}
+  .map-wrap{position:relative;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+  .map-legend{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:11px;color:var(--muted)}
+  .grad-bar{height:8px;flex:1;border-radius:4px;background:linear-gradient(90deg,#2a4a5e,#3aa6a0,#d8a657)}
+  .bubble{cursor:pointer;transition:opacity .15s}
+  .bubble:hover{opacity:.85}
+  .map-label{fill:var(--paper);font-size:10.5px;font-family:"Inter",sans-serif;pointer-events:none}
+  .map-km{fill:var(--muted-2);font-size:9px;font-family:"Inter",sans-serif;pointer-events:none}
+  .como-star{fill:var(--sand)}
+  .como-ring{fill:none;stroke:rgba(216,166,87,.25);stroke-dasharray:3 4}
+
+  .rank-list{display:flex;flex-direction:column;gap:0}
+  .rank-row{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-top:none;background:var(--ink-2);cursor:pointer;transition:background .12s}
+  .rank-row:first-child{border-top:1px solid var(--line);border-radius:10px 10px 0 0}
+  .rank-row:last-child{border-radius:0 0 10px 10px}
+  .rank-row:hover{background:var(--ink-3)}
+  .rank-row.sel{background:var(--ink-3);box-shadow:inset 3px 0 0 var(--teal-bright)}
+  .rank-n{font-family:"Fraunces",serif;font-size:14px;color:var(--muted-2);font-variant-numeric:tabular-nums}
+  .rank-name{font-size:14px;font-weight:500}
+  .rank-name small{display:block;color:var(--muted-2);font-size:11px;font-weight:400;margin-top:1px}
+  .rank-score{font-family:"Fraunces",serif;font-size:17px;font-variant-numeric:tabular-nums}
+  .pill{font-size:10px;padding:2px 7px;border-radius:100px;border:1px solid;margin-left:6px;vertical-align:middle}
+  .pill.over{color:var(--bear);border-color:rgba(207,122,99,.4);background:rgba(207,122,99,.08)}
+  .pill.fit{color:var(--teal-bright);border-color:rgba(58,166,160,.4);background:rgba(58,166,160,.08)}
+
+  .detail{background:var(--ink-3);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:14px;min-height:120px}
+  .detail h4{font-family:"Fraunces",serif;font-size:18px;margin-bottom:2px}
+  .detail .meta{font-size:12px;color:var(--muted);margin-bottom:12px}
+  .detail .why{font-size:13.5px;color:var(--paper);line-height:1.55}
+  .detail .bars{margin-top:14px;display:flex;flex-direction:column;gap:7px}
+  .dbar{display:grid;grid-template-columns:92px 1fr 26px;gap:8px;align-items:center;font-size:11px;color:var(--muted)}
+  .dbar .track{height:6px;background:var(--line);border-radius:4px;overflow:hidden}
+  .dbar .fill{height:100%;background:var(--teal);border-radius:4px}
+  .dlinks{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .dlinks a{font-size:12px;padding:7px 12px;border-radius:8px;border:1px solid var(--line);color:var(--teal-bright);text-decoration:none;background:rgba(58,166,160,.06);transition:background .12s}
+  .dlinks a:hover{background:rgba(58,166,160,.16)}
+
+  /* ---------- criteria ---------- */
+  .crit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .crit{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative}
+  .crit .n{font-family:"Fraunces",serif;font-size:13px;color:var(--sand)}
+  .crit .t{font-size:14px;font-weight:600;margin:6px 0 4px}
+  .crit .d{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .crit .tag{position:absolute;top:14px;right:14px;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;border:1px solid var(--line);color:var(--muted-2)}
+  .crit .tag.filter{color:var(--sand);border-color:rgba(216,166,87,.35)}
+  .crit .tag.weight{color:var(--teal-bright);border-color:rgba(58,166,160,.35)}
+
+  /* ---------- listings ---------- */
+  .listings-note{display:flex;gap:14px;align-items:flex-start;background:rgba(216,166,87,.06);border:1px solid rgba(216,166,87,.25);border-radius:12px;padding:16px 18px;margin-top:18px}
+  .listings-note .ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--sand);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:13px;font-family:"Fraunces",serif}
+  .listings-note p{font-size:13px;color:var(--paper);line-height:1.5}
+  .saved-searches{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+  .saved-searches a{display:inline-flex;flex-direction:column;gap:2px;padding:13px 18px;border-radius:12px;border:1px solid var(--line);background:var(--ink-2);text-decoration:none;transition:transform .12s,background .12s;min-width:180px}
+  .saved-searches a:hover{transform:translateY(-2px);background:var(--ink-3)}
+  .saved-searches .src{font-size:11px;color:var(--muted-2);letter-spacing:.06em;text-transform:uppercase}
+  .saved-searches .lbl{font-size:14px;color:var(--teal-bright);font-weight:600}
+  .saved-searches .meta{font-size:11px;color:var(--muted)}
+
+  footer{padding:40px 0 0;color:var(--muted-2);font-size:12px;line-height:1.6;max-width:80ch}
+  footer b{color:var(--muted)}
+  .disclaimer{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+
+  a.inline{color:var(--teal-bright);text-decoration:none;border-bottom:1px solid rgba(95,208,200,.3)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Perth · WA · Family Home Model</div>
+    <h1>Buying near Como, <span class="accent">without buying the top.</span></h1>
+    <p class="sub">A scenario model and suburb-targeting tool for one specific buyer: a family home within reach of Como, $1.0M to spend ($200k equity + $800k at 0% interest), patient enough to wait for the soft patch. Adjust the assumptions, watch the picture change, and reset to the baseline whenever you want the model's own view back.</p>
+    <span class="anchorpill"><span class="dot"></span>Anchored to family in <b>Como&nbsp;6152</b> · 3-year primary horizon</span>
+  </header>
+
+  <div class="macro" id="macroStrip" aria-label="Current market conditions, mid 2026"></div>
+  <p style="font-size:11.5px;color:var(--muted-2);margin-top:10px">Conditions as at mid-2026. These are the anchors the model is calibrated to — refresh before relying on them.</p>
+
+  <!-- ============ FORECAST ============ -->
+  <section id="forecast">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The forecast</h2></div>
+    <p class="sec-lead">Three scenarios, probability-weighted. The white line is the expected path — what you get when you weight bear, base and bull together. The shaded band is the spread between the worst and best cases. Drag the weights on the right; the picture moves.</p>
+
+    <div class="forecast-grid">
+      <div class="panel chart-card">
+        <div class="chart-title">
+          <h3>Value of a ~$1.0M Perth house</h3>
+          <div class="legend">
+            <span><span class="sw" style="background:var(--bear)"></span>Bear</span>
+            <span><span class="sw" style="background:var(--teal)"></span>Base</span>
+            <span><span class="sw" style="background:var(--bull)"></span>Bull</span>
+            <span><span class="sw" style="background:var(--paper);height:3px"></span>Expected</span>
+          </div>
+        </div>
+        <svg id="fanChart" viewBox="0 0 760 420" role="img" aria-label="Fan chart of projected house values across bear, base and bull scenarios"></svg>
+      </div>
+
+      <div class="panel controls">
+        <h3>Adjust the model</h3>
+        <p class="hint">Scenario weights must add to 100%. Move one, the others rebalance.</p>
+
+        <div class="ctl">
+          <label>Bear case <b><span id="bearW">30</span>%</b></label>
+          <input type="range" min="0" max="100" value="30" id="bearSlider" class="sand">
+        </div>
+        <div class="ctl">
+          <label>Base case <b><span id="baseW">50</span>%</b></label>
+          <input type="range" min="0" max="100" value="50" id="baseSlider">
+        </div>
+        <div class="ctl">
+          <label>Bull case <b><span id="bullW">20</span>%</b></label>
+          <input type="range" min="0" max="100" value="20" id="bullSlider">
+        </div>
+
+        <button class="btn-reset" id="resetForecast">↺ Reset to baseline</button>
+
+        <div class="readout">
+          <div class="cell"><div class="k">Expected · Mid-29</div><div class="v exp" id="roExp">$1.17M</div></div>
+          <div class="cell"><div class="k">Bear trough</div><div class="v bear" id="roTrough">$930k</div></div>
+          <div class="cell"><div class="k">Bull · Mid-29</div><div class="v bull" id="roBull">$1.40M</div></div>
+          <div class="cell"><div class="k">Cost of waiting*</div><div class="v win" id="roWait">$210k</div></div>
+        </div>
+        <p style="font-size:10.5px;color:var(--muted-2);margin-top:10px">*Bull-case price rise by End-27 — the price of being too patient if the market runs.</p>
+      </div>
+    </div>
+
+    <div class="listings-note" style="margin-top:20px">
+      <div class="ic">i</div>
+      <p><b style="color:var(--sand)">Reading the dip.</b> The expected path never actually falls below today — it flattens through 2027, then resumes. The only real dip is the bear case (a trough around <b>$930k, roughly −7%</b>, late-27 to mid-28). The opportunity isn't betting on a crash; it's the <b>soft patch in 2027</b> — similar prices to today, but stock sitting and vendors flexible. With $800k at 0%, waiting through that window costs you almost nothing.</p>
+    </div>
+  </section>
+
+  <!-- ============ HEAT MAP ============ -->
+  <section id="suburbs">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Where to buy</h2></div>
+    <p class="sec-lead">Every suburb scored 0–100 against the ten criteria, anchored on Como. The catch: "best" depends on whether you weight <em>being near family</em> or <em>being in a top school catchment</em> — they pull in different directions. Drag the slider and watch the ranking reorder. Bigger, warmer bubbles are better fits.</p>
+
+    <div class="panel" style="margin-bottom:18px">
+      <div class="ctl" style="margin-bottom:6px">
+        <label>What matters more for the family? <b id="weightLabel">Balanced</b></label>
+        <input type="range" min="0" max="100" value="50" id="priorSlider" class="sand">
+        <div class="scale-ends"><span>◀ Closer to Como</span><span>Top school catchment ▶</span></div>
+      </div>
+    </div>
+
+    <div class="heat-grid">
+      <div class="map-wrap">
+        <svg id="heatMap" viewBox="0 0 600 460" role="img" aria-label="Map of Perth suburbs scored by fit, centred on Como"></svg>
+        <div class="map-legend"><span>Lower fit</span><div class="grad-bar"></div><span>Higher fit</span></div>
+      </div>
+
+      <div>
+        <div class="rank-list" id="rankList"></div>
+        <div class="detail" id="detail">
+          <h4>Select a suburb</h4>
+          <div class="meta">Tap a bubble or a row to see the reasoning, the score breakdown, and live listing links.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CRITERIA ============ -->
+  <section id="criteria">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The ten criteria</h2></div>
+    <p class="sec-lead">The brief, in full. Three are hard filters — a suburb that can't deliver them is marked down hard. The rest are weighted and combined into the fit score. The $800k-at-0% facility isn't a filter; it's why patience is affordable.</p>
+    <div class="crit-grid" id="critGrid"></div>
+  </section>
+
+  <!-- ============ LISTINGS ============ -->
+  <section id="listings">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Live listings</h2></div>
+    <p class="sec-lead">Pre-filtered saved searches — house, 450sqm+, 3+ beds, under $1.0M, target suburbs, no survey-strata or villas. Click any one and it opens current results on the portal, sorted newest first.</p>
+
+    <div class="saved-searches" id="savedSearches"></div>
+
+    <div class="listings-note">
+      <div class="ic">!</div>
+      <p><b style="color:var(--sand)">Honest note on "live."</b> This page can't embed an auto-refreshing feed — realestate.com.au and Domain don't permit it on a static site, and anyone claiming otherwise is scraping against their terms. The links above are the robust alternative: they always open <b>current</b> results. For a genuinely embedded feed that refreshes on a schedule, the only compliant route is the Domain Developer API pulled by a scheduled job — documented in the project README as the upgrade path.</p>
+    </div>
+  </section>
+
+  <footer>
+    <b>How this model works.</b> A four-layer hybrid: a city-level mean-reversion spine, a probability-weighted scenario engine (the fan chart above), a suburb-level relative-performance layer (the heat map), and a property-level hedonic adjustment for land and knock-down-rebuild potential. It is reproducible — the Python in <code>/model</code> regenerates these exact baseline numbers. Full methodology is in the project's skills folder.
+    <div class="disclaimer">
+      <b>General information only — not financial, legal or tax advice.</b> All figures are approximations as at mid-2026 and will change. Suburb medians vary 10–20% between sources and are shown as ranges; no public source publishes median block size, so the 450sqm requirement must be confirmed per-listing via Landgate. Forecasts are scenario estimates conditioned on the stated assumptions and will be wrong if those assumptions are wrong. Verify against live REIWA, Landgate, RBA and ABS data and licensed professionals before acting.
+    </div>
+  </footer>
+
+</div>
+
+<script>
+/* ============================================================
+   DATA — mirrors data/baseline.json, suburbs.json, criteria.json
+   Kept inline so the tool is a single self-contained file for
+   GitHub Pages. If you change the JSON, change it here too
+   (or wire a fetch() in a build step). The Reset button restores
+   BASELINE exactly — this is the contract from CLAUDE.md.
+   ============================================================ */
+const BASELINE = {
+  weights:{bear:30,base:50,bull:20},
+  prior:50,
+  timeline:[
+    {label:"Now",  bear:1000000,base:1000000,bull:1000000},
+    {label:"End-26",bear:1020000,base:1055000,bull:1080000},
+    {label:"Mid-27",bear:975000, base:1080000,bull:1150000},
+    {label:"End-27",bear:935000, base:1085000,bull:1210000},
+    {label:"Mid-28",bear:930000, base:1110000,bull:1280000},
+    {label:"End-28",bear:955000, base:1145000,bull:1340000},
+    {label:"Mid-29",bear:1000000,base:1180000,bull:1400000}
+  ]
+};
+
+const MACRO = [
+  {k:"Cash rate",v:"4.35",s:"%"},
+  {k:"Perth median",v:"$1.09M",s:""},
+  {k:"Growth y/y",v:"+25.7",s:"%"},
+  {k:"Stock vs avg",v:"−40",s:"%"},
+  {k:"Vacancy",v:"0.5",s:"%"},
+  {k:"Days on mkt",v:"9",s:"days"}
+];
+
+/* distance_como_km, beds for the map ring; scores 0-10 per dimension */
+const SUBURBS = [
+  {name:"Shelley",pc:"6148",reg:"S",km:9, school:9,prox:7, mlo:920,mhi:980, band:true, scores:{growth:8,family:9,land:8,kdr:7,prox:7,post:8}, why:"Affordable entry to the Rossmoyne SHS catchment, near the river, strong family demand. The best growth-after-dip hold — scarce land plus school demand insulate it from the investor-led Budget drag."},
+  {name:"Wilson",pc:"6107",reg:"S",km:7, school:6,prox:8, mlo:930,mhi:955, band:true, scores:{growth:8,family:8,land:8,kdr:8,prox:8,post:7}, why:"Larger City of Canning blocks, Curtin-adjacent, among the closest at-budget options to Como. Strong knock-down-rebuild margin."},
+  {name:"Parkwood",pc:"6147",reg:"S",km:11,school:6,prox:6, mlo:920,mhi:960, band:true, scores:{growth:8,family:8,land:8,kdr:7,prox:6,post:7}, why:"Big blocks, value, family, strong recent growth. Slightly further from Como than Wilson or St James."},
+  {name:"St James",pc:"6102",reg:"S",km:6, school:6,prox:8, mlo:855,mhi:890, band:true, scores:{growth:7,family:7,land:7,kdr:8,prox:8,post:6}, why:"Near Victoria Park and the Curtin precinct; value with knock-down-rebuild upside; genuinely close to Como."},
+  {name:"Bentley",pc:"6102",reg:"S",km:6, school:5,prox:8, mlo:780,mhi:820, band:true, scores:{growth:7,family:6,land:7,kdr:8,prox:8,post:5}, why:"The value play — cheapest near-in, biggest margin of safety, strongest KDR economics. Some pockets less polished; that's the trade for price."},
+  {name:"Riverton",pc:"6148",reg:"S",km:11,school:9,prox:6, mlo:1020,mhi:1090,band:false,scores:{growth:8,family:9,land:8,kdr:6,prox:6,post:8}, why:"Rossmoyne SHS catchment and family-friendly, but just over budget. Worth watching for soft-patch pricing in the 2027 window."},
+  {name:"Manning",pc:"6152",reg:"S",km:3, school:6,prox:10,mlo:1450,mhi:1650,band:false,scores:{growth:7,family:8,land:8,kdr:5,prox:10,post:9}, why:"Same postcode as Como, walking distance, big blocks — but out of budget for a house now. Aspirational reference only."},
+  {name:"Como",pc:"6152",reg:"S",km:0, school:6,prox:10,mlo:1480,mhi:1680,band:false,scores:{growth:7,family:9,land:6,kdr:4,prox:10,post:10}, why:"The anchor itself. Houses are well over budget; only villas and units sit under $1.0M here. Included for reference."},
+  {name:"Dianella",pc:"6059",reg:"N",km:14,school:6,prox:3, mlo:970,mhi:1150,band:true, scores:{growth:8,family:8,land:9,kdr:8,prox:3,post:7}, why:"Best north-of-river balance of land and location — big original blocks, Mt Lawley-adjacent. The distance from Como is the catch."},
+  {name:"Bayswater",pc:"6053",reg:"N",km:14,school:6,prox:3, mlo:980,mhi:1180,band:true, scores:{growth:8,family:7,land:7,kdr:7,prox:3,post:7}, why:"METRONET hub, gentrifying, near the river. Borderline budget and a fair way from Como."},
+  {name:"Embleton",pc:"6062",reg:"N",km:14,school:6,prox:3, mlo:900,mhi:970, band:true, scores:{growth:7,family:7,land:8,kdr:8,prox:3,post:6}, why:"North-of-river value with big blocks near Inglewood and Bayswater. Far from Como."},
+  {name:"Balcatta",pc:"6021",reg:"N",km:16,school:6,prox:2, mlo:910,mhi:970, band:true, scores:{growth:8,family:7,land:7,kdr:7,prox:2,post:6}, why:"North-of-river, freeway access, family, value. Far from Como."},
+  {name:"Nollamara",pc:"6061",reg:"N",km:15,school:5,prox:2, mlo:710,mhi:770, band:true, scores:{growth:8,family:6,land:8,kdr:8,prox:2,post:5}, why:"Value and gentrifying — target original un-subdivided lots. Biggest northern margin of safety, but farthest from Como."},
+  {name:"Westminster",pc:"6061",reg:"N",km:15,school:5,prox:2,mlo:750,mhi:800,band:true,scores:{growth:8,family:6,land:8,kdr:8,prox:2,post:5}, why:"Cheapest near-in north, next to Tuart Hill. Strong growth; far from Como."}
+];
+
+const CRITERIA = [
+  {n:"01",t:"Land over 450sqm",d:"Confirmed per-listing via Landgate — no public source has median block size.",tag:"filter"},
+  {n:"02",t:"Price $800k–$1.0M",d:"Suburb median used as a proxy; in-band or just-below scores highest.",tag:"filter"},
+  {n:"03",t:"$1.0M to spend",d:"$200k equity + $800k at 0% interest. Not a filter — the reason patience is affordable.",tag:"context"},
+  {n:"04",t:"Growth after the dip",d:"Scarce land, school zones and undersupply favoured. Weighted 25%.",tag:"weight"},
+  {n:"05",t:"Family area",d:"Demographics, parks, school quality. Weighted 15%.",tag:"weight"},
+  {n:"06",t:"Backyard for kids",d:"Larger blocks, lower unit density, original stock. Weighted 15%.",tag:"weight"},
+  {n:"07",t:"More than 3 bedrooms",d:"4+ achievable; a knock-down-rebuild can satisfy this.",tag:"filter"},
+  {n:"08",t:"Modern, or KDR-viable",d:"Old is fine where land value exceeds improved value. Weighted 10%.",tag:"weight"},
+  {n:"09",t:"Near family in Como",d:"Distance-decay weighting centred on Como 6152. Weighted 20%.",tag:"weight"},
+  {n:"10",t:"Good postcode",d:"School catchment, median level and amenity as proxies. Weighted 15%.",tag:"weight"}
+];
+
+/* base weights for the 6 weighted dims; prox & school move with the slider */
+const BASE_W = {growth:.25,family:.15,land:.15,kdr:.10,prox:.20,post:.15};
+
+/* ---------- scoring (mirrors model/scoring.py, plus the live prior slider) ---------- */
+function scoreSuburb(s, prior){
+  // prior 0..100: 0 = all Como-proximity, 100 = all school. 50 = balanced (baseline weights).
+  // We redistribute a 0.20 "swing" budget between prox and school(post+family-ish) around the midpoint.
+  const swing = 0.20;
+  const t = (prior-50)/50;            // -1..+1
+  const wProx = BASE_W.prox - swing*t*0.5;   // more Como weight as t<0
+  const wSchool = BASE_W.post + swing*t*0.5; // more school/postcode weight as t>0
+  const w = {...BASE_W, prox:Math.max(0,wProx), post:Math.max(0,wSchool)};
+  // school catchment quality folds into the "post" weighted dim via the suburb's school score
+  let composite = 0;
+  composite += s.scores.growth*w.growth;
+  composite += s.scores.family*w.family;
+  composite += s.scores.land*w.land;
+  composite += s.scores.kdr*w.kdr;
+  composite += s.scores.prox*w.prox;
+  // postcode dim blends the static postcode score with school catchment, weighted by the slider
+  const postBlend = s.scores.post*(1 - (prior/100)*0.5) + s.school*((prior/100)*0.5);
+  composite += postBlend*w.post;
+  let score = composite*10;
+  let over=false;
+  if(!s.band){
+    const mid=(s.mlo+s.mhi)/2;
+    if(mid>1000){ score*=0.55; over=true; } else { score*=0.85; }
+  }
+  return {score:Math.round(score*10)/10, over};
+}
+
+/* ---------- forecast math (mirrors scenario_model.py weighting) ---------- */
+function expected(tl, w){
+  const tot=w.bear+w.base+w.bull;
+  const wb=w.bear/tot, wm=w.base/tot, wl=w.bull/tot;
+  return tl.map(p=>Math.round(p.bear*wb + p.base*wm + p.bull*wl));
+}
+function fmtM(n){ return n>=1000000 ? "$"+(n/1000000).toFixed(2)+"M" : "$"+Math.round(n/1000)+"k"; }
+function fmtK(n){ return "$"+Math.round(n/1000)+"k"; }
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let W = {...BASELINE.weights};
+let PRIOR = BASELINE.prior;
+let selected = null;
+
+/* ============================================================
+   RENDER: macro strip
+   ============================================================ */
+function renderMacro(){
+  document.getElementById('macroStrip').innerHTML = MACRO.map(m=>
+    `<div class="cell"><div class="k">${m.k}</div><div class="v">${m.v}${m.s?` <small>${m.s}</small>`:''}</div></div>`
+  ).join('');
+}
+
+/* ============================================================
+   RENDER: fan chart
+   ============================================================ */
+const FC = {w:760,h:420,pad:{t:24,r:18,b:42,l:64}};
+function renderFan(){
+  const tl = BASELINE.timeline;
+  const exp = expected(tl, W);
+  const allVals = tl.flatMap(p=>[p.bear,p.bull]).concat(exp);
+  const min = Math.min(...allVals)*0.985, max = Math.max(...allVals)*1.015;
+  const iw = FC.w-FC.pad.l-FC.pad.r, ih = FC.h-FC.pad.t-FC.pad.b;
+  const x = i => FC.pad.l + (i/(tl.length-1))*iw;
+  const y = v => FC.pad.t + (1-(v-min)/(max-min))*ih;
+
+  let svg='';
+  // gridlines + y labels
+  const ticks=5;
+  for(let i=0;i<=ticks;i++){
+    const val = min+(max-min)*i/ticks;
+    const yy = y(val);
+    svg+=`<line x1="${FC.pad.l}" y1="${yy}" x2="${FC.w-FC.pad.r}" y2="${yy}" stroke="rgba(255,255,255,.05)"/>`;
+    svg+=`<text x="${FC.pad.l-10}" y="${yy+4}" text-anchor="end" class="pt-label">${fmtM(val)}</text>`;
+  }
+  // x labels
+  tl.forEach((p,i)=>{ svg+=`<text x="${x(i)}" y="${FC.h-FC.pad.b+20}" text-anchor="middle" class="pt-label">${p.label}</text>`; });
+
+  // buy-window shading (Mid-27 .. End-27 => indices 2..3)
+  svg+=`<rect class="buywin" x="${x(2)}" y="${FC.pad.t}" width="${x(3)-x(2)}" height="${ih}" rx="3"/>`;
+  svg+=`<text class="buywin-label" x="${(x(2)+x(3))/2}" y="${FC.pad.t+14}" text-anchor="middle">BUY WINDOW</text>`;
+
+  // band between bear and bull
+  let bandTop='', bandBot='';
+  tl.forEach((p,i)=>{ bandTop += `${i?'L':'M'}${x(i)},${y(p.bull)} `; });
+  for(let i=tl.length-1;i>=0;i--){ bandBot += `L${x(i)},${y(tl[i].bear)} `; }
+  svg+=`<path class="path-band" fill="var(--teal)" d="${bandTop}${bandBot}Z"/>`;
+
+  // scenario lines
+  const line = (key,color)=>{ let d=''; tl.forEach((p,i)=>{ d+=`${i?'L':'M'}${x(i)},${y(p[key])} `; }); return `<path class="path-line" stroke="${color}" d="${d}"/>`; };
+  svg+=line('bear','var(--bear)');
+  svg+=line('base','var(--teal)');
+  svg+=line('bull','var(--bull)');
+
+  // expected line (weighted)
+  let de=''; exp.forEach((v,i)=>{ de+=`${i?'L':'M'}${x(i)},${y(v)} `; });
+  svg+=`<path class="exp-line" d="${de}"/>`;
+  exp.forEach((v,i)=>{ svg+=`<circle class="exp-dot" cx="${x(i)}" cy="${y(v)}" r="3.5"/>`; });
+
+  // trough marker (bear min)
+  const bearVals = tl.map(p=>p.bear); const ti = bearVals.indexOf(Math.min(...bearVals));
+  svg+=`<circle class="trough-marker" cx="${x(ti)}" cy="${y(tl[ti].bear)}" r="5"/>`;
+  svg+=`<text class="pt-label" x="${x(ti)}" y="${y(tl[ti].bear)+20}" text-anchor="middle" fill="var(--sand)">trough ${fmtK(tl[ti].bear)}</text>`;
+
+  document.getElementById('fanChart').innerHTML = svg;
+
+  // readouts
+  document.getElementById('roExp').textContent = fmtM(exp[exp.length-1]);
+  document.getElementById('roTrough').textContent = fmtK(Math.min(...bearVals));
+  document.getElementById('roBull').textContent = fmtM(tl[tl.length-1].bull);
+  document.getElementById('roWait').textContent = fmtK(tl[3].bull - tl[0].bull);
+}
+
+/* ============================================================
+   RENDER: heat map + ranking
+   ============================================================ */
+const HM = {w:600,h:460};
+function projectXY(s){
+  // Pseudo-geographic: Como at centre; S/N split on y, distance pushes outward.
+  // Deterministic angle from name hash so layout is stable, scaled by km.
+  const cx=300, cy=250;
+  let h=0; for(const ch of s.name) h=(h*31+ch.charCodeAt(0))&0xffff;
+  const ang = (h%360)*Math.PI/180;
+  const r = Math.min(s.km*12.5, 205);
+  let x = cx + Math.cos(ang)*r;
+  let y = cy + Math.sin(ang)*r*0.78;
+  // bias north-of-river suburbs upward, south downward, to read geographically
+  y += (s.reg==='N' ? -70 : 30);
+  x = Math.max(40, Math.min(560, x));
+  y = Math.max(40, Math.min(420, y));
+  return {x,y};
+}
+function heatColor(score, min, max){
+  const t = (score-min)/Math.max(1,(max-min)); // 0..1
+  // interpolate slate -> teal -> sand
+  const stops=[[42,74,94],[58,166,160],[216,166,87]];
+  let c;
+  if(t<0.5){ const u=t/0.5; c=mix(stops[0],stops[1],u); }
+  else { const u=(t-0.5)/0.5; c=mix(stops[1],stops[2],u); }
+  return `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
+}
+function mix(a,b,u){ return [a[0]+(b[0]-a[0])*u, a[1]+(b[1]-a[1])*u, a[2]+(b[2]-a[2])*u]; }
+
+function renderMapAndRanking(){
+  const scored = SUBURBS.map(s=>({...s, ...scoreSuburb(s,PRIOR), xy:projectXY(s)}));
+  const scores = scored.map(s=>s.score);
+  const min=Math.min(...scores), max=Math.max(...scores);
+  scored.sort((a,b)=>b.score-a.score);
+
+  // --- map ---
+  const cx=300, cy=250;
+  let svg='';
+  // distance rings
+  [70,130,190].forEach(r=>{ svg+=`<circle class="como-ring" cx="${cx}" cy="${cy}" r="${r}"/>`; });
+  // river hint (a soft curve through centre)
+  svg+=`<path d="M40,300 Q300,240 560,290" fill="none" stroke="rgba(95,208,200,.12)" stroke-width="14" stroke-linecap="round"/>`;
+  svg+=`<text x="50" y="295" class="map-km" fill="rgba(95,208,200,.4)">Swan River</text>`;
+
+  scored.forEach(s=>{
+    const rad = 9 + (s.score-min)/Math.max(1,(max-min))*16;
+    const col = s.over ? 'rgba(207,122,99,.55)' : heatColor(s.score,min,max);
+    const isSel = selected===s.name;
+    svg+=`<g class="bubble" data-name="${s.name}" tabindex="0" role="button" aria-label="${s.name}, fit ${s.score}">`;
+    if(isSel) svg+=`<circle cx="${s.xy.x}" cy="${s.xy.y}" r="${rad+6}" fill="none" stroke="var(--teal-bright)" stroke-width="2"/>`;
+    svg+=`<circle cx="${s.xy.x}" cy="${s.xy.y}" r="${rad}" fill="${col}" opacity="${s.over?0.7:0.92}" stroke="rgba(255,255,255,.15)"/>`;
+    svg+=`<text class="map-label" x="${s.xy.x}" y="${s.xy.y-rad-4}" text-anchor="middle">${s.name}</text>`;
+    svg+=`</g>`;
+  });
+  // Como star on top
+  svg+=`<g><path class="como-star" d="${star(cx,cy,9,4.2,5)}"/><text class="map-label" x="${cx}" y="${cy+22}" text-anchor="middle" fill="var(--sand)">Como</text></g>`;
+  document.getElementById('heatMap').innerHTML = svg;
+
+  // --- ranking list ---
+  document.getElementById('rankList').innerHTML = scored.map((s,i)=>
+    `<div class="rank-row ${selected===s.name?'sel':''}" data-name="${s.name}" tabindex="0" role="button">
+       <span class="rank-n">${String(i+1).padStart(2,'0')}</span>
+       <span class="rank-name">${s.name}
+         <small>${s.pc} · ${s.reg==='S'?'South':'North'} · ${s.km}km to Como</small></span>
+       <span class="rank-score" style="color:${s.over?'var(--bear)':'var(--teal-bright)'}">${s.score}</span>
+     </div>`
+  ).join('');
+
+  bindBubbleEvents();
+  if(selected) renderDetail(scored.find(s=>s.name===selected));
+}
+
+function star(cx,cy,outer,inner,points){
+  let d=''; const step=Math.PI/points;
+  for(let i=0;i<2*points;i++){ const r=i%2?inner:outer; const a=i*step-Math.PI/2; d+=`${i?'L':'M'}${(cx+Math.cos(a)*r).toFixed(1)},${(cy+Math.sin(a)*r).toFixed(1)} `; }
+  return d+'Z';
+}
+
+function renderDetail(s){
+  if(!s) return;
+  const dims=[['Growth',s.scores.growth],['Family',s.scores.family],['Backyard/land',s.scores.land],['KDR upside',s.scores.kdr],['Near Como',s.scores.prox],['Postcode',s.scores.post]];
+  const pill = s.over ? `<span class="pill over">Over budget</span>` : `<span class="pill fit">In budget</span>`;
+  const q = encodeURIComponent(s.name+' WA '+s.pc);
+  document.getElementById('detail').innerHTML =
+    `<h4>${s.name} ${pill}</h4>
+     <div class="meta">${s.pc} · ${s.reg==='S'?'South of river':'North of river'} · ${s.km}km to Como · median ~$${s.mlo}k–$${s.mhi}k · fit ${s.score}/100</div>
+     <div class="why">${s.why}</div>
+     <div class="bars">${dims.map(([l,v])=>
+       `<div class="dbar"><span>${l}</span><span class="track"><span class="fill" style="width:${v*10}%"></span></span><span>${v}/10</span></div>`
+     ).join('')}</div>
+     <div class="dlinks">
+       <a href="https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-${encodeURIComponent(s.name.toLowerCase()+', wa '+s.pc)}/list-1?activeSort=list-date" target="_blank" rel="noopener">realestate.com.au ↗</a>
+       <a href="https://www.domain.com.au/sale/${encodeURIComponent(s.name.toLowerCase().replace(/ /g,'-'))}-wa-${s.pc}/?excludeunderoffer=1&sort=dateupdated-desc" target="_blank" rel="noopener">Domain ↗</a>
+       <a href="https://reiwa.com.au/property-search/?q=${q}" target="_blank" rel="noopener">REIWA ↗</a>
+     </div>`;
+}
+function bindBubbleEvents(){
+  document.querySelectorAll('[data-name]').forEach(el=>{
+    el.onclick = ()=>{ selected = el.getAttribute('data-name'); renderMapAndRanking(); };
+    el.onkeydown = e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selected=el.getAttribute('data-name'); renderMapAndRanking(); } };
+  });
+}
+
+/* ============================================================
+   RENDER: criteria + saved searches
+   ============================================================ */
+function renderCriteria(){
+  document.getElementById('critGrid').innerHTML = CRITERIA.map(c=>{
+    const tagClass = c.tag==='filter'?'filter':(c.tag==='weight'?'weight':'');
+    return `<div class="crit"><span class="tag ${tagClass}">${c.tag}</span><div class="n">${c.n}</div><div class="t">${c.t}</div><div class="d">${c.d}</div></div>`;
+  }).join('');
+}
+
+function renderSavedSearches(){
+  const targets=[
+    {lbl:"Rossmoyne catchment",meta:"Shelley · Riverton · Bull Creek",q:"shelley, wa 6148"},
+    {lbl:"City of Canning value",meta:"Wilson · Parkwood · St James",q:"wilson, wa 6107"},
+    {lbl:"Near-in KDR plays",meta:"Bentley · St James",q:"bentley, wa 6102"},
+    {lbl:"North-of-river land",meta:"Dianella · Embleton",q:"dianella, wa 6059"}
+  ];
+  document.getElementById('savedSearches').innerHTML = targets.map(t=>
+    `<a href="https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-${encodeURIComponent(t.q)}/list-1?activeSort=list-date" target="_blank" rel="noopener">
+       <span class="src">realestate.com.au · saved search</span>
+       <span class="lbl">${t.lbl} ↗</span>
+       <span class="meta">${t.meta} · house · 3+ bed · &lt;$1.0M</span>
+     </a>`
+  ).join('');
+}
+
+/* ============================================================
+   FORECAST SLIDERS — keep weights summing to 100
+   ============================================================ */
+const bearS=document.getElementById('bearSlider'), baseS=document.getElementById('baseSlider'), bullS=document.getElementById('bullSlider');
+function syncWeightLabels(){ document.getElementById('bearW').textContent=Math.round(W.bear); document.getElementById('baseW').textContent=Math.round(W.base); document.getElementById('bullW').textContent=Math.round(W.bull); bearS.value=W.bear; baseS.value=W.base; bullS.value=W.bull; }
+function rebalance(changed, val){
+  val=+val;
+  const others = ['bear','base','bull'].filter(k=>k!==changed);
+  const remain = 100-val;
+  const oldOtherSum = W[others[0]]+W[others[1]];
+  if(oldOtherSum===0){ W[others[0]]=remain/2; W[others[1]]=remain/2; }
+  else { W[others[0]]=remain*(W[others[0]]/oldOtherSum); W[others[1]]=remain*(W[others[1]]/oldOtherSum); }
+  W[changed]=val;
+  syncWeightLabels(); renderFan();
+}
+bearS.oninput=e=>rebalance('bear',e.target.value);
+baseS.oninput=e=>rebalance('base',e.target.value);
+bullS.oninput=e=>rebalance('bull',e.target.value);
+
+document.getElementById('resetForecast').onclick=()=>{
+  W={...BASELINE.weights}; syncWeightLabels(); renderFan();
+};
+/* PRIOR slider */
+const priorS=document.getElementById('priorSlider');
+function priorLabel(p){ if(p<=20)return'Como first'; if(p<40)return'Leaning Como'; if(p<=60)return'Balanced'; if(p<80)return'Leaning schools'; return'Schools first'; }
+priorS.oninput=e=>{ PRIOR=+e.target.value; document.getElementById('weightLabel').textContent=priorLabel(PRIOR); renderMapAndRanking(); };
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderMacro();
+renderFan();
+syncWeightLabels();
+renderMapAndRanking();
+renderCriteria();
+renderSavedSearches();
+document.getElementById('weightLabel').textContent=priorLabel(PRIOR);
+</script>
+</body>
+</html>

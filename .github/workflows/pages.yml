@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+# Publishes the interactive tool (repo-root index.html) to GitHub Pages on every
+# push to the working branch. The configure-pages step enables Pages via the API
+# (enablement: true), so no manual Settings toggle is required the first time.
+
+on:
+  push:
+    branches:
+      - claude/repo-connection-mhn1nl
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; cancel superseded runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Publish the whole repo root; index.html is the front page.
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

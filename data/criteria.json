@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "buyer": "Family buyer, anchored to family in Como 6152",
+    "budget_band": [800000, 1000000],
+    "capital": { "equity": 200000, "line_of_credit_0pct": 800000, "total": 1000000 },
+    "note": "Three criteria are hard filters; the rest are weighted and combined into the 0-100 Buyer-Fit score. The $800k-at-0% facility is context, not a filter — it is why patience through the 2027 soft patch is affordable."
+  },
+  "criteria": [
+    { "n": "01", "t": "Land over 450sqm", "tag": "filter", "weight": 0.0, "d": "Confirmed per-listing via Landgate cadastre — no public source publishes median block size." },
+    { "n": "02", "t": "Price $800k-$1.0M", "tag": "filter", "weight": 0.0, "d": "Suburb median used as a proxy; in-band or just-below scores highest; >$1.0M median heavily penalised." },
+    { "n": "03", "t": "$1.0M to spend", "tag": "context", "weight": 0.0, "d": "$200k equity + $800k at 0% interest. Not a filter — the reason patience is affordable." },
+    { "n": "04", "t": "Growth after the dip", "tag": "weight", "weight": 0.25, "d": "Scarce land, school zones and undersupply favoured." },
+    { "n": "05", "t": "Family area", "tag": "weight", "weight": 0.15, "d": "Demographics, parks, school quality, childcare pressure." },
+    { "n": "06", "t": "Backyard for kids", "tag": "weight", "weight": 0.15, "d": "Larger blocks, lower unit density, original stock, pool-permit rate." },
+    { "n": "07", "t": "More than 3 bedrooms", "tag": "filter", "weight": 0.0, "d": "4+ achievable; a knock-down-rebuild can satisfy this." },
+    { "n": "08", "t": "Modern, or KDR-viable", "tag": "weight", "weight": 0.10, "d": "Old is fine where land value exceeds improved value (KDR economics)." },
+    { "n": "09", "t": "Near family in Como", "tag": "weight", "weight": 0.20, "d": "Distance-decay weighting centred on Como 6152." },
+    { "n": "10", "t": "Good postcode", "tag": "weight", "weight": 0.15, "d": "School catchment, median level and amenity as proxies." }
+  ],
+  "weighted_dimensions": {
+    "growth": 0.25,
+    "family": 0.15,
+    "land": 0.15,
+    "kdr": 0.10,
+    "prox": 0.20,
+    "post": 0.15
+  }
+}

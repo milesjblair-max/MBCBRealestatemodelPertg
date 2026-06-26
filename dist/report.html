@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en-AU"><head><meta charset="UTF-8">
+<title>Como-Anchored Perth Home Model — Summary</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  *{box-sizing:border-box}
+  body{font-family:"Georgia","Times New Roman",serif;color:#13202b;line-height:1.5;font-size:10.5pt;margin:0}
+  h1,h2,h3,.eyebrow,th,.tag,.metric .v,.metric .k{font-family:"Helvetica Neue",Arial,sans-serif}
+  .cover{background:linear-gradient(150deg,#0c1b2a,#1c3a52);color:#f3f1e9;padding:34px 32px;border-radius:10px;margin-bottom:22px}
+  .eyebrow{font-size:9pt;letter-spacing:.22em;text-transform:uppercase;color:#5fd0c8;font-weight:700}
+  h1{font-size:25pt;margin:10px 0 6px;line-height:1.1}
+  h1 em{color:#d8a657;font-style:italic}
+  .cover p{color:#9fb3c4;font-size:10.5pt;max-width:62ch;margin:8px 0 0}
+  .pill{display:inline-block;margin-top:14px;padding:5px 12px;border:1px solid #26465f;border-radius:100px;font-size:9pt;color:#f3f1e9;font-family:"Helvetica Neue",Arial,sans-serif}
+  .pill b{color:#5fd0c8}
+  h2{font-size:14pt;color:#0c1b2a;border-bottom:2px solid #d8a657;padding-bottom:4px;margin:22px 0 10px}
+  h3{font-size:11pt;color:#1c3a52;margin:14px 0 4px}
+  p{margin:7px 0}
+  .lead{color:#3a4a57}
+  ul{margin:7px 0 7px 0;padding-left:18px} li{margin:3px 0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:9pt}
+  th{background:#13293d;color:#f3f1e9;text-align:left;padding:6px 8px;font-size:8.5pt;letter-spacing:.03em}
+  td{padding:5px 8px;border-bottom:1px solid #dcd8cb;vertical-align:top}
+  tr:nth-child(even) td{background:#f6f4ec}
+  .metrics{display:flex;gap:10px;margin:12px 0}
+  .metric{flex:1;background:#f3f1e9;border:1px solid #dcd8cb;border-radius:8px;padding:10px 12px}
+  .metric .k{font-size:7.5pt;letter-spacing:.06em;text-transform:uppercase;color:#6f8aa0}
+  .metric .v{font-size:16pt;color:#0c1b2a;margin-top:3px;font-weight:700}
+  .metric .v.bear{color:#b5543c}.metric .v.bull{color:#3f7d5d}.metric .v.sand{color:#b07d28}
+  .tag{display:inline-block;font-size:7.5pt;padding:1px 6px;border-radius:100px;border:1px solid;letter-spacing:.04em}
+  .tag.a{color:#b07d28;border-color:#d8a657;background:#faf3e2}
+  .tag.b{color:#2f7e78;border-color:#3aa6a0;background:#e9f6f5}
+  .tag.c{color:#6f8aa0;border-color:#9fb3c4;background:#f1f4f6}
+  .note{background:#faf3e2;border:1px solid #e7d3a4;border-radius:8px;padding:10px 12px;font-size:9.5pt;margin:10px 0}
+  .two{display:flex;gap:16px} .two>div{flex:1}
+  .footer{margin-top:18px;padding-top:10px;border-top:1px solid #dcd8cb;color:#6f8aa0;font-size:8pt;line-height:1.45}
+  .break{page-break-before:always}
+  .small{font-size:8.5pt;color:#6f8aa0}
+  strong{color:#0c1b2a}
+</style></head>
+<body>
+
+<div class="cover">
+  <div class="eyebrow">Perth · WA · Family Home Model · Confidential to the buyer</div>
+  <h1>Buying near Como, <em>without buying the top.</em></h1>
+  <p>A scenario-based house-price model and suburb-targeting study for one buyer: a family home within reach of Como (6152), $1.0M to spend ($200k equity + $800k at 0% interest), patient enough to wait for the 2027 soft patch.</p>
+  <span class="pill">Anchored to family in <b>Como&nbsp;6152</b> · 3-year primary horizon, 5-year tail · as at mid-2026</span>
+</div>
+
+<h2>Executive summary</h2>
+<p class="lead">The most accurate approach for a single-city, suburb-level, ≤5-year horizon is a <strong>four-layer hybrid</strong>: a city-level error-correction (VECM) spine that anchors price to fundamentals, driving a <strong>scenario-weighted Monte Carlo</strong> fan, with a <strong>suburb gradient-boosted panel</strong> and a <strong>hedonic property layer</strong> on top. Pure machine learning alone is least reliable beyond ~12 months. A 3-year primary horizon (with a 5-year scenario tail) is optimal because forecast error compounds and the buyer's decision window — the 2027 soft patch — sits inside three years.</p>
+<p>The mid-2026 macro state validates the thesis but argues for a slightly cautious base case. Perth is expensive and decelerating yet structurally undersupplied, so a 2014-style crash is unlikely. The real risk is a <strong>resources-led soft patch</strong> (iron ore easing, the Simandou ramp, and an investor-demand headwind from the 1 July 2027 negative-gearing/CGT change) — and it lines up with the buyer's window. With $800k at 0%, waiting is nearly free, so the play is <strong>patience plus the right suburbs</strong>.</p>
+
+<div class="metrics">
+  <div class="metric"><div class="k">Expected · Mid-29</div><div class="v">$1.17M</div></div>
+  <div class="metric"><div class="k">Bear trough</div><div class="v bear">$930k</div></div>
+  <div class="metric"><div class="k">Bull · Mid-29</div><div class="v bull">$1.40M</div></div>
+  <div class="metric"><div class="k">Cost of waiting*</div><div class="v sand">$210k</div></div>
+</div>
+<p class="small">*Bull-case price rise by End-27 — the price of being too patient if the market runs. Expected 3-year CAGR ≈ 5.4%. Figures regenerated by <code>model/scenario_model.py</code> (self-verifies against <code>data/baseline.json</code>).</p>
+
+<h2>Current market state (mid-2026)</h2>
+<table>
+<tr><th>Indicator</th><th>Value</th><th>Read</th></tr>
+<tr><td>RBA cash rate</td><td>4.35%</td><td>Held 17 Jun 2026 after Feb/Mar/May hikes; hawkish bias retained</td></tr>
+<tr><td>Perth median dwelling</td><td>~$1.05M</td><td>+25.8% YoY but monthly growth decelerating from late-2025 peak</td></tr>
+<tr><td>Advertised stock</td><td>~40% below 5-yr avg</td><td>Core of the undersupply thesis</td></tr>
+<tr><td>Rental vacancy</td><td>~0.5–0.7%</td><td>Extremely tight; rents still rising</td></tr>
+<tr><td>Days on market</td><td>~9</td><td>Vendor's market — for now</td></tr>
+<tr><td>Iron ore</td><td>~US$100/t, softening</td><td>~US$95/t 2026 consensus; Simandou ramp bearish into 2027</td></tr>
+<tr><td>WA population growth</td><td>~2.2%/yr</td><td>Fastest state; demand-side floor under prices</td></tr>
+<tr><td>Neg. gearing / CGT</td><td>From 1 Jul 2027</td><td>Owner-occupier impact nil; softer market = entry opportunity. New builds keep concessions</td></tr>
+</table>
+
+<h2>The forecast — three scenarios, probability-weighted (30/50/20)</h2>
+<table>
+<tr><th>Period</th><th>Bear (30%)</th><th>Base (50%)</th><th>Bull (20%)</th><th>Expected</th></tr>
+<tr><td>Now (mid-26)</td><td>$1.00M</td><td>$1.00M</td><td>$1.00M</td><td>$1.00M</td></tr>
+<tr><td>End-26</td><td>$1.02M</td><td>$1.06M</td><td>$1.08M</td><td>$1.05M</td></tr>
+<tr><td>Mid-27</td><td>$0.98M</td><td>$1.08M</td><td>$1.15M</td><td>$1.06M</td></tr>
+<tr><td>End-27</td><td>$0.94M</td><td>$1.09M</td><td>$1.21M</td><td>$1.07M</td></tr>
+<tr><td>Mid-28 <span class="tag a">trough</span></td><td>$0.93M</td><td>$1.11M</td><td>$1.28M</td><td>$1.09M</td></tr>
+<tr><td>End-28</td><td>$0.96M</td><td>$1.15M</td><td>$1.34M</td><td>$1.13M</td></tr>
+<tr><td>Mid-29</td><td>$1.00M</td><td>$1.18M</td><td>$1.40M</td><td>$1.17M</td></tr>
+</table>
+<div class="note"><strong>Reading the dip.</strong> The expected path never falls below today — it flattens through 2027, then resumes. The only real dip is the bear case (~$930k, roughly −7%, late-27 to mid-28). The opportunity isn't betting on a crash; it's the <strong>2027 soft patch</strong> — similar prices to today, but stock sitting and vendors flexible. With $800k at 0%, waiting through that window costs almost nothing.</div>
+
+<div class="break"></div>
+<h2>Where to buy — the shortlist</h2>
+<p class="lead">Premium river suburbs are out of budget for a house (Como ~$1.5M+, South Perth ~$2.0M, Applecross ~$2.4M). The play is the <strong>fringe of the best school catchments</strong> and <strong>near-in Canning value</strong>. At the balanced setting the model ranks <strong>Shelley #1, Wilson #2</strong>.</p>
+<table>
+<tr><th>Suburb</th><th>PC</th><th>Median (range)</th><th>Fit /100</th><th>Why</th></tr>
+<tr><td><strong>Shelley</strong></td><td>6148</td><td>$920–980k</td><td>78.9</td><td>Rossmoyne SHS catchment fringe, river-close, scarce land — best growth-after-dip hold</td></tr>
+<tr><td><strong>Wilson</strong></td><td>6107</td><td>$930–955k</td><td>78.1</td><td>Larger Canning blocks, Curtin-adjacent, closest at-budget to Como, strong KDR</td></tr>
+<tr><td>Parkwood</td><td>6147</td><td>$920–960k</td><td>73.1</td><td>Big blocks, value, strong recent growth</td></tr>
+<tr><td>St James</td><td>6102</td><td>$855–890k</td><td>71.5</td><td>Vic Park/Curtin precinct, genuinely close to Como, KDR upside</td></tr>
+<tr><td>Dianella</td><td>6059</td><td>$970k–1.15M</td><td>69.6</td><td>Best north-of-river land+location balance; catch is distance</td></tr>
+<tr><td>Bentley</td><td>6102</td><td>$780–820k</td><td>68.5</td><td>The value play — cheapest near-in, biggest margin of safety</td></tr>
+<tr><td>Embleton / Balcatta</td><td>6062/6021</td><td>$900–970k</td><td>63 / 61</td><td>North-of-river 450sqm+ green-title with KDR upside</td></tr>
+<tr><td>Riverton</td><td>6148</td><td>$1.02–1.09M</td><td>41.7*</td><td>Rossmoyne zone but just over budget — watch the 2027 soft patch</td></tr>
+</table>
+<p class="small">*Over-budget suburbs are penalised in the score. The proximity-vs-schools slider in the live tool re-orders this: toward Como lifts Wilson/St James/Bentley; toward schools lifts Shelley/Riverton.</p>
+
+<h2>What makes this model different — enriched, leading variables</h2>
+<p class="lead">A generic model stops at rates, migration and approvals. This one adds <strong>family-buyer-specific leading indicators</strong> and a <strong>cyclical-risk overlay</strong> that explain <em>which suburbs</em> hold up through the soft patch.</p>
+<table>
+<tr><th>Variable</th><th>Tier</th><th>What it predicts (leads price by)</th><th>Source</th></tr>
+<tr><td>Backyard pool-building-permit rate</td><td><span class="tag a">A</span></td><td>Family entrenchment / price floor (6–18 mo)</td><td>LGA building registers</td></tr>
+<tr><td>School in-zone rejection events</td><td><span class="tag a">A</span></td><td>Catchment premium spilling to fringe suburbs</td><td>WA Education intake + ACARA</td></tr>
+<tr><td>Childcare occupancy / waitlist density</td><td><span class="tag a">A</span></td><td>Young-family in-migration before they buy</td><td>ACECQA register (daily)</td></tr>
+<tr><td>Lodged-vs-registered cadastre ratio</td><td><span class="tag a">A</span></td><td>Developer conviction / supply (12–24 mo)</td><td>Landgate SLIP</td></tr>
+<tr><td>Days-on-market velocity & discounting</td><td><span class="tag a">A</span></td><td>Market temperature — turns before medians</td><td>REIWA / Cotality / SQM</td></tr>
+<tr><td>FIFO-share × iron-ore interaction</td><td><span class="tag b">B</span></td><td>Suburb mining-cashflow beta (5-yr tail risk)</td><td>ATO postcode × commodity</td></tr>
+<tr><td>Short-stay (STRA) de-listing velocity</td><td><span class="tag b">B</span></td><td>Rental-supply relief, current</td><td>WA STRA register</td></tr>
+<tr><td>Cafe / coffee density change</td><td><span class="tag b">B</span></td><td>Gentrification nowcast</td><td>POI / ABS business counts</td></tr>
+<tr><td>Google Trends · crime · tree canopy · SA2 birth rate</td><td><span class="tag c">C</span></td><td>Corroboration only — slow / noisy</td><td>Various public</td></tr>
+</table>
+<div class="note"><strong>The buyer's "child rates" hint is correct</strong> and is operationalised fast→slow via pool permits, childcare occupancy, school-zone pressure, and SA2 family-cohort share. The discipline: permit/register/roster data <em>leads</em>; demographic counts <em>lag</em> — never let a slow series move a near-term call alone.</p>
+
+<h2>Recommendations & timing</h2>
+<div class="two"><div>
+<h3>Posture</h3>
+<ul>
+<li><strong>Patient / opportunistic</strong> — the $800k-at-0% facility removes the carrying cost of waiting.</li>
+<li>Primary targets: <strong>Shelley, Wilson, St James, Parkwood, Bentley</strong>; secondary north-of-river land (Dianella, Embleton, Balcatta).</li>
+<li>Highest conviction hold: <strong>Rossmoyne-catchment fringe</strong> — scarce land + family demand + grandfathered owner-occupier status.</li>
+</ul>
+</div><div>
+<h3>Act when any two confirm a soft patch</h3>
+<ul>
+<li>Perth monthly growth flat/negative for 2+ months.</li>
+<li>Advertised stock rising toward the 5-year average.</li>
+<li>Iron ore sustained &lt;US$85/t with rising FIFO unemployment.</li>
+<li>Days-on-market past ~20 in target suburbs.</li>
+</ul>
+</div></div>
+
+<h2>Data, reproducibility & the live tool</h2>
+<p>The forecast is reproducible — the standard-library Python in <code>/model</code> regenerates these exact baseline numbers and self-verifies. The interactive web tool (single self-contained HTML, published to GitHub Pages) lets the buyer drag scenario weights and a proximity-vs-schools slider, with a <strong>Reset button that restores this model's prescribed baseline exactly</strong>, plus a suburb heat map and pre-filtered live saved-search links to the property portals. A genuinely refreshing listings feed is available via the compliant Domain Developer API path (scheduled job → <code>data/listings.json</code>) — never by scraping.</p>
+
+<div class="footer">
+<strong>General information only — not financial, legal or tax advice.</strong> All figures are approximations as at mid-2026 and will change. Suburb medians vary 10–20% between sources and are shown as ranges; no public source publishes median block size, so the 450sqm requirement must be confirmed per-listing via Landgate. The forecast is a set of scenario estimates conditioned on the stated assumptions and will be wrong if those assumptions are wrong (a global shock, an iron-ore collapse below ~US$70, or a migration reversal are the things that break it). Verify against live REIWA, Landgate, RBA and ABS data and licensed professionals before acting. Generated by the Como-Anchored Perth Home Model.
+</div>
+
+</body></html>

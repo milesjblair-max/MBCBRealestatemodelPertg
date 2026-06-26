@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "title": "Como-Anchored Perth Home Model — baseline forecast",
+    "as_at": "2026-06",
+    "horizon_primary_years": 3,
+    "horizon_tail_years": 5,
+    "anchor_suburb": "Como 6152",
+    "start_value": 1000000,
+    "weights": { "bear": 30, "base": 50, "bull": 20 },
+    "rounding": "expected = round-half-up to nearest $1,000 of the weighted scenario average",
+    "note": "Scenario anchor paths are the calibrated output of the city VECM spine plus an analyst overlay (iron ore, Simandou, NG/CGT, undersupply). scenario_model.py regenerates the expected path and derived metrics from these anchors and self-verifies against this file."
+  },
+  "timeline": [
+    { "label": "Now (mid-26)", "t": 0.0, "bear": 1000000, "base": 1000000, "bull": 1000000, "expected": 1000000 },
+    { "label": "End-26",       "t": 0.5, "bear": 1020000, "base": 1055000, "bull": 1080000, "expected": 1050000 },
+    { "label": "Mid-27",       "t": 1.0, "bear": 975000,  "base": 1080000, "bull": 1150000, "expected": 1063000 },
+    { "label": "End-27",       "t": 1.5, "bear": 935000,  "base": 1085000, "bull": 1210000, "expected": 1065000 },
+    { "label": "Mid-28",       "t": 2.0, "bear": 930000,  "base": 1110000, "bull": 1280000, "expected": 1090000, "trough": true },
+    { "label": "End-28",       "t": 2.5, "bear": 955000,  "base": 1145000, "bull": 1340000, "expected": 1127000 },
+    { "label": "Mid-29",       "t": 3.0, "bear": 1000000, "base": 1180000, "bull": 1400000, "expected": 1170000 }
+  ],
+  "macro": {
+    "cash_rate_pct": 4.35,
+    "cash_rate_note": "Held at 17 Jun 2026 meeting after Feb/Mar/May 2026 hikes; hawkish bias retained.",
+    "perth_median_dwelling": 1050000,
+    "perth_growth_yoy_pct": 25.8,
+    "advertised_stock_vs_5yr_avg_pct": -40,
+    "rental_vacancy_pct": 0.7,
+    "days_on_market": 9,
+    "cpi_yoy_pct": 4.0,
+    "iron_ore_usd_t": 100,
+    "iron_ore_note": "~US$100/t late-Jun 2026, softening from US$111 May avg; ~US$95/t 2026 average consensus; Simandou ramp bearish into 2027.",
+    "wa_population_growth_pct": 2.2
+  },
+  "buy_window": {
+    "label": "2027 soft patch",
+    "from": "Mid-27",
+    "to": "End-27",
+    "rationale": "Expected path flattens (not a crash); bear trough ~$930k late-27/mid-28. With $800k at 0% the carrying cost of waiting is ~nil, so a patient, opportunistic stance is optimal.",
+    "triggers": [
+      "Perth monthly growth flat/negative for 2+ consecutive months",
+      "Advertised stock rising back toward the 5-year average",
+      "Iron ore sustained below US$85/t with rising FIFO unemployment",
+      "Days-on-market lengthening past ~20 days in target suburbs"
+    ]
+  },
+  "key_numbers": {
+    "expected_mid29": 1170000,
+    "bear_trough": 930000,
+    "bear_trough_drawdown_pct": -7.0,
+    "bull_mid29": 1400000,
+    "cost_of_waiting_to_end27_bull": 210000
+  },
+  "scenario_assumptions": {
+    "base": "RBA holds 4.35% into 2027 then cuts from ~mid-27; iron ore ~US$95/t 2026 easing to ~US$85-90 in 2027; undersupply (vacancy ~0.5-0.7%, completions <22k) puts a floor under prices; NG/CGT drag ~0.6-1.0ppt concentrated in investor stock. Net: flat-to-modest growth, re-acceleration from 2028.",
+    "bear": "Westpac-style renewed hiking (Aug/Sep 2026) plus iron ore <US$85/t and Simandou volumes arriving faster; FIFO unemployment rises; investor demand cut by NG/CGT bites harder. Trough ~-7% late-27/mid-28; undersupply prevents a 2014-style crash.",
+    "bull": "RBA cuts in 2027, migration stays >2% with completions still short; construction-cost relief; resources hold. Prices re-accelerate; family-corridor school suburbs lead."
+  }
+}
