@@ -1,6 +1,7 @@
 # Suburb playbook - the buyer-facing answer
 
-Anchor: **Como 6152.** Budget: **$800k-$1.0M** for a **house** on **500sqm+**,
+Anchor: **Como 6152.** Budget: **$800k-$1.1M** (soft ceiling; listing prices are
+estimates, so a place a touch over still counts) for a **house** on **500sqm+**,
 KDR-capable, family, near Como, good postcode. Premium river suburbs are out of
 budget for a house; the play is the **fringe of the best school catchments** and
 **near-in Canning value**.
@@ -15,7 +16,7 @@ is affordable:
 - **Shelley (~$960k)** - *the pick.* In-band, river-close, Rossmoyne zone, scarce
   land. Grandfathered owner-occupier status + school demand insulate it from the
   NG/CGT investor drag. Best growth-after-dip hold. **Model rank #1 at balanced.**
-- **Riverton (~$1.02-1.09M)** - same zone, family-friendly, just over budget;
+- **Riverton (~$1.02-1.09M)** - same zone, family-friendly, now inside the band;
   watch for soft-patch pricing in the 2027 window.
 - **Bull Creek / Bateman-adjacent** - same logic; confirm block size per-listing.
 

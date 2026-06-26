@@ -3,7 +3,7 @@
 fetch_listings.py - refresh data/listings.json with real property listings.
 
 Run by .github/workflows/refresh-listings.yml on a daily schedule. It pulls
-houses that fit the buyer's brief (3+ beds, <=$1.0M, in the in-budget target
+houses that fit the buyer's brief (3+ beds, <=$1.1M, in the in-budget target
 suburbs from data/suburbs.json), flags bargains (priced below the suburb median)
 and writes data/listings.json. The interactive tool fetch()es that file.
 
@@ -32,7 +32,7 @@ DATA = os.path.join(HERE, "..", "data")
 SUBURBS_PATH = os.path.join(DATA, "suburbs.json")
 OUT_PATH = os.path.join(DATA, "listings.json")
 
-MAX_PRICE = 1_000_000
+MAX_PRICE = 1_100_000
 MIN_BEDS = 3
 MIN_LAND = 500
 PER_SUBURB = 6
@@ -176,7 +176,7 @@ def main():
             "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
             "source": "domain-api",
             "note": "Live houses from the Domain Developer API matching the brief "
-                    "(3+ beds, <=$1.0M, in-budget target suburbs). Bargains = priced "
+                    "(3+ beds, <=$1.1M, in-budget target suburbs). Bargains = priced "
                     "below the suburb median. Refreshed daily by GitHub Actions.",
             "criteria": {"max_price": MAX_PRICE, "min_land": MIN_LAND,
                          "min_beds": MIN_BEDS, "types": ["House"]},

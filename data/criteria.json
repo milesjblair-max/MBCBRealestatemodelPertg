@@ -1,13 +1,13 @@
 {
   "meta": {
     "buyer": "Family buyer, anchored to family in Como 6152",
-    "budget_band": [800000, 1000000],
+    "budget_band": [800000, 1100000],
     "capital": { "total": 1000000, "note": "patient capital with low holding costs" },
     "note": "Three criteria are hard filters; the rest are weighted and combined into the 0-100 Buyer-Fit score. The buyer's low holding cost is context, not a filter - it is why patience through the 2027 soft patch is affordable."
   },
   "criteria": [
     { "n": "01", "t": "Land over 500sqm", "tag": "filter", "weight": 0.0, "d": "Confirmed per-listing via Landgate cadastre - no public source publishes median block size." },
-    { "n": "02", "t": "Price $800k-$1.0M", "tag": "filter", "weight": 0.0, "d": "Suburb median used as a proxy; in-band or just-below scores highest; >$1.0M median heavily penalised." },
+    { "n": "02", "t": "Price $800k-$1.1M", "tag": "filter", "weight": 0.0, "d": "Suburb median used as a proxy; in-band or just-below scores highest; a soft ceiling (listing prices are estimates), only well above ~$1.1M is heavily penalised." },
     { "n": "03", "t": "$1.0M to spend", "tag": "context", "weight": 0.0, "d": "Low holding costs make patience cheap. Not a filter - the reason waiting is affordable." },
     { "n": "04", "t": "Growth after the dip", "tag": "weight", "weight": 0.25, "d": "Scarce land, school zones and undersupply favoured." },
     { "n": "05", "t": "Family area", "tag": "weight", "weight": 0.15, "d": "Demographics, parks, school quality, childcare pressure." },

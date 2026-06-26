@@ -30,7 +30,7 @@ might do, where to buy, and why. No jargon without a plain-English gloss.
 | Attribute | Value |
 |---|---|
 | Goal | Family home, long hold, room to grow |
-| Budget band | **$800k-$1.0M** |
+| Budget band | **$800k-$1.1M** |
 | Capital | **$1.0M total** = patient capital, low holding cost |
 | Anchor location | **Como 6152** (his family is in the South Perth / Como area) |
 | Horizon | **3 years primary, 5-year scenario tail** |
@@ -40,7 +40,7 @@ might do, where to buy, and why. No jargon without a plain-English gloss.
 machine copy):
 
 1. Land size above **500sqm** - *hard filter*
-2. Property between **$800k-$1.0M** - *hard filter*
+2. Property between **$800k-$1.1M** - *hard filter*
 3. **$1.0M to bring** (low holding costs) - *context, not a filter*
 4. **Growth potential (post-dip)** - *weighted 25%*
 5. **Family area** - *weighted 15%*
@@ -217,7 +217,7 @@ When asked to "make listings live," build the GitHub Action + `data/listings.jso
   and family. Do NOT state the buyer's capital structure explicitly (no "$200k
   equity", no "$800k line of credit", no "0% interest"). Refer only to a
   "~$1.0M budget" and "low holding costs / patience is cheap". The price band
-  `$800k-$1.0M` (about the property) is fine to show.
+  `$800k-$1.1M` (about the property) is fine to show.
 - **Branch:** develop on `claude/repo-connection-mhn1nl`. Never push elsewhere
   without explicit permission. Commit with clear messages; push with
   `git push -u origin <branch>`.

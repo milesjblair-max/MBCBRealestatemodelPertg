@@ -48,7 +48,7 @@ def score_suburb(s, prior):
     over = False
     if not s["band"]:
         mid = (s["mlo"] + s["mhi"]) / 2
-        if mid > 1000:
+        if mid > 1100:
             score *= 0.55
             over = True
         else:
