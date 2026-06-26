@@ -106,6 +106,42 @@ have to touch the settings again.
 
 ---
 
+## Going live: real property listings (free, ~5 minutes)
+
+The "Properties that fit (or are a bargain)" section reads `data/listings.json`.
+Out of the box that file holds clearly-labelled **sample** properties. To switch
+it to **real listings that refresh every day**, give it a free Domain Developer
+API key. This is the only compliant route - the page never scrapes the portals.
+
+**Step 1 - get a free Domain API key (once).**
+1. Go to `https://developer.domain.com.au` and sign up (free).
+2. Create a **Project** on the free/sandbox plan and add the **Agents &amp;
+   Listings** package (the "Search residential listings" endpoint).
+3. From the project's **Credentials**, copy the **Client ID** and **Client
+   Secret**.
+
+**Step 2 - add them to the repo as secrets (once).**
+In GitHub: **Settings -> Secrets and variables -> Actions -> New repository
+secret**, and add two secrets:
+- `DOMAIN_CLIENT_ID`
+- `DOMAIN_CLIENT_SECRET`
+
+(Nothing is ever committed - the secrets live only in GitHub Actions.)
+
+**Step 3 - run it.**
+Go to the **Actions** tab -> **Refresh live listings (daily)** -> **Run
+workflow**. It pulls houses matching the brief (3+ beds, under $1.0M, in the
+target suburbs), flags any priced below the suburb median as **bargains**,
+writes `data/listings.json`, and commits it (which re-publishes the site). After
+that it runs **automatically once a day** - no further action needed.
+
+Until the key is added, the daily job is a safe no-op: it leaves the sample data
+in place, so the page never breaks. The script (`scripts/fetch_listings.py`) and
+schedule (`.github/workflows/refresh-listings.yml`) are already wired; you only
+add the key.
+
+---
+
 ## Handing this to Claude Code
 
 Open this folder in Claude Code and tell it what you want changed. It will read
