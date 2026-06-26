@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Como-Anchored Perth Home Model — baseline forecast",
+    "title": "Como-Anchored Perth Home Model - baseline forecast",
     "as_at": "2026-06",
     "horizon_primary_years": 3,
     "horizon_tail_years": 5,
@@ -36,7 +36,7 @@
     "label": "2027 soft patch",
     "from": "Mid-27",
     "to": "End-27",
-    "rationale": "Expected path flattens (not a crash); bear trough ~$930k late-27/mid-28. With $800k at 0% the carrying cost of waiting is ~nil, so a patient, opportunistic stance is optimal.",
+    "rationale": "Expected path flattens (not a crash); bear trough ~$930k late-27/mid-28. Because holding costs are low, the carrying cost of waiting is ~nil, so a patient, opportunistic stance is optimal.",
     "triggers": [
       "Perth monthly growth flat/negative for 2+ consecutive months",
       "Advertised stock rising back toward the 5-year average",

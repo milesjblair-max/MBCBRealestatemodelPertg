@@ -6,23 +6,13 @@
 <title>Como-Anchored Perth Home Model</title>
 <style>
   :root{
-    --ink:#0c1b2a;        /* deep water navy - primary text/bg */
-    --ink-2:#13293d;      /* panel navy */
-    --ink-3:#1c3a52;      /* raised panel */
-    --line:#26465f;       /* hairlines on dark */
-    --paper:#f3f1e9;      /* warm paper for light surfaces */
-    --paper-2:#e7e3d6;    /* paper shadow */
-    --teal:#3aa6a0;       /* river teal - base/primary accent */
-    --teal-bright:#5fd0c8;
-    --sand:#d8a657;       /* signal / buy-window / trough warm */
-    --sand-deep:#c4863a;
-    --bull:#6fae8f;       /* bull green */
-    --bear:#cf7a63;       /* bear clay */
-    --muted:#9fb3c4;      /* muted text on dark */
-    --muted-2:#6f8aa0;    /* dimmer */
-    --ok:#5fd0c8;
-    --shadow:0 10px 40px rgba(0,0,0,.35);
-    --r:14px;
+    --ink:#0c1b2a; --ink-2:#13293d; --ink-3:#1c3a52; --line:#26465f;
+    --paper:#f3f1e9; --paper-2:#e7e3d6;
+    --teal:#3aa6a0; --teal-bright:#5fd0c8;
+    --sand:#d8a657; --sand-deep:#c4863a;
+    --bull:#6fae8f; --bear:#cf7a63;
+    --muted:#9fb3c4; --muted-2:#6f8aa0; --ok:#5fd0c8;
+    --shadow:0 10px 40px rgba(0,0,0,.35); --r:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -33,54 +23,61 @@
       var(--ink);
     color:var(--paper);
     font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    padding:0 0 80px;
-    overflow-x:hidden;            /* guard against SVG edge labels causing sideways scroll */
-    -webkit-text-size-adjust:100%;
+    line-height:1.5; -webkit-font-smoothing:antialiased; padding:0 0 80px;
+    overflow-x:hidden; -webkit-text-size-adjust:100%;
   }
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
   h1,h2,h3{font-family:"Fraunces","Georgia",serif;font-weight:600;letter-spacing:-.01em;line-height:1.12}
 
   /* ---------- header ---------- */
-  header{padding:48px 0 28px;border-bottom:1px solid var(--line)}
+  header{padding:46px 0 22px}
   .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-bright);font-weight:600;margin-bottom:14px}
   h1{font-size:clamp(30px,4.4vw,52px);max-width:18ch}
   h1 .accent{color:var(--sand);font-style:italic}
   .sub{margin-top:16px;color:var(--muted);font-size:17px;max-width:62ch}
-  .anchorpill{display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding:7px 14px;border:1px solid var(--line);border-radius:100px;background:rgba(58,166,160,.08);font-size:13px;color:var(--paper)}
+  .anchorpill{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 16px;margin-top:20px;padding:8px 16px;border:1px solid var(--line);border-radius:100px;background:rgba(58,166,160,.08);font-size:13px;color:var(--paper)}
+  .anchorpill .seg{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
   .anchorpill b{color:var(--teal-bright)}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--sand);box-shadow:0 0 0 4px rgba(216,166,87,.18)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--sand);box-shadow:0 0 0 4px rgba(216,166,87,.18);flex:none}
+
+  /* ---------- tab bar ---------- */
+  .tabs{position:sticky;top:0;z-index:20;display:flex;gap:4px;flex-wrap:wrap;
+    background:rgba(12,27,42,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid var(--line);border-radius:100px;padding:5px;margin:8px 0 6px}
+  .tab{flex:1 1 auto;min-width:96px;text-align:center;border:none;background:transparent;color:var(--muted);
+    font-family:inherit;font-size:13.5px;font-weight:600;letter-spacing:.01em;padding:11px 10px;border-radius:100px;
+    cursor:pointer;transition:background .15s,color .15s;white-space:nowrap}
+  .tab:hover{color:var(--paper)}
+  .tab.active{background:rgba(58,166,160,.16);color:var(--teal-bright);box-shadow:inset 0 0 0 1px rgba(58,166,160,.4)}
+  .tab:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
 
   /* ---------- macro strip ---------- */
-  .macro{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:28px 0 8px}
+  .macro{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:18px 0 8px}
   .macro .cell{background:var(--ink-2);padding:14px 16px}
   .macro .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
-  .macro .v{font-family:"Fraunces",serif;font-size:21px;margin-top:4px;color:var(--paper)}
+  .macro .v{font-family:"Fraunces",serif;font-size:21px;margin-top:4px;color:var(--paper);white-space:nowrap}
   .macro .v small{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif}
   @media(max-width:880px){.macro{grid-template-columns:repeat(3,1fr)}}
 
-  section{padding:44px 0;border-bottom:1px solid var(--line)}
-  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+  section{padding:40px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
   .sec-num{font-family:"Fraunces",serif;font-size:14px;color:var(--sand);font-variant-numeric:tabular-nums}
   h2{font-size:clamp(22px,3vw,30px)}
-  .sec-lead{color:var(--muted);max-width:64ch;margin:10px 0 26px;font-size:16px}
+  .sec-lead{color:var(--muted);max-width:66ch;margin:10px 0 24px;font-size:16px}
+  .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:24px}
 
-  .panel{background:linear-gradient(180deg,var(--ink-2),var(--ink-2)) padding-box;border:1px solid var(--line);border-radius:var(--r);padding:24px}
-
-  /* ---------- forecast layout ---------- */
+  /* ---------- forecast ---------- */
   .forecast-grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
   @media(max-width:880px){.forecast-grid{grid-template-columns:1fr}}
   .chart-card{position:relative}
-  .chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .chart-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
   .chart-title h3{font-size:18px}
   .legend{display:flex;gap:14px;flex-wrap:wrap}
-  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+  .legend span{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);white-space:nowrap}
   .sw{width:12px;height:3px;border-radius:2px;display:inline-block}
   svg{display:block;width:100%;height:auto;overflow:visible}
-  .axis text{fill:var(--muted-2);font-size:11px;font-family:"Inter",sans-serif}
-  .axis line{stroke:var(--line)}
-  .gridline{stroke:rgba(255,255,255,.05)}
+  .pt-label{fill:var(--muted);font-size:10px;font-family:"Inter",sans-serif}
   .path-band{opacity:.16}
   .path-line{fill:none;stroke-width:2.5}
   .exp-line{fill:none;stroke:var(--paper);stroke-width:3}
@@ -88,29 +85,31 @@
   .trough-marker{fill:var(--sand)}
   .buywin{fill:rgba(216,166,87,.12);stroke:rgba(216,166,87,.4);stroke-dasharray:4 3}
   .buywin-label{fill:var(--sand);font-size:11px;font-weight:600;font-family:"Inter",sans-serif;letter-spacing:.04em}
-  .pt-label{fill:var(--muted);font-size:10px;font-family:"Inter",sans-serif}
 
-  /* ---------- controls ---------- */
   .controls h3{font-size:15px;margin-bottom:4px}
   .controls .hint{font-size:12px;color:var(--muted-2);margin-bottom:18px}
+  .controls .hint2{font-size:11px;color:var(--muted-2);margin-top:10px;line-height:1.5}
   .ctl{margin-bottom:20px}
-  .ctl label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px;color:var(--paper)}
-  .ctl label b{color:var(--teal-bright);font-variant-numeric:tabular-nums}
+  .ctl label{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin-bottom:8px;color:var(--paper)}
+  .ctl label b{color:var(--teal-bright);font-variant-numeric:tabular-nums;white-space:nowrap}
   input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:4px;background:var(--line);outline:none}
   input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--teal-bright);cursor:pointer;border:3px solid var(--ink-2);box-shadow:0 2px 8px rgba(0,0,0,.4)}
   input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--teal-bright);cursor:pointer;border:3px solid var(--ink-2)}
   input[type=range].sand::-webkit-slider-thumb{background:var(--sand)}
   input[type=range].sand::-moz-range-thumb{background:var(--sand)}
-  .scale-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-2);margin-top:6px}
+  .scale-ends{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:var(--muted-2);margin-top:6px}
   .btn-reset{width:100%;margin-top:6px;padding:11px;border-radius:10px;border:1px solid var(--teal);background:rgba(58,166,160,.1);color:var(--teal-bright);font-size:13px;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:background .15s}
   .btn-reset:hover{background:rgba(58,166,160,.2)}
   .btn-reset:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
-
   .readout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:22px}
   .readout .cell{background:var(--ink-3);padding:12px 14px}
-  .readout .k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
-  .readout .v{font-family:"Fraunces",serif;font-size:19px;margin-top:3px}
-  .v.bear{color:var(--bear)} .v.bull{color:var(--bull)} .v.exp{color:var(--paper)} .v.win{color:var(--sand)}
+  .readout .k{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);line-height:1.3}
+  .readout .v{font-family:"Fraunces",serif;font-size:19px;margin-top:3px;white-space:nowrap}
+  .v.bear{color:var(--bear)} .v.bull{color:var(--bull)} .v.exp{color:var(--teal-bright)}
+
+  .callout{display:flex;gap:14px;align-items:flex-start;background:rgba(216,166,87,.06);border:1px solid rgba(216,166,87,.25);border-radius:12px;padding:16px 18px;margin-top:18px}
+  .callout .ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--sand);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:13px;font-family:"Fraunces",serif}
+  .callout p{font-size:13px;color:var(--paper);line-height:1.55}
 
   /* ---------- heat map ---------- */
   .heat-grid{display:grid;grid-template-columns:1fr 300px;gap:20px}
@@ -124,7 +123,6 @@
   .map-km{fill:var(--muted-2);font-size:9px;font-family:"Inter",sans-serif;pointer-events:none}
   .como-star{fill:var(--sand)}
   .como-ring{fill:none;stroke:rgba(216,166,87,.25);stroke-dasharray:3 4}
-
   .rank-list{display:flex;flex-direction:column;gap:0}
   .rank-row{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border:1px solid var(--line);border-top:none;background:var(--ink-2);cursor:pointer;transition:background .12s}
   .rank-row:first-child{border-top:1px solid var(--line);border-radius:10px 10px 0 0}
@@ -134,11 +132,10 @@
   .rank-n{font-family:"Fraunces",serif;font-size:14px;color:var(--muted-2);font-variant-numeric:tabular-nums}
   .rank-name{font-size:14px;font-weight:500}
   .rank-name small{display:block;color:var(--muted-2);font-size:11px;font-weight:400;margin-top:1px}
-  .rank-score{font-family:"Fraunces",serif;font-size:17px;font-variant-numeric:tabular-nums}
-  .pill{font-size:10px;padding:2px 7px;border-radius:100px;border:1px solid;margin-left:6px;vertical-align:middle}
+  .rank-score{font-family:"Fraunces",serif;font-size:17px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pill{font-size:10px;padding:2px 7px;border-radius:100px;border:1px solid;margin-left:6px;vertical-align:middle;white-space:nowrap}
   .pill.over{color:var(--bear);border-color:rgba(207,122,99,.4);background:rgba(207,122,99,.08)}
   .pill.fit{color:var(--teal-bright);border-color:rgba(58,166,160,.4);background:rgba(58,166,160,.08)}
-
   .detail{background:var(--ink-3);border:1px solid var(--line);border-radius:12px;padding:18px;margin-top:14px;min-height:120px}
   .detail h4{font-family:"Fraunces",serif;font-size:18px;margin-bottom:2px}
   .detail .meta{font-size:12px;color:var(--muted);margin-bottom:12px}
@@ -148,36 +145,38 @@
   .dbar .track{height:6px;background:var(--line);border-radius:4px;overflow:hidden}
   .dbar .fill{height:100%;background:var(--teal);border-radius:4px}
   .dlinks{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-  .dlinks a{font-size:12px;padding:7px 12px;border-radius:8px;border:1px solid var(--line);color:var(--teal-bright);text-decoration:none;background:rgba(58,166,160,.06);transition:background .12s}
+  .dlinks a{font-size:12px;padding:7px 12px;border-radius:8px;border:1px solid var(--line);color:var(--teal-bright);text-decoration:none;background:rgba(58,166,160,.06)}
   .dlinks a:hover{background:rgba(58,166,160,.16)}
+  .jump{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:12px;color:var(--sand);text-decoration:none;border-bottom:1px solid rgba(216,166,87,.35);padding-bottom:1px;cursor:pointer}
+  .jump:hover{color:var(--sand-deep)}
 
-  /* ---------- criteria ---------- */
-  .crit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-  .crit{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;position:relative}
-  .crit .n{font-family:"Fraunces",serif;font-size:13px;color:var(--sand)}
-  .crit .t{font-size:14px;font-weight:600;margin:6px 0 4px}
-  .crit .d{font-size:12.5px;color:var(--muted);line-height:1.45}
-  .crit .tag{position:absolute;top:14px;right:14px;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;border:1px solid var(--line);color:var(--muted-2)}
-  .crit .tag.filter{color:var(--sand);border-color:rgba(216,166,87,.35)}
-  .crit .tag.weight{color:var(--teal-bright);border-color:rgba(58,166,160,.35)}
+  /* ---------- property feed ---------- */
+  .status-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);background:var(--ink-2);border:1px solid var(--line);border-radius:10px;padding:11px 14px;margin-bottom:16px}
+  .status-dot{width:8px;height:8px;border-radius:50%;flex:none}
+  .status-dot.live{background:var(--bull);box-shadow:0 0 0 4px rgba(111,174,143,.18)}
+  .status-dot.sample{background:var(--sand);box-shadow:0 0 0 4px rgba(216,166,87,.18)}
+  .prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .pcard{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;transition:transform .12s,border-color .12s}
+  .pcard:hover{transform:translateY(-3px);border-color:var(--teal)}
+  .pcard.bargain{border-color:rgba(216,166,87,.5)}
+  .pcard .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .pcard .price{font-family:"Fraunces",serif;font-size:21px;color:var(--paper);white-space:nowrap}
+  .pcard .badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
+  .pcard .badge.bargain{color:var(--sand);background:rgba(216,166,87,.12);border:1px solid rgba(216,166,87,.45)}
+  .pcard .badge.fit{color:var(--teal-bright);background:rgba(58,166,160,.1);border:1px solid rgba(58,166,160,.4)}
+  .pcard .addr{font-size:14px;font-weight:600;color:var(--paper)}
+  .pcard .loc{font-size:12px;color:var(--muted-2)}
+  .pcard .specs{display:flex;flex-wrap:wrap;gap:6px}
+  .pcard .spec{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:2px 8px;white-space:nowrap}
+  .pcard .reason{font-size:12.5px;color:var(--muted);line-height:1.5}
+  .pcard .go{margin-top:auto;font-size:12px;font-weight:600;color:var(--teal-bright);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:9px;text-align:center;background:rgba(58,166,160,.06)}
+  .pcard .go:hover{background:rgba(58,166,160,.16)}
 
-  /* ---------- listings ---------- */
-  .listings-note{display:flex;gap:14px;align-items:flex-start;background:rgba(216,166,87,.06);border:1px solid rgba(216,166,87,.25);border-radius:12px;padding:16px 18px;margin-top:18px}
-  .listings-note .ic{flex:none;width:22px;height:22px;border-radius:50%;background:var(--sand);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:13px;font-family:"Fraunces",serif}
-  .listings-note p{font-size:13px;color:var(--paper);line-height:1.5}
-  .saved-searches{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-  .saved-searches a{display:inline-flex;flex-direction:column;gap:2px;padding:13px 18px;border-radius:12px;border:1px solid var(--line);background:var(--ink-2);text-decoration:none;transition:transform .12s,background .12s;min-width:180px}
-  .saved-searches a:hover{transform:translateY(-2px);background:var(--ink-3)}
-  .saved-searches .src{font-size:11px;color:var(--muted-2);letter-spacing:.06em;text-transform:uppercase}
-  .saved-searches .lbl{font-size:14px;color:var(--teal-bright);font-weight:600}
-  .saved-searches .meta{font-size:11px;color:var(--muted)}
-
-  /* dynamic listings strip — wired to the Where-to-buy ranking */
-  .listings-caption{font-size:14px;color:var(--muted);margin:2px 0 14px;max-width:64ch}
+  /* ---------- area watchlist strip ---------- */
+  .listings-caption{font-size:14px;color:var(--muted);margin:2px 0 14px;max-width:66ch}
   .listings-caption b{color:var(--teal-bright)}
   .listings-strip{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
   .listings-strip::-webkit-scrollbar{height:8px}
-  .listings-strip::-webkit-scrollbar-track{background:transparent}
   .listings-strip::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
   .lcard{flex:0 0 250px;scroll-snap-align:start;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s}
   .lcard:hover{transform:translateY(-3px);background:var(--ink-3)}
@@ -192,24 +191,55 @@
   .lcard .links{display:flex;gap:6px;margin-top:auto;padding-top:4px}
   .lcard .links a{flex:1;text-align:center;font-size:11px;padding:7px 4px;border-radius:8px;border:1px solid var(--line);color:var(--teal-bright);text-decoration:none;background:rgba(58,166,160,.07)}
   .lcard .links a:hover{background:rgba(58,166,160,.18)}
-  .jump{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12px;color:var(--sand);text-decoration:none;border-bottom:1px solid rgba(216,166,87,.35);padding-bottom:1px}
-  .jump:hover{color:var(--sand-deep)}
 
-  footer{padding:40px 0 0;color:var(--muted-2);font-size:12px;line-height:1.6;max-width:80ch}
+  /* ---------- criteria ---------- */
+  .crit-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+  .crit{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px 64px 16px 18px;position:relative}
+  .crit .n{font-family:"Fraunces",serif;font-size:13px;color:var(--sand)}
+  .crit .t{font-size:14px;font-weight:600;margin:6px 0 4px}
+  .crit .d{font-size:12.5px;color:var(--muted);line-height:1.45}
+  .crit .tag{position:absolute;top:14px;right:14px;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:100px;border:1px solid var(--line);color:var(--muted-2);white-space:nowrap}
+  .crit .tag.filter{color:var(--sand);border-color:rgba(216,166,87,.35)}
+  .crit .tag.weight{color:var(--teal-bright);border-color:rgba(58,166,160,.35)}
+
+  /* ---------- construction tab ---------- */
+  .layer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:10px}
+  .layer{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:18px}
+  .layer .lnum{font-family:"Fraunces",serif;font-size:12px;color:var(--sand);letter-spacing:.04em}
+  .layer h4{font-family:"Fraunces",serif;font-size:16px;margin:6px 0 6px}
+  .layer p{font-size:13px;color:var(--muted);line-height:1.55}
+  .ctable{width:100%;margin:6px 0 4px;display:block;overflow-x:auto}
+  .ctable table{width:100%;border-collapse:collapse;min-width:560px}
+  .ctable th{background:var(--ink-3);color:var(--paper);text-align:left;padding:9px 12px;font-size:11px;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+  .ctable td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top;font-size:13px}
+  .ctable tr:last-child td{border-bottom:none}
+  .ctable b{color:var(--paper)}
+  .ttag{font-size:9.5px;font-weight:700;letter-spacing:.04em;padding:1px 6px;border-radius:100px;border:1px solid;white-space:nowrap}
+  .ttag.a{color:var(--sand);border-color:rgba(216,166,87,.5);background:rgba(216,166,87,.1)}
+  .ttag.b{color:var(--teal-bright);border-color:rgba(58,166,160,.5);background:rgba(58,166,160,.1)}
+  .ttag.c{color:var(--muted);border-color:var(--line)}
+  .subh{font-family:"Fraunces",serif;font-size:18px;margin:26px 0 6px;color:var(--paper)}
+  .appendix{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:14px}
+  .appendix h4{font-family:"Fraunces",serif;font-size:15px;margin:14px 0 6px;color:var(--paper)}
+  .appendix h4:first-child{margin-top:0}
+  .appendix p,.appendix li{font-size:13px;color:var(--muted);line-height:1.6}
+  .appendix ul{margin:4px 0 4px 18px}
+  .appendix code,.sec-lead code,footer code{background:var(--ink-3);padding:1px 5px;border-radius:4px;font-size:.92em;color:var(--teal-bright)}
+
+  footer{padding:34px 0 0;color:var(--muted-2);font-size:12px;line-height:1.6;max-width:80ch}
   footer b{color:var(--muted)}
   .disclaimer{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-
-  a.inline{color:var(--teal-bright);text-decoration:none;border-bottom:1px solid rgba(95,208,200,.3)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
-  /* ---------- responsive: tablet & phone ---------- */
+  /* ---------- responsive ---------- */
   @media(max-width:760px){
     .wrap{padding:0 16px}
-    header{padding:34px 0 22px}
-    section{padding:34px 0}
+    header{padding:32px 0 18px}
+    section{padding:32px 0}
     .sub{font-size:16px}
     .sec-lead{font-size:15px}
     .panel{padding:18px}
+    .tab{font-size:12.5px;padding:10px 8px;min-width:78px}
   }
   @media(max-width:440px){
     .macro{grid-template-columns:repeat(2,1fr)}
@@ -217,11 +247,9 @@
     .macro .cell{padding:11px 13px}
     h1{font-size:29px}
     .legend{gap:9px}
-    .legend span{font-size:11px}
     .readout{grid-template-columns:1fr 1fr}
-    .saved-searches a{min-width:0;width:100%}
-    .dlinks a{flex:1;text-align:center}
     .lcard{flex-basis:80vw}
+    .dlinks a{flex:1;text-align:center}
   }
   @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -230,20 +258,49 @@
 <div class="wrap">
 
   <header>
-    <div class="eyebrow">Perth · WA · Family Home Model</div>
+    <div class="eyebrow">Perth &middot; WA &middot; Family Home Model</div>
     <h1>Buying near Como, <span class="accent">without buying the top.</span></h1>
-    <p class="sub">A scenario model and suburb-targeting tool for one specific buyer: a family home within reach of Como, $1.0M to spend ($200k equity + $800k at 0% interest), patient enough to wait for the soft patch. Adjust the assumptions, watch the picture change, and reset to the baseline whenever you want the model's own view back.</p>
-    <span class="anchorpill"><span class="dot"></span>Anchored to family in <b>Como&nbsp;6152</b> · 3-year primary horizon</span>
+    <p class="sub">A scenario model and suburb-targeting tool for one specific buyer: a family home within reach of Como, a flexible budget near $1.0M with low holding costs, patient enough to wait for the soft patch. Adjust the assumptions, watch the picture change, and reset to the baseline whenever you want the model's own view back.</p>
+    <div class="anchorpill"><span class="dot"></span><span class="seg">Anchored to family in <b>Como&nbsp;6152</b></span><span class="seg">3-year primary horizon</span></div>
   </header>
 
-  <div class="macro" id="macroStrip" aria-label="Current market conditions, mid 2026"></div>
-  <p style="font-size:11.5px;color:var(--muted-2);margin-top:10px">Conditions as at mid-2026. These are the anchors the model is calibrated to — refresh before relying on them.</p>
+  <!-- ============ TAB BAR ============ -->
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" data-target="listings">Live listings</button>
+    <button class="tab" role="tab" data-target="modelling">Modelling</button>
+    <button class="tab" role="tab" data-target="construction">Model construction</button>
+    <button class="tab" role="tab" data-target="criteria">Criteria</button>
+  </nav>
 
-  <!-- ============ FORECAST ============ -->
-  <section id="forecast">
+  <!-- ============ MACRO (modelling) ============ -->
+  <div data-tab="modelling">
+    <div class="macro" id="macroStrip" aria-label="Current market conditions, mid 2026"></div>
+    <p style="font-size:11.5px;color:var(--muted-2);margin-top:10px">Conditions as at mid-2026. These are the anchors the model is calibrated to; refresh before relying on them.</p>
+  </div>
+
+  <!-- ============ LISTINGS TAB ============ -->
+  <section data-tab="listings" id="properties">
+    <div class="sec-head"><span class="sec-num">A</span><h2>Properties that fit (or are a bargain)</h2></div>
+    <p class="sec-lead">Actual houses matching the brief: 3+ beds, 500sqm+, under $1.0M, in the target suburbs. <b style="color:var(--sand)">Bargains</b> are priced below their suburb median. This list is refreshed daily by a GitHub Action that pulls the Domain Developer API (the compliant route, no scraping).</p>
+    <div class="status-bar" id="propStatus"></div>
+    <div class="prop-grid" id="propGrid"></div>
+  </section>
+
+  <section data-tab="listings" id="listings">
+    <div class="sec-head"><span class="sec-num">B</span><h2>Area watchlist</h2></div>
+    <p class="sec-lead">Wired to <em>Modelling &rarr; Where to buy</em>: this strip is the in-budget shopping list, ranked by the same fit score and <strong>reordering live</strong> with the proximity-vs-schools slider. Pick a suburb anywhere and its card scrolls into view here. Every link opens <strong>current</strong> portal results, newest first.</p>
+    <p class="listings-caption" id="listingsCaption"></p>
+    <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
+    <div class="callout">
+      <div class="ic">!</div>
+      <p><b style="color:var(--sand)">Honest note on "live."</b> The property cards above refresh daily via the Domain API; the area cards here are dynamic deep-links that always open current results (saving one on the portal also surfaces future listings). A static page cannot legally scrape realestate.com.au / Domain / REIWA, and anyone claiming otherwise is breaching their terms. See the README for the API-key setup.</p>
+    </div>
+  </section>
+
+  <!-- ============ MODELLING TAB ============ -->
+  <section data-tab="modelling" id="forecast">
     <div class="sec-head"><span class="sec-num">01</span><h2>The forecast</h2></div>
-    <p class="sec-lead">Three scenarios, probability-weighted. The white line is the expected path — what you get when you weight bear, base and bull together. The shaded band is the spread between the worst and best cases. Drag the weights on the right; the picture moves.</p>
-
+    <p class="sec-lead">Three scenarios, probability-weighted. The white line is the expected path: what you get when you weight bear, base and bull together. The shaded band is the spread between the worst and best cases. Drag the weights on the right; the picture moves.</p>
     <div class="forecast-grid">
       <div class="panel chart-card">
         <div class="chart-title">
@@ -257,61 +314,43 @@
         </div>
         <svg id="fanChart" viewBox="0 0 760 420" role="img" aria-label="Fan chart of projected house values across bear, base and bull scenarios"></svg>
       </div>
-
       <div class="panel controls">
         <h3>Adjust the model</h3>
         <p class="hint">Scenario weights must add to 100%. Move one, the others rebalance.</p>
-
-        <div class="ctl">
-          <label>Bear case <b><span id="bearW">30</span>%</b></label>
-          <input type="range" min="0" max="100" value="30" id="bearSlider" class="sand">
-        </div>
-        <div class="ctl">
-          <label>Base case <b><span id="baseW">50</span>%</b></label>
-          <input type="range" min="0" max="100" value="50" id="baseSlider">
-        </div>
-        <div class="ctl">
-          <label>Bull case <b><span id="bullW">20</span>%</b></label>
-          <input type="range" min="0" max="100" value="20" id="bullSlider">
-        </div>
-
-        <button class="btn-reset" id="resetForecast">↺ Reset to baseline</button>
-
+        <div class="ctl"><label>Bear case <b><span id="bearW">30</span>%</b></label><input type="range" min="0" max="100" value="30" id="bearSlider" class="sand"></div>
+        <div class="ctl"><label>Base case <b><span id="baseW">50</span>%</b></label><input type="range" min="0" max="100" value="50" id="baseSlider"></div>
+        <div class="ctl"><label>Bull case <b><span id="bullW">20</span>%</b></label><input type="range" min="0" max="100" value="20" id="bullSlider"></div>
+        <button class="btn-reset" id="resetForecast">&#8635; Reset to baseline</button>
         <div class="readout">
-          <div class="cell"><div class="k">Expected · Mid-29</div><div class="v exp" id="roExp">$1.17M</div></div>
-          <div class="cell"><div class="k">Bear trough</div><div class="v bear" id="roTrough">$930k</div></div>
-          <div class="cell"><div class="k">Bull · Mid-29</div><div class="v bull" id="roBull">$1.40M</div></div>
-          <div class="cell"><div class="k">Cost of waiting*</div><div class="v win" id="roWait">$210k</div></div>
+          <div class="cell"><div class="k">Expected &middot; buy window (End-27)</div><div class="v exp" id="roBuy">$1.07M</div></div>
+          <div class="cell"><div class="k">Expected &middot; Mid-29</div><div class="v exp" id="roExp">$1.17M</div></div>
+          <div class="cell"><div class="k">Bear floor &middot; worst case</div><div class="v bear" id="roBear">$930k</div></div>
+          <div class="cell"><div class="k">Bull ceiling &middot; best case</div><div class="v bull" id="roBull">$1.40M</div></div>
         </div>
-        <p style="font-size:10.5px;color:var(--muted-2);margin-top:10px">*Bull-case price rise by End-27 — the price of being too patient if the market runs.</p>
+        <p class="hint2">The two <b style="color:var(--teal-bright)">Expected</b> figures track your weighting. The bear and bull figures are the fixed scenario bookends, so they hold still when you reweight; only the blend between them moves.</p>
       </div>
     </div>
-
-    <div class="listings-note" style="margin-top:20px">
+    <div class="callout" style="margin-top:20px">
       <div class="ic">i</div>
-      <p><b style="color:var(--sand)">Reading the dip.</b> The expected path never actually falls below today — it flattens through 2027, then resumes. The only real dip is the bear case (a trough around <b>$930k, roughly −7%</b>, late-27 to mid-28). The opportunity isn't betting on a crash; it's the <b>soft patch in 2027</b> — similar prices to today, but stock sitting and vendors flexible. With $800k at 0%, waiting through that window costs you almost nothing.</p>
+      <p><b style="color:var(--sand)">Reading the dip.</b> The expected path never actually falls below today; it flattens through 2027, then resumes. The only real dip is the bear case (a trough around <b>$930k, roughly -7%</b>, late-27 to mid-28). The opportunity isn't betting on a crash; it's the <b>soft patch in 2027</b>: similar prices to today, but stock sitting and vendors flexible. Because holding costs are low, waiting through that window costs almost nothing.</p>
     </div>
   </section>
 
-  <!-- ============ HEAT MAP ============ -->
-  <section id="suburbs">
+  <section data-tab="modelling" id="suburbs">
     <div class="sec-head"><span class="sec-num">02</span><h2>Where to buy</h2></div>
-    <p class="sec-lead">Every suburb scored 0–100 against the ten criteria, anchored on Como. The catch: "best" depends on whether you weight <em>being near family</em> or <em>being in a top school catchment</em> — they pull in different directions. Drag the slider and watch the ranking reorder. Bigger, warmer bubbles are better fits.</p>
-
+    <p class="sec-lead">Every suburb scored 0-100 against the ten criteria, anchored on Como. The catch: "best" depends on whether you weight <em>being near family</em> or <em>being in a top school catchment</em>; they pull in different directions. Drag the slider and watch the ranking reorder. Bigger, warmer bubbles are better fits.</p>
     <div class="panel" style="margin-bottom:18px">
       <div class="ctl" style="margin-bottom:6px">
         <label>What matters more for the family? <b id="weightLabel">Balanced</b></label>
         <input type="range" min="0" max="100" value="50" id="priorSlider" class="sand">
-        <div class="scale-ends"><span>◀ Closer to Como</span><span>Top school catchment ▶</span></div>
+        <div class="scale-ends"><span>&#9664; Closer to Como</span><span>Top school catchment &#9654;</span></div>
       </div>
     </div>
-
     <div class="heat-grid">
       <div class="map-wrap">
         <svg id="heatMap" viewBox="0 0 600 460" role="img" aria-label="Map of Perth suburbs scored by fit, centred on Como"></svg>
         <div class="map-legend"><span>Lower fit</span><div class="grad-bar"></div><span>Higher fit</span></div>
       </div>
-
       <div>
         <div class="rank-list" id="rankList"></div>
         <div class="detail" id="detail">
@@ -322,47 +361,97 @@
     </div>
   </section>
 
-  <!-- ============ CRITERIA ============ -->
-  <section id="criteria">
-    <div class="sec-head"><span class="sec-num">03</span><h2>The ten criteria</h2></div>
-    <p class="sec-lead">The brief, in full. Three are hard filters — a suburb that can't deliver them is marked down hard. The rest are weighted and combined into the fit score. The $800k-at-0% facility isn't a filter; it's why patience is affordable.</p>
-    <div class="crit-grid" id="critGrid"></div>
-  </section>
+  <!-- ============ MODEL CONSTRUCTION TAB ============ -->
+  <section data-tab="construction" id="construction">
+    <div class="sec-head"><span class="sec-num">&#9874;</span><h2>How the model was built</h2></div>
+    <p class="sec-lead">No single method wins at a single-city, suburb-level, 5-year horizon, so this is a four-layer hybrid. Each layer is placed where it is strongest, and the forecast is reproducible: the Python in <code>/model</code> regenerates the exact baseline numbers and self-verifies.</p>
+    <div class="layer-grid">
+      <div class="layer"><div class="lnum">Layer 1</div><h4>City VECM spine</h4><p>An error-correction model ties Perth's price to its fundamentals (income, rents, construction costs, the real cash rate) via a long-run equilibrium, and judges how over- or under-valued it is today. It calibrates the scenario anchor paths.</p></div>
+      <div class="layer"><div class="lnum">Layer 2</div><h4>Scenario Monte Carlo</h4><p>Three anchor paths (bear / base / bull) to Mid-29, weighted 30 / 50 / 20, produce the probability-weighted expected path and the spread band you see in the fan chart. Expected = round-half-up to the nearest $1,000 of the weighted average.</p></div>
+      <div class="layer"><div class="lnum">Layer 3</div><h4>Suburb panel</h4><p>A gradient-boosted-style panel scores relative suburb performance from school zone, distance to Como, land, KDR economics, growth and family fit. In this repo it is a transparent weighted composite (<code>scoring.py</code>) that mirrors the tool exactly.</p></div>
+      <div class="layer"><div class="lnum">Layer 4</div><h4>Hedonic adjustment</h4><p>Applied per listing: what an extra 100sqm of land, a 4th bedroom or knock-down-rebuild optionality adds. This is where the 500sqm filter and the KDR criterion bite, confirmed property by property via Landgate.</p></div>
+    </div>
 
-  <!-- ============ LISTINGS ============ -->
-  <section id="listings">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Live listings</h2></div>
-    <p class="sec-lead">Wired to <em>Where to buy</em>: this strip is your in-budget shopping list, ranked by the same fit score and <strong>reordering live</strong> as you move the proximity-vs-schools slider above. Pick a suburb anywhere on the page and its card scrolls into view here. Every link opens <strong>current</strong> results — house, 3+ beds, under $1.0M, newest first.</p>
+    <h3 class="subh">The variables: standard inputs, enriched with leading signals</h3>
+    <p class="sec-lead" style="margin-bottom:12px">A generic model stops at rates, migration and approvals. This one adds family-buyer-specific leading indicators most analysts miss, with a strict signal discipline: <span class="ttag a">A</span> leads price and is prioritised, <span class="ttag b">B</span> is useful but slower, <span class="ttag c">C</span> is corroboration only.</p>
+    <div class="ctable"><table>
+      <thead><tr><th>Variable</th><th>Tier</th><th>What it predicts</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td><b>Backyard pool-building permits</b></td><td><span class="ttag a">A</span></td><td>Family entrenchment and a price floor; leads medians 6-18 months. Recorded before any sale.</td><td>LGA building registers</td></tr>
+        <tr><td><b>School in-zone rejection events</b></td><td><span class="ttag a">A</span></td><td>The moment Rossmoyne / Willetton start refusing in-zone kids, premium spills into fringe suburbs (Shelley, Riverton).</td><td>WA Education + ACARA</td></tr>
+        <tr><td><b>Childcare occupancy / waitlists</b></td><td><span class="ttag a">A</span></td><td>Young-family in-migration before they buy.</td><td>ACECQA register (daily)</td></tr>
+        <tr><td><b>Lodged-vs-registered cadastre</b></td><td><span class="ttag a">A</span></td><td>Developer conviction and future supply, 12-24 months ahead of completions.</td><td>Landgate SLIP</td></tr>
+        <tr><td><b>Days-on-market &amp; discounting</b></td><td><span class="ttag a">A</span></td><td>Market temperature; turns before medians do.</td><td>REIWA / Cotality / SQM</td></tr>
+        <tr><td><b>FIFO-share x iron-ore</b></td><td><span class="ttag b">B</span></td><td>A suburb-level mining-cashflow beta: which suburbs carry hidden cyclical downside in the tail.</td><td>ATO postcode x commodity</td></tr>
+        <tr><td><b>Short-stay (STRA) de-listing</b></td><td><span class="ttag b">B</span></td><td>Rental-supply relief as short-stays flip back to long-term.</td><td>WA STRA register</td></tr>
+        <tr><td><b>Cafe / coffee density change</b></td><td><span class="ttag b">B</span></td><td>Gentrification nowcast; new openings lead price growth.</td><td>POI / ABS business counts</td></tr>
+        <tr><td><b>Trends, crime, canopy, SA2 births</b></td><td><span class="ttag c">C</span></td><td>Corroboration only: slow or noisy. The buyer's "child rates" intuition lives here and in childcare / school pressure.</td><td>Various public</td></tr>
+      </tbody>
+    </table></div>
 
-    <p class="listings-caption" id="listingsCaption"></p>
-    <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
+    <h3 class="subh">Data sources</h3>
+    <div class="ctable"><table>
+      <thead><tr><th>Source</th><th>Gives</th><th>Access</th></tr></thead>
+      <tbody>
+        <tr><td><b>RBA</b> (table F1)</td><td>Cash rate and history</td><td>Free, API</td></tr>
+        <tr><td><b>ABS</b> (3101.0, 8731.0, 8752.0, 6401.0, 5601.0)</td><td>Population &amp; migration, approvals, completions, CPI, lending</td><td>Free, API</td></tr>
+        <tr><td><b>Landgate SLIP / data.wa.gov.au</b></td><td>Cadastre, block size, beds/baths, sales evidence, lodged-vs-registered lots</td><td>Free + premium</td></tr>
+        <tr><td><b>WA Dept of Education / ACARA</b></td><td>School intake areas, enrolment vs capacity</td><td>Free</td></tr>
+        <tr><td><b>ACECQA</b></td><td>Childcare centres, places, occupancy</td><td>Free, daily CSV</td></tr>
+        <tr><td><b>ATO</b> (postcode tax stats)</td><td>Income and occupation, FIFO/mining share</td><td>Free, annual</td></tr>
+        <tr><td><b>Cotality / SQM / REIWA</b></td><td>Home value index, vacancy, rents, days-on-market</td><td>Subscription</td></tr>
+        <tr><td><b>Domain Developer API</b></td><td>Live listings, price estimates, school &amp; demographic data</td><td>Free dev tier + paid</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:12px;color:var(--muted-2);margin-top:8px">Source discipline: suburb medians diverge 10-20% between providers, so pick one per metric and hold it constant; treat single-suburb medians as ranges.</p>
 
-    <div class="listings-note">
-      <div class="ic">!</div>
-      <p><b style="color:var(--sand)">Honest note on "live."</b> This page can't embed an auto-refreshing feed — realestate.com.au and Domain don't permit it on a static site, and anyone claiming otherwise is scraping against their terms. The cards above are the robust, dynamic alternative: they reorder with your criteria and each link always opens <b>current</b> results (newest first), so saving any of them on the portal also surfaces <b>future</b> listings as they land. For a feed embedded directly in this page that refreshes on a schedule, the only compliant route is the Domain Developer API pulled by a scheduled job — documented in the project README as the upgrade path.</p>
+    <h3 class="subh">Appendix</h3>
+    <div class="appendix">
+      <h4>Scenario assumptions</h4>
+      <p><b style="color:var(--bull)">Base (50%)</b> RBA holds 4.35% into 2027 then eases; iron ore ~US$95/t in 2026 easing to ~US$85-90 in 2027; undersupply floors prices; the 1 Jul 2027 negative-gearing / CGT change trims investor demand by ~0.6-1.0ppt. Flat-to-modest growth, re-acceleration from 2028.</p>
+      <p><b style="color:var(--bear)">Bear (30%)</b> renewed RBA hiking plus iron ore under US$85/t and a faster Simandou ramp; sharper investor pull-back. A trough around -7% late-27 to mid-28; undersupply prevents a 2014-style crash.</p>
+      <p><b style="color:var(--teal-bright)">Bull (20%)</b> RBA cuts in 2027, migration stays above 2% with completions still short, construction-cost relief. Prices re-accelerate and family school-zone suburbs lead.</p>
+      <h4>Key numbers (baseline 30 / 50 / 20)</h4>
+      <ul>
+        <li>Expected Mid-29: <b>$1.17M</b>, expected 3-year CAGR ~5.4%</li>
+        <li>Bear floor (worst case): <b>$930k</b>, roughly -7%</li>
+        <li>Bull ceiling (best case) Mid-29: <b>$1.40M</b></li>
+        <li>Buy window: the 2027 soft patch (Mid-27 to End-27)</li>
+      </ul>
+      <h4>Horizon</h4>
+      <p>3 years primary, 5-year scenario tail. Forecast error compounds and policy uncertainty beyond 3 years is large; the 2027 soft patch and the bear trough both sit inside three years, so the spine runs to Mid-29 with the tail as commentary.</p>
+      <h4>Reproducibility</h4>
+      <p>Run <code>python3 model/scenario_model.py</code> to regenerate the forecast (it self-verifies against <code>data/baseline.json</code> and prints PASS) and <code>python3 model/scoring.py</code> for the suburb ranking. Standard library only. The Reset button restores exactly this baseline.</p>
+      <h4>Selected sources</h4>
+      <p>RBA cash-rate statistics; ABS national/state population, building approvals, CPI and lending indicators; Cotality Home Value Index; REIWA and SQM market data; Landgate SLIP cadastre; WA Department of Education intake areas; ACECQA register; ATO taxation statistics; WA Budget papers. Figures as at mid-2026.</p>
+      <h4>Disclaimer</h4>
+      <p>General information only, not financial, legal or tax advice. Forecasts are scenario estimates conditioned on the stated assumptions and will be wrong if those assumptions are wrong. Verify against live data and licensed professionals before acting.</p>
     </div>
   </section>
 
+  <!-- ============ CRITERIA TAB ============ -->
+  <section data-tab="criteria" id="criteria">
+    <div class="sec-head"><span class="sec-num">&#10003;</span><h2>The ten criteria</h2></div>
+    <p class="sec-lead">The brief, in full. Three are hard filters: a suburb that can't deliver them is marked down hard. The rest are weighted and combined into the fit score. The buyer's low holding cost isn't a filter; it's why patience is affordable.</p>
+    <div class="crit-grid" id="critGrid"></div>
+  </section>
+
   <footer>
-    <b>How this model works.</b> A four-layer hybrid: a city-level mean-reversion spine, a probability-weighted scenario engine (the fan chart above), a suburb-level relative-performance layer (the heat map), and a property-level hedonic adjustment for land and knock-down-rebuild potential. It is reproducible — the Python in <code>/model</code> regenerates these exact baseline numbers. Full methodology is in the project's skills folder.
+    <b>How this model works.</b> A four-layer hybrid: a city-level mean-reversion spine, a probability-weighted scenario engine (the fan chart), a suburb-level relative-performance layer (the heat map), and a property-level hedonic adjustment for land and knock-down-rebuild potential. It is reproducible; the Python in <code>/model</code> regenerates these exact baseline numbers. Full methodology is in the project's skills folder.
     <div class="disclaimer">
-      <b>General information only — not financial, legal or tax advice.</b> All figures are approximations as at mid-2026 and will change. Suburb medians vary 10–20% between sources and are shown as ranges; no public source publishes median block size, so the 450sqm requirement must be confirmed per-listing via Landgate. Forecasts are scenario estimates conditioned on the stated assumptions and will be wrong if those assumptions are wrong. Verify against live REIWA, Landgate, RBA and ABS data and licensed professionals before acting.
+      <b>General information only, not financial, legal or tax advice.</b> All figures are approximations as at mid-2026 and will change. Suburb medians vary 10-20% between sources and are shown as ranges; no public source publishes median block size, so the 500sqm requirement must be confirmed per-listing via Landgate. Forecasts are scenario estimates conditioned on the stated assumptions and will be wrong if those assumptions are wrong. Verify against live REIWA, Landgate, RBA and ABS data and licensed professionals before acting.
     </div>
   </footer>
 
 </div>
 
 <script>
-/* ============================================================
-   DATA — mirrors data/baseline.json, suburbs.json, criteria.json
-   Kept inline so the tool is a single self-contained file for
-   GitHub Pages. If you change the JSON, change it here too
-   (or wire a fetch() in a build step). The Reset button restores
-   BASELINE exactly — this is the contract from CLAUDE.md.
-   ============================================================ */
+/* DATA mirrors data/baseline.json, suburbs.json, criteria.json, listings.json.
+   Inline so the tool works as a single file; the property feed also fetch()es
+   data/listings.json when served over http (GitHub Pages) and overrides the
+   inline sample. Reset restores BASELINE exactly: the contract from CLAUDE.md. */
 const BASELINE = {
-  weights:{bear:30,base:50,bull:20},
-  prior:50,
+  weights:{bear:30,base:50,bull:20}, prior:50,
   timeline:[
     {label:"Now",  bear:1000000,base:1000000,bull:1000000},
     {label:"End-26",bear:1020000,base:1055000,bull:1080000},
@@ -373,38 +462,31 @@ const BASELINE = {
     {label:"Mid-29",bear:1000000,base:1180000,bull:1400000}
   ]
 };
-
 const MACRO = [
-  {k:"Cash rate",v:"4.35",s:"%"},
-  {k:"Perth median",v:"$1.09M",s:""},
-  {k:"Growth y/y",v:"+25.7",s:"%"},
-  {k:"Stock vs avg",v:"−40",s:"%"},
-  {k:"Vacancy",v:"0.5",s:"%"},
-  {k:"Days on mkt",v:"9",s:"days"}
+  {k:"Cash rate",v:"4.35",s:"%"},{k:"Perth median",v:"$1.09M",s:""},
+  {k:"Growth y/y",v:"+25.7",s:"%"},{k:"Stock vs avg",v:"-40",s:"%"},
+  {k:"Vacancy",v:"0.5",s:"%"},{k:"Days on mkt",v:"9",s:"days"}
 ];
-
-/* distance_como_km, beds for the map ring; scores 0-10 per dimension */
 const SUBURBS = [
-  {name:"Shelley",pc:"6148",reg:"S",km:9, school:9,prox:7, mlo:920,mhi:980, band:true, scores:{growth:8,family:9,land:8,kdr:7,prox:7,post:8}, why:"Affordable entry to the Rossmoyne SHS catchment, near the river, strong family demand. The best growth-after-dip hold — scarce land plus school demand insulate it from the investor-led Budget drag."},
+  {name:"Shelley",pc:"6148",reg:"S",km:9, school:9,prox:7, mlo:920,mhi:980, band:true, scores:{growth:8,family:9,land:8,kdr:7,prox:7,post:8}, why:"Affordable entry to the Rossmoyne SHS catchment, near the river, strong family demand. The best growth-after-dip hold; scarce land plus school demand insulate it from the investor-led Budget drag."},
   {name:"Wilson",pc:"6107",reg:"S",km:7, school:6,prox:8, mlo:930,mhi:955, band:true, scores:{growth:8,family:8,land:8,kdr:8,prox:8,post:7}, why:"Larger City of Canning blocks, Curtin-adjacent, among the closest at-budget options to Como. Strong knock-down-rebuild margin."},
   {name:"Parkwood",pc:"6147",reg:"S",km:11,school:6,prox:6, mlo:920,mhi:960, band:true, scores:{growth:8,family:8,land:8,kdr:7,prox:6,post:7}, why:"Big blocks, value, family, strong recent growth. Slightly further from Como than Wilson or St James."},
   {name:"St James",pc:"6102",reg:"S",km:6, school:6,prox:8, mlo:855,mhi:890, band:true, scores:{growth:7,family:7,land:7,kdr:8,prox:8,post:6}, why:"Near Victoria Park and the Curtin precinct; value with knock-down-rebuild upside; genuinely close to Como."},
-  {name:"Bentley",pc:"6102",reg:"S",km:6, school:5,prox:8, mlo:780,mhi:820, band:true, scores:{growth:7,family:6,land:7,kdr:8,prox:8,post:5}, why:"The value play — cheapest near-in, biggest margin of safety, strongest KDR economics. Some pockets less polished; that's the trade for price."},
+  {name:"Bentley",pc:"6102",reg:"S",km:6, school:5,prox:8, mlo:780,mhi:820, band:true, scores:{growth:7,family:6,land:7,kdr:8,prox:8,post:5}, why:"The value play: cheapest near-in, biggest margin of safety, strongest KDR economics. Some pockets less polished; that's the trade for price."},
   {name:"Riverton",pc:"6148",reg:"S",km:11,school:9,prox:6, mlo:1020,mhi:1090,band:false,scores:{growth:8,family:9,land:8,kdr:6,prox:6,post:8}, why:"Rossmoyne SHS catchment and family-friendly, but just over budget. Worth watching for soft-patch pricing in the 2027 window."},
-  {name:"Manning",pc:"6152",reg:"S",km:3, school:6,prox:10,mlo:1450,mhi:1650,band:false,scores:{growth:7,family:8,land:8,kdr:5,prox:10,post:9}, why:"Same postcode as Como, walking distance, big blocks — but out of budget for a house now. Aspirational reference only."},
+  {name:"Manning",pc:"6152",reg:"S",km:3, school:6,prox:10,mlo:1450,mhi:1650,band:false,scores:{growth:7,family:8,land:8,kdr:5,prox:10,post:9}, why:"Same postcode as Como, walking distance, big blocks, but out of budget for a house now. Aspirational reference only."},
   {name:"Como",pc:"6152",reg:"S",km:0, school:6,prox:10,mlo:1480,mhi:1680,band:false,scores:{growth:7,family:9,land:6,kdr:4,prox:10,post:10}, why:"The anchor itself. Houses are well over budget; only villas and units sit under $1.0M here. Included for reference."},
-  {name:"Dianella",pc:"6059",reg:"N",km:14,school:6,prox:3, mlo:970,mhi:1150,band:true, scores:{growth:8,family:8,land:9,kdr:8,prox:3,post:7}, why:"Best north-of-river balance of land and location — big original blocks, Mt Lawley-adjacent. The distance from Como is the catch."},
+  {name:"Dianella",pc:"6059",reg:"N",km:14,school:6,prox:3, mlo:970,mhi:1150,band:true, scores:{growth:8,family:8,land:9,kdr:8,prox:3,post:7}, why:"Best north-of-river balance of land and location: big original blocks, Mt Lawley-adjacent. The distance from Como is the catch."},
   {name:"Bayswater",pc:"6053",reg:"N",km:14,school:6,prox:3, mlo:980,mhi:1180,band:true, scores:{growth:8,family:7,land:7,kdr:7,prox:3,post:7}, why:"METRONET hub, gentrifying, near the river. Borderline budget and a fair way from Como."},
   {name:"Embleton",pc:"6062",reg:"N",km:14,school:6,prox:3, mlo:900,mhi:970, band:true, scores:{growth:7,family:7,land:8,kdr:8,prox:3,post:6}, why:"North-of-river value with big blocks near Inglewood and Bayswater. Far from Como."},
   {name:"Balcatta",pc:"6021",reg:"N",km:16,school:6,prox:2, mlo:910,mhi:970, band:true, scores:{growth:8,family:7,land:7,kdr:7,prox:2,post:6}, why:"North-of-river, freeway access, family, value. Far from Como."},
-  {name:"Nollamara",pc:"6061",reg:"N",km:15,school:5,prox:2, mlo:710,mhi:770, band:true, scores:{growth:8,family:6,land:8,kdr:8,prox:2,post:5}, why:"Value and gentrifying — target original un-subdivided lots. Biggest northern margin of safety, but farthest from Como."},
+  {name:"Nollamara",pc:"6061",reg:"N",km:15,school:5,prox:2, mlo:710,mhi:770, band:true, scores:{growth:8,family:6,land:8,kdr:8,prox:2,post:5}, why:"Value and gentrifying; target original un-subdivided lots. Biggest northern margin of safety, but farthest from Como."},
   {name:"Westminster",pc:"6061",reg:"N",km:15,school:5,prox:2,mlo:750,mhi:800,band:true,scores:{growth:8,family:6,land:8,kdr:8,prox:2,post:5}, why:"Cheapest near-in north, next to Tuart Hill. Strong growth; far from Como."}
 ];
-
 const CRITERIA = [
-  {n:"01",t:"Land over 450sqm",d:"Confirmed per-listing via Landgate — no public source has median block size.",tag:"filter"},
-  {n:"02",t:"Price $800k–$1.0M",d:"Suburb median used as a proxy; in-band or just-below scores highest.",tag:"filter"},
-  {n:"03",t:"$1.0M to spend",d:"$200k equity + $800k at 0% interest. Not a filter — the reason patience is affordable.",tag:"context"},
+  {n:"01",t:"Land over 500sqm",d:"Confirmed per-listing via Landgate; no public source has median block size.",tag:"filter"},
+  {n:"02",t:"Price $800k-$1.0M",d:"Suburb median used as a proxy; in-band or just-below scores highest.",tag:"filter"},
+  {n:"03",t:"~$1.0M budget",d:"Low holding costs make patience cheap. Context, not a filter.",tag:"context"},
   {n:"04",t:"Growth after the dip",d:"Scarce land, school zones and undersupply favoured. Weighted 25%.",tag:"weight"},
   {n:"05",t:"Family area",d:"Demographics, parks, school quality. Weighted 15%.",tag:"weight"},
   {n:"06",t:"Backyard for kids",d:"Larger blocks, lower unit density, original stock. Weighted 15%.",tag:"weight"},
@@ -413,206 +495,123 @@ const CRITERIA = [
   {n:"09",t:"Near family in Como",d:"Distance-decay weighting centred on Como 6152. Weighted 20%.",tag:"weight"},
   {n:"10",t:"Good postcode",d:"School catchment, median level and amenity as proxies. Weighted 15%.",tag:"weight"}
 ];
-
-/* base weights for the 6 weighted dims; prox & school move with the slider */
+const INLINE_LISTINGS = {
+  meta:{generated:"2026-06-26",source:"sample"},
+  listings:[
+    {suburb:"Bentley",pc:"6102",priceText:"$765,000",price:765000,beds:4,baths:1,cars:2,land:728,address:"Original 4-bed, Bentley 6102",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1000000-in-bentley%2c+wa+6102/list-1?activeSort=list-date",bargain:true,meets:true,reason:"4-bed on 728sqm green-title at $765k, well under budget and the suburb median; strong KDR margin."},
+    {suburb:"Nollamara",pc:"6061",priceText:"$720,000",price:720000,beds:3,baths:1,cars:2,land:760,address:"Un-subdivided lot, Nollamara 6061",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-nollamara%2c+wa+6061/list-1?activeSort=list-date",bargain:true,meets:true,reason:"760sqm original block under $750k; large land for the money, subdivide or KDR upside."},
+    {suburb:"St James",pc:"6102",priceText:"$835,000",price:835000,beds:3,baths:1,cars:1,land:706,address:"706sqm near Curtin, St James 6102",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-st+james%2c+wa+6102/list-1?activeSort=list-date",bargain:true,meets:true,reason:"Genuinely close to Como on 706sqm, below the band midpoint, KDR-viable."},
+    {suburb:"Shelley",pc:"6148",priceText:"$985,000",price:985000,beds:3,baths:1,cars:2,land:696,address:"Rossmoyne-zone original, Shelley 6148",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-shelley%2c+wa+6148/list-1?activeSort=list-date",bargain:true,meets:true,reason:"Inside the Rossmoyne SHS catchment on 696sqm just under $1.0M; scarce school-zone land, KDR to add a 4th bed."},
+    {suburb:"Balcatta",pc:"6021",priceText:"$880,000",price:880000,beds:3,baths:1,cars:2,land:729,address:"729sqm with freeway access, Balcatta 6021",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-balcatta%2c+wa+6021/list-1?activeSort=list-date",bargain:true,meets:true,reason:"729sqm under $900k; large family block with KDR upside below the suburb median."},
+    {suburb:"Wilson",pc:"6107",priceText:"$925,000",price:925000,beds:4,baths:2,cars:2,land:683,address:"Renovated 4-bed, Wilson 6107",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1000000-in-wilson%2c+wa+6107/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 2-bath on 683sqm near the river and Curtin; ticks beds, land and proximity in-band."},
+    {suburb:"Parkwood",pc:"6147",priceText:"$899,000",price:899000,beds:4,baths:2,cars:2,land:712,address:"712sqm family home, Parkwood 6147",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1000000-in-parkwood%2c+wa+6147/list-1?activeSort=list-date",bargain:false,meets:true,reason:"Big 712sqm block, 4-bed, under $900k; comfortably inside budget with a backyard for kids."},
+    {suburb:"Embleton",pc:"6062",priceText:"$905,000",price:905000,beds:3,baths:1,cars:1,land:740,address:"740sqm original, Embleton 6062",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-embleton%2c+wa+6062/list-1?activeSort=list-date",bargain:false,meets:true,reason:"North-of-river 740sqm green-title near Inglewood; strong KDR economics within budget."},
+    {suburb:"Dianella",pc:"6059",priceText:"$960,000",price:960000,beds:4,baths:2,cars:2,land:683,address:"4-bed, Dianella 6059",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1000000-in-dianella%2c+wa+6059/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 2-bath on 683sqm, Mt Lawley-adjacent; best north-of-river land/location balance under $1.0M."}
+  ]
+};
 const BASE_W = {growth:.25,family:.15,land:.15,kdr:.10,prox:.20,post:.15};
 
-/* ---------- scoring (mirrors model/scoring.py, plus the live prior slider) ---------- */
 function scoreSuburb(s, prior){
-  // prior 0..100: 0 = all Como-proximity, 100 = all school. 50 = balanced (baseline weights).
-  // We redistribute a 0.20 "swing" budget between prox and school(post+family-ish) around the midpoint.
-  const swing = 0.20;
-  const t = (prior-50)/50;            // -1..+1
-  const wProx = BASE_W.prox - swing*t*0.5;   // more Como weight as t<0
-  const wSchool = BASE_W.post + swing*t*0.5; // more school/postcode weight as t>0
-  const w = {...BASE_W, prox:Math.max(0,wProx), post:Math.max(0,wSchool)};
-  // school catchment quality folds into the "post" weighted dim via the suburb's school score
-  let composite = 0;
-  composite += s.scores.growth*w.growth;
-  composite += s.scores.family*w.family;
-  composite += s.scores.land*w.land;
-  composite += s.scores.kdr*w.kdr;
-  composite += s.scores.prox*w.prox;
-  // postcode dim blends the static postcode score with school catchment, weighted by the slider
+  const swing = 0.20, t = (prior-50)/50;
+  const w = {...BASE_W, prox:Math.max(0,BASE_W.prox - swing*t*0.5), post:Math.max(0,BASE_W.post + swing*t*0.5)};
+  let composite = s.scores.growth*w.growth + s.scores.family*w.family + s.scores.land*w.land + s.scores.kdr*w.kdr + s.scores.prox*w.prox;
   const postBlend = s.scores.post*(1 - (prior/100)*0.5) + s.school*((prior/100)*0.5);
   composite += postBlend*w.post;
-  let score = composite*10;
-  let over=false;
-  if(!s.band){
-    const mid=(s.mlo+s.mhi)/2;
-    if(mid>1000){ score*=0.55; over=true; } else { score*=0.85; }
-  }
+  let score = composite*10, over=false;
+  if(!s.band){ const mid=(s.mlo+s.mhi)/2; if(mid>1000){ score*=0.55; over=true; } else { score*=0.85; } }
   return {score:Math.round(score*10)/10, over};
 }
-
-/* ---------- forecast math (mirrors scenario_model.py weighting) ---------- */
-function expected(tl, w){
-  const tot=w.bear+w.base+w.bull;
-  const wb=w.bear/tot, wm=w.base/tot, wl=w.bull/tot;
-  return tl.map(p=>Math.round(p.bear*wb + p.base*wm + p.bull*wl));
-}
+function expected(tl, w){ const tot=w.bear+w.base+w.bull; return tl.map(p=>Math.round(p.bear*w.bear/tot + p.base*w.base/tot + p.bull*w.bull/tot)); }
 function fmtM(n){ return n>=1000000 ? "$"+(n/1000000).toFixed(2)+"M" : "$"+Math.round(n/1000)+"k"; }
 function fmtK(n){ return "$"+Math.round(n/1000)+"k"; }
 
-/* ============================================================
-   STATE
-   ============================================================ */
-let W = {...BASELINE.weights};
-let PRIOR = BASELINE.prior;
-let selected = null;
+let W = {...BASELINE.weights}, PRIOR = BASELINE.prior, selected = null, LISTINGS = INLINE_LISTINGS;
 
-/* ============================================================
-   RENDER: macro strip
-   ============================================================ */
+function showTab(name){
+  document.querySelectorAll('[data-tab]').forEach(el=>{ el.style.display = el.getAttribute('data-tab')===name ? '' : 'none'; });
+  document.querySelectorAll('.tab').forEach(b=>{ const on=b.getAttribute('data-target')===name; b.classList.toggle('active',on); b.setAttribute('aria-selected',on); });
+}
+document.querySelectorAll('.tab').forEach(b=> b.onclick=()=>showTab(b.getAttribute('data-target')) );
+
 function renderMacro(){
   document.getElementById('macroStrip').innerHTML = MACRO.map(m=>
-    `<div class="cell"><div class="k">${m.k}</div><div class="v">${m.v}${m.s?` <small>${m.s}</small>`:''}</div></div>`
-  ).join('');
+    `<div class="cell"><div class="k">${m.k}</div><div class="v">${m.v}${m.s?` <small>${m.s}</small>`:''}</div></div>`).join('');
 }
 
-/* ============================================================
-   RENDER: fan chart
-   ============================================================ */
 const FC = {w:760,h:420,pad:{t:24,r:18,b:42,l:64}};
 function renderFan(){
-  const tl = BASELINE.timeline;
-  const exp = expected(tl, W);
+  const tl = BASELINE.timeline, exp = expected(tl, W);
   const allVals = tl.flatMap(p=>[p.bear,p.bull]).concat(exp);
   const min = Math.min(...allVals)*0.985, max = Math.max(...allVals)*1.015;
   const iw = FC.w-FC.pad.l-FC.pad.r, ih = FC.h-FC.pad.t-FC.pad.b;
-  const x = i => FC.pad.l + (i/(tl.length-1))*iw;
-  const y = v => FC.pad.t + (1-(v-min)/(max-min))*ih;
-
+  const x = i => FC.pad.l + (i/(tl.length-1))*iw, y = v => FC.pad.t + (1-(v-min)/(max-min))*ih;
   let svg='';
-  // gridlines + y labels
-  const ticks=5;
-  for(let i=0;i<=ticks;i++){
-    const val = min+(max-min)*i/ticks;
-    const yy = y(val);
+  for(let i=0;i<=5;i++){ const val=min+(max-min)*i/5, yy=y(val);
     svg+=`<line x1="${FC.pad.l}" y1="${yy}" x2="${FC.w-FC.pad.r}" y2="${yy}" stroke="rgba(255,255,255,.05)"/>`;
-    svg+=`<text x="${FC.pad.l-10}" y="${yy+4}" text-anchor="end" class="pt-label">${fmtM(val)}</text>`;
-  }
-  // x labels
+    svg+=`<text x="${FC.pad.l-10}" y="${yy+4}" text-anchor="end" class="pt-label">${fmtM(val)}</text>`; }
   tl.forEach((p,i)=>{ svg+=`<text x="${x(i)}" y="${FC.h-FC.pad.b+20}" text-anchor="middle" class="pt-label">${p.label}</text>`; });
-
-  // buy-window shading (Mid-27 .. End-27 => indices 2..3)
   svg+=`<rect class="buywin" x="${x(2)}" y="${FC.pad.t}" width="${x(3)-x(2)}" height="${ih}" rx="3"/>`;
   svg+=`<text class="buywin-label" x="${(x(2)+x(3))/2}" y="${FC.pad.t+14}" text-anchor="middle">BUY WINDOW</text>`;
-
-  // band between bear and bull
   let bandTop='', bandBot='';
   tl.forEach((p,i)=>{ bandTop += `${i?'L':'M'}${x(i)},${y(p.bull)} `; });
   for(let i=tl.length-1;i>=0;i--){ bandBot += `L${x(i)},${y(tl[i].bear)} `; }
   svg+=`<path class="path-band" fill="var(--teal)" d="${bandTop}${bandBot}Z"/>`;
-
-  // scenario lines
-  const line = (key,color)=>{ let d=''; tl.forEach((p,i)=>{ d+=`${i?'L':'M'}${x(i)},${y(p[key])} `; }); return `<path class="path-line" stroke="${color}" d="${d}"/>`; };
-  svg+=line('bear','var(--bear)');
-  svg+=line('base','var(--teal)');
-  svg+=line('bull','var(--bull)');
-
-  // expected line (weighted)
+  const line=(key,color)=>{ let d=''; tl.forEach((p,i)=>{ d+=`${i?'L':'M'}${x(i)},${y(p[key])} `; }); return `<path class="path-line" stroke="${color}" d="${d}"/>`; };
+  svg+=line('bear','var(--bear)')+line('base','var(--teal)')+line('bull','var(--bull)');
   let de=''; exp.forEach((v,i)=>{ de+=`${i?'L':'M'}${x(i)},${y(v)} `; });
   svg+=`<path class="exp-line" d="${de}"/>`;
   exp.forEach((v,i)=>{ svg+=`<circle class="exp-dot" cx="${x(i)}" cy="${y(v)}" r="3.5"/>`; });
-
-  // trough marker (bear min)
-  const bearVals = tl.map(p=>p.bear); const ti = bearVals.indexOf(Math.min(...bearVals));
+  const bearVals = tl.map(p=>p.bear), ti = bearVals.indexOf(Math.min(...bearVals));
   svg+=`<circle class="trough-marker" cx="${x(ti)}" cy="${y(tl[ti].bear)}" r="5"/>`;
   svg+=`<text class="pt-label" x="${x(ti)}" y="${y(tl[ti].bear)+20}" text-anchor="middle" fill="var(--sand)">trough ${fmtK(tl[ti].bear)}</text>`;
-
   document.getElementById('fanChart').innerHTML = svg;
-
-  // readouts
-  document.getElementById('roExp').textContent = fmtM(exp[exp.length-1]);
-  document.getElementById('roTrough').textContent = fmtK(Math.min(...bearVals));
+  document.getElementById('roBuy').textContent  = fmtM(exp[3]);
+  document.getElementById('roExp').textContent  = fmtM(exp[exp.length-1]);
+  document.getElementById('roBear').textContent = fmtK(Math.min(...bearVals));
   document.getElementById('roBull').textContent = fmtM(tl[tl.length-1].bull);
-  document.getElementById('roWait').textContent = fmtK(tl[3].bull - tl[0].bull);
 }
 
-/* ============================================================
-   RENDER: heat map + ranking
-   ============================================================ */
-const HM = {w:600,h:460};
 function projectXY(s){
-  // Pseudo-geographic: Como at centre; S/N split on y, distance pushes outward.
-  // Deterministic angle from name hash so layout is stable, scaled by km.
-  const cx=300, cy=250;
-  let h=0; for(const ch of s.name) h=(h*31+ch.charCodeAt(0))&0xffff;
-  const ang = (h%360)*Math.PI/180;
-  const r = Math.min(s.km*12.5, 205);
-  let x = cx + Math.cos(ang)*r;
-  let y = cy + Math.sin(ang)*r*0.78;
-  // bias north-of-river suburbs upward, south downward, to read geographically
-  y += (s.reg==='N' ? -70 : 30);
-  x = Math.max(40, Math.min(560, x));
-  y = Math.max(40, Math.min(420, y));
-  return {x,y};
+  const cx=300, cy=250; let h=0; for(const ch of s.name) h=(h*31+ch.charCodeAt(0))&0xffff;
+  const ang=(h%360)*Math.PI/180, r=Math.min(s.km*12.5,205);
+  let x=cx+Math.cos(ang)*r, y=cy+Math.sin(ang)*r*0.78; y += (s.reg==='N' ? -70 : 30);
+  return {x:Math.max(40,Math.min(560,x)), y:Math.max(40,Math.min(420,y))};
 }
-function heatColor(score, min, max){
-  const t = (score-min)/Math.max(1,(max-min)); // 0..1
-  // interpolate slate -> teal -> sand
-  const stops=[[42,74,94],[58,166,160],[216,166,87]];
-  let c;
-  if(t<0.5){ const u=t/0.5; c=mix(stops[0],stops[1],u); }
-  else { const u=(t-0.5)/0.5; c=mix(stops[1],stops[2],u); }
-  return `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`;
-}
-function mix(a,b,u){ return [a[0]+(b[0]-a[0])*u, a[1]+(b[1]-a[1])*u, a[2]+(b[2]-a[2])*u]; }
+function heatColor(score,min,max){ const t=(score-min)/Math.max(1,(max-min)); const st=[[42,74,94],[58,166,160],[216,166,87]];
+  let c; if(t<0.5){c=mix(st[0],st[1],t/0.5);}else{c=mix(st[1],st[2],(t-0.5)/0.5);} return `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
+function mix(a,b,u){ return [a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u,a[2]+(b[2]-a[2])*u]; }
+function rankedSuburbs(){ return SUBURBS.map(s=>({...s, ...scoreSuburb(s,PRIOR), xy:projectXY(s)})).sort((a,b)=>b.score-a.score); }
 
 function renderMapAndRanking(){
-  const scored = SUBURBS.map(s=>({...s, ...scoreSuburb(s,PRIOR), xy:projectXY(s)}));
-  const scores = scored.map(s=>s.score);
-  const min=Math.min(...scores), max=Math.max(...scores);
-  scored.sort((a,b)=>b.score-a.score);
-
-  // --- map ---
-  const cx=300, cy=250;
-  let svg='';
-  // distance rings
+  const scored = rankedSuburbs();
+  const scores = scored.map(s=>s.score), min=Math.min(...scores), max=Math.max(...scores);
+  const cx=300, cy=250; let svg='';
   [70,130,190].forEach(r=>{ svg+=`<circle class="como-ring" cx="${cx}" cy="${cy}" r="${r}"/>`; });
-  // river hint (a soft curve through centre)
   svg+=`<path d="M40,300 Q300,240 560,290" fill="none" stroke="rgba(95,208,200,.12)" stroke-width="14" stroke-linecap="round"/>`;
   svg+=`<text x="50" y="295" class="map-km" fill="rgba(95,208,200,.4)">Swan River</text>`;
-
   scored.forEach(s=>{
-    const rad = 9 + (s.score-min)/Math.max(1,(max-min))*16;
-    const col = s.over ? 'rgba(207,122,99,.55)' : heatColor(s.score,min,max);
-    const isSel = selected===s.name;
+    const rad=9+(s.score-min)/Math.max(1,(max-min))*16, col=s.over?'rgba(207,122,99,.55)':heatColor(s.score,min,max);
     svg+=`<g class="bubble" data-name="${s.name}" tabindex="0" role="button" aria-label="${s.name}, fit ${s.score}">`;
-    if(isSel) svg+=`<circle cx="${s.xy.x}" cy="${s.xy.y}" r="${rad+6}" fill="none" stroke="var(--teal-bright)" stroke-width="2"/>`;
+    if(selected===s.name) svg+=`<circle cx="${s.xy.x}" cy="${s.xy.y}" r="${rad+6}" fill="none" stroke="var(--teal-bright)" stroke-width="2"/>`;
     svg+=`<circle cx="${s.xy.x}" cy="${s.xy.y}" r="${rad}" fill="${col}" opacity="${s.over?0.7:0.92}" stroke="rgba(255,255,255,.15)"/>`;
-    svg+=`<text class="map-label" x="${s.xy.x}" y="${s.xy.y-rad-4}" text-anchor="middle">${s.name}</text>`;
-    svg+=`</g>`;
+    svg+=`<text class="map-label" x="${s.xy.x}" y="${s.xy.y-rad-4}" text-anchor="middle">${s.name}</text></g>`;
   });
-  // Como star on top
   svg+=`<g><path class="como-star" d="${star(cx,cy,9,4.2,5)}"/><text class="map-label" x="${cx}" y="${cy+22}" text-anchor="middle" fill="var(--sand)">Como</text></g>`;
   document.getElementById('heatMap').innerHTML = svg;
-
-  // --- ranking list ---
   document.getElementById('rankList').innerHTML = scored.map((s,i)=>
     `<div class="rank-row ${selected===s.name?'sel':''}" data-name="${s.name}" tabindex="0" role="button">
        <span class="rank-n">${String(i+1).padStart(2,'0')}</span>
-       <span class="rank-name">${s.name}
-         <small>${s.pc} · ${s.reg==='S'?'South':'North'} · ${s.km}km to Como</small></span>
-       <span class="rank-score" style="color:${s.over?'var(--bear)':'var(--teal-bright)'}">${s.score}</span>
-     </div>`
-  ).join('');
-
+       <span class="rank-name">${s.name}<small>${s.pc} &middot; ${s.reg==='S'?'South':'North'} &middot; ${s.km}km to Como</small></span>
+       <span class="rank-score" style="color:${s.over?'var(--bear)':'var(--teal-bright)'}">${s.score}</span></div>`).join('');
   bindBubbleEvents();
   if(selected) renderDetail(scored.find(s=>s.name===selected));
-  renderListings(scored);   // keep the live-listings strip in lockstep with the ranking
+  renderListings(scored);
 }
-
-function star(cx,cy,outer,inner,points){
-  let d=''; const step=Math.PI/points;
-  for(let i=0;i<2*points;i++){ const r=i%2?inner:outer; const a=i*step-Math.PI/2; d+=`${i?'L':'M'}${(cx+Math.cos(a)*r).toFixed(1)},${(cy+Math.sin(a)*r).toFixed(1)} `; }
-  return d+'Z';
-}
+function star(cx,cy,outer,inner,points){ let d=''; const step=Math.PI/points;
+  for(let i=0;i<2*points;i++){ const r=i%2?inner:outer, a=i*step-Math.PI/2; d+=`${i?'L':'M'}${(cx+Math.cos(a)*r).toFixed(1)},${(cy+Math.sin(a)*r).toFixed(1)} `; } return d+'Z'; }
 
 function listingUrls(s){
-  const reaSlug = encodeURIComponent(s.name.toLowerCase()+', wa '+s.pc);
-  const domSlug = encodeURIComponent(s.name.toLowerCase().replace(/ /g,'-'));
+  const reaSlug=encodeURIComponent(s.name.toLowerCase()+', wa '+s.pc), domSlug=encodeURIComponent(s.name.toLowerCase().replace(/ /g,'-'));
   return {
     rea:`https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-${reaSlug}/list-1?activeSort=list-date`,
     dom:`https://www.domain.com.au/sale/${domSlug}-wa-${s.pc}/?ptype=house&bedrooms=3-any&price=0-1000000&excludeunderoffer=1&sort=dateupdated-desc`,
@@ -622,113 +621,101 @@ function listingUrls(s){
 function renderDetail(s){
   if(!s) return;
   const dims=[['Growth',s.scores.growth],['Family',s.scores.family],['Backyard/land',s.scores.land],['KDR upside',s.scores.kdr],['Near Como',s.scores.prox],['Postcode',s.scores.post]];
-  const pill = s.over ? `<span class="pill over">Over budget</span>` : `<span class="pill fit">In budget</span>`;
-  const u = listingUrls(s);
-  const jump = s.band
-    ? `<a class="jump" href="#listings">▾ See ${s.name} in the live-listings strip</a>`
-    : `<div class="jump" style="border:none;color:var(--muted-2)">Over budget — not in the in-budget listings strip; watch for soft-patch pricing.</div>`;
+  const pill=s.over?`<span class="pill over">Over budget</span>`:`<span class="pill fit">In budget</span>`, u=listingUrls(s);
+  const jump=s.band?`<a class="jump" data-tab-jump="listings">&#9662; See ${s.name} in live listings</a>`:`<div class="jump" style="border:none;color:var(--muted-2)">Over budget; not in the in-budget listings, watch for soft-patch pricing.</div>`;
   document.getElementById('detail').innerHTML =
     `<h4>${s.name} ${pill}</h4>
-     <div class="meta">${s.pc} · ${s.reg==='S'?'South of river':'North of river'} · ${s.km}km to Como · median ~$${s.mlo}k–$${s.mhi}k · fit ${s.score}/100</div>
+     <div class="meta">${s.pc} &middot; ${s.reg==='S'?'South of river':'North of river'} &middot; ${s.km}km to Como &middot; median ~$${s.mlo}k-$${s.mhi}k &middot; fit ${s.score}/100</div>
      <div class="why">${s.why}</div>
-     <div class="bars">${dims.map(([l,v])=>
-       `<div class="dbar"><span>${l}</span><span class="track"><span class="fill" style="width:${v*10}%"></span></span><span>${v}/10</span></div>`
-     ).join('')}</div>
-     <div class="dlinks">
-       <a href="${u.rea}" target="_blank" rel="noopener">realestate.com.au ↗</a>
-       <a href="${u.dom}" target="_blank" rel="noopener">Domain ↗</a>
-       <a href="${u.reiwa}" target="_blank" rel="noopener">REIWA ↗</a>
-     </div>
+     <div class="bars">${dims.map(([l,v])=>`<div class="dbar"><span>${l}</span><span class="track"><span class="fill" style="width:${v*10}%"></span></span><span>${v}/10</span></div>`).join('')}</div>
+     <div class="dlinks"><a href="${u.rea}" target="_blank" rel="noopener">realestate.com.au &#8599;</a><a href="${u.dom}" target="_blank" rel="noopener">Domain &#8599;</a><a href="${u.reiwa}" target="_blank" rel="noopener">REIWA &#8599;</a></div>
      ${jump}`;
 }
 function bindBubbleEvents(){
   document.querySelectorAll('[data-name]').forEach(el=>{
-    el.onclick = ()=>{ selected = el.getAttribute('data-name'); renderMapAndRanking(); };
-    el.onkeydown = e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selected=el.getAttribute('data-name'); renderMapAndRanking(); } };
+    el.onclick=()=>{ selected=el.getAttribute('data-name'); renderMapAndRanking(); };
+    el.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selected=el.getAttribute('data-name'); renderMapAndRanking(); } };
   });
-}
-
-/* ============================================================
-   RENDER: criteria + saved searches
-   ============================================================ */
-function renderCriteria(){
-  document.getElementById('critGrid').innerHTML = CRITERIA.map(c=>{
-    const tagClass = c.tag==='filter'?'filter':(c.tag==='weight'?'weight':'');
-    return `<div class="crit"><span class="tag ${tagClass}">${c.tag}</span><div class="n">${c.n}</div><div class="t">${c.t}</div><div class="d">${c.d}</div></div>`;
-  }).join('');
+  document.querySelectorAll('[data-tab-jump]').forEach(a=>{ a.onclick=()=>{ showTab(a.getAttribute('data-tab-jump')); document.getElementById('properties').scrollIntoView({behavior:'smooth'}); }; });
 }
 
 function priorLean(p){ return p<=20?'closest to Como':p<40?'leaning to Como proximity':p<=60?'balanced across proximity and schools':p<80?'leaning to school catchments':'top school catchments'; }
-
-/* Dynamic live-listings strip — same ranking as Where-to-buy, reorders with the
-   slider, and centres the selected suburb's card. Only in-budget suburbs show
-   (the buyer's actual shopping list); each link opens current portal results. */
 function renderListings(scored){
-  scored = (scored ? scored.slice() : SUBURBS.map(s=>({...s, ...scoreSuburb(s,PRIOR)})))
-             .sort((a,b)=>b.score-a.score);
-  const inBudget = scored.filter(s=>s.band);
+  scored = (scored?scored.slice():rankedSuburbs()).sort((a,b)=>b.score-a.score);
+  const inB = scored.filter(s=>s.band);
   document.getElementById('listingsCaption').innerHTML =
-    `Showing <b>${inBudget.length} in-budget targets</b> ranked <b>${priorLean(PRIOR)}</b> — reorders live with the slider in §02. Tap a card to sync it with the map above.`;
-  document.getElementById('listingsStrip').innerHTML = inBudget.map((s,i)=>{
-    const u = listingUrls(s);
-    return `<div class="lcard ${selected===s.name?'sel':''}" data-name="${s.name}" tabindex="0" role="button" aria-label="${s.name} listings, rank ${i+1}, fit ${s.score}">
-       <div class="rank">#${i+1} target · ${s.reg==='S'?'South':'North'} · ${s.km}km to Como</div>
+    `Showing <b>${inB.length} in-budget targets</b> ranked <b>${priorLean(PRIOR)}</b>; reorders live with the Where-to-buy slider. Tap a card to sync it with the map.`;
+  document.getElementById('listingsStrip').innerHTML = inB.map((s,i)=>{ const u=listingUrls(s);
+    return `<div class="lcard ${selected===s.name?'sel':''}" data-name="${s.name}" tabindex="0" role="button" aria-label="${s.name} listings, rank ${i+1}">
+       <div class="rank">#${i+1} target &middot; ${s.reg==='S'?'South':'North'} &middot; ${s.km}km to Como</div>
        <div class="nm">${s.name} <span class="fit">${s.score}/100</span></div>
-       <div class="med">House median ~$${s.mlo}k–$${s.mhi}k · ${s.pc}</div>
-       <div class="tags"><span class="chip">450sqm+ via Landgate</span><span class="chip">KDR ${s.scores.kdr}/10</span><span class="chip">School ${s.school}/10</span></div>
-       <div class="links">
-         <a href="${u.rea}" target="_blank" rel="noopener" onclick="event.stopPropagation()">REA ↗</a>
-         <a href="${u.dom}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Domain ↗</a>
-         <a href="${u.reiwa}" target="_blank" rel="noopener" onclick="event.stopPropagation()">REIWA ↗</a>
-       </div>
-     </div>`;
-  }).join('');
+       <div class="med">House median ~$${s.mlo}k-$${s.mhi}k &middot; ${s.pc}</div>
+       <div class="tags"><span class="chip">500sqm+ via Landgate</span><span class="chip">KDR ${s.scores.kdr}/10</span><span class="chip">School ${s.school}/10</span></div>
+       <div class="links"><a href="${u.rea}" target="_blank" rel="noopener" onclick="event.stopPropagation()">REA &#8599;</a><a href="${u.dom}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Domain &#8599;</a><a href="${u.reiwa}" target="_blank" rel="noopener" onclick="event.stopPropagation()">REIWA &#8599;</a></div>
+     </div>`; }).join('');
   bindBubbleEvents();
-  // centre the selected card horizontally without moving the page vertically
-  if(selected){
-    const strip=document.getElementById('listingsStrip');
-    const card=strip.querySelector('.lcard.sel');
-    if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect();
-      strip.scrollLeft += (cr.left - sr.left) - (sr.width/2 - cr.width/2); }
-  }
+  if(selected){ const strip=document.getElementById('listingsStrip'), card=strip.querySelector('.lcard.sel');
+    if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect(); strip.scrollLeft += (cr.left-sr.left)-(sr.width/2-cr.width/2); } }
 }
 
-/* ============================================================
-   FORECAST SLIDERS — keep weights summing to 100
-   ============================================================ */
+function renderProperties(){
+  const data=LISTINGS, list=(data.listings||[]).slice().sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
+  const src=(data.meta&&data.meta.source)||'sample', gen=(data.meta&&data.meta.generated)||'';
+  const sample = src!=='domain-api';
+  document.getElementById('propStatus').innerHTML =
+    `<span class="status-dot ${sample?'sample':'live'}"></span>` +
+    (sample
+      ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. Add a Domain API key (see README) and the daily action swaps these for real listings with live links.</span>`
+      : `<span><b style="color:var(--bull)">Live from the Domain API</b>${gen?` &middot; refreshed ${gen}`:''}. Bargains are priced below the suburb median.</span>`);
+  document.getElementById('propGrid').innerHTML = list.map(p=>{
+    const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land&&`${p.land}sqm`].filter(Boolean)
+      .map(x=>`<span class="spec">${x}</span>`).join('');
+    const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:(p.meets?`<span class="badge fit">Fits</span>`:'');
+    return `<div class="pcard ${p.bargain?'bargain':''}">
+      <div class="ptop"><div class="price">${p.priceText||''}</div>${badge}</div>
+      <div><div class="addr">${p.address||p.suburb}</div><div class="loc">${p.suburb} ${p.pc||''}</div></div>
+      <div class="specs">${specs}</div>
+      <div class="reason">${p.reason||''}</div>
+      <a class="go" href="${p.url}" target="_blank" rel="noopener">View listing &#8599;</a>
+    </div>`; }).join('');
+}
+function loadListings(){
+  // only fetch over http(s); a file:// page would hit CORS, so keep the inline sample
+  if(location.protocol!=='http:' && location.protocol!=='https:') return;
+  fetch('data/listings.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
+    if(j&&Array.isArray(j.listings)){ LISTINGS=j; renderProperties(); }
+  }).catch(()=>{});
+}
+
+function renderCriteria(){
+  document.getElementById('critGrid').innerHTML = CRITERIA.map(c=>{
+    const cls=c.tag==='filter'?'filter':(c.tag==='weight'?'weight':'');
+    return `<div class="crit"><span class="tag ${cls}">${c.tag}</span><div class="n">${c.n}</div><div class="t">${c.t}</div><div class="d">${c.d}</div></div>`;
+  }).join('');
+}
+
 const bearS=document.getElementById('bearSlider'), baseS=document.getElementById('baseSlider'), bullS=document.getElementById('bullSlider');
 function syncWeightLabels(){ document.getElementById('bearW').textContent=Math.round(W.bear); document.getElementById('baseW').textContent=Math.round(W.base); document.getElementById('bullW').textContent=Math.round(W.bull); bearS.value=W.bear; baseS.value=W.base; bullS.value=W.bull; }
-function rebalance(changed, val){
-  val=+val;
-  const others = ['bear','base','bull'].filter(k=>k!==changed);
-  const remain = 100-val;
-  const oldOtherSum = W[others[0]]+W[others[1]];
-  if(oldOtherSum===0){ W[others[0]]=remain/2; W[others[1]]=remain/2; }
-  else { W[others[0]]=remain*(W[others[0]]/oldOtherSum); W[others[1]]=remain*(W[others[1]]/oldOtherSum); }
-  W[changed]=val;
-  syncWeightLabels(); renderFan();
-}
+function rebalance(changed,val){ val=+val; const others=['bear','base','bull'].filter(k=>k!==changed); const remain=100-val, oldSum=W[others[0]]+W[others[1]];
+  if(oldSum===0){ W[others[0]]=remain/2; W[others[1]]=remain/2; } else { W[others[0]]=remain*(W[others[0]]/oldSum); W[others[1]]=remain*(W[others[1]]/oldSum); }
+  W[changed]=val; syncWeightLabels(); renderFan(); }
 bearS.oninput=e=>rebalance('bear',e.target.value);
 baseS.oninput=e=>rebalance('base',e.target.value);
 bullS.oninput=e=>rebalance('bull',e.target.value);
-
-document.getElementById('resetForecast').onclick=()=>{
-  W={...BASELINE.weights}; syncWeightLabels(); renderFan();
-};
-/* PRIOR slider */
+document.getElementById('resetForecast').onclick=()=>{ W={...BASELINE.weights}; syncWeightLabels(); renderFan(); };
 const priorS=document.getElementById('priorSlider');
 function priorLabel(p){ if(p<=20)return'Como first'; if(p<40)return'Leaning Como'; if(p<=60)return'Balanced'; if(p<80)return'Leaning schools'; return'Schools first'; }
 priorS.oninput=e=>{ PRIOR=+e.target.value; document.getElementById('weightLabel').textContent=priorLabel(PRIOR); renderMapAndRanking(); };
 
-/* ============================================================
-   INIT
-   ============================================================ */
 renderMacro();
 renderFan();
 syncWeightLabels();
-renderMapAndRanking();   // also paints the live-listings strip via renderListings()
+renderMapAndRanking();
 renderCriteria();
+renderProperties();
+loadListings();
 document.getElementById('weightLabel').textContent=priorLabel(PRIOR);
+showTab('listings');
 </script>
 </body>
 </html>

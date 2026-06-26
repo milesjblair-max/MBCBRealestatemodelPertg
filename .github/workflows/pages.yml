@@ -5,7 +5,7 @@ name: Deploy to GitHub Pages
 # (enablement: true), so no manual Settings toggle is required the first time.
 
 # Optional auto-deploy via GitHub Actions. NOTE: GitHub Pages must be enabled
-# once by the repo owner (Settings -> Pages) before this can publish — a token
+# once by the repo owner (Settings -> Pages) before this can publish - a token
 # cannot enable Pages for the first time. This is manual-only so it never
 # auto-fails; if you set Pages Source = "GitHub Actions", run it from the
 # Actions tab. If you instead pick "Deploy from a branch", you don't need this

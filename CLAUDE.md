@@ -1,4 +1,4 @@
-# CLAUDE.md — Como-Anchored Perth Home Model
+# CLAUDE.md - Como-Anchored Perth Home Model
 
 **This file is the single source of truth.** Read it fully before doing anything
 in this repo. It carries the buyer, the live macro state, the four-layer model,
@@ -19,36 +19,36 @@ The deliverable is an interactive, shareable web tool (`web/index.html`, served
 at the repo root as `index.html`) backed by a reproducible Python model
 (`model/`) and a committed data contract (`data/`).
 
-The audience for the live tool is the buyer **and his fiancée and a friend** —
+The audience for the live tool is the buyer **and his fiancée and a friend** -
 non-analysts. It must be instantly legible: what the market is doing, what it
 might do, where to buy, and why. No jargon without a plain-English gloss.
 
 ---
 
-## 1. The buyer (the anchor — never drift from this)
+## 1. The buyer (the anchor - never drift from this)
 
 | Attribute | Value |
 |---|---|
 | Goal | Family home, long hold, room to grow |
-| Budget band | **$800k–$1.0M** |
-| Capital | **$1.0M total** = $200k own equity + **$800k line of credit at 0% interest** |
+| Budget band | **$800k-$1.0M** |
+| Capital | **$1.0M total** = patient capital, low holding cost |
 | Anchor location | **Como 6152** (his family is in the South Perth / Como area) |
 | Horizon | **3 years primary, 5-year scenario tail** |
-| Posture | **Patient / opportunistic** — the 0% facility removes the carrying cost of waiting |
+| Posture | **Patient / opportunistic** - low holding costs remove the penalty for waiting |
 
 **The ten criteria** (verbatim from the buyer; `data/criteria.json` is the
 machine copy):
 
-1. Land size above **450sqm** — *hard filter*
-2. Property between **$800k–$1.0M** — *hard filter*
-3. **$1.0M to bring** ($200k own + $800k LOC at 0%) — *context, not a filter*
-4. **Growth potential (post-dip)** — *weighted 25%*
-5. **Family area** — *weighted 15%*
-6. **Backyard for the kids** — *weighted 15%*
-7. **More than 3 bedrooms** (4+) — *hard filter; a KDR can satisfy it*
-8. **Modern, but old is fine if knock-down-rebuild viable** — *weighted 10%*
-9. **Near family in South Perth / Como** — *weighted 20%*
-10. **Decent suburb, good postcode** — *weighted 15%*
+1. Land size above **500sqm** - *hard filter*
+2. Property between **$800k-$1.0M** - *hard filter*
+3. **$1.0M to bring** (low holding costs) - *context, not a filter*
+4. **Growth potential (post-dip)** - *weighted 25%*
+5. **Family area** - *weighted 15%*
+6. **Backyard for the kids** - *weighted 15%*
+7. **More than 3 bedrooms** (4+) - *hard filter; a KDR can satisfy it*
+8. **Modern, but old is fine if knock-down-rebuild viable** - *weighted 10%*
+9. **Near family in South Perth / Como** - *weighted 20%*
+10. **Decent suburb, good postcode** - *weighted 15%*
 
 The single most important consequence of criterion 3: **patience is almost free.**
 The model's job is therefore not to call a crash but to find the **soft patch**
@@ -56,7 +56,7 @@ and the suburbs that hold up best through it and re-accelerate after.
 
 ---
 
-## 2. Live macro state (as at mid-2026 — refresh before relying on it)
+## 2. Live macro state (as at mid-2026 - refresh before relying on it)
 
 Verified mid-2026 (sources in `references/data-sources.md`):
 
@@ -65,23 +65,23 @@ Verified mid-2026 (sources in `references/data-sources.md`):
 | RBA cash rate | **4.35%** | Held 17 Jun 2026 after Feb/Mar/May 2026 hikes; hawkish bias retained |
 | Perth median dwelling | **~$1.05M** | +25.8% YoY but monthly growth decelerating |
 | Advertised stock | **~40% below** 5-yr avg | Core of the undersupply thesis |
-| Rental vacancy | **~0.5–0.7%** | Extremely tight (source-dependent) |
+| Rental vacancy | **~0.5-0.7%** | Extremely tight (source-dependent) |
 | Days on market | **~9** | Vendor's market, for now |
-| CPI | **~4.0%** | Above target — keeps the RBA cautious |
+| CPI | **~4.0%** | Above target - keeps the RBA cautious |
 | Iron ore | **~US$100/t**, softening | ~US$95/t 2026 consensus; **Simandou ramp bearish into 2027** |
 | WA population growth | **~2.2%/yr** | Fastest state; demand-side floor |
 | NG / CGT change | **From 1 Jul 2027** | Established-dwelling negative gearing limited; 50% CGT discount replaced by indexation + 30% min tax. **Owner-occupier buyer: direct impact nil; effect is a softer market = entry opportunity.** Pre-12-May-2026 holdings grandfathered; **new builds keep full concessions** (tilts demand toward family owner-occupier suburbs). |
 
-**Why this isn't 2014–2020.** That downturn (~-14% houses) was oversupply +
+**Why this isn't 2014-2020.** That downturn (~-14% houses) was oversupply +
 population exodus (vacancy ~5%, migration collapse). Today is the inverse:
-vacancy <1%, strong migration, undersupply. So a multi-year crash is unlikely —
+vacancy <1%, strong migration, undersupply. So a multi-year crash is unlikely -
 but a **resources-led soft patch** (iron ore + Simandou + reduced investor
-demand from NG/CGT) is the real risk, and it lines up with the buyer's 2027–28
+demand from NG/CGT) is the real risk, and it lines up with the buyer's 2027-28
 window. That is the opportunity, not a catastrophe.
 
 ---
 
-## 3. The model — four layers
+## 3. The model - four layers
 
 A hybrid, because no single method wins at a single-city, suburb-level, ≤5-year
 horizon. (Full rationale: `references/methodology.md`.)
@@ -90,8 +90,8 @@ horizon. (Full rationale: `references/methodology.md`.)
 |---|---|---|---|
 | 1 | **City VECM / error-correction spine** | calibrates `ANCHORS` | Anchors price to fundamentals (income, rents, build costs, real cash rate); judges over/under-valuation; sets the scenario anchor paths |
 | 2 | **Scenario-weighted Monte Carlo** | `model/scenario_model.py` | The 50/30/20 base/bear/bull fan chart + expected path |
-| 3 | **Suburb gradient-boosted panel** | `model/scoring.py` + `data/suburbs.json` | Relative suburb performance → the 0–100 Buyer-Fit score and heat map |
-| 4 | **Hedonic property adjustment** | per-listing | Land size, beds, KDR optionality — applied at the individual property |
+| 3 | **Suburb gradient-boosted panel** | `model/scoring.py` + `data/suburbs.json` | Relative suburb performance → the 0-100 Buyer-Fit score and heat map |
+| 4 | **Hedonic property adjustment** | per-listing | Land size, beds, KDR optionality - applied at the individual property |
 
 **Horizon decision: 3 years primary, 5-year tail.** Forecast error compounds and
 rate/policy uncertainty beyond 3 years is large; the buyer asked for ≤5; the
@@ -118,30 +118,30 @@ CAGR ~5.4%.
 
 ---
 
-## 4. Variable discipline — standard, enriched, and signal-vs-noise
+## 4. Variable discipline - standard, enriched, and signal-vs-noise
 
 The model takes the **stock-standard** macro/suburb inputs and **enriches** them
 with leading indicators most analysts ignore. Full catalogue with sources and
 ingestion notes: `references/variables.md`. The discipline:
 
-**Tier A — high-signal, genuinely leading (prioritise):**
-- **Backyard pool-building-permit rate** per 100 dwellings (family-entrenchment index; LGA BA registers) — *leads medians 6–18 months; almost nobody uses it.*
-- **School in-zone rejection events** — the moment a catchment (Rossmoyne/Willetton) starts refusing in-zone kids → premium spills into fringe suburbs (Shelley/Riverton/Bull Creek).
-- **Childcare occupancy / waitlist density** (ACECQA national register) — young-family in-migration *before* they buy.
-- **Subdivision / green-title pipeline: lodged-vs-registered cadastre ratio** (Landgate SLIP) — developer conviction 12–24 months ahead of completions.
-- **Days-on-market velocity & vendor discounting** — turn before medians do.
+**Tier A - high-signal, genuinely leading (prioritise):**
+- **Backyard pool-building-permit rate** per 100 dwellings (family-entrenchment index; LGA BA registers) - *leads medians 6-18 months; almost nobody uses it.*
+- **School in-zone rejection events** - the moment a catchment (Rossmoyne/Willetton) starts refusing in-zone kids → premium spills into fringe suburbs (Shelley/Riverton/Bull Creek).
+- **Childcare occupancy / waitlist density** (ACECQA national register) - young-family in-migration *before* they buy.
+- **Subdivision / green-title pipeline: lodged-vs-registered cadastre ratio** (Landgate SLIP) - developer conviction 12-24 months ahead of completions.
+- **Days-on-market velocity & vendor discounting** - turn before medians do.
 
-**Tier B — useful, conditional or slower:**
-- **FIFO-share × iron-ore interaction** (ATO postcode occupation × commodity price) — a suburb-level mining-cashflow beta for the 5-yr tail.
-- **STRA register de-listing velocity** (WA short-stay register) — rental-supply relief, current.
-- **Cafe / specialty-coffee density change** — gentrification nowcast.
-- **Building-approval pipeline by suburb** — future supply that caps growth.
-- **EV registrations per capita** — affluence/renovation propensity.
+**Tier B - useful, conditional or slower:**
+- **FIFO-share × iron-ore interaction** (ATO postcode occupation × commodity price) - a suburb-level mining-cashflow beta for the 5-yr tail.
+- **STRA register de-listing velocity** (WA short-stay register) - rental-supply relief, current.
+- **Cafe / specialty-coffee density change** - gentrification nowcast.
+- **Building-approval pipeline by suburb** - future supply that caps growth.
+- **EV registrations per capita** - affluence/renovation propensity.
 
-**Tier C — corroboration only (never a primary driver):**
+**Tier C - corroboration only (never a primary driver):**
 - Google Trends suburb search interest; crime stats; tree canopy / urban heat; birth/household-formation rates by SA2 (slow but structurally predictive of family demand).
 
-**The buyer's own hint — "child rates might affect the horizon" — is correct and
+**The buyer's own hint - "child rates might affect the horizon" - is correct and
 is operationalised** via childcare occupancy, pool permits, school-zone pressure
 and SA2 family-cohort share. Treat demographic family-formation signals as real
 but slow; treat permit/register/roster data as the genuinely leading tells.
@@ -153,35 +153,35 @@ but slow; treat permit/register/roster data as the genuinely leading tells.
 Premium river suburbs (South Perth ~$2.0M, Applecross ~$2.4M, Mount Pleasant
 ~$2.1M, Como itself ~$1.5M+) are **out of budget for a house**. Best-fit targets:
 
-- **Primary — Rossmoyne SHS catchment fringe:** **Shelley (~$960k)**, Riverton,
+- **Primary - Rossmoyne SHS catchment fringe:** **Shelley (~$960k)**, Riverton,
   Bull Creek, Bateman-adjacent. Scarce land + school demand + grandfathered
   owner-occupier status = highest-conviction growth-after-dip hold.
-- **Near-in value (City of Canning):** **Wilson, St James, Parkwood, Bentley** —
+- **Near-in value (City of Canning):** **Wilson, St James, Parkwood, Bentley** -
   sub-$1.0M houses on larger blocks, strong KDR economics, genuinely close to Como.
-- **North-of-river land:** **Dianella, Bayswater, Embleton, Balcatta** — 450sqm+
+- **North-of-river land:** **Dianella, Bayswater, Embleton, Balcatta** - 500sqm+
   green-title blocks near $1.0M with KDR upside; the catch is distance from Como.
 
-At the balanced setting the model ranks **Shelley #1, Wilson #2** — consistent
+At the balanced setting the model ranks **Shelley #1, Wilson #2** - consistent
 with the thesis. The proximity-vs-schools slider re-orders this live.
 
 ---
 
-## 6. The interactive tool — what it must always do
+## 6. The interactive tool - what it must always do
 
 `web/index.html` (mirrored to `/index.html` for Pages). Single self-contained
 file, no build step, works offline. Four sections:
 
-1. **Forecast** — bear/base/bull fan chart + weighted expected path; three weight
+1. **Forecast** - bear/base/bull fan chart + weighted expected path; three weight
    sliders that rebalance to 100%; **Reset to baseline** (30/50/20).
-2. **Where to buy** — every suburb scored 0–100, heat map + live ranking, with the
+2. **Where to buy** - every suburb scored 0-100, heat map + live ranking, with the
    **proximity-vs-schools slider** reordering everywhere.
-3. **The ten criteria** — filters vs weighted, in full.
-4. **Live listings** — pre-filtered saved-search deep-links that always open
+3. **The ten criteria** - filters vs weighted, in full.
+4. **Live listings** - pre-filtered saved-search deep-links that always open
    *current* portal results.
 
 **Hard rules for the tool:**
 - The **Reset button must restore `BASELINE` exactly.** It is the contract.
-- Keep it **a single file with inline data** unless explicitly asked to split —
+- Keep it **a single file with inline data** unless explicitly asked to split -
   it has to work as an emailed file and on GitHub Pages with zero setup.
 - **Never claim the static page live-scrapes** realestate.com.au / Domain /
   REIWA. It does not, and doing so breaches their terms. The honest framing
@@ -190,15 +190,15 @@ file, no build step, works offline. Four sections:
 
 ---
 
-## 7. Listings & "live" data — the compliant path
+## 7. Listings & "live" data - the compliant path
 
 The buyer wants live ads and property suggestions refreshed on a cadence.
 **Scraping REA/Domain/REIWA is prohibited.** The only compliant routes:
-- **Saved-search deep-links** (implemented) — always current, zero infra.
+- **Saved-search deep-links** (implemented) - always current, zero infra.
 - **Domain Developer API** (free dev tier; paid tiers add listings, AVM/price
   estimates, school & demographic endpoints) pulled by a **scheduled GitHub
   Action** into `data/listings.json`, which the tool `fetch()`es. This is the
-  documented upgrade path — see `references/data-sources.md`.
+  documented upgrade path - see `references/data-sources.md`.
 
 When asked to "make listings live," build the GitHub Action + `data/listings.json`
 + a `fetch()` in the tool. Do **not** add a scraper.
@@ -207,20 +207,31 @@ When asked to "make listings live," build the GitHub Action + `data/listings.jso
 
 ## 8. Operating rules for any AI working here
 
+- **HOUSE STYLE - NO DASHES (hard rule).** Never use em dashes (`-`) or en dashes
+  (`-`) anywhere - not in the tool, docs, data, commit messages, code comments or
+  chat. Use a plain hyphen `-`, or restructure the sentence (comma, colon,
+  parentheses, full stop). The buyer considers em/en dashes an AI tell and does
+  not want them. Use `-` for numeric ranges too (`$920-980k`, not `$920-980k`).
+  Before committing, grep for the em/en/minus characters and replace any with `-`.
+- **DISCRETION ON PERSONAL FINANCES.** The page and zip are shared with friends
+  and family. Do NOT state the buyer's capital structure explicitly (no "$200k
+  equity", no "$800k line of credit", no "0% interest"). Refer only to a
+  "~$1.0M budget" and "low holding costs / patience is cheap". The price band
+  `$800k-$1.0M` (about the property) is fine to show.
 - **Branch:** develop on `claude/repo-connection-mhn1nl`. Never push elsewhere
   without explicit permission. Commit with clear messages; push with
   `git push -u origin <branch>`.
 - **Reproducibility:** after any model/data change, run
   `python3 model/scenario_model.py` (must print `PASS`) and
-  `python3 model/scoring.py`. Stdlib only — never add a runtime dependency to
+  `python3 model/scoring.py`. Stdlib only - never add a runtime dependency to
   the model or the tool.
 - **One source of truth per number.** `data/*.json` is canonical; the tool's
   inline copy must match. If you touch one, touch the other and verify.
-- **Honesty over polish.** Medians are ranges (sources diverge 10–20%); no public
-  source has median block size (450sqm confirmed per-listing via Landgate); all
+- **Honesty over polish.** Medians are ranges (sources diverge 10-20%); no public
+  source has median block size (500sqm confirmed per-listing via Landgate); all
   figures are mid-2026 approximations; forecasts are scenario estimates, not
   predictions. Keep the disclaimer intact.
-- **Stay anchored to the buyer.** Como, $1.0M, family, 450sqm+, KDR-capable,
+- **Stay anchored to the buyer.** Como, $1.0M, family, 500sqm+, KDR-capable,
   patient. If a change would help a generic user but blur the buyer's answer,
   don't.
 - **This is general information, not financial/legal/tax advice.** Preserve that
@@ -231,7 +242,7 @@ When asked to "make listings live," build the GitHub Action + `data/listings.jso
 ## 9. Good next jobs (when asked)
 
 - Wire the **Domain API → scheduled Action → `data/listings.json` → `fetch()`** for a real refreshing feed.
-- Add Tier-A enriched variables as live data layers (pool permits, childcare occupancy, lodged-cadastre ratio) — each as its own `data/*.json` with a fetch + a documented source.
+- Add Tier-A enriched variables as live data layers (pool permits, childcare occupancy, lodged-cadastre ratio) - each as its own `data/*.json` with a fetch + a documented source.
 - Refresh the macro block and re-run the model when new RBA / Cotality / iron-ore prints land.
-- Add a "street-level" layer: highlight streets with original 450sqm+ green-title stock inside target catchments (Landgate cadastre + R-codes).
+- Add a "street-level" layer: highlight streets with original 500sqm+ green-title stock inside target catchments (Landgate cadastre + R-codes).
 - Split the inline data out of `index.html` into `fetch()` calls once a build/refresh exists.

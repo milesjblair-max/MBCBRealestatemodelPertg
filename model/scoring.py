@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-scoring.py — Como-Anchored Perth Home Model, suburb Buyer-Fit ranking (Layer 3).
+scoring.py - Como-Anchored Perth Home Model, suburb Buyer-Fit ranking (Layer 3).
 
 Mirrors the scoreSuburb() function in web/index.html exactly, so the Python and
 the web tool agree at the baseline prior (50 = balanced between Como-proximity
@@ -10,7 +10,7 @@ and top-school-catchment). Reads data/suburbs.json and data/criteria.json.
     python3 scoring.py 0          # all weight on Como proximity
     python3 scoring.py 100        # all weight on school catchment
 
-Standard library only — no dependencies.
+Standard library only - no dependencies.
 """
 import json
 import os
@@ -66,7 +66,7 @@ def main():
 
     label = {0: "Como first", 50: "Balanced", 100: "Schools first"}.get(prior, f"prior={prior}")
     print("=" * 60)
-    print(f" Buyer-Fit ranking — anchor Como 6152 — {label}")
+    print(f" Buyer-Fit ranking - anchor Como 6152 - {label}")
     print("=" * 60)
     print(f"{'#':>3}  {'Suburb':<14}{'PC':>6}{'Reg':>5}{'km':>5}{'Fit':>7}")
     print("-" * 60)
@@ -75,7 +75,7 @@ def main():
         print(f"{i:>3}  {s['name']:<14}{s['pc']:>6}{s['reg']:>5}"
               f"{s['km']:>5}{score:>7}{flag}")
     print("=" * 60)
-    print(" Filters (land>450sqm, 4+ beds) confirmed per-listing via Landgate.")
+    print(" Filters (land>500sqm, 4+ beds) confirmed per-listing via Landgate.")
 
 
 if __name__ == "__main__":

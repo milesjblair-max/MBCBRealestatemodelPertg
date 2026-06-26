@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-scenario_model.py — Como-Anchored Perth Home Model, forecast spine.
+scenario_model.py - Como-Anchored Perth Home Model, forecast spine.
 
 Regenerates the probability-weighted expected price path from the bear/base/bull
 scenario anchors and the 30/50/20 weights, derives the headline metrics (bear
 trough, cost of waiting, 3-year CAGR), and self-verifies against data/baseline.json.
 
 This is the "Reset" contract: the web tool's BASELINE must match what this prints.
-Standard library only — no dependencies.
+Standard library only - no dependencies.
 
     python3 scenario_model.py            # print timeline + metrics, verify -> PASS/FAIL
 
@@ -100,7 +100,7 @@ def main():
     m = metrics(timeline)
 
     print("=" * 66)
-    print(" Como-Anchored Perth Home Model — forecast spine (mid-2026)")
+    print(" Como-Anchored Perth Home Model - forecast spine (mid-2026)")
     print(f" Weights: bear {WEIGHTS['bear']}%  base {WEIGHTS['base']}%  bull {WEIGHTS['bull']}%")
     print("=" * 66)
     print(f"{'Period':<14}{'Bear':>10}{'Base':>10}{'Bull':>10}{'Expected':>11}")
