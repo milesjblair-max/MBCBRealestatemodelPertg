@@ -24,6 +24,7 @@ import os
 import sys
 import urllib.request
 import urllib.parse
+import urllib.error
 from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -44,8 +45,12 @@ SEARCH_URL = "https://api.domain.com.au/v1/listings/residential/_search"
 def _post(url, data, headers, is_json):
     body = json.dumps(data).encode() if is_json else urllib.parse.urlencode(data).encode()
     req = urllib.request.Request(url, data=body, headers=headers, method="POST")
-    with urllib.request.urlopen(req, timeout=40) as r:
-        return json.loads(r.read().decode())
+    try:
+        with urllib.request.urlopen(req, timeout=40) as r:
+            return json.loads(r.read().decode())
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode(errors="ignore")[:300]
+        raise RuntimeError(f"HTTP {e.code} from {url}: {detail}") from None
 
 
 def get_token():
@@ -131,11 +136,17 @@ def _reason(beds, land, price, median_low_k, bargain):
 
 
 def main():
-    token = get_token()
+    try:
+        token = get_token()
+    except Exception as e:
+        print(f"ERROR getting Domain access token: {e}", file=sys.stderr)
+        print("Leaving the committed sample data/listings.json untouched.")
+        return 0
     if not token:
         print("No Domain credentials (DOMAIN_CLIENT_ID/SECRET or DOMAIN_ACCESS_TOKEN). "
               "Leaving the committed sample data/listings.json untouched.")
         return 0
+    print("Got Domain access token; searching target suburbs...")
 
     with open(SUBURBS_PATH) as fh:
         suburbs = json.load(fh)["suburbs"]
@@ -145,12 +156,20 @@ def main():
     for s in targets:
         try:
             items = search_suburb(token, s["name"], s["pc"])
-            listings.extend(normalise(items, s["name"], s["pc"], s.get("mlo")))
+            got = normalise(items, s["name"], s["pc"], s.get("mlo"))
+            print(f"  {s['name']} {s['pc']}: {len(got)} listing(s)")
+            listings.extend(got)
         except Exception as e:  # one suburb failing must not kill the run
             print(f"  warn: {s['name']} {s['pc']} failed: {e}", file=sys.stderr)
     # bargains first, then by price ascending
     listings.sort(key=lambda x: (not x["bargain"], x["price"] or 9_9_9_9_9_9_9))
     listings = listings[:TOTAL_CAP]
+
+    if not listings:
+        print("No live listings returned (check the project is in Production, not "
+              "Sandbox, and that the plan includes residential listing search). "
+              "Keeping the committed sample so the page does not go blank.")
+        return 0
 
     payload = {
         "meta": {
