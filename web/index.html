@@ -172,6 +172,29 @@
   .saved-searches .lbl{font-size:14px;color:var(--teal-bright);font-weight:600}
   .saved-searches .meta{font-size:11px;color:var(--muted)}
 
+  /* dynamic listings strip — wired to the Where-to-buy ranking */
+  .listings-caption{font-size:14px;color:var(--muted);margin:2px 0 14px;max-width:64ch}
+  .listings-caption b{color:var(--teal-bright)}
+  .listings-strip{display:flex;gap:12px;overflow-x:auto;padding:2px 2px 14px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .listings-strip::-webkit-scrollbar{height:8px}
+  .listings-strip::-webkit-scrollbar-track{background:transparent}
+  .listings-strip::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+  .lcard{flex:0 0 250px;scroll-snap-align:start;background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:15px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s}
+  .lcard:hover{transform:translateY(-3px);background:var(--ink-3)}
+  .lcard.sel{border-color:var(--teal-bright);box-shadow:0 0 0 1px var(--teal-bright),0 8px 24px rgba(0,0,0,.3)}
+  .lcard:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
+  .lcard .rank{font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2)}
+  .lcard .nm{font-family:"Fraunces",serif;font-size:18px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .lcard .nm .fit{font-size:12px;color:var(--teal-bright);font-family:"Inter",sans-serif;font-variant-numeric:tabular-nums;flex:none}
+  .lcard .med{font-size:12px;color:var(--muted)}
+  .lcard .tags{display:flex;flex-wrap:wrap;gap:5px}
+  .lcard .chip{font-size:10px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:2px 7px;white-space:nowrap}
+  .lcard .links{display:flex;gap:6px;margin-top:auto;padding-top:4px}
+  .lcard .links a{flex:1;text-align:center;font-size:11px;padding:7px 4px;border-radius:8px;border:1px solid var(--line);color:var(--teal-bright);text-decoration:none;background:rgba(58,166,160,.07)}
+  .lcard .links a:hover{background:rgba(58,166,160,.18)}
+  .jump{display:inline-flex;align-items:center;gap:5px;margin-top:10px;font-size:12px;color:var(--sand);text-decoration:none;border-bottom:1px solid rgba(216,166,87,.35);padding-bottom:1px}
+  .jump:hover{color:var(--sand-deep)}
+
   footer{padding:40px 0 0;color:var(--muted-2);font-size:12px;line-height:1.6;max-width:80ch}
   footer b{color:var(--muted)}
   .disclaimer{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
@@ -198,6 +221,7 @@
     .readout{grid-template-columns:1fr 1fr}
     .saved-searches a{min-width:0;width:100%}
     .dlinks a{flex:1;text-align:center}
+    .lcard{flex-basis:80vw}
   }
   @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -308,13 +332,14 @@
   <!-- ============ LISTINGS ============ -->
   <section id="listings">
     <div class="sec-head"><span class="sec-num">04</span><h2>Live listings</h2></div>
-    <p class="sec-lead">Pre-filtered saved searches — house, 450sqm+, 3+ beds, under $1.0M, target suburbs, no survey-strata or villas. Click any one and it opens current results on the portal, sorted newest first.</p>
+    <p class="sec-lead">Wired to <em>Where to buy</em>: this strip is your in-budget shopping list, ranked by the same fit score and <strong>reordering live</strong> as you move the proximity-vs-schools slider above. Pick a suburb anywhere on the page and its card scrolls into view here. Every link opens <strong>current</strong> results — house, 3+ beds, under $1.0M, newest first.</p>
 
-    <div class="saved-searches" id="savedSearches"></div>
+    <p class="listings-caption" id="listingsCaption"></p>
+    <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
 
     <div class="listings-note">
       <div class="ic">!</div>
-      <p><b style="color:var(--sand)">Honest note on "live."</b> This page can't embed an auto-refreshing feed — realestate.com.au and Domain don't permit it on a static site, and anyone claiming otherwise is scraping against their terms. The links above are the robust alternative: they always open <b>current</b> results. For a genuinely embedded feed that refreshes on a schedule, the only compliant route is the Domain Developer API pulled by a scheduled job — documented in the project README as the upgrade path.</p>
+      <p><b style="color:var(--sand)">Honest note on "live."</b> This page can't embed an auto-refreshing feed — realestate.com.au and Domain don't permit it on a static site, and anyone claiming otherwise is scraping against their terms. The cards above are the robust, dynamic alternative: they reorder with your criteria and each link always opens <b>current</b> results (newest first), so saving any of them on the portal also surfaces <b>future</b> listings as they land. For a feed embedded directly in this page that refreshes on a schedule, the only compliant route is the Domain Developer API pulled by a scheduled job — documented in the project README as the upgrade path.</p>
     </div>
   </section>
 
@@ -576,6 +601,7 @@ function renderMapAndRanking(){
 
   bindBubbleEvents();
   if(selected) renderDetail(scored.find(s=>s.name===selected));
+  renderListings(scored);   // keep the live-listings strip in lockstep with the ranking
 }
 
 function star(cx,cy,outer,inner,points){
@@ -584,11 +610,23 @@ function star(cx,cy,outer,inner,points){
   return d+'Z';
 }
 
+function listingUrls(s){
+  const reaSlug = encodeURIComponent(s.name.toLowerCase()+', wa '+s.pc);
+  const domSlug = encodeURIComponent(s.name.toLowerCase().replace(/ /g,'-'));
+  return {
+    rea:`https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-${reaSlug}/list-1?activeSort=list-date`,
+    dom:`https://www.domain.com.au/sale/${domSlug}-wa-${s.pc}/?ptype=house&bedrooms=3-any&price=0-1000000&excludeunderoffer=1&sort=dateupdated-desc`,
+    reiwa:`https://reiwa.com.au/property-search/?q=${encodeURIComponent(s.name+' WA '+s.pc)}`
+  };
+}
 function renderDetail(s){
   if(!s) return;
   const dims=[['Growth',s.scores.growth],['Family',s.scores.family],['Backyard/land',s.scores.land],['KDR upside',s.scores.kdr],['Near Como',s.scores.prox],['Postcode',s.scores.post]];
   const pill = s.over ? `<span class="pill over">Over budget</span>` : `<span class="pill fit">In budget</span>`;
-  const q = encodeURIComponent(s.name+' WA '+s.pc);
+  const u = listingUrls(s);
+  const jump = s.band
+    ? `<a class="jump" href="#listings">▾ See ${s.name} in the live-listings strip</a>`
+    : `<div class="jump" style="border:none;color:var(--muted-2)">Over budget — not in the in-budget listings strip; watch for soft-patch pricing.</div>`;
   document.getElementById('detail').innerHTML =
     `<h4>${s.name} ${pill}</h4>
      <div class="meta">${s.pc} · ${s.reg==='S'?'South of river':'North of river'} · ${s.km}km to Como · median ~$${s.mlo}k–$${s.mhi}k · fit ${s.score}/100</div>
@@ -597,10 +635,11 @@ function renderDetail(s){
        `<div class="dbar"><span>${l}</span><span class="track"><span class="fill" style="width:${v*10}%"></span></span><span>${v}/10</span></div>`
      ).join('')}</div>
      <div class="dlinks">
-       <a href="https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-${encodeURIComponent(s.name.toLowerCase()+', wa '+s.pc)}/list-1?activeSort=list-date" target="_blank" rel="noopener">realestate.com.au ↗</a>
-       <a href="https://www.domain.com.au/sale/${encodeURIComponent(s.name.toLowerCase().replace(/ /g,'-'))}-wa-${s.pc}/?excludeunderoffer=1&sort=dateupdated-desc" target="_blank" rel="noopener">Domain ↗</a>
-       <a href="https://reiwa.com.au/property-search/?q=${q}" target="_blank" rel="noopener">REIWA ↗</a>
-     </div>`;
+       <a href="${u.rea}" target="_blank" rel="noopener">realestate.com.au ↗</a>
+       <a href="${u.dom}" target="_blank" rel="noopener">Domain ↗</a>
+       <a href="${u.reiwa}" target="_blank" rel="noopener">REIWA ↗</a>
+     </div>
+     ${jump}`;
 }
 function bindBubbleEvents(){
   document.querySelectorAll('[data-name]').forEach(el=>{
@@ -619,20 +658,39 @@ function renderCriteria(){
   }).join('');
 }
 
-function renderSavedSearches(){
-  const targets=[
-    {lbl:"Rossmoyne catchment",meta:"Shelley · Riverton · Bull Creek",q:"shelley, wa 6148"},
-    {lbl:"City of Canning value",meta:"Wilson · Parkwood · St James",q:"wilson, wa 6107"},
-    {lbl:"Near-in KDR plays",meta:"Bentley · St James",q:"bentley, wa 6102"},
-    {lbl:"North-of-river land",meta:"Dianella · Embleton",q:"dianella, wa 6059"}
-  ];
-  document.getElementById('savedSearches').innerHTML = targets.map(t=>
-    `<a href="https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1000000-in-${encodeURIComponent(t.q)}/list-1?activeSort=list-date" target="_blank" rel="noopener">
-       <span class="src">realestate.com.au · saved search</span>
-       <span class="lbl">${t.lbl} ↗</span>
-       <span class="meta">${t.meta} · house · 3+ bed · &lt;$1.0M</span>
-     </a>`
-  ).join('');
+function priorLean(p){ return p<=20?'closest to Como':p<40?'leaning to Como proximity':p<=60?'balanced across proximity and schools':p<80?'leaning to school catchments':'top school catchments'; }
+
+/* Dynamic live-listings strip — same ranking as Where-to-buy, reorders with the
+   slider, and centres the selected suburb's card. Only in-budget suburbs show
+   (the buyer's actual shopping list); each link opens current portal results. */
+function renderListings(scored){
+  scored = (scored ? scored.slice() : SUBURBS.map(s=>({...s, ...scoreSuburb(s,PRIOR)})))
+             .sort((a,b)=>b.score-a.score);
+  const inBudget = scored.filter(s=>s.band);
+  document.getElementById('listingsCaption').innerHTML =
+    `Showing <b>${inBudget.length} in-budget targets</b> ranked <b>${priorLean(PRIOR)}</b> — reorders live with the slider in §02. Tap a card to sync it with the map above.`;
+  document.getElementById('listingsStrip').innerHTML = inBudget.map((s,i)=>{
+    const u = listingUrls(s);
+    return `<div class="lcard ${selected===s.name?'sel':''}" data-name="${s.name}" tabindex="0" role="button" aria-label="${s.name} listings, rank ${i+1}, fit ${s.score}">
+       <div class="rank">#${i+1} target · ${s.reg==='S'?'South':'North'} · ${s.km}km to Como</div>
+       <div class="nm">${s.name} <span class="fit">${s.score}/100</span></div>
+       <div class="med">House median ~$${s.mlo}k–$${s.mhi}k · ${s.pc}</div>
+       <div class="tags"><span class="chip">450sqm+ via Landgate</span><span class="chip">KDR ${s.scores.kdr}/10</span><span class="chip">School ${s.school}/10</span></div>
+       <div class="links">
+         <a href="${u.rea}" target="_blank" rel="noopener" onclick="event.stopPropagation()">REA ↗</a>
+         <a href="${u.dom}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Domain ↗</a>
+         <a href="${u.reiwa}" target="_blank" rel="noopener" onclick="event.stopPropagation()">REIWA ↗</a>
+       </div>
+     </div>`;
+  }).join('');
+  bindBubbleEvents();
+  // centre the selected card horizontally without moving the page vertically
+  if(selected){
+    const strip=document.getElementById('listingsStrip');
+    const card=strip.querySelector('.lcard.sel');
+    if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect();
+      strip.scrollLeft += (cr.left - sr.left) - (sr.width/2 - cr.width/2); }
+  }
 }
 
 /* ============================================================
@@ -668,9 +726,8 @@ priorS.oninput=e=>{ PRIOR=+e.target.value; document.getElementById('weightLabel'
 renderMacro();
 renderFan();
 syncWeightLabels();
-renderMapAndRanking();
+renderMapAndRanking();   // also paints the live-listings strip via renderListings()
 renderCriteria();
-renderSavedSearches();
 document.getElementById('weightLabel').textContent=priorLabel(PRIOR);
 </script>
 </body>
