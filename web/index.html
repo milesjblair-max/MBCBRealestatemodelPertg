@@ -36,6 +36,8 @@
     line-height:1.5;
     -webkit-font-smoothing:antialiased;
     padding:0 0 80px;
+    overflow-x:hidden;            /* guard against SVG edge labels causing sideways scroll */
+    -webkit-text-size-adjust:100%;
   }
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
   h1,h2,h3{font-family:"Fraunces","Georgia",serif;font-weight:600;letter-spacing:-.01em;line-height:1.12}
@@ -56,6 +58,7 @@
   .macro .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-2)}
   .macro .v{font-family:"Fraunces",serif;font-size:21px;margin-top:4px;color:var(--paper)}
   .macro .v small{font-size:12px;color:var(--muted);font-family:"Inter",sans-serif}
+  @media(max-width:880px){.macro{grid-template-columns:repeat(3,1fr)}}
 
   section{padding:44px 0;border-bottom:1px solid var(--line)}
   .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
@@ -175,6 +178,27 @@
 
   a.inline{color:var(--teal-bright);text-decoration:none;border-bottom:1px solid rgba(95,208,200,.3)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+  /* ---------- responsive: tablet & phone ---------- */
+  @media(max-width:760px){
+    .wrap{padding:0 16px}
+    header{padding:34px 0 22px}
+    section{padding:34px 0}
+    .sub{font-size:16px}
+    .sec-lead{font-size:15px}
+    .panel{padding:18px}
+  }
+  @media(max-width:440px){
+    .macro{grid-template-columns:repeat(2,1fr)}
+    .macro .v{font-size:18px}
+    .macro .cell{padding:11px 13px}
+    h1{font-size:29px}
+    .legend{gap:9px}
+    .legend span{font-size:11px}
+    .readout{grid-template-columns:1fr 1fr}
+    .saved-searches a{min-width:0;width:100%}
+    .dlinks a{flex:1;text-align:center}
+  }
   @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
