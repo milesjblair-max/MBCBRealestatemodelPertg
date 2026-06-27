@@ -148,6 +148,27 @@ def _int(v):
         return None
 
 
+def _parse_price(text):
+    """Pull a dollar figure out of REA free-text price; None if there isn't one."""
+    if not text:
+        return None
+    m = re.search(r"\$\s*([\d][\d,.]*)\s*([kKmM])?", str(text))
+    if not m:
+        return None
+    try:
+        n = float(m.group(1).replace(",", ""))
+    except ValueError:
+        return None
+    s = (m.group(2) or "").lower()
+    if s == "k":
+        n *= 1e3
+    elif s == "m":
+        n *= 1e6
+    elif n < 100:
+        n *= 1e6
+    return int(round(n)) if n >= 50000 else None
+
+
 PT_DENY = ("unit", "apartment", "flat", "studio", "block of units",
            "retirement", "new apartments")
 UO_TEXT = ("u/o", "under offer", "under contract", "deposit taken", "sold",
@@ -160,8 +181,8 @@ def normalise(items, suburb, pc, median_low_k):
     for L in items:
         if not isinstance(L, dict):
             continue
-        price_n = _int(_dig(L, "price.value", "price.from", "priceDetails.price"))
         price_txt = _dig(L, "price.display", "priceText", "price.label", default="Contact agent")
+        price_n = _int(_dig(L, "price.value", "price.from", "priceDetails.price")) or _parse_price(price_txt)
         beds = _int(_dig(L, "bedrooms", "features.general.bedrooms", "general.bedrooms"))
         baths = _int(_dig(L, "bathrooms", "features.general.bathrooms"))
         cars = _int(_dig(L, "carspaces", "carSpaces", "features.general.carspaces",

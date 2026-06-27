@@ -126,6 +126,20 @@ const photo = await page.evaluate(() => {
 ok(photo === 'https://i3.au.reastatic.net/640x480/abc123/image.jpg',
   'photo renders with a repaired reastatic URL: ' + photo);
 
+// ---- price parsing + bargain flagging from REA free-text ----
+const bargain = await page.evaluate(() => {
+  LISTINGS.listings[0] = { suburb: 'Shelley', pc: '6148', priceText: "Offers in the $800,000's", beds: 3, land: 600, address: 'Test' };
+  renderProperties();
+  return {
+    p1: parsePrice('Offers From $950,000'), p2: parsePrice('From $999k'),
+    p3: parsePrice('Awaiting Price Guide'), p4: parsePrice("LOW $1M's"),
+    count: document.querySelector('#propFilters .fchip[data-filter="bargain"] .ct')?.textContent
+  };
+});
+ok(bargain.p1 === 950000 && bargain.p2 === 999000 && bargain.p3 === null && bargain.p4 === 1000000,
+  'parsePrice reads REA free-text prices: ' + JSON.stringify(bargain));
+ok(Number(bargain.count) >= 1, 'a sub-median listing is flagged as a bargain: ' + bargain.count);
+
 // ---- map: Como once, no duplicate; bubbles; legend key ----
 await page.evaluate(() => showTab('modelling', false));
 await page.waitForTimeout(150);

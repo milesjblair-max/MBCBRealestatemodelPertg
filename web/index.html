@@ -432,7 +432,7 @@
     <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
     <div class="callout">
       <div class="ic">!</div>
-      <p><b style="color:var(--sand)">Honest note on "live."</b> These area cards are deep-links that always open current portal results, a tidy fallback to the property cards above. A static page cannot scrape the portals directly.</p>
+      <p><b style="color:var(--teal-bright)">Both feeds are live.</b> The property cards above are real listings, refreshed daily. These area cards open <strong>current</strong> REA, Domain and REIWA results for each suburb, pre-filtered to <strong>houses, 3+ beds, up to $1.1M</strong> (REIWA filters to houses in the suburb). They reorder live with the proximity-vs-schools slider.</p>
     </div>
   </section>
 
@@ -1069,6 +1069,18 @@ function renderListings(scored){
 
 let PROP_FILTER='all';
 const PROP_FILTERS={all:()=>true, bargain:p=>p.bargain, beds4:p=>(p.beds||0)>=4};
+// pull a dollar figure out of REA's free-text price ("From $999k", "Offers in
+// the $800,000's"); returns null when there is no real number ("Awaiting Price
+// Guide", "OFFERS INVITED").
+function parsePrice(t){
+  if(!t) return null;
+  const m=String(t).match(/\$\s*([\d][\d,.]*)\s*([kKmM])?/);
+  if(!m) return null;
+  let n=parseFloat(m[1].replace(/,/g,'')); if(isNaN(n)) return null;
+  const s=(m[2]||'').toLowerCase();
+  if(s==='k') n*=1e3; else if(s==='m') n*=1e6; else if(n<100) n*=1e6;
+  return n>=50000 ? Math.round(n) : null;
+}
 // reastatic photo URLs need a size segment (e.g. 640x480) right after the
 // domain; the feed sometimes omits it, so insert it so the image actually loads.
 function fixPhoto(u){
@@ -1078,9 +1090,15 @@ function fixPhoto(u){
   return /^\d+x\d+$/.test(m[2].split('/')[0]) ? u : `${m[1]}/640x480/${m[2]}`;
 }
 function renderProperties(){
-  const data=LISTINGS, list=(data.listings||[]).slice().sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
+  const data=LISTINGS;
+  const list=(data.listings||[]).slice();
+  // parse a $ figure out of REA's free-text price ("Offers From $950,000") and
+  // flag a bargain when it sits at or below the bottom of the suburb's median
+  // range. Runs on the live data directly, so no re-fetch needed.
+  list.forEach(p=>{ const sb=SUBURBS.find(s=>s.name===p.suburb); const pr=parsePrice(p.priceText); if(pr) p.price=pr; p.bargain=!!(pr&&sb&&pr<=sb.mlo*1000); });
+  list.sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
   const src=(data.meta&&data.meta.source)||'sample', gen=(data.meta&&data.meta.generated)||'';
-  const sample = src!=='domain-api';
+  const sample = src==='sample';
   document.getElementById('propStatus').innerHTML =
     `<span class="status-dot ${sample?'sample':'live'}"></span>` +
     (sample
