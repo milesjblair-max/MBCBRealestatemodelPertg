@@ -240,9 +240,11 @@
   .appendix ul{margin:4px 0 4px 18px}
   .appendix code,.sec-lead code,footer code{background:var(--ink-3);padding:1px 5px;border-radius:4px;font-size:.92em;color:var(--teal-bright)}
 
-  footer{padding:34px 0 0;color:var(--muted-2);font-size:12px;line-height:1.6;max-width:80ch}
+  footer{padding:34px 0 0;color:var(--muted-2);font-size:12px;line-height:1.6;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  @media(max-width:760px){footer{grid-template-columns:1fr;gap:18px}}
   footer b{color:var(--muted)}
-  .disclaimer{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+  .disclaimer{}
+  @media(max-width:760px){.disclaimer{margin-top:6px;padding-top:16px;border-top:1px solid var(--line)}}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
   /* ---------- UX: interactive chart tooltip ---------- */
@@ -586,7 +588,7 @@
   </section>
 
   <footer>
-    <b>How this model works.</b> A four-layer hybrid: a city-level mean-reversion spine, a probability-weighted scenario engine (the fan chart), a suburb-level relative-performance layer (the heat map), and a property-level hedonic adjustment for land and knock-down-rebuild potential. It is reproducible; the Python in <code>/model</code> regenerates these exact baseline numbers. Full methodology is in the project's skills folder.
+    <div class="methodology"><b>How this model works.</b> A four-layer hybrid: a city-level mean-reversion spine, a probability-weighted scenario engine (the fan chart), a suburb-level relative-performance layer (the heat map), and a property-level hedonic adjustment for land and knock-down-rebuild potential. It is reproducible; the Python in <code>/model</code> regenerates these exact baseline numbers. Full methodology is in the project's skills folder.</div>
     <div class="disclaimer">
       <b>General information only, not financial, legal or tax advice.</b> All figures are approximations as at mid-2026 and will change. Suburb medians vary 10-20% between sources and are shown as ranges; no public source publishes median block size, so the 500sqm requirement must be confirmed per-listing via Landgate. Forecasts are scenario estimates conditioned on the stated assumptions and will be wrong if those assumptions are wrong. Verify against live REIWA, Landgate, RBA and ABS data and licensed professionals before acting.
     </div>

@@ -182,6 +182,19 @@ await page.waitForTimeout(100);
 const w = await page.evaluate(() => ({ bear: Math.round(W.bear), base: Math.round(W.base), bull: Math.round(W.bull) }));
 ok(w.bear === 30 && w.base === 50 && w.bull === 20, 'reset restores baseline weights 30/50/20: ' + JSON.stringify(w));
 
+// ---- footer lays out in two blocks; criteria tab has no mobile overflow ----
+await page.setViewportSize({ width: 390, height: 800 });
+await page.evaluate(() => showTab('criteria', false));
+await page.waitForTimeout(120);
+const foot = await page.evaluate(() => ({
+  meth: !!document.querySelector('footer .methodology'),
+  disc: !!document.querySelector('footer .disclaimer'),
+  overflow: document.documentElement.scrollWidth > window.innerWidth + 1
+}));
+ok(foot.meth && foot.disc, 'footer has methodology and disclaimer blocks');
+ok(!foot.overflow, 'criteria tab has no horizontal overflow at 390px');
+await page.setViewportSize({ width: 1280, height: 900 });
+
 // ---- opens at the top, not jumped to a mid-page section id ----
 // about:blank first so the next goto is a real document load (not a same-doc
 // fragment nav, which would not re-run the boot code).
