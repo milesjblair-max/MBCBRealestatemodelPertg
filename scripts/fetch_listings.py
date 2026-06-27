@@ -151,7 +151,8 @@ def _int(v):
 PT_DENY = ("unit", "apartment", "flat", "studio", "block of units",
            "retirement", "new apartments")
 UO_TEXT = ("u/o", "under offer", "under contract", "deposit taken", "sold",
-           "leased", "now settled")
+           "leased", "now settled", "on hold", "withdrawn", "off market",
+           "not available")
 
 
 def normalise(items, suburb, pc, median_low_k):

@@ -169,7 +169,7 @@
   .pcard .pphoto{margin:-16px -16px 2px;height:152px;overflow:hidden;border-bottom:1px solid var(--line);background:var(--ink-3)}
   .pcard .pphoto img{width:100%;height:100%;object-fit:cover;display:block}
   .pcard .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .pcard .price{font-family:"Fraunces",serif;font-size:21px;color:var(--paper);white-space:nowrap}
+  .pcard .price{font-family:"Fraunces",serif;font-size:20px;line-height:1.2;color:var(--paper);flex:1;min-width:0;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .pcard .badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
   .pcard .badge.bargain{color:var(--sand);background:rgba(216,166,87,.12);border:1px solid rgba(216,166,87,.45)}
   .pcard .badge.fit{color:var(--teal-bright);background:rgba(58,166,160,.1);border:1px solid rgba(58,166,160,.4)}
@@ -417,23 +417,23 @@
     </div>
   </section>
 
+  <section data-tab="listings" id="properties">
+    <div class="sec-head"><span class="sec-num">B</span><h2>Properties that fit (or are a bargain)</h2></div>
+    <p class="sec-lead">Real houses with photos, matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. <b style="color:var(--sand)">Bargains</b> are priced below the suburb median. Each card links straight to the listing; refreshed daily.</p>
+    <div class="status-bar" id="propStatus"></div>
+    <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
+    <div class="prop-grid" id="propGrid"></div>
+  </section>
+
   <section data-tab="listings" id="listings">
-    <div class="sec-head"><span class="sec-num">B</span><h2>Area watchlist</h2></div>
+    <div class="sec-head"><span class="sec-num">C</span><h2>Area watchlist</h2></div>
     <p class="sec-lead">Your in-budget shortlist, ranked by fit score. It <strong>reorders live</strong> with the proximity-vs-schools slider, and every card opens <strong>current</strong> portal results.</p>
     <p class="listings-caption" id="listingsCaption"></p>
     <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
     <div class="callout">
       <div class="ic">!</div>
-      <p><b style="color:var(--sand)">Honest note on "live."</b> These cards are deep-links that always open current portal results. The Properties section below fills with real listings (and photos) once a RapidAPI key is added. See the README for setup.</p>
+      <p><b style="color:var(--sand)">Honest note on "live."</b> These area cards are deep-links that always open current portal results, a tidy fallback to the property cards above. A static page cannot scrape the portals directly.</p>
     </div>
-  </section>
-
-  <section data-tab="listings" id="properties" class="collapsed">
-    <div class="sec-head"><span class="sec-num">C</span><h2>Properties that fit (or are a bargain)</h2></div>
-    <p class="sec-lead">Real houses matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. <b style="color:var(--sand)">Bargains</b> are priced below the suburb median. Fills with live listings once a Domain API key is added; collapsed until then.</p>
-    <div class="status-bar" id="propStatus"></div>
-    <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
-    <div class="prop-grid" id="propGrid"></div>
   </section>
 
   <!-- ============ MODELLING TAB ============ -->

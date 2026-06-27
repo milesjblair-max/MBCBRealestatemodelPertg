@@ -41,8 +41,10 @@ ok(tabs.length === 4 && ['listings', 'modelling', 'construction', 'criteria'].ev
 
 // ---- listings order A, B, C ----
 const order = await page.$$eval('section[data-tab="listings"]', ns => ns.map(n => n.id));
-ok(JSON.stringify(order) === JSON.stringify(['avm', 'listings', 'properties']),
-  'listings order is estimator, watchlist, properties: ' + order);
+ok(JSON.stringify(order) === JSON.stringify(['avm', 'properties', 'listings']),
+  'listings order is estimator, properties, watchlist: ' + order);
+ok(await page.$eval('#properties', n => !n.classList.contains('collapsed')),
+  'properties section auto-displays (not collapsed)');
 
 // ---- collapsibles ----
 const caretCount = await page.$$eval('.sec-head .caret svg', n => n.length);
