@@ -746,15 +746,18 @@ function avmAssess(r, land, beds, baths, cond){
 
 function avmFitColor(f){ return f>=75?"var(--teal-bright)":f>=55?"var(--sand)":"#c98b8b"; }
 
-// Build free, compliant sale-history lookups from the typed address
+// Build free, compliant sale-history lookups from the typed address.
+// Every link is a Google search (always resolves), three of them scoped with
+// site: so they land on that portal's property page. Direct portal URLs need
+// an exact internal slug we cannot build, so they 404; this is robust instead.
 function avmLookups(addr, r){
-  const q=encodeURIComponent((addr||"").trim() || `${r.suburb} ${r.pc} WA`);
-  const sold=encodeURIComponent(((addr||"").trim()||`${r.suburb} WA ${r.pc}`)+" sold price history");
+  const ctx=((addr||"").trim() || r.suburb)+" WA "+r.pc;
+  const g=q=>"https://www.google.com/search?q="+encodeURIComponent(q);
   return [
-    ["Sale history (Google)", `https://www.google.com/search?q=${sold}`],
-    ["realestate.com.au profile", `https://www.realestate.com.au/property/?q=${q}`],
-    ["Domain profile", `https://www.domain.com.au/property-profile/${encodeURIComponent((addr||r.suburb).trim().replace(/[, ]+/g,"-").toLowerCase())}`],
-    ["onthehouse.com.au", `https://www.onthehouse.com.au/search?q=${q}`]
+    ["Sale history", g(ctx+" sold price history")],
+    ["realestate.com.au", g("site:realestate.com.au/property "+ctx)],
+    ["Domain", g("site:domain.com.au/property-profile "+ctx)],
+    ["onthehouse.com.au", g("site:onthehouse.com.au "+ctx)]
   ];
 }
 
