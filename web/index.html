@@ -232,6 +232,31 @@
   .disclaimer{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
 
+  /* ---------- UX: interactive chart tooltip ---------- */
+  #fanChart{touch-action:pan-y}
+  .chart-tip{position:absolute;pointer-events:none;z-index:6;min-width:150px;background:rgba(10,22,36,.97);border:1px solid var(--line);border-radius:10px;padding:9px 11px;box-shadow:0 10px 28px rgba(0,0,0,.5);transform:translate(-50%,-114%);font-size:12px}
+  .chart-tip[hidden]{display:none}
+  .chart-tip .tip-l{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-bottom:6px}
+  .chart-tip .tip-row{display:flex;justify-content:space-between;gap:16px;align-items:center;line-height:1.75}
+  .chart-tip .tip-row span{display:inline-flex;align-items:center;gap:6px;color:var(--muted)}
+  .chart-tip .tip-row b{font-family:"Fraunces",serif;font-variant-numeric:tabular-nums;color:var(--paper)}
+  .chart-tip i{width:8px;height:8px;border-radius:2px;display:inline-block;flex:none}
+  .chart-hint{font-size:11px;color:var(--muted-2);margin-top:8px;text-align:center}
+
+  /* ---------- UX: scenario split bar + smart reset ---------- */
+  .splitbar{display:flex;height:9px;border-radius:5px;overflow:hidden;margin:2px 0 16px;border:1px solid var(--line)}
+  .splitbar span{height:100%;transition:width .15s ease}
+  .btn-reset:disabled{opacity:.55;cursor:default;border-color:var(--line);color:var(--muted-2);background:transparent}
+
+  /* ---------- UX: property filters ---------- */
+  .prop-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .fchip{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--ink-2);border:1px solid var(--line);border-radius:100px;padding:8px 14px;cursor:pointer;transition:background .12s,color .12s,border-color .12s;white-space:nowrap}
+  .fchip:hover{color:var(--paper)}
+  .fchip.active{color:var(--ink);background:var(--teal-bright);border-color:var(--teal-bright)}
+  .fchip .ct{opacity:.65;font-weight:500;margin-left:3px}
+  .fchip:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
+  .prop-empty{grid-column:1/-1;color:var(--muted-2);font-size:14px;padding:14px 2px}
+
   /* ---------- responsive ---------- */
   @media(max-width:760px){
     .wrap{padding:0 16px}
@@ -284,6 +309,7 @@
     <div class="sec-head"><span class="sec-num">A</span><h2>Properties that fit (or are a bargain)</h2></div>
     <p class="sec-lead">Actual houses matching the brief: 3+ beds, 500sqm+, up to ~$1.1M, in the target suburbs. The ceiling is deliberately soft: listing prices are estimates, not sale prices, so a place a little over the band still shows. <b style="color:var(--sand)">Bargains</b> are priced below their suburb median. This list is refreshed daily by a GitHub Action that pulls the Domain Developer API (the compliant route, no scraping).</p>
     <div class="status-bar" id="propStatus"></div>
+    <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
     <div class="prop-grid" id="propGrid"></div>
   </section>
 
@@ -314,6 +340,8 @@
           </div>
         </div>
         <svg id="fanChart" viewBox="0 0 760 420" role="img" aria-label="Fan chart of projected house values across bear, base and bull scenarios"></svg>
+        <div class="chart-tip" id="chartTip" hidden></div>
+        <p class="chart-hint">Hover or tap the chart for the exact values at each point.</p>
       </div>
       <div class="panel controls">
         <h3>Adjust the model</h3>
@@ -321,8 +349,9 @@
         <div class="ctl"><label>Bear case <b><span id="bearW">30</span>%</b></label><input type="range" min="0" max="100" value="30" id="bearSlider" class="sand"></div>
         <div class="ctl"><label>Base case <b><span id="baseW">50</span>%</b></label><input type="range" min="0" max="100" value="50" id="baseSlider"></div>
         <div class="ctl"><label>Bull case <b><span id="bullW">20</span>%</b></label><input type="range" min="0" max="100" value="20" id="bullSlider"></div>
+        <div class="splitbar" id="splitBar" aria-hidden="true"><span style="background:var(--bear)"></span><span style="background:var(--teal)"></span><span style="background:var(--bull)"></span></div>
         <button class="btn-reset" id="resetForecast">&#8635; Reset to baseline</button>
-        <div class="readout">
+        <div class="readout" aria-live="polite">
           <div class="cell"><div class="k">Expected &middot; buy window (End-27)</div><div class="v exp" id="roBuy">$1.07M</div></div>
           <div class="cell"><div class="k">Expected &middot; Mid-29</div><div class="v exp" id="roExp">$1.17M</div></div>
           <div class="cell"><div class="k">Bear floor &middot; worst case</div><div class="v bear" id="roBear">$930k</div></div>
@@ -529,11 +558,25 @@ function fmtK(n){ return "$"+Math.round(n/1000)+"k"; }
 
 let W = {...BASELINE.weights}, PRIOR = BASELINE.prior, selected = null, LISTINGS = INLINE_LISTINGS;
 
-function showTab(name){
-  document.querySelectorAll('[data-tab]').forEach(el=>{ el.style.display = el.getAttribute('data-tab')===name ? '' : 'none'; });
+const TABS=['listings','modelling','construction','criteria'];
+const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function showTab(name, userInitiated){
+  if(!TABS.includes(name)) name='listings';
+  document.querySelectorAll('[data-tab]').forEach(el=>{
+    const on=el.getAttribute('data-tab')===name;
+    el.style.display = on ? '' : 'none';
+    if(on && userInitiated && !reduceMotion && el.animate){
+      el.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:220,easing:'ease'});
+    }
+  });
   document.querySelectorAll('.tab').forEach(b=>{ const on=b.getAttribute('data-target')===name; b.classList.toggle('active',on); b.setAttribute('aria-selected',on); });
+  if(userInitiated){
+    try{ history.replaceState(null,'','#'+name); }catch(_){ location.hash=name; }
+    const nav=document.querySelector('.tabs'); if(nav) window.scrollTo({top:nav.offsetTop-6, behavior:reduceMotion?'auto':'smooth'});
+  }
 }
-document.querySelectorAll('.tab').forEach(b=> b.onclick=()=>showTab(b.getAttribute('data-target')) );
+document.querySelectorAll('.tab').forEach(b=> b.onclick=()=>showTab(b.getAttribute('data-target'), true) );
+window.addEventListener('hashchange',()=>showTab((location.hash||'').replace('#',''), false));
 
 function renderMacro(){
   document.getElementById('macroStrip').innerHTML = MACRO.map(m=>
@@ -566,11 +609,57 @@ function renderFan(){
   const bearVals = tl.map(p=>p.bear), ti = bearVals.indexOf(Math.min(...bearVals));
   svg+=`<circle class="trough-marker" cx="${x(ti)}" cy="${y(tl[ti].bear)}" r="5"/>`;
   svg+=`<text class="pt-label" x="${x(ti)}" y="${y(tl[ti].bear)+20}" text-anchor="middle" fill="var(--sand)">trough ${fmtK(tl[ti].bear)}</text>`;
+  // crosshair group (hidden until hover/tap)
+  svg+=`<g id="xhair" style="display:none">`+
+       `<line id="xhairLine" x1="0" x2="0" y1="${FC.pad.t}" y2="${FC.h-FC.pad.b}" stroke="rgba(255,255,255,.28)" stroke-dasharray="3 3"/>`+
+       `<circle id="xhBear" r="4" fill="var(--bear)" stroke="var(--ink)" stroke-width="1"/>`+
+       `<circle id="xhBase" r="4" fill="var(--teal)" stroke="var(--ink)" stroke-width="1"/>`+
+       `<circle id="xhBull" r="4" fill="var(--bull)" stroke="var(--ink)" stroke-width="1"/>`+
+       `<circle id="xhExp" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/></g>`;
   document.getElementById('fanChart').innerHTML = svg;
+  // store per-period geometry + values for the tooltip
+  FAN.points = tl.map((p,i)=>({x:x(i), label:p.label, bear:y(p.bear), base:y(p.base), bull:y(p.bull), exp:y(exp[i]),
+    vBear:p.bear, vBase:p.base, vBull:p.bull, vExp:exp[i]}));
   document.getElementById('roBuy').textContent  = fmtM(exp[3]);
   document.getElementById('roExp').textContent  = fmtM(exp[exp.length-1]);
   document.getElementById('roBear').textContent = fmtK(Math.min(...bearVals));
   document.getElementById('roBull').textContent = fmtM(tl[tl.length-1].bull);
+  updateSplitAndReset();
+}
+
+/* fan-chart tooltip + crosshair (hover desktop / tap mobile) */
+let FAN = {};
+function chartHover(e){
+  if(!FAN.points) return;
+  const svg=document.getElementById('fanChart'), r=svg.getBoundingClientRect();
+  if(!r.width) return;
+  const cx=(e.touches&&e.touches[0]) ? e.touches[0].clientX : e.clientX;
+  const scale=r.width/FC.w, xunit=(cx-r.left)/scale;
+  let idx=0,best=1e9; FAN.points.forEach((pt,i)=>{ const d=Math.abs(pt.x-xunit); if(d<best){best=d;idx=i;} });
+  const pt=FAN.points[idx], g=document.getElementById('xhair'); if(!g) return;
+  g.style.display='';
+  const L=document.getElementById('xhairLine'); L.setAttribute('x1',pt.x); L.setAttribute('x2',pt.x);
+  const setc=(id,cy)=>{ const c=document.getElementById(id); c.setAttribute('cx',pt.x); c.setAttribute('cy',cy); };
+  setc('xhBear',pt.bear); setc('xhBase',pt.base); setc('xhBull',pt.bull); setc('xhExp',pt.exp);
+  const tip=document.getElementById('chartTip'), card=svg.closest('.chart-card');
+  tip.innerHTML=`<div class="tip-l">${pt.label}</div>`+
+    `<div class="tip-row"><span><i style="background:var(--paper)"></i>Expected</span><b>${fmtM(pt.vExp)}</b></div>`+
+    `<div class="tip-row"><span><i style="background:var(--bull)"></i>Bull</span><b>${fmtM(pt.vBull)}</b></div>`+
+    `<div class="tip-row"><span><i style="background:var(--teal)"></i>Base</span><b>${fmtM(pt.vBase)}</b></div>`+
+    `<div class="tip-row"><span><i style="background:var(--bear)"></i>Bear</span><b>${fmtM(pt.vBear)}</b></div>`;
+  tip.hidden=false;
+  const cr=card.getBoundingClientRect();
+  let left=(r.left+pt.x*scale)-cr.left, top=(r.top+pt.exp*scale)-cr.top;
+  left=Math.max(80,Math.min(cr.width-80,left));
+  tip.style.left=left+'px'; tip.style.top=Math.max(72,top)+'px';
+}
+function chartLeave(){ const t=document.getElementById('chartTip'); if(t)t.hidden=true; const g=document.getElementById('xhair'); if(g)g.style.display='none'; }
+function updateSplitAndReset(){
+  const sb=document.getElementById('splitBar');
+  if(sb){ const sp=sb.children; sp[0].style.width=W.bear+'%'; sp[1].style.width=W.base+'%'; sp[2].style.width=W.bull+'%'; }
+  const rb=document.getElementById('resetForecast');
+  if(rb){ const atBase=Math.round(W.bear)===30&&Math.round(W.base)===50&&Math.round(W.bull)===20;
+    rb.disabled=atBase; rb.innerHTML = atBase ? 'At baseline &middot; 30 / 50 / 20' : '&#8635; Reset to baseline'; }
 }
 
 function projectXY(s){
@@ -660,6 +749,8 @@ function renderListings(scored){
     if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect(); strip.scrollLeft += (cr.left-sr.left)-(sr.width/2-cr.width/2); } }
 }
 
+let PROP_FILTER='all';
+const PROP_FILTERS={all:()=>true, bargain:p=>p.bargain, beds4:p=>(p.beds||0)>=4};
 function renderProperties(){
   const data=LISTINGS, list=(data.listings||[]).slice().sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
   const src=(data.meta&&data.meta.source)||'sample', gen=(data.meta&&data.meta.generated)||'';
@@ -669,7 +760,15 @@ function renderProperties(){
     (sample
       ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a Domain API key (see README) and the daily action swaps them for real listings whose buttons go <b>straight to the property</b>.</span>`
       : `<span><b style="color:var(--bull)">Live from the Domain API</b>${gen?` &middot; refreshed ${gen}`:''}. Each card links straight to the property; bargains are priced below the suburb median.</span>`);
-  document.getElementById('propGrid').innerHTML = list.map(p=>{
+  // filter chips with live counts
+  const counts={all:list.length, bargain:list.filter(PROP_FILTERS.bargain).length, beds4:list.filter(PROP_FILTERS.beds4).length};
+  const chips=[['all','All'],['bargain','Bargains'],['beds4','4+ beds']];
+  document.getElementById('propFilters').innerHTML = chips.map(([k,lbl])=>
+    `<button class="fchip ${PROP_FILTER===k?'active':''}" data-filter="${k}" aria-pressed="${PROP_FILTER===k}">${lbl} <span class="ct">${counts[k]}</span></button>`).join('');
+  document.querySelectorAll('#propFilters .fchip').forEach(b=>{ b.onclick=()=>{ PROP_FILTER=b.getAttribute('data-filter'); renderProperties(); }; });
+  const shown=list.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
+  if(!shown.length){ document.getElementById('propGrid').innerHTML=`<div class="prop-empty">No properties match this filter right now.</div>`; return; }
+  document.getElementById('propGrid').innerHTML = shown.map(p=>{
     const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land&&`${p.land}sqm`].filter(Boolean)
       .map(x=>`<span class="spec">${x}</span>`).join('');
     const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:(p.meets?`<span class="badge fit">Fits</span>`:'');
@@ -721,7 +820,25 @@ renderCriteria();
 renderProperties();
 loadListings();
 document.getElementById('weightLabel').textContent=priorLabel(PRIOR);
-showTab('listings');
+
+/* bind the fan-chart tooltip once (hover desktop / tap mobile) */
+(function(){
+  const fc=document.getElementById('fanChart');
+  fc.addEventListener('pointermove', chartHover);
+  fc.addEventListener('pointerdown', chartHover);
+  // mouse: hide on leave. touch: pointerleave fires right after tap, so keep the
+  // tooltip and auto-hide a moment after the finger lifts instead.
+  fc.addEventListener('pointerleave', e=>{ if(e.pointerType==='mouse') chartLeave(); });
+  fc.addEventListener('pointercancel', e=>{ if(e.pointerType==='mouse') chartLeave(); });
+  fc.addEventListener('pointerup', e=>{ if(e.pointerType!=='mouse') setTimeout(chartLeave,1600); });
+  // explicit touch fallback (some mobile browsers do not synthesise pointer events on tap)
+  fc.addEventListener('touchstart', chartHover, {passive:true});
+  fc.addEventListener('touchmove', chartHover, {passive:true});
+  fc.addEventListener('touchend', ()=>setTimeout(chartLeave,1600));
+})();
+
+/* open the tab named in the URL hash (shareable), else default to listings */
+showTab((location.hash||'').replace('#','') || 'listings', false);
 </script>
 </body>
 </html>
