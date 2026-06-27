@@ -165,10 +165,12 @@
   .pcard{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;transition:transform .12s,border-color .12s}
   .pcard:hover{transform:translateY(-3px);border-color:var(--teal)}
   .pcard.bargain{border-color:rgba(216,166,87,.5)}
-  .pcard .pphoto{margin:-16px -16px 2px;height:152px;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(135deg,#16304a,#1c3a52);display:flex;align-items:center;justify-content:center}
-  .pcard .pphoto img{width:100%;height:100%;object-fit:cover;display:block}
+  .pcard .pphoto{margin:-16px -16px 2px;height:152px;overflow:hidden;border-bottom:1px solid var(--line);position:relative;background:linear-gradient(135deg,#10283f,#1c3a52);display:flex;align-items:center;justify-content:center}
+  .pcard .pphoto img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
   .pcard .pphoto.noimg img{display:none}
-  .pcard .pphoto.noimg::after{content:"\1F3E1";font-size:34px;opacity:.4}
+  /* crafted fallback when a listing has no photo: suburb nameplate, not a placeholder image */
+  .pcard .pphoto .ph-name{position:absolute;z-index:0;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:0 18px;text-align:center;font-family:"Fraunces",serif;font-style:italic;font-size:20px;letter-spacing:.01em;color:rgba(243,241,233,.5)}
+  .pcard .pphoto .ph-name::after{content:"";width:42px;height:2px;border-radius:2px;background:rgba(216,166,87,.55)}
   .pcard .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
   .pcard .price{font-family:"Fraunces",serif;font-size:21px;color:var(--paper);white-space:nowrap}
   .pcard .badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
@@ -1095,9 +1097,10 @@ function renderProperties(){
     // sets direct=true); samples have no underlying house, so they open a suburb search
     const direct = (p.direct!==undefined) ? p.direct : !sample;
     const go = direct ? 'View listing' : `Search ${p.suburb}`;
+    const sub=(p.suburb||'').replace(/"/g,'');
     const photo = p.image
-      ? `<div class="pphoto"><img src="${p.image}" alt="${(p.suburb||'').replace(/"/g,'')}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.pphoto').classList.add('noimg')"></div>`
-      : `<div class="pphoto noimg"></div>`;
+      ? `<div class="pphoto"><span class="ph-name">${sub}</span><img src="${p.image}" alt="${sub}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.pphoto').classList.add('noimg')"></div>`
+      : `<div class="pphoto noimg"><span class="ph-name">${sub}</span></div>`;
     return `<div class="pcard ${p.bargain?'bargain':''}">
       ${photo}
       <div class="ptop"><div class="price">${p.priceText||''}</div>${badge}</div>
