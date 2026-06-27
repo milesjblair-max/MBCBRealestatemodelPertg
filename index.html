@@ -1155,7 +1155,14 @@ document.getElementById('weightLabel').textContent=priorLabel(PRIOR);
 /* open the tab named in the URL hash (shareable), else default to listings */
 initAVM();
 initCollapsibles();
-showTab((location.hash||'').replace('#','') || 'listings', false);
+// Select the tab from the hash, then strip the hash so the browser does not
+// jump to the section whose id matches it (e.g. #listings). Always open at top.
+if('scrollRestoration' in history) history.scrollRestoration='manual';
+const _initTab=(location.hash||'').replace('#','') || 'listings';
+if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){ } }
+showTab(_initTab, false);
+window.scrollTo(0,0);
+window.addEventListener('load',()=>window.scrollTo(0,0));
 </script>
 </body>
 </html>

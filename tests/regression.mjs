@@ -124,6 +124,15 @@ await page.waitForTimeout(100);
 const w = await page.evaluate(() => ({ bear: Math.round(W.bear), base: Math.round(W.base), bull: Math.round(W.bull) }));
 ok(w.bear === 30 && w.base === 50 && w.bull === 20, 'reset restores baseline weights 30/50/20: ' + JSON.stringify(w));
 
+// ---- opens at the top, not jumped to a mid-page section id ----
+// about:blank first so the next goto is a real document load (not a same-doc
+// fragment nav, which would not re-run the boot code).
+await page.goto('about:blank');
+await page.goto(url + '#listings');
+await page.waitForTimeout(350);
+const scrollY = await page.evaluate(() => window.scrollY);
+ok(scrollY < 5, 'page opens at the top even with a #listings hash (scrollY=' + scrollY + ')');
+
 // ---- no console errors accumulated through all interactions ----
 ok(consoleErrors.length === 0, 'no console errors after interactions: ' + JSON.stringify(consoleErrors));
 
