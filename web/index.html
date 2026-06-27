@@ -667,18 +667,22 @@ function renderProperties(){
   document.getElementById('propStatus').innerHTML =
     `<span class="status-dot ${sample?'sample':'live'}"></span>` +
     (sample
-      ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. Add a Domain API key (see README) and the daily action swaps these for real listings with live links.</span>`
-      : `<span><b style="color:var(--bull)">Live from the Domain API</b>${gen?` &middot; refreshed ${gen}`:''}. Bargains are priced below the suburb median.</span>`);
+      ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a Domain API key (see README) and the daily action swaps them for real listings whose buttons go <b>straight to the property</b>.</span>`
+      : `<span><b style="color:var(--bull)">Live from the Domain API</b>${gen?` &middot; refreshed ${gen}`:''}. Each card links straight to the property; bargains are priced below the suburb median.</span>`);
   document.getElementById('propGrid').innerHTML = list.map(p=>{
     const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land&&`${p.land}sqm`].filter(Boolean)
       .map(x=>`<span class="spec">${x}</span>`).join('');
     const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:(p.meets?`<span class="badge fit">Fits</span>`:'');
+    // a card links straight to the property when it is a real listing (live feed
+    // sets direct=true); samples have no underlying house, so they open a suburb search
+    const direct = (p.direct!==undefined) ? p.direct : !sample;
+    const go = direct ? 'View listing' : `Search ${p.suburb}`;
     return `<div class="pcard ${p.bargain?'bargain':''}">
       <div class="ptop"><div class="price">${p.priceText||''}</div>${badge}</div>
       <div><div class="addr">${p.address||p.suburb}</div><div class="loc">${p.suburb} ${p.pc||''}</div></div>
       <div class="specs">${specs}</div>
       <div class="reason">${p.reason||''}</div>
-      <a class="go" href="${p.url}" target="_blank" rel="noopener">View listing &#8599;</a>
+      <a class="go" href="${p.url}" target="_blank" rel="noopener">${go} &#8599;</a>
     </div>`; }).join('');
 }
 function loadListings(){

@@ -101,9 +101,18 @@ def normalise(items, suburb, pc, median_low_k):
             continue
         if beds and beds < MIN_BEDS:
             continue
-        slug = L.get("listingSlug") or ""
-        url = "https://www.domain.com.au/" + slug if slug else \
-            f"https://www.domain.com.au/sale/{suburb.lower().replace(' ', '-')}-wa-{pc}/"
+        slug = L.get("listingSlug") or L.get("seoUrl") or ""
+        listing_id = L.get("id")
+        # direct link to the exact property page when we have a slug or id
+        if slug:
+            url = "https://www.domain.com.au/" + slug.lstrip("/")
+            direct = True
+        elif listing_id:
+            url = f"https://www.domain.com.au/{listing_id}"
+            direct = True
+        else:
+            url = f"https://www.domain.com.au/sale/{suburb.lower().replace(' ', '-')}-wa-{pc}/"
+            direct = False
         meets = bool(beds and beds >= MIN_BEDS and (not land or land >= MIN_LAND)
                      and (not price or price <= MAX_PRICE))
         bargain = bool(price and median_low_k and price <= median_low_k * 1000 * 0.97)
@@ -113,7 +122,7 @@ def normalise(items, suburb, pc, median_low_k):
                          (f"${price:,}" if price else "Contact agent"),
             "beds": beds, "baths": pd.get("bathrooms"), "cars": pd.get("carspaces"),
             "land": land, "address": pd.get("displayableAddress") or f"{suburb} {pc}",
-            "url": url, "bargain": bargain, "meets": meets,
+            "url": url, "direct": direct, "bargain": bargain, "meets": meets,
             "reason": _reason(beds, land, price, median_low_k, bargain),
         })
         if len(out) >= PER_SUBURB:
