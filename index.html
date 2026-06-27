@@ -278,7 +278,18 @@
     .dlinks a{flex:1;text-align:center}
   }
   @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+  /* ---- Collapsible sections ---- */
+  .sec-head.toggle{cursor:pointer;user-select:none}
+  .sec-head.toggle:hover h2{color:var(--teal-bright)}
+  .sec-head.toggle:focus-visible{outline:2px solid var(--teal-bright);outline-offset:4px;border-radius:6px}
+  .sec-head .caret{margin-left:auto;flex:none;color:var(--muted);font-size:13px;line-height:1;transition:transform .2s ease,color .2s ease;padding-left:12px}
+  .sec-head.toggle:hover .caret{color:var(--teal-bright)}
+  section.collapsed > :not(.sec-head){display:none!important}
+  section.collapsed .caret{transform:rotate(-90deg)}
+  section.collapsed .sec-head{margin-bottom:0}
   /* ---- Price estimator / property scorecard ---- */
+  .avm-pull{font-size:12px;color:var(--teal-bright);min-height:0}
+  .avm-pull:not(:empty){margin-top:12px}
   .avm-card{display:block}
   .avm-form{display:grid;grid-template-columns:1fr .8fr .8fr .8fr 1fr auto;gap:14px;align-items:end}
   .avm-field{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
@@ -360,10 +371,10 @@
   <!-- ============ LISTINGS TAB ============ -->
   <section data-tab="listings" id="avm">
     <div class="sec-head"><span class="sec-num">A</span><h2>Price estimator (no price on the ad?)</h2></div>
-    <p class="sec-lead">Copy a property's address from realestate.com.au, Domain or REIWA and paste it here, then add the few details the ad still shows (land, beds, baths). You get an <b>estimated offer range</b>, a one-click <b>sale-history lookup</b>, and a <b>visual scorecard</b> of pros and cons against your ten criteria. No paid data and no scraping; estimates are a guide, not a valuation.</p>
+    <p class="sec-lead">Copy a listing from realestate.com.au, Domain or REIWA and paste it here, ideally the whole line like <em>"12 Example St, Shelley WA 6148, 4 bed 2 bath 720m&sup2;"</em>. I read the <b>suburb, beds, baths and land</b> straight out of the text; fill in anything missing. You get an <b>estimated offer range</b>, a one-click <b>sale-history lookup</b>, and a <b>visual scorecard</b> against your ten criteria. No paid data and no scraping; estimates are a guide, not a valuation.</p>
     <div class="panel avm-card">
       <div class="avm-form">
-        <label class="avm-field avm-addr"><span>Property address (paste it)</span><input type="text" id="avmAddr" placeholder="e.g. 12 Example St, Shelley WA 6148"></label>
+        <label class="avm-field avm-addr"><span>Paste the listing (address, and the bed / bath / land line if it has one)</span><input type="text" id="avmAddr" placeholder="e.g. 12 Example St, Shelley WA 6148, 4 bed 2 bath 720m&sup2;"></label>
         <label class="avm-field"><span>Suburb</span><select id="avmSuburb"></select></label>
         <label class="avm-field"><span>Land sqm</span><input type="number" id="avmLand" inputmode="numeric" min="100" max="3000" placeholder="e.g. 700"></label>
         <label class="avm-field"><span>Bedrooms</span><input type="number" id="avmBeds" inputmode="numeric" min="1" max="8" placeholder="e.g. 4"></label>
@@ -378,28 +389,29 @@
         </select></label>
         <button class="btn-estimate" id="avmGo">Estimate &amp; assess</button>
       </div>
+      <div class="avm-pull" id="avmPull" aria-live="polite"></div>
       <div class="avm-result" id="avmResult" aria-live="polite"></div>
       <p class="avm-note">Only the suburb is required; the more you fill in, the tighter the band. Automated estimates run about +/-10-15%, wider on original or knock-down stock in thin-volume school suburbs, so treat the <b>range</b>, not the midpoint, as the answer. Last-sale and nearby-sold figures are pulled by you through the free public lookups (a true inline feed needs a paid data licence). General information, not a valuation, tax or financial advice.</p>
     </div>
   </section>
 
-  <section data-tab="listings" id="properties">
-    <div class="sec-head"><span class="sec-num">B</span><h2>Properties that fit (or are a bargain)</h2></div>
-    <p class="sec-lead">Actual houses matching the brief: 3+ beds, 500sqm+, up to ~$1.1M, in the target suburbs. The ceiling is deliberately soft: listing prices are estimates, not sale prices, so a place a little over the band still shows. <b style="color:var(--sand)">Bargains</b> are priced below their suburb median. This list is refreshed daily by a GitHub Action that pulls the Domain Developer API (the compliant route, no scraping).</p>
-    <div class="status-bar" id="propStatus"></div>
-    <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
-    <div class="prop-grid" id="propGrid"></div>
-  </section>
-
   <section data-tab="listings" id="listings">
-    <div class="sec-head"><span class="sec-num">C</span><h2>Area watchlist</h2></div>
+    <div class="sec-head"><span class="sec-num">B</span><h2>Area watchlist</h2></div>
     <p class="sec-lead">Wired to <em>Modelling &rarr; Where to buy</em>: this strip is the in-budget shopping list, ranked by the same fit score and <strong>reordering live</strong> with the proximity-vs-schools slider. Pick a suburb anywhere and its card scrolls into view here. Every link opens <strong>current</strong> portal results, newest first.</p>
     <p class="listings-caption" id="listingsCaption"></p>
     <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
     <div class="callout">
       <div class="ic">!</div>
-      <p><b style="color:var(--sand)">Honest note on "live."</b> The property cards above refresh daily via the Domain API; the area cards here are dynamic deep-links that always open current results (saving one on the portal also surfaces future listings). A static page cannot legally scrape realestate.com.au / Domain / REIWA, and anyone claiming otherwise is breaching their terms. See the README for the API-key setup.</p>
+      <p><b style="color:var(--sand)">Honest note on "live."</b> These area cards are dynamic deep-links that always open current results (saving one on the portal also surfaces future listings). The Properties card below fills with real listings once a Domain API key is added. A static page cannot legally scrape realestate.com.au / Domain / REIWA, and anyone claiming otherwise is breaching their terms. See the README for the API-key setup.</p>
     </div>
+  </section>
+
+  <section data-tab="listings" id="properties" class="collapsed">
+    <div class="sec-head"><span class="sec-num">C</span><h2>Properties that fit (or are a bargain)</h2></div>
+    <p class="sec-lead">Actual houses matching the brief: 3+ beds, 500sqm+, up to ~$1.1M, in the target suburbs. The ceiling is deliberately soft: listing prices are estimates, not sale prices, so a place a little over the band still shows. <b style="color:var(--sand)">Bargains</b> are priced below their suburb median. This list fills with real listings once a Domain API key is added (a daily GitHub Action then refreshes it, the compliant route, no scraping). Collapsed by default until then.</p>
+    <div class="status-bar" id="propStatus"></div>
+    <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
+    <div class="prop-grid" id="propGrid"></div>
   </section>
 
   <!-- ============ MODELLING TAB ============ -->
@@ -779,20 +791,56 @@ function renderAVM(){
     </div>`;
 }
 
-function avmMatchSuburb(){
-  const addr=document.getElementById("avmAddr").value.toLowerCase();
-  if(!addr) return;
-  const hit=SUBURBS.find(s=>addr.includes(s.name.toLowerCase()) || addr.includes(s.pc));
+// Read suburb + beds / baths / land straight out of whatever was pasted
+function avmParseAddr(){
+  const t=document.getElementById("avmAddr").value; if(!t) return;
+  const low=t.toLowerCase();
+  const hit=SUBURBS.find(s=>low.includes(s.name.toLowerCase()) || low.includes(s.pc));
   if(hit) document.getElementById("avmSuburb").value=hit.name;
+  const pulled=[];
+  const setIf=(id,re,label)=>{ const m=t.match(re); if(m){ document.getElementById(id).value=parseInt(m[1].replace(/,/g,""),10); pulled.push(label); } };
+  setIf("avmBeds", /(\d+)\s*(?:bedrooms?|beds?|br|bd)\b/i, "beds");
+  setIf("avmBaths", /(\d+)\s*(?:bathrooms?|baths?|ba)\b/i, "baths");
+  setIf("avmLand", /(\d[\d,]*)\s*(?:m²|m2|sqm|sq\.?\s*m|square\s*met)/i, "land");
+  const note=document.getElementById("avmPull");
+  if(note){
+    const bits=[]; if(hit) bits.push(hit.name); bits.push(...pulled);
+    note.textContent = bits.length ? `Read from your text: ${bits.join(", ")}. Adjust anything below, then estimate.` : "";
+  }
 }
 
 function initAVM(){
   const sel=document.getElementById("avmSuburb"); if(!sel) return;
   sel.innerHTML=SUBURBS.map(s=>`<option value="${s.name}">${s.name} ${s.pc}</option>`).join("");
   document.getElementById("avmGo").onclick=renderAVM;
-  document.getElementById("avmAddr").addEventListener("input",avmMatchSuburb);
-  ["avmAddr","avmLand","avmBeds","avmBaths"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{ if(e.key==="Enter"){ avmMatchSuburb(); renderAVM(); } }));
+  document.getElementById("avmAddr").addEventListener("input",avmParseAddr);
+  ["avmAddr","avmLand","avmBeds","avmBaths"].forEach(id=>document.getElementById(id).addEventListener("keydown",e=>{ if(e.key==="Enter"){ avmParseAddr(); renderAVM(); } }));
   document.getElementById("avmCond").addEventListener("change",()=>{ if(document.getElementById("avmResult").innerHTML) renderAVM(); });
+}
+
+// Make every section collapse from its header, with a rotating caret.
+// The price estimator (A) is exempt: it stays open always.
+function initCollapsibles(){
+  document.querySelectorAll("section[data-tab]").forEach(sec=>{
+    if(sec.id==="avm") return;
+    const head=sec.querySelector(".sec-head"); if(!head || head.dataset.toggle) return;
+    head.dataset.toggle="1";
+    head.classList.add("toggle");
+    head.setAttribute("role","button");
+    head.setAttribute("tabindex","0");
+    head.setAttribute("aria-expanded", String(!sec.classList.contains("collapsed")));
+    const car=document.createElement("span");
+    car.className="caret"; car.setAttribute("aria-hidden","true"); car.innerHTML="&#9662;";
+    head.appendChild(car);
+    const toggle=()=>{ const c=sec.classList.toggle("collapsed"); head.setAttribute("aria-expanded", String(!c)); };
+    head.addEventListener("click",toggle);
+    head.addEventListener("keydown",e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
+  });
+}
+function expandSection(id){
+  const sec=document.getElementById(id); if(!sec) return;
+  sec.classList.remove("collapsed");
+  const h=sec.querySelector(".sec-head"); if(h) h.setAttribute("aria-expanded","true");
 }
 
 let W = {...BASELINE.weights}, PRIOR = BASELINE.prior, selected = null, LISTINGS = INLINE_LISTINGS;
@@ -966,7 +1014,7 @@ function bindBubbleEvents(){
     el.onclick=()=>{ selected=el.getAttribute('data-name'); renderMapAndRanking(); };
     el.onkeydown=e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selected=el.getAttribute('data-name'); renderMapAndRanking(); } };
   });
-  document.querySelectorAll('[data-tab-jump]').forEach(a=>{ a.onclick=()=>{ showTab(a.getAttribute('data-tab-jump')); document.getElementById('properties').scrollIntoView({behavior:'smooth'}); }; });
+  document.querySelectorAll('[data-tab-jump]').forEach(a=>{ a.onclick=()=>{ showTab(a.getAttribute('data-tab-jump')); expandSection('listings'); document.getElementById('listings').scrollIntoView({behavior:'smooth'}); }; });
 }
 
 function priorLean(p){ return p<=20?'closest to Como':p<40?'leaning to Como proximity':p<=60?'balanced across proximity and schools':p<80?'leaning to school catchments':'top school catchments'; }
@@ -1078,6 +1126,7 @@ document.getElementById('weightLabel').textContent=priorLabel(PRIOR);
 
 /* open the tab named in the URL hash (shareable), else default to listings */
 initAVM();
+initCollapsibles();
 showTab((location.hash||'').replace('#','') || 'listings', false);
 </script>
 </body>
