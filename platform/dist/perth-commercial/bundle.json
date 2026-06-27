@@ -69,6 +69,59 @@
     ],
     "method": "error-correction spine + weighted leading-indicator score; weights and window derived, not hand-set"
   },
+  "forecast": {
+    "timeline": [
+      {
+        "label": "Now",
+        "t": 0.0,
+        "bear": 2500000,
+        "base": 2500000,
+        "bull": 2500000,
+        "expected": 2500000
+      },
+      {
+        "label": "Yr1",
+        "t": 1.0,
+        "bear": 2450000,
+        "base": 2560000,
+        "bull": 2680000,
+        "expected": 2581000,
+        "trough": true
+      },
+      {
+        "label": "Yr2",
+        "t": 2.0,
+        "bear": 2480000,
+        "base": 2660000,
+        "bull": 2880000,
+        "expected": 2702000
+      },
+      {
+        "label": "Yr3",
+        "t": 3.0,
+        "bear": 2560000,
+        "base": 2780000,
+        "bull": 3080000,
+        "expected": 2842000
+      },
+      {
+        "label": "Yr5",
+        "t": 5.0,
+        "bear": 2700000,
+        "base": 2980000,
+        "bull": 3400000,
+        "expected": 3071000
+      }
+    ],
+    "weights": {
+      "bear": 17,
+      "base": 50,
+      "bull": 33
+    }
+  },
+  "suburbs": [],
+  "listings": [],
+  "data_note": "suburb + listing adapter for this asset class is not wired yet",
   "criteria": {
     "filters": [
       {

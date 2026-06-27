@@ -1,0 +1,40 @@
+name: Platform CI (develop)
+
+# Phase-1 contract test for the productisation work. Runs ONLY on the develop
+# branch when platform/ changes - it validates every profile against the schema
+# and rebuilds the bundles, so a bad profile or engine change fails fast. It does
+# not touch or deploy production.
+
+on:
+  push:
+    branches: [develop]
+    paths: ["platform/**"]
+  pull_request:
+    branches: [develop]
+    paths: ["platform/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate every profile against the schema
+        run: |
+          for f in platform/profiles/*.json; do
+            python3 platform/engine/validate_profile.py "$f"
+          done
+      - name: Build bundles (contract test)
+        run: python3 platform/build.py
+      - name: Assert bundles were produced
+        run: |
+          test -f platform/dist/como-residential/bundle.json
+          test -f platform/dist/perth-commercial/bundle.json
+          test -f platform/dist/index.json
+          echo "platform build OK"

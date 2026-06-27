@@ -33,7 +33,7 @@ vertical, one small strategy module). No core edits. That is the scalability sea
 python3 platform/engine/validate_profile.py platform/profiles/como-residential.json
 python3 platform/build.py                 # builds every profile bundle into dist/
 # preview the config-driven UI (fetch needs http, not file://):
-cd platform && python3 -m http.server 8099   # then open http://localhost:8099/web/index.html
+cd platform && python3 -m http.server 8099   # then open http://localhost:8099/
 ```
 
 Switch the profile dropdown to watch the **same engine** produce a different
@@ -52,7 +52,7 @@ asset class, valuation basis and a **derived** timing call:
 | `engine/assets/residential.py`, `commercial.py` | Per-vertical feature packs (valuation basis, inputs, signals) |
 | `engine/timing.py` | Computes scenario weights + buy-window from valuation gap + leading signals |
 | `build.py` | profile -> validate -> engine -> `dist/<id>/bundle.json` (+ `index.json` manifest) |
-| `web/index.html` | Config-driven proof UI with a live two-tier switcher |
+| `index.html` | Config-driven app: forecast, ranking, listings, two-tier switcher |
 | `dist/` | Generated bundles (a scheduled Action would build + commit these) |
 
 ## Why this stays static-first

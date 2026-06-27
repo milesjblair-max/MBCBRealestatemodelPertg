@@ -19,10 +19,31 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from engine import registry, timing, validate_profile  # noqa: E402
+from engine import registry, timing, validate_profile, forecast, scoring  # noqa: E402
 
 PROFILES_DIR = os.path.join(HERE, "profiles")
 DIST_DIR = os.path.join(HERE, "dist")
+REPO_ROOT = os.path.join(HERE, "..")
+
+# map profile criteria weight keys -> the 6 suburb score dimensions
+_KEY_MAP = {"proximity": "prox", "prox": "prox", "growth": "growth", "family": "family",
+            "land": "land", "post": "post", "kdr": "kdr"}
+
+
+def _weights_map(profile):
+    w = {}
+    for c in profile["criteria"]:
+        if c.get("type") == "weight" and c["key"] in _KEY_MAP:
+            w[_KEY_MAP[c["key"]]] = c["weight"]
+    return w
+
+
+def _load_json(rel):
+    try:
+        with open(os.path.join(REPO_ROOT, rel)) as fh:
+            return json.load(fh)
+    except Exception:
+        return None
 
 
 def build_profile(path):
@@ -38,6 +59,23 @@ def build_profile(path):
     horizon = (profile.get("horizon_years") or {}).get("primary", 3)
     timing_out = timing.derive_timing(gap, signal, horizon)
 
+    # forecast timeline = asset-class anchors blended by the DERIVED weights
+    timeline = forecast.derive_timeline(strat.ANCHORS, timing_out["weights"])
+
+    # suburb ranking + listings, where the vertical has a data adapter
+    ds = strat.datasets(profile)
+    suburbs, listings, data_note = [], [], None
+    if ds.get("suburbs"):
+        raw = _load_json(ds["suburbs"])
+        if raw:
+            suburbs = scoring.rank(raw["suburbs"], _weights_map(profile))
+    else:
+        data_note = "suburb + listing adapter for this asset class is not wired yet"
+    if ds.get("listings"):
+        raw = _load_json(ds["listings"])
+        if raw:
+            listings = raw.get("listings", [])
+
     bundle = {
         "schema_version": 1,
         "profile": {
@@ -48,6 +86,10 @@ def build_profile(path):
         },
         "asset_strategy": strat.MANIFEST,
         "timing": timing_out,
+        "forecast": {"timeline": timeline, "weights": timing_out["weights"]},
+        "suburbs": suburbs,
+        "listings": listings,
+        "data_note": data_note,
         "criteria": {
             "filters": [c for c in profile["criteria"] if c["type"] == "filter"],
             "weights": [c for c in profile["criteria"] if c["type"] == "weight"],

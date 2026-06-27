@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>Platform (DEV) - config-driven property model</title>
+<style>
+  :root{--ink:#0c1b2a;--ink-2:#13293d;--ink-3:#1c3a52;--line:#26465f;--paper:#f3f1e9;
+    --teal:#3aa6a0;--teal-bright:#5fd0c8;--sand:#d8a657;--sand-deep:#c4863a;--bull:#6fae8f;--bear:#cf7a63;
+    --muted:#9fb3c4;--muted-2:#6f8aa0;--r:14px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1100px 560px at 80% -10%,#163049,transparent 60%),var(--ink);
+    color:var(--paper);font-family:"Inter",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 0 70px;overflow-x:hidden;-webkit-text-size-adjust:100%}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+  .devbar{position:sticky;top:0;z-index:30;background:rgba(12,27,42,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:9px 0}
+  .devbar .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .badge-dev{font-size:10px;font-weight:800;letter-spacing:.12em;color:var(--ink);background:var(--sand);
+    padding:4px 9px;border-radius:6px}
+  .devbar .grow{flex:1;min-width:8px}
+  select{font-family:inherit;font-size:13px;font-weight:600;color:var(--paper);background:var(--ink-2);
+    border:1px solid var(--line);border-radius:9px;padding:8px 12px;cursor:pointer}
+  header{padding:28px 0 6px}
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--teal-bright);font-weight:600}
+  h1{font-size:clamp(23px,4vw,34px);margin-top:8px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-size:12px;padding:5px 11px;border-radius:100px;border:1px solid var(--line);background:rgba(58,166,160,.08);color:var(--paper);white-space:nowrap}
+  .chip b{color:var(--teal-bright)}
+  section{padding:26px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:20px;margin-bottom:4px}
+  .lead{font-size:13.5px;color:var(--muted);margin-bottom:16px;max-width:70ch}
+  .grid2{display:grid;grid-template-columns:1fr 300px;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+  .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .pt-label{fill:var(--muted);font-size:10px;font-family:"Inter",sans-serif}
+  .path-line{fill:none;stroke-width:2.5}.exp-line{fill:none;stroke:var(--paper);stroke-width:3}
+  .exp-dot{fill:var(--paper)}.path-band{opacity:.16}
+  .splitbar{display:flex;height:11px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:4px 0 8px}
+  .splitbar span{height:100%}
+  .wl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}.wl b{font-variant-numeric:tabular-nums}
+  .window{margin-top:14px;font-size:13px;background:rgba(216,166,87,.08);border:1px solid rgba(216,166,87,.3);border-radius:10px;padding:11px 13px}
+  .window .lab{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--sand);font-weight:700}
+  .factors{margin:10px 0 0 16px}.factors li{font-size:12px;color:var(--muted);line-height:1.7}
+  .rank{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-top:none;background:var(--ink-2)}
+  .rank:first-child{border-top:1px solid var(--line);border-radius:10px 10px 0 0}.rank:last-child{border-radius:0 0 10px 10px}
+  .rank .n{font-family:"Fraunces",serif;color:var(--muted-2);font-size:13px}
+  .rank .nm{font-size:13.5px;font-weight:500}.rank .nm small{display:block;color:var(--muted-2);font-size:11px}
+  .rank .sc{font-family:"Fraunces",serif;font-size:16px}
+  .prop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .pcard{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px}
+  .pcard.bargain{border-color:rgba(216,166,87,.5)}
+  .pcard .price{font-family:"Fraunces",serif;font-size:19px}
+  .pcard .spec{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:2px 7px;display:inline-block;margin-right:4px}
+  .pcard .go{margin-top:auto;font-size:12px;font-weight:600;color:var(--teal-bright);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:8px;text-align:center;background:rgba(58,166,160,.06)}
+  .crit{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .crit:last-child{border-bottom:none}.crit .w{color:var(--teal-bright);font-variant-numeric:tabular-nums}
+  .crit .f{color:var(--sand);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+  .kv{font-size:13px;color:var(--muted);line-height:1.9}.kv b{color:var(--paper)}
+  .adapter{font-size:13px;color:var(--muted);background:var(--ink-2);border:1px dashed var(--line);border-radius:12px;padding:16px}
+  .note{font-size:11.5px;color:var(--muted-2);padding-top:18px;line-height:1.6}.note code{background:var(--ink-3);padding:1px 5px;border-radius:4px;color:var(--teal-bright)}
+</style>
+</head>
+<body>
+<div class="devbar"><div class="wrap">
+  <span class="badge-dev">DEV PREVIEW</span>
+  <span style="font-size:12px;color:var(--muted)">platform / develop branch</span>
+  <span class="grow"></span>
+  <label style="font-size:12px;color:var(--muted)" for="sel">Profile</label>
+  <select id="sel" aria-label="Choose profile"></select>
+</div></div>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Config-driven engine &middot; productisation</div>
+    <h1 id="title">Loading...</h1>
+    <div class="chips" id="chips"></div>
+  </header>
+  <div id="body"></div>
+  <p class="note">Everything below is rendered from <code>dist/&lt;profile&gt;/bundle.json</code>, built by
+  <code>platform/build.py</code> from a declarative profile + the shared engine. The scenario weights and
+  buy-window are <b>derived</b>, not hand-set. This is the DEV instance on the <code>develop</code> branch;
+  it does not affect production.</p>
+</div>
+
+<script>
+const fmtM=n=>n>=1e6?'$'+(n/1e6).toFixed(2)+'M':'$'+Math.round(n/1000)+'k';
+const COL={bear:'var(--bear)',base:'var(--teal)',bull:'var(--bull)'};
+
+function fan(tl){
+  const W=760,H=360,pad={t:18,r:16,b:34,l:60};
+  const vals=tl.flatMap(p=>[p.bear,p.bull]).concat(tl.map(p=>p.expected));
+  const mn=Math.min(...vals)*.985,mx=Math.max(...vals)*1.015;
+  const iw=W-pad.l-pad.r,ih=H-pad.t-pad.b;
+  const x=i=>pad.l+(i/(tl.length-1))*iw, y=v=>pad.t+(1-(v-mn)/(mx-mn))*ih;
+  let s='';
+  for(let i=0;i<=4;i++){const val=mn+(mx-mn)*i/4,yy=y(val);
+    s+=`<line x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}" stroke="rgba(255,255,255,.05)"/>`;
+    s+=`<text x="${pad.l-8}" y="${yy+4}" text-anchor="end" class="pt-label">${fmtM(val)}</text>`;}
+  tl.forEach((p,i)=>s+=`<text x="${x(i)}" y="${H-pad.b+18}" text-anchor="middle" class="pt-label">${p.label}</text>`);
+  let top='',bot='';
+  tl.forEach((p,i)=>top+=`${i?'L':'M'}${x(i)},${y(p.bull)} `);
+  for(let i=tl.length-1;i>=0;i--)bot+=`L${x(i)},${y(tl[i].bear)} `;
+  s+=`<path class="path-band" fill="var(--teal)" d="${top}${bot}Z"/>`;
+  const line=(k,c)=>{let d='';tl.forEach((p,i)=>d+=`${i?'L':'M'}${x(i)},${y(p[k])} `);return `<path class="path-line" stroke="${c}" d="${d}"/>`;};
+  s+=line('bear',COL.bear)+line('base',COL.base)+line('bull',COL.bull);
+  let de='';tl.forEach((p,i)=>de+=`${i?'L':'M'}${x(i)},${y(p.expected)} `);
+  s+=`<path class="exp-line" d="${de}"/>`;
+  tl.forEach((p,i)=>s+=`<circle class="exp-dot" cx="${x(i)}" cy="${y(p.expected)}" r="3.2"/>`);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="forecast">${s}</svg>`;
+}
+function critRow(c){const v=c.type==='weight'?Math.round(c.weight*100)+'%':(Array.isArray(c.value)?fmtM(c.value[0])+'-'+fmtM(c.value[1]):(c.value??''));
+  return `<div class="crit"><span>${c.label||c.key}${c.type==='filter'?' <span class="f">filter</span>':''}</span><span class="w">${v}</span></div>`;}
+
+function render(b){
+  const p=b.profile,t=b.timing,w=t.weights,win=t.buy_window;
+  document.getElementById('title').textContent=p.label;
+  document.getElementById('chips').innerHTML=
+    `<span class="chip">Asset class <b>${p.asset_class}</b></span>`+
+    `<span class="chip">Budget <b>${fmtM(p.budget_band[0])}-${fmtM(p.budget_band[1])}</b></span>`+
+    `<span class="chip">Horizon <b>${(p.horizon_years||{}).primary||'?'}y</b></span>`+
+    `<span class="chip">Basis <b>${b.asset_strategy.valuation_basis}</b></span>`;
+  const split=['bear','base','bull'].map(k=>`<span style="width:${w[k]}%;background:${COL[k]}"></span>`).join('');
+  const suburbsHTML = b.suburbs.length
+    ? b.suburbs.map((s,i)=>`<div class="rank"><span class="n">${String(i+1).padStart(2,'0')}</span>
+        <span class="nm">${s.name}<small>${s.pc} &middot; ${s.km}km &middot; ~$${s.mlo}k-$${s.mhi}k</small></span>
+        <span class="sc" style="color:${s.over?'var(--bear)':'var(--teal-bright)'}">${s.score}</span></div>`).join('')
+    : `<div class="adapter">${b.data_note||'No suburb data for this asset class yet.'} The same scorer runs the moment a commercial data adapter is added - no engine change.</div>`;
+  const listHTML = b.listings.length
+    ? b.listings.slice(0,9).map(l=>`<div class="pcard ${l.bargain?'bargain':''}">
+        <div class="price">${l.priceText||fmtM(l.price)}</div>
+        <div style="font-size:13px;font-weight:600">${l.address||l.suburb}</div>
+        <div><span class="spec">${l.beds} bed</span><span class="spec">${l.land}sqm</span>${l.bargain?'<span class="spec" style="color:var(--sand)">bargain</span>':''}</div>
+        <a class="go" href="${l.url}" target="_blank" rel="noopener">View &#8599;</a></div>`).join('')
+    : `<div class="adapter">No listing adapter for this asset class yet.</div>`;
+  document.getElementById('body').innerHTML=`
+    <section>
+      <h2>The forecast</h2>
+      <p class="lead">The fan is the asset class's calibrated scenario paths. The white line is the expected path using the <b>engine-derived</b> weights, not hand-set numbers.</p>
+      <div class="grid2">
+        <div class="panel">${fan(b.forecast.timeline)}</div>
+        <div class="panel">
+          <div style="font-size:13px;color:var(--muted);margin-bottom:8px">Derived scenario weights</div>
+          <div class="splitbar">${split}</div>
+          <div class="wl"><span style="color:var(--bear)">Bear <b>${w.bear}%</b></span><span style="color:var(--teal-bright)">Base <b>${w.base}%</b></span><span style="color:var(--bull)">Bull <b>${w.bull}%</b></span></div>
+          <div class="window"><div class="lab">Buy window &middot; ${win.label}</div>${win.open?`Open ${win.from} to ${win.to}. `:''}${win.rationale}.</div>
+          <ul class="factors">${t.factors.map(f=>`<li>${f}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h2>Where to buy</h2>
+      <p class="lead">Suburbs scored 0-100 with the user's profile weights, by the shared scorer.</p>
+      ${suburbsHTML}
+    </section>
+    <section>
+      <h2>Listings</h2>
+      <p class="lead">Properties that fit the brief; bargains flagged.</p>
+      <div class="prop-grid">${listHTML}</div>
+    </section>
+    <section>
+      <h2>Preferences (profile config)</h2>
+      <p class="lead">${b.criteria.weights.length} weighted, ${b.criteria.filters.length} hard filters - owned by the user.</p>
+      ${b.criteria.filters.map(critRow).join('')}${b.criteria.weights.map(critRow).join('')}
+    </section>`;
+}
+async function loadIndex(){try{const r=await fetch('dist/index.json',{cache:'no-store'});if(r.ok)return (await r.json()).profiles;}catch(_){}return['como-residential','perth-commercial'];}
+async function boot(){
+  const sel=document.getElementById('sel'); const ids=await loadIndex();
+  sel.innerHTML=ids.map(id=>`<option value="${id}">${id}</option>`).join('');
+  const params=new URLSearchParams(location.search); let cur=params.get('profile'); if(!ids.includes(cur))cur=ids[0]; sel.value=cur;
+  async function show(id){try{const r=await fetch(`dist/${id}/bundle.json`,{cache:'no-store'});if(!r.ok)throw new Error('run: python3 platform/build.py');render(await r.json());}
+    catch(e){document.getElementById('body').innerHTML=`<section style="color:var(--bear)">${e.message}</section>`;}}
+  sel.onchange=()=>{history.replaceState(null,'','?profile='+sel.value);show(sel.value);};
+  show(cur);
+}
+boot();
+</script>
+</body>
+</html>

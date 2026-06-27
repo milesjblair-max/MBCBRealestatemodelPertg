@@ -21,5 +21,21 @@ MARKET = {
 }
 
 
+# Illustrative anchor paths for a ~$2.5M Perth metro asset (capital value).
+# Clearly a placeholder until the commercial data adapter (NOI/cap-rate) is wired.
+ANCHORS = [
+    ("Now", 0.0, 2_500_000, 2_500_000, 2_500_000),
+    ("Yr1", 1.0, 2_450_000, 2_560_000, 2_680_000),
+    ("Yr2", 2.0, 2_480_000, 2_660_000, 2_880_000),
+    ("Yr3", 3.0, 2_560_000, 2_780_000, 3_080_000),
+    ("Yr5", 5.0, 2_700_000, 2_980_000, 3_400_000),
+]
+
+
 def market_inputs(profile):
     return MARKET["valuation_gap_pct"], MARKET["signal_score"]
+
+
+def datasets(profile):
+    """No commercial suburb/listing adapter yet - returns nothing (UI shows a note)."""
+    return {"suburbs": None, "listings": None}
