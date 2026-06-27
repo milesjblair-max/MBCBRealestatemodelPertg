@@ -177,7 +177,7 @@
   .pcard .pfit small{font-size:11px;color:var(--muted);font-family:"Inter",sans-serif}
   .pcard .badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
   .pcard .badge.bargain{color:var(--sand);background:rgba(216,166,87,.12);border:1px solid rgba(216,166,87,.45)}
-  .pcard .badge.fit{color:var(--teal-bright);background:rgba(58,166,160,.1);border:1px solid rgba(58,166,160,.4)}
+  .pcard .badge.fit,.pcard .badge.new{color:var(--teal-bright);background:rgba(58,166,160,.1);border:1px solid rgba(58,166,160,.4)}
   .pcard .addr{font-size:14px;font-weight:600;color:var(--paper)}
   .pcard .loc{font-size:12px;color:var(--muted-2)}
   .pcard .specs{display:flex;flex-wrap:wrap;gap:6px}
@@ -262,7 +262,10 @@
   .btn-reset:disabled{opacity:.55;cursor:default;border-color:var(--line);color:var(--muted-2);background:transparent}
 
   /* ---------- UX: property filters ---------- */
-  .prop-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+  .prop-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:14px}
+  .prop-sort{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted-2)}
+  .prop-sort select{background:var(--ink-2);color:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:inherit;font-size:12.5px;cursor:pointer;outline:none}
+  .prop-sort select:focus{border-color:var(--teal-bright)}
   .fchip{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--ink-2);border:1px solid var(--line);border-radius:100px;padding:8px 14px;cursor:pointer;transition:background .12s,color .12s,border-color .12s;white-space:nowrap}
   .fchip:hover{color:var(--paper)}
   .fchip.active{color:var(--ink);background:var(--teal-bright);border-color:var(--teal-bright)}
@@ -1066,8 +1069,8 @@ function renderListings(scored){
     if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect(); strip.scrollLeft += (cr.left-sr.left)-(sr.width/2-cr.width/2); } }
 }
 
-let PROP_FILTER='all';
-const PROP_FILTERS={all:()=>true, bargain:p=>p.bargain, beds4:p=>(p.beds||0)>=4};
+let PROP_FILTER='all', PROP_SORT='bargain';
+const PROP_FILTERS={all:()=>true, new:p=>p.new, bargain:p=>p.bargain, beds4:p=>(p.beds||0)>=4};
 // pull a dollar figure out of REA's free-text price ("From $999k", "Offers in
 // the $800,000's"); returns null when there is no real number ("Awaiting Price
 // Guide", "OFFERS INVITED").
@@ -1107,8 +1110,11 @@ function renderProperties(){
   // parse a $ figure out of REA's free-text price ("Offers From $950,000") and
   // flag a bargain when it sits at or below the bottom of the suburb's median
   // range. Runs on the live data directly, so no re-fetch needed.
-  list.forEach(p=>{ const sb=SUBURBS.find(s=>s.name===p.suburb); const pr=parsePrice(p.priceText); if(pr) p.price=pr; p.bargain=!!(pr&&sb&&pr<=sb.mlo*1000); });
-  list.sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
+  list.forEach(p=>{ const sb=SUBURBS.find(s=>s.name===p.suburb); const pr=parsePrice(p.priceText); if(pr) p.price=pr; p.bargain=!!(pr&&sb&&pr<=sb.mlo*1000); p._fit=listingFit(p); });
+  if(PROP_FILTER==='new' && !list.some(PROP_FILTERS.new)) PROP_FILTER='all';
+  if(PROP_SORT==='fit') list.sort((a,b)=>(b._fit||0)-(a._fit||0));
+  else if(PROP_SORT==='price') list.sort((a,b)=>(a.price||9e9)-(b.price||9e9));
+  else list.sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
   const src=(data.meta&&data.meta.source)||'sample', gen=(data.meta&&data.meta.generated)||'';
   const sample = src==='sample';
   document.getElementById('propStatus').innerHTML =
@@ -1117,18 +1123,24 @@ function renderProperties(){
       ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a RapidAPI key (see README) and the daily action swaps them for real listings, with photos, whose buttons go <b>straight to the property</b>.</span>`
       : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''}. Each card links straight to the property; bargains are priced below the suburb median.</span>`);
   // filter chips with live counts
-  const counts={all:list.length, bargain:list.filter(PROP_FILTERS.bargain).length, beds4:list.filter(PROP_FILTERS.beds4).length};
-  const chips=[['all','All'],['bargain','Bargains'],['beds4','4+ beds']];
+  const newCount=list.filter(PROP_FILTERS.new).length;
+  const counts={all:list.length, new:newCount, bargain:list.filter(PROP_FILTERS.bargain).length, beds4:list.filter(PROP_FILTERS.beds4).length};
+  const chips=[['all','All'],...(newCount?[['new','New today']]:[]),['bargain','Bargains'],['beds4','4+ beds']];
+  const sortSel=`<label class="prop-sort">Sort <select id="propSort" aria-label="Sort properties">`+
+    [['bargain','Bargains first'],['fit','Best fit'],['price','Price: low to high']].map(([v,l])=>
+      `<option value="${v}"${PROP_SORT===v?' selected':''}>${l}</option>`).join('')+`</select></label>`;
   document.getElementById('propFilters').innerHTML = chips.map(([k,lbl])=>
-    `<button class="fchip ${PROP_FILTER===k?'active':''}" data-filter="${k}" aria-pressed="${PROP_FILTER===k}">${lbl} <span class="ct">${counts[k]}</span></button>`).join('');
+    `<button class="fchip ${PROP_FILTER===k?'active':''}" data-filter="${k}" aria-pressed="${PROP_FILTER===k}">${lbl} <span class="ct">${counts[k]}</span></button>`).join('') + sortSel;
   document.querySelectorAll('#propFilters .fchip').forEach(b=>{ b.onclick=()=>{ PROP_FILTER=b.getAttribute('data-filter'); renderProperties(); }; });
+  const ps=document.getElementById('propSort'); if(ps) ps.onchange=e=>{ PROP_SORT=e.target.value; renderProperties(); };
   const shown=list.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
   if(!shown.length){ document.getElementById('propGrid').innerHTML=`<div class="prop-empty">No properties match this filter right now.</div>`; return; }
   document.getElementById('propGrid').innerHTML = shown.map(p=>{
     const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land&&`${p.land}sqm`].filter(Boolean)
       .map(x=>`<span class="spec">${x}</span>`).join('');
-    const fit=listingFit(p);
+    const fit=p._fit;
     const fitChip = fit!=null ? `<span class="pfit" title="Buyer-fit against your ten criteria">${fit}<small>/100</small></span>` : '';
+    const newBadge = p.new ? `<span class="badge new">New</span>` : '';
     const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:'';
     // a card links straight to the property when it is a real listing (live feed
     // sets direct=true); samples have no underlying house, so they open a suburb search
@@ -1143,7 +1155,7 @@ function renderProperties(){
       : '';
     return `<div class="pcard ${p.bargain?'bargain':''}">
       ${photo}
-      <div class="ptop"><div class="price">${p.priceText||''}</div><div class="ptags">${fitChip}${badge}</div></div>
+      <div class="ptop"><div class="price">${p.priceText||''}</div><div class="ptags">${fitChip}${newBadge}${badge}</div></div>
       <div><div class="addr">${p.address||p.suburb}</div><div class="loc">${p.suburb} ${p.pc||''}</div></div>
       <div class="specs">${specs}</div>
       <div class="reason">${p.reason||''}</div>

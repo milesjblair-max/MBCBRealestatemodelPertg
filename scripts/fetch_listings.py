@@ -288,6 +288,20 @@ def main():
     listings.sort(key=lambda x: (not x["bargain"], x["price"] or 9_9_9_9_9_9_9))
     listings = listings[:TOTAL_CAP]
 
+    # flag listings that are new since the previous refresh (yesterday's file),
+    # keyed on the property URL (which carries the unique listing id)
+    prev_urls = set()
+    try:
+        with open(OUT_PATH) as fh:
+            for x in json.load(fh).get("listings", []):
+                if x.get("url"):
+                    prev_urls.add(x["url"])
+    except (OSError, ValueError):
+        pass
+    for x in listings:
+        x["new"] = bool(x.get("url") and x["url"] not in prev_urls)
+    print(f"  {sum(1 for x in listings if x['new'])} new since last refresh")
+
     if not listings:
         print("No live listings parsed. Keeping the committed sample so the page "
               "does not go blank. Check the [shape] logs above and adjust field "

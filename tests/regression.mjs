@@ -147,6 +147,22 @@ ok(bargain.p1 === 950000 && bargain.p2 === 999000 && bargain.p3 === null && barg
   'parsePrice reads REA free-text prices: ' + JSON.stringify(bargain));
 ok(Number(bargain.count) >= 1, 'a sub-median listing is flagged as a bargain: ' + bargain.count);
 
+// ---- sort by best fit + new-listings filter ----
+const sortChk = await page.evaluate(() => {
+  LISTINGS.listings.forEach((p, i) => { p.new = (i < 2); });
+  PROP_SORT = 'fit'; renderProperties();
+  const fits = [...document.querySelectorAll('#propGrid .pfit')].map(e => parseInt(e.textContent, 10));
+  return {
+    hasSort: !!document.getElementById('propSort'),
+    desc: fits.length > 1 && fits.every((v, i) => i === 0 || fits[i - 1] >= v),
+    newChip: !!document.querySelector('#propFilters .fchip[data-filter="new"]'),
+    newBadge: !!document.querySelector('#propGrid .badge.new')
+  };
+});
+ok(sortChk.hasSort, 'sort dropdown present');
+ok(sortChk.desc, 'Best fit sort orders highest fit first');
+ok(sortChk.newChip && sortChk.newBadge, 'New filter + badge appear when listings are new');
+
 // ---- map: Como once, no duplicate; bubbles; legend key ----
 await page.evaluate(() => showTab('modelling', false));
 await page.waitForTimeout(150);
