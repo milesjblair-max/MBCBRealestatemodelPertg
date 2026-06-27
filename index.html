@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Como-Anchored Perth Home Model</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNyIgZmlsbD0iIzBjMWIyYSIvPjxwYXRoIGQ9Ik0xNiA0QzEwLjcgNCA2LjYgOCA2LjYgMTMuMSA2LjYgMTkuOCAxNiAyOCAxNiAyOHM5LjQtOC4yIDkuNC0xNC45QzI1LjQgOCAyMS4zIDQgMTYgNHoiIGZpbGw9IiMzYWE2YTAiLz48cGF0aCBkPSJNMTYgOC42bDUuMiA0LjJ2Ni4wSDEwLjh2LTYuMHoiIGZpbGw9IiMwYzFiMmEiLz48cGF0aCBkPSJNMTYgOC42bDUuMiA0LjJIMTAuOHoiIGZpbGw9IiNkOGE2NTciLz48L3N2Zz4=">
 <style>
   :root{
     --ink:#0c1b2a; --ink-2:#13293d; --ink-3:#1c3a52; --line:#26465f;
@@ -113,11 +114,15 @@
   .callout p{font-size:13px;color:var(--paper);line-height:1.55}
 
   /* ---------- heat map ---------- */
-  .heat-grid{display:grid;grid-template-columns:1fr 300px;gap:20px}
+  .heat-grid{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
   @media(max-width:880px){.heat-grid{grid-template-columns:1fr}}
   .map-wrap{position:relative;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-  .map-legend{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:11px;color:var(--muted)}
-  .grad-bar{height:8px;flex:1;border-radius:4px;background:linear-gradient(90deg,#2a4a5e,#3aa6a0,#d8a657)}
+  .map-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:14px;font-size:11.5px;color:var(--muted)}
+  .map-legend .lg-row{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .lg-grad{width:60px;height:9px;border-radius:5px;background:linear-gradient(90deg,#2a4a5e,#3aa6a0,#d8a657)}
+  .lg-sw{width:13px;height:13px;border-radius:50%;display:inline-block;flex:none}
+  .lg-star{color:var(--sand);font-size:13px;line-height:1}
+  .lg-note{color:var(--muted-2);font-style:italic}
   .bubble{cursor:pointer;transition:opacity .15s}
   .bubble:hover{opacity:.85}
   .map-label{fill:var(--paper);font-size:10.5px;font-family:"Inter",sans-serif;pointer-events:none}
@@ -293,8 +298,8 @@
   .how li{position:relative;padding-left:38px;margin-bottom:11px;color:var(--muted);font-size:16px;line-height:1.55}
   .how li::before{counter-increment:how;content:counter(how);position:absolute;left:0;top:0;width:25px;height:25px;border-radius:50%;background:rgba(58,166,160,.16);border:1px solid var(--line);color:var(--teal-bright);font-size:12.5px;font-weight:700;display:grid;place-items:center}
   .how li b{color:var(--paper)} .how li em{color:var(--muted)}
-  /* Desktop only: let the estimator intro use the width instead of a cramped column. Mobile untouched. */
-  @media(min-width:900px){ #avm .sec-lead, #avm .how{max-width:94ch} }
+  /* Desktop only: let every section intro use the width instead of a cramped column. Mobile untouched. */
+  @media(min-width:900px){ .sec-lead, .how{max-width:94ch} }
   /* ---- Price estimator / property scorecard ---- */
   .avm-pull{font-size:12px;color:var(--teal-bright);min-height:0}
   .avm-pull:not(:empty){margin-top:12px}
@@ -411,18 +416,18 @@
 
   <section data-tab="listings" id="listings">
     <div class="sec-head"><span class="sec-num">B</span><h2>Area watchlist</h2></div>
-    <p class="sec-lead">Wired to <em>Modelling &rarr; Where to buy</em>: this strip is the in-budget shopping list, ranked by the same fit score and <strong>reordering live</strong> with the proximity-vs-schools slider. Pick a suburb anywhere and its card scrolls into view here. Every link opens <strong>current</strong> portal results, newest first.</p>
+    <p class="sec-lead">Your in-budget shortlist, ranked by fit score. It <strong>reorders live</strong> with the proximity-vs-schools slider, and every card opens <strong>current</strong> portal results.</p>
     <p class="listings-caption" id="listingsCaption"></p>
     <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
     <div class="callout">
       <div class="ic">!</div>
-      <p><b style="color:var(--sand)">Honest note on "live."</b> These area cards are dynamic deep-links that always open current results (saving one on the portal also surfaces future listings). The Properties card below fills with real listings once a Domain API key is added. A static page cannot legally scrape realestate.com.au / Domain / REIWA, and anyone claiming otherwise is breaching their terms. See the README for the API-key setup.</p>
+      <p><b style="color:var(--sand)">Honest note on "live."</b> These cards are deep-links that always open current portal results. Real embedded listings need a Domain API key (they show in Properties below); a static page can't legally scrape the portals. See the README for setup.</p>
     </div>
   </section>
 
   <section data-tab="listings" id="properties" class="collapsed">
     <div class="sec-head"><span class="sec-num">C</span><h2>Properties that fit (or are a bargain)</h2></div>
-    <p class="sec-lead">Actual houses matching the brief: 3+ beds, 500sqm+, up to ~$1.1M, in the target suburbs. The ceiling is deliberately soft: listing prices are estimates, not sale prices, so a place a little over the band still shows. <b style="color:var(--sand)">Bargains</b> are priced below their suburb median. This list fills with real listings once a Domain API key is added (a daily GitHub Action then refreshes it, the compliant route, no scraping). Collapsed by default until then.</p>
+    <p class="sec-lead">Real houses matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. <b style="color:var(--sand)">Bargains</b> are priced below the suburb median. Fills with live listings once a Domain API key is added; collapsed until then.</p>
     <div class="status-bar" id="propStatus"></div>
     <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
     <div class="prop-grid" id="propGrid"></div>
@@ -431,7 +436,7 @@
   <!-- ============ MODELLING TAB ============ -->
   <section data-tab="modelling" id="forecast">
     <div class="sec-head"><span class="sec-num">01</span><h2>The forecast</h2></div>
-    <p class="sec-lead">Three scenarios, probability-weighted. The white line is the expected path: what you get when you weight bear, base and bull together. The shaded band is the spread between the worst and best cases. Drag the weights on the right; the picture moves.</p>
+    <p class="sec-lead">Three probability-weighted scenarios. The white line is the expected path; the shaded band is the worst-to-best spread. Drag the weights on the right and the picture moves.</p>
     <div class="forecast-grid">
       <div class="panel chart-card">
         <div class="chart-title">
@@ -472,7 +477,7 @@
 
   <section data-tab="modelling" id="suburbs">
     <div class="sec-head"><span class="sec-num">02</span><h2>Where to buy</h2></div>
-    <p class="sec-lead">Every suburb scored 0-100 against the ten criteria, anchored on Como. The catch: "best" depends on whether you weight <em>being near family</em> or <em>being in a top school catchment</em>; they pull in different directions. Drag the slider and watch the ranking reorder. Bigger, warmer bubbles are better fits.</p>
+    <p class="sec-lead">Every suburb scored 0-100, anchored on Como. "Best" depends on whether you weight <em>nearness to family</em> or <em>a top school catchment</em>, so drag the slider and the ranking reorders. Bigger, warmer bubbles fit better.</p>
     <div class="panel" style="margin-bottom:18px">
       <div class="ctl" style="margin-bottom:6px">
         <label>What matters more for the family? <b id="weightLabel">Balanced</b></label>
@@ -482,8 +487,13 @@
     </div>
     <div class="heat-grid">
       <div class="map-wrap">
-        <svg id="heatMap" viewBox="0 0 600 460" role="img" aria-label="Map of Perth suburbs scored by fit, centred on Como"></svg>
-        <div class="map-legend"><span>Lower fit</span><div class="grad-bar"></div><span>Higher fit</span></div>
+        <svg id="heatMap" viewBox="110 62 380 350" role="img" aria-label="Map of Perth suburbs scored by fit, centred on Como"></svg>
+        <div class="map-legend">
+          <span class="lg-row"><span class="lg-grad"></span>fit: teal = lower, <b style="color:var(--sand)">gold = best</b></span>
+          <span class="lg-row"><span class="lg-sw" style="background:rgba(207,122,99,.75)"></span>over budget</span>
+          <span class="lg-row"><span class="lg-star">&#9733;</span>Como (anchor)</span>
+          <span class="lg-row lg-note">bigger bubble = better fit</span>
+        </div>
       </div>
       <div>
         <div class="rank-list" id="rankList"></div>
@@ -498,7 +508,7 @@
   <!-- ============ MODEL CONSTRUCTION TAB ============ -->
   <section data-tab="construction" id="construction">
     <div class="sec-head"><span class="sec-num">&#9874;</span><h2>How the model was built</h2></div>
-    <p class="sec-lead">No single method wins at a single-city, suburb-level, 5-year horizon, so this is a four-layer hybrid. Each layer is placed where it is strongest, and the forecast is reproducible: the Python in <code>/model</code> regenerates the exact baseline numbers and self-verifies.</p>
+    <p class="sec-lead">No single method wins at this scale, so it is a four-layer hybrid, each layer where it is strongest. Fully reproducible: the Python in <code>/model</code> regenerates the baseline and self-verifies.</p>
     <div class="layer-grid">
       <div class="layer"><div class="lnum">Layer 1</div><h4>City VECM spine</h4><p>An error-correction model ties Perth's price to its fundamentals (income, rents, construction costs, the real cash rate) via a long-run equilibrium, and judges how over- or under-valued it is today. It calibrates the scenario anchor paths.</p></div>
       <div class="layer"><div class="lnum">Layer 2</div><h4>Scenario Monte Carlo</h4><p>Three anchor paths (bear / base / bull) to Mid-29, weighted 30 / 50 / 20, produce the probability-weighted expected path and the spread band you see in the fan chart. Expected = round-half-up to the nearest $1,000 of the weighted average.</p></div>
@@ -507,7 +517,7 @@
     </div>
 
     <h3 class="subh">The variables: standard inputs, enriched with leading signals</h3>
-    <p class="sec-lead" style="margin-bottom:12px">A generic model stops at rates, migration and approvals. This one adds family-buyer-specific leading indicators most analysts miss, with a strict signal discipline: <span class="ttag a">A</span> leads price and is prioritised, <span class="ttag b">B</span> is useful but slower, <span class="ttag c">C</span> is corroboration only.</p>
+    <p class="sec-lead" style="margin-bottom:12px">A generic model stops at rates, migration and approvals. This one adds family-buyer leading indicators most analysts miss: <span class="ttag a">A</span> leads price (prioritised), <span class="ttag b">B</span> is useful but slower, <span class="ttag c">C</span> is corroboration only.</p>
     <div class="ctable"><table>
       <thead><tr><th>Variable</th><th>Tier</th><th>What it predicts</th><th>Source</th></tr></thead>
       <tbody>
@@ -566,7 +576,7 @@
   <!-- ============ CRITERIA TAB ============ -->
   <section data-tab="criteria" id="criteria">
     <div class="sec-head"><span class="sec-num">&#10003;</span><h2>The ten criteria</h2></div>
-    <p class="sec-lead">The brief, in full. Three are hard filters: a suburb that can't deliver them is marked down hard. The rest are weighted and combined into the fit score. The buyer's low holding cost isn't a filter; it's why patience is affordable.</p>
+    <p class="sec-lead">The brief, in full. Three are hard filters: a suburb that can't deliver them is marked down hard. The rest are weighted into the fit score.</p>
     <div class="crit-grid" id="critGrid"></div>
   </section>
 
@@ -968,9 +978,9 @@ function updateSplitAndReset(){
 
 function projectXY(s){
   const cx=300, cy=250; let h=0; for(const ch of s.name) h=(h*31+ch.charCodeAt(0))&0xffff;
-  const ang=(h%360)*Math.PI/180, r=Math.min(s.km*12.5,205);
-  let x=cx+Math.cos(ang)*r, y=cy+Math.sin(ang)*r*0.78; y += (s.reg==='N' ? -70 : 30);
-  return {x:Math.max(40,Math.min(560,x)), y:Math.max(40,Math.min(420,y))};
+  const ang=(h%360)*Math.PI/180, r=Math.min(s.km*13.5,195);
+  let x=cx+Math.cos(ang)*r*1.12, y=cy+Math.sin(ang)*r*0.70; y += (s.reg==='N' ? -36 : 22);
+  return {x:Math.max(125,Math.min(475,x)), y:Math.max(108,Math.min(392,y))};
 }
 function heatColor(score,min,max){ const t=(score-min)/Math.max(1,(max-min)); const st=[[42,74,94],[58,166,160],[216,166,87]];
   let c; if(t<0.5){c=mix(st[0],st[1],t/0.5);}else{c=mix(st[1],st[2],(t-0.5)/0.5);} return `rgb(${c[0]|0},${c[1]|0},${c[2]|0})`; }
@@ -981,10 +991,11 @@ function renderMapAndRanking(){
   const scored = rankedSuburbs();
   const scores = scored.map(s=>s.score), min=Math.min(...scores), max=Math.max(...scores);
   const cx=300, cy=250; let svg='';
-  [70,130,190].forEach(r=>{ svg+=`<circle class="como-ring" cx="${cx}" cy="${cy}" r="${r}"/>`; });
-  svg+=`<path d="M40,300 Q300,240 560,290" fill="none" stroke="rgba(95,208,200,.12)" stroke-width="14" stroke-linecap="round"/>`;
-  svg+=`<text x="50" y="295" class="map-km" fill="rgba(95,208,200,.4)">Swan River</text>`;
+  [55,105,155].forEach(r=>{ svg+=`<circle class="como-ring" cx="${cx}" cy="${cy}" r="${r}"/>`; });
+  svg+=`<path d="M120,302 Q300,256 480,294" fill="none" stroke="rgba(95,208,200,.12)" stroke-width="14" stroke-linecap="round"/>`;
+  svg+=`<text x="126" y="300" class="map-km" fill="rgba(95,208,200,.4)">Swan River</text>`;
   scored.forEach(s=>{
+    if(s.name==='Como') return;  // Como is the central anchor star, not a bubble
     const rad=9+(s.score-min)/Math.max(1,(max-min))*16, col=s.over?'rgba(207,122,99,.55)':heatColor(s.score,min,max);
     svg+=`<g class="bubble" data-name="${s.name}" tabindex="0" role="button" aria-label="${s.name}, fit ${s.score}">`;
     if(selected===s.name) svg+=`<circle cx="${s.xy.x}" cy="${s.xy.y}" r="${rad+6}" fill="none" stroke="var(--teal-bright)" stroke-width="2"/>`;
@@ -1010,7 +1021,7 @@ function listingUrls(s){
   return {
     rea:`https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-${reaSlug}/list-1?activeSort=list-date`,
     dom:`https://www.domain.com.au/sale/${domSlug}-wa-${s.pc}/?ptype=house&bedrooms=3-any&price=0-1100000&excludeunderoffer=1&sort=dateupdated-desc`,
-    reiwa:`https://reiwa.com.au/property-search/?q=${encodeURIComponent(s.name+' WA '+s.pc)}`
+    reiwa:`https://reiwa.com.au/for-sale/${s.name.toLowerCase().replace(/ /g,'-')}/houses/`
   };
 }
 function renderDetail(s){

@@ -1,0 +1,36 @@
+name: Regression tests
+
+# Runs on every push and PR to the production and dev branches. The model +
+# web regression + dash/sync checks are blocking. The live portal link check
+# runs too (CI has network the dev sandbox lacks) and fails on dead links.
+on:
+  push:
+    branches: [claude/repo-connection-mhn1nl, develop]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm init -y >/dev/null 2>&1 || true
+          npm install playwright-core >/dev/null 2>&1
+          npx playwright install --with-deps chromium
+
+      - name: Pre-deploy gate (model + web regression + sync + dashes)
+        run: bash tests/run.sh
+
+      - name: Live portal link check (fails on 404/410)
+        run: node tests/check_links_live.mjs
