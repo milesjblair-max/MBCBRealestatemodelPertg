@@ -18,13 +18,15 @@ const browser = await chromium.launch(exe ? { executablePath: exe } : {});
 const page = await browser.newPage();
 await page.goto(url);
 
-// Collect one URL set per first few suburbs (enough to validate each portal's format).
+// Collect one URL set per first few suburbs (enough to validate each portal's
+// format), plus the data-source links shown in the estimator.
 const urls = await page.evaluate(() => {
   const out = [];
   for (const s of SUBURBS.slice(0, 4)) {
     const u = listingUrls(s);
     out.push(['REA ' + s.name, u.rea], ['Domain ' + s.name, u.dom], ['REIWA ' + s.name, u.reiwa]);
   }
+  document.querySelectorAll('#avm .sec-lead a').forEach(a => out.push(['source ' + a.textContent, a.href]));
   return out;
 });
 await browser.close();

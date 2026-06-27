@@ -83,6 +83,13 @@ const inlineBad = await page.evaluate(() => {
 });
 ok(inlineBad.length === 0, 'inline listing URLs are valid https: ' + JSON.stringify(inlineBad));
 
+// ---- data-source links present and valid ----
+const srcLinks = await page.$$eval('#avm .sec-lead a', as => as.map(a => ({ t: a.textContent, href: a.href })));
+ok(srcLinks.length >= 2 && srcLinks.every(l => { try { return new URL(l.href).protocol === 'https:'; } catch (e) { return false; } }),
+  'estimator cites valid data-source links: ' + JSON.stringify(srcLinks));
+ok(srcLinks.some(l => /reiwa\.com\.au/.test(l.href)) && srcLinks.some(l => /corelogic\.com\.au/.test(l.href)),
+  'source links point at REIWA and Cotality/CoreLogic');
+
 // ---- AVM engine + lookups ----
 const avm = await page.evaluate(() => {
   const r = avmEstimate('Shelley', 696, 3, 1, 'original');

@@ -67,6 +67,8 @@
   .sec-num{flex:none;font-family:"Fraunces",serif;font-size:14px;color:var(--sand);font-variant-numeric:tabular-nums;min-width:16px}
   h2{font-size:clamp(22px,3vw,30px)}
   .sec-lead{color:var(--muted);max-width:66ch;margin:10px 0 24px;font-size:16px}
+  .sec-lead a{color:var(--teal-bright);text-decoration:underline;text-underline-offset:2px}
+  .sec-lead a:hover{color:var(--paper)}
   .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:24px}
 
   /* ---------- forecast ---------- */
@@ -170,6 +172,9 @@
   .pcard .pphoto img{width:100%;height:100%;object-fit:cover;display:block}
   .pcard .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
   .pcard .price{font-family:"Fraunces",serif;font-size:20px;line-height:1.2;color:var(--paper);flex:1;min-width:0;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .pcard .ptags{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+  .pcard .pfit{font-family:"Fraunces",serif;font-size:19px;color:var(--teal-bright);line-height:1;white-space:nowrap}
+  .pcard .pfit small{font-size:11px;color:var(--muted);font-family:"Inter",sans-serif}
   .pcard .badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
   .pcard .badge.bargain{color:var(--sand);background:rgba(216,166,87,.12);border:1px solid rgba(216,166,87,.45)}
   .pcard .badge.fit{color:var(--teal-bright);background:rgba(58,166,160,.1);border:1px solid rgba(58,166,160,.4)}
@@ -387,7 +392,7 @@
   <!-- ============ LISTINGS TAB ============ -->
   <section data-tab="listings" id="avm">
     <div class="sec-head"><span class="sec-num">A</span><h2>Price estimator</h2></div>
-    <p class="sec-lead">No price on the ad? Paste the listing below. I read the <b>suburb, beds, baths and land</b> from the text; fill any gaps, then hit Estimate for an <b>offer range</b>, a <b>sale-history lookup</b> and a <b>scorecard</b> against your ten criteria. A guide, not a valuation.</p>
+    <p class="sec-lead">No price on the ad? Paste the listing below: I read the <b>suburb, beds, baths and land</b> from the text and estimate an <b>offer range</b> from current suburb medians (<a href="https://reiwa.com.au/" target="_blank" rel="noopener">REIWA</a> and <a href="https://www.corelogic.com.au/" target="_blank" rel="noopener">Cotality / CoreLogic</a>) adjusted for the property, with a <b>sale-history lookup</b> and a <b>scorecard</b> against your ten criteria. A guide, not a valuation.</p>
     <div class="panel avm-card">
       <div class="avm-form">
         <label class="avm-field avm-addr"><span>Paste the listing (address, and the bed / bath / land line if it has one)</span><input type="text" id="avmAddr" placeholder="e.g. 12 Example St, Shelley WA 6148, 4 bed 2 bath 720m&sup2;"></label>
@@ -1083,6 +1088,19 @@ function fixPhoto(u){
   if(!m) return u;
   return /^\d+x\d+$/.test(m[2].split('/')[0]) ? u : `${m[1]}/640x480/${m[2]}`;
 }
+// buyer-fit score (0-100) for a specific listing: the suburb's fit at the
+// current proximity-vs-schools setting, knocked down for misses on the hard
+// criteria (under 500sqm, under 4 beds, over the budget ceiling).
+function listingFit(p){
+  const s=SUBURBS.find(x=>x.name===p.suburb);
+  if(!s) return null;
+  let fit=scoreSuburb(s,PRIOR).score;
+  if(p.land && p.land<500) fit*=0.6;
+  if(!(p.beds>=4)) fit*=0.95;
+  const pr=p.price||parsePrice(p.priceText);
+  if(pr && pr>1100000) fit*=0.9;
+  return Math.max(0,Math.min(100,Math.round(fit)));
+}
 function renderProperties(){
   const data=LISTINGS;
   const list=(data.listings||[]).slice();
@@ -1109,7 +1127,9 @@ function renderProperties(){
   document.getElementById('propGrid').innerHTML = shown.map(p=>{
     const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land&&`${p.land}sqm`].filter(Boolean)
       .map(x=>`<span class="spec">${x}</span>`).join('');
-    const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:(p.meets?`<span class="badge fit">Fits</span>`:'');
+    const fit=listingFit(p);
+    const fitChip = fit!=null ? `<span class="pfit" title="Buyer-fit against your ten criteria">${fit}<small>/100</small></span>` : '';
+    const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:'';
     // a card links straight to the property when it is a real listing (live feed
     // sets direct=true); samples have no underlying house, so they open a suburb search
     const direct = (p.direct!==undefined) ? p.direct : !sample;
@@ -1123,7 +1143,7 @@ function renderProperties(){
       : '';
     return `<div class="pcard ${p.bargain?'bargain':''}">
       ${photo}
-      <div class="ptop"><div class="price">${p.priceText||''}</div>${badge}</div>
+      <div class="ptop"><div class="price">${p.priceText||''}</div><div class="ptags">${fitChip}${badge}</div></div>
       <div><div class="addr">${p.address||p.suburb}</div><div class="loc">${p.suburb} ${p.pc||''}</div></div>
       <div class="specs">${specs}</div>
       <div class="reason">${p.reason||''}</div>
@@ -1156,7 +1176,7 @@ bullS.oninput=e=>rebalance('bull',e.target.value);
 document.getElementById('resetForecast').onclick=()=>{ W={...BASELINE.weights}; syncWeightLabels(); renderFan(); };
 const priorS=document.getElementById('priorSlider');
 function priorLabel(p){ if(p<=20)return'Como first'; if(p<40)return'Leaning Como'; if(p<=60)return'Balanced'; if(p<80)return'Leaning schools'; return'Schools first'; }
-priorS.oninput=e=>{ PRIOR=+e.target.value; document.getElementById('weightLabel').textContent=priorLabel(PRIOR); renderMapAndRanking(); };
+priorS.oninput=e=>{ PRIOR=+e.target.value; document.getElementById('weightLabel').textContent=priorLabel(PRIOR); renderMapAndRanking(); renderProperties(); };
 
 renderMacro();
 renderFan();
