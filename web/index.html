@@ -165,12 +165,9 @@
   .pcard{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;transition:transform .12s,border-color .12s}
   .pcard:hover{transform:translateY(-3px);border-color:var(--teal)}
   .pcard.bargain{border-color:rgba(216,166,87,.5)}
-  .pcard .pphoto{margin:-16px -16px 2px;height:152px;overflow:hidden;border-bottom:1px solid var(--line);position:relative;background:linear-gradient(135deg,#10283f,#1c3a52);display:flex;align-items:center;justify-content:center}
-  .pcard .pphoto img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block}
-  .pcard .pphoto.noimg img{display:none}
-  /* crafted fallback when a listing has no photo: suburb nameplate, not a placeholder image */
-  .pcard .pphoto .ph-name{position:absolute;z-index:0;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px;padding:0 18px;text-align:center;font-family:"Fraunces",serif;font-style:italic;font-size:20px;letter-spacing:.01em;color:rgba(243,241,233,.5)}
-  .pcard .pphoto .ph-name::after{content:"";width:42px;height:2px;border-radius:2px;background:rgba(216,166,87,.55)}
+  /* photo band only exists when a listing actually has a (loadable) photo */
+  .pcard .pphoto{margin:-16px -16px 2px;height:152px;overflow:hidden;border-bottom:1px solid var(--line);background:var(--ink-3)}
+  .pcard .pphoto img{width:100%;height:100%;object-fit:cover;display:block}
   .pcard .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
   .pcard .price{font-family:"Fraunces",serif;font-size:21px;color:var(--paper);white-space:nowrap}
   .pcard .badge{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap}
@@ -1072,6 +1069,14 @@ function renderListings(scored){
 
 let PROP_FILTER='all';
 const PROP_FILTERS={all:()=>true, bargain:p=>p.bargain, beds4:p=>(p.beds||0)>=4};
+// reastatic photo URLs need a size segment (e.g. 640x480) right after the
+// domain; the feed sometimes omits it, so insert it so the image actually loads.
+function fixPhoto(u){
+  if(!u) return '';
+  const m=String(u).match(/^(https:\/\/[^/]*reastatic\.net)\/(.+)$/i);
+  if(!m) return u;
+  return /^\d+x\d+$/.test(m[2].split('/')[0]) ? u : `${m[1]}/640x480/${m[2]}`;
+}
 function renderProperties(){
   const data=LISTINGS, list=(data.listings||[]).slice().sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
   const src=(data.meta&&data.meta.source)||'sample', gen=(data.meta&&data.meta.generated)||'';
@@ -1098,9 +1103,12 @@ function renderProperties(){
     const direct = (p.direct!==undefined) ? p.direct : !sample;
     const go = direct ? 'View listing' : `Search ${p.suburb}`;
     const sub=(p.suburb||'').replace(/"/g,'');
-    const photo = p.image
-      ? `<div class="pphoto"><span class="ph-name">${sub}</span><img src="${p.image}" alt="${sub}" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest('.pphoto').classList.add('noimg')"></div>`
-      : `<div class="pphoto noimg"><span class="ph-name">${sub}</span></div>`;
+    const img=fixPhoto(p.image);
+    // show a photo only when we actually have one; if it fails to load, remove
+    // the band entirely rather than leaving a placeholder
+    const photo = img
+      ? `<div class="pphoto"><img src="${img}" alt="${sub}" loading="lazy" onerror="this.closest('.pphoto').remove()"></div>`
+      : '';
     return `<div class="pcard ${p.bargain?'bargain':''}">
       ${photo}
       <div class="ptop"><div class="price">${p.priceText||''}</div>${badge}</div>

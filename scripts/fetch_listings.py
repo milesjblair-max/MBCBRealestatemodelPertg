@@ -117,16 +117,28 @@ def _img_from(obj):
     return None
 
 
+def _fix_reastatic(url):
+    """reastatic URLs need a size segment (e.g. 640x480) after the domain."""
+    if not url:
+        return None
+    m = re.match(r"(https://[^/]*reastatic\.net)/(.+)", url, re.I)
+    if not m:
+        return url
+    domain, rest = m.group(1), m.group(2)
+    if re.match(r"\d+x\d+$", rest.split("/")[0]):
+        return url
+    return f"{domain}/{IMG_SIZE}/{rest}"
+
+
 def _image(listing):
-    """Best-effort main photo URL, with the {size} slot filled."""
+    """Best-effort main photo URL, sized so it actually loads."""
     tmpl = _dig(listing, "mainPhoto.templatedUrl", "mainPhoto.url", "image.templatedUrl")
-    if isinstance(tmpl, str) and "reastatic" in tmpl:
-        return tmpl.replace("{size}", IMG_SIZE)
-    # fall back to scanning mainPhoto, then the images array, then the whole listing
-    return (_img_from(listing.get("mainPhoto"))
-            or _img_from(listing.get("images"))
-            or _img_from(listing.get("media"))
-            or _img_from(listing))
+    found = (tmpl.replace("{size}", IMG_SIZE) if isinstance(tmpl, str) and "reastatic" in tmpl
+             else (_img_from(listing.get("mainPhoto"))
+                   or _img_from(listing.get("images"))
+                   or _img_from(listing.get("media"))
+                   or _img_from(listing)))
+    return _fix_reastatic(found)
 
 
 def _int(v):

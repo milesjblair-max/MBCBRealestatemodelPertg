@@ -23,7 +23,9 @@ const browser = await chromium.launch(exe ? { executablePath: exe } : {});
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });
 const consoleErrors = [];
 page.on('pageerror', e => consoleErrors.push('pageerror: ' + e.message));
-page.on('console', m => { if (m.type() === 'error') consoleErrors.push(m.text()); });
+// ignore resource-load failures (e.g. a broken image) - those are handled by
+// onerror and are not JS errors; we only care about real script errors.
+page.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_/.test(m.text())) consoleErrors.push(m.text()); });
 
 await page.goto(url);
 await page.waitForTimeout(300);
@@ -107,10 +109,20 @@ ok(await page.$('.avm-fit .ring') !== null, 'AVM fit ring renders');
 ok((await page.$$('.avm-col.pros li')).length > 0, 'AVM pros render');
 ok((await page.$$('.avm-lookup a')).length === 4, 'AVM renders 4 lookup links');
 
-// ---- property cards each have a photo slot (real photos when live feed on) ----
-const pcards = await page.$$eval('#propGrid .pcard', els => els.length);
-const pphotos = await page.$$eval('#propGrid .pcard .pphoto', els => els.length);
-ok(pcards > 0 && pcards === pphotos, 'every property card has a photo slot: ' + pphotos + '/' + pcards);
+// ---- photo band shows only when a listing has a photo; never an empty band ----
+ok(await page.$('#propGrid .pcard') !== null, 'property cards render');
+ok((await page.$$('#propGrid .ph-name')).length === 0, 'no leftover nameplate placeholders');
+const emptyBands = await page.$$eval('#propGrid .pphoto', els => els.filter(d => !d.querySelector('img')).length);
+ok(emptyBands === 0, 'no empty/placeholder photo bands: ' + emptyBands);
+// a listing WITH a photo renders an image, and the reastatic size segment is repaired
+const photo = await page.evaluate(() => {
+  LISTINGS.listings[0].image = 'https://i3.au.reastatic.net/abc123/image.jpg';
+  renderProperties();
+  const im = document.querySelector('#propGrid .pcard .pphoto img');
+  return im ? im.getAttribute('src') : null;
+});
+ok(photo === 'https://i3.au.reastatic.net/640x480/abc123/image.jpg',
+  'photo renders with a repaired reastatic URL: ' + photo);
 
 // ---- map: Como once, no duplicate; bubbles; legend key ----
 await page.evaluate(() => showTab('modelling', false));
