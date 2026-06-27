@@ -268,6 +268,11 @@
   .prop-sort{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted-2)}
   .prop-sort select{background:var(--ink-2);color:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:inherit;font-size:12.5px;cursor:pointer;outline:none}
   .prop-sort select:focus{border-color:var(--teal-bright)}
+  /* mobile: give Sort its own full-width row so it is not jammed against the chips */
+  @media(max-width:560px){
+    .prop-sort{margin-left:0;width:100%;gap:10px}
+    .prop-sort select{flex:1;padding:10px 12px;font-size:13.5px}
+  }
   .fchip{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--ink-2);border:1px solid var(--line);border-radius:100px;padding:8px 14px;cursor:pointer;transition:background .12s,color .12s,border-color .12s;white-space:nowrap}
   .fchip:hover{color:var(--paper)}
   .fchip.active{color:var(--ink);background:var(--teal-bright);border-color:var(--teal-bright)}

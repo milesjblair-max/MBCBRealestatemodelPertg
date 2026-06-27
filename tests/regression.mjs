@@ -182,8 +182,23 @@ await page.waitForTimeout(100);
 const w = await page.evaluate(() => ({ bear: Math.round(W.bear), base: Math.round(W.base), bull: Math.round(W.bull) }));
 ok(w.bear === 30 && w.base === 50 && w.bull === 20, 'reset restores baseline weights 30/50/20: ' + JSON.stringify(w));
 
-// ---- footer lays out in two blocks; criteria tab has no mobile overflow ----
+// ---- mobile UX: sort control gets its own full-width row, no overflow ----
 await page.setViewportSize({ width: 390, height: 800 });
+await page.evaluate(() => { showTab('listings', false); document.getElementById('properties').classList.remove('collapsed'); renderProperties(); });
+await page.waitForTimeout(120);
+const sortM = await page.evaluate(() => {
+  const ps = document.querySelector('.prop-sort'), filt = document.querySelector('.prop-filters');
+  if (!ps || !filt) return null;
+  return {
+    w: Math.round(ps.getBoundingClientRect().width),
+    fw: Math.round(filt.getBoundingClientRect().width),
+    overflow: document.documentElement.scrollWidth > window.innerWidth + 1
+  };
+});
+ok(sortM && sortM.w >= sortM.fw * 0.9, 'sort control is full-width on mobile, not jammed: ' + JSON.stringify(sortM));
+ok(sortM && !sortM.overflow, 'listings filter row has no horizontal overflow at 390px');
+
+// ---- footer lays out in two blocks; criteria tab has no mobile overflow ----
 await page.evaluate(() => showTab('criteria', false));
 await page.waitForTimeout(120);
 const foot = await page.evaluate(() => ({
