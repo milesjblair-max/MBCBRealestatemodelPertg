@@ -190,18 +190,24 @@ file, no build step, works offline. Four sections:
 
 ---
 
-## 7. Listings & "live" data - the compliant path
+## 7. Listings & "live" data
 
 The buyer wants live ads and property suggestions refreshed on a cadence.
-**Scraping REA/Domain/REIWA is prohibited.** The only compliant routes:
-- **Saved-search deep-links** (implemented) - always current, zero infra.
-- **Domain Developer API** (free dev tier; paid tiers add listings, AVM/price
-  estimates, school & demographic endpoints) pulled by a **scheduled GitHub
-  Action** into `data/listings.json`, which the tool `fetch()`es. This is the
-  documented upgrade path - see `references/data-sources.md`.
 
-When asked to "make listings live," build the GitHub Action + `data/listings.json`
-+ a `fetch()` in the tool. Do **not** add a scraper.
+**Owner decision (private tool):** the live Properties feed now uses the
+**Realty in AU API (apidojo, via RapidAPI)**, which surfaces realestate.com.au
+listing data (with photos) through a third party. The owner has explicitly
+accepted this for a private tool shared only with his partner, so the earlier
+"no third-party REA data" rule is **relaxed for this repo only**. It is not an
+official REA feed and is rate-limited, so:
+- Keep the **saved-search deep-links** as the always-on, zero-infra fallback.
+- The Realty in AU pull lives in `scripts/fetch_listings.py`, run by the
+  **scheduled GitHub Action** into `data/listings.json`, which the tool
+  `fetch()`es. Auth is a `RAPIDAPI_KEY` repo secret; with no key the script is a
+  safe no-op and the committed sample shows.
+- Keep API calls modest (cap suburbs, once daily) to stay inside the free quota.
+- The official **Domain Developer API** remains the clean upgrade path if the
+  owner ever wants a licensed feed (its listings search is approval-gated/paid).
 
 ---
 

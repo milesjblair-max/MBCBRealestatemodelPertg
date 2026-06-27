@@ -1,10 +1,9 @@
 name: Refresh live listings (daily)
 
-# Pulls fresh property listings into data/listings.json once a day via the
-# Domain Developer API, then commits the change (which re-publishes Pages on a
-# branch deploy). With no Domain credentials set, the script is a safe no-op and
-# the committed sample data is left in place. NOTE: this uses the official API,
-# it does NOT scrape any portal.
+# Pulls fresh property listings (with photos) into data/listings.json once a day
+# via the Realty in AU API (RapidAPI), then commits the change (which re-
+# publishes Pages on a branch deploy). With no RAPIDAPI_KEY set, the script is a
+# safe no-op and the committed sample data is left in place.
 
 on:
   schedule:
@@ -34,9 +33,7 @@ jobs:
 
       - name: Fetch listings
         env:
-          DOMAIN_CLIENT_ID: ${{ secrets.DOMAIN_CLIENT_ID }}
-          DOMAIN_CLIENT_SECRET: ${{ secrets.DOMAIN_CLIENT_SECRET }}
-          DOMAIN_ACCESS_TOKEN: ${{ secrets.DOMAIN_ACCESS_TOKEN }}
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
         run: python3 scripts/fetch_listings.py
 
       - name: Commit if changed

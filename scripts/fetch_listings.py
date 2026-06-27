@@ -1,31 +1,35 @@
 #!/usr/bin/env python3
 """
-fetch_listings.py - refresh data/listings.json with real property listings.
+fetch_listings.py - refresh data/listings.json with real for-sale listings,
+WITH photos, via the "Realty in AU" API (apidojo) on RapidAPI.
 
-Run by .github/workflows/refresh-listings.yml on a daily schedule. It pulls
-houses that fit the buyer's brief (3+ beds, <=$1.1M, in the in-budget target
-suburbs from data/suburbs.json), flags bargains (priced below the suburb median)
-and writes data/listings.json. The interactive tool fetch()es that file.
+Run daily by .github/workflows/refresh-listings.yml. It searches the in-budget
+target suburbs (from data/suburbs.json) for houses 3+ beds up to $1.1M, flags
+bargains (below the suburb median), grabs the main photo, and writes
+data/listings.json, which the tool fetch()es.
 
-COMPLIANCE: this uses the official Domain Developer API - it does NOT scrape
-realestate.com.au / Domain / REIWA (which their terms forbid). Provide Domain
-OAuth client credentials as repo secrets:
+DATA SOURCE NOTE: "Realty in AU" surfaces realestate.com.au listing data through
+a third-party RapidAPI endpoint. The owner has chosen this for a private,
+personal tool shared only with their partner. It is not an official REA feed.
 
-    DOMAIN_CLIENT_ID, DOMAIN_CLIENT_SECRET   (preferred - client-credentials flow)
-  or
-    DOMAIN_ACCESS_TOKEN                       (a pre-minted bearer token)
+Credentials (repo secret):
+    RAPIDAPI_KEY        (required - your RapidAPI key)
+    RAPIDAPI_HOST       (optional - defaults to realty-in-au.p.rapidapi.com)
 
-With NO credentials present the script exits 0 WITHOUT touching the committed
-sample file, so the page keeps showing the illustrative examples. Standard
-library only.
+With NO key present the script exits 0 WITHOUT touching the committed sample, so
+the page keeps showing the illustrative examples. Standard library only.
+
+Because the exact response shape can vary, this script parses DEFENSIVELY and
+logs what it found, so the first real run tells us if any field path needs a
+tweak (check the workflow logs).
 """
+import datetime
 import json
 import os
 import sys
 import urllib.request
 import urllib.parse
 import urllib.error
-from datetime import datetime, timezone
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
@@ -37,93 +41,107 @@ MIN_BEDS = 3
 MIN_LAND = 500
 PER_SUBURB = 6
 TOTAL_CAP = 40
+SUBURB_CAP = 8           # keep API calls low to stay inside the free quota
+IMG_SIZE = "640x480"     # fills the {size} slot in reastatic templated URLs
 
-TOKEN_URL = "https://auth.domain.com.au/v1/connect/token"
-SEARCH_URL = "https://api.domain.com.au/v1/listings/residential/_search"
+HOST = os.environ.get("RAPIDAPI_HOST", "realty-in-au.p.rapidapi.com")
+LIST_URL = f"https://{HOST}/properties/list"
 
 
-def _post(url, data, headers, is_json):
-    body = json.dumps(data).encode() if is_json else urllib.parse.urlencode(data).encode()
-    req = urllib.request.Request(url, data=body, headers=headers, method="POST")
+def _get(url, headers):
+    req = urllib.request.Request(url, headers=headers, method="GET")
+    with urllib.request.urlopen(req, timeout=40) as r:
+        return json.loads(r.read().decode())
+
+
+def _dig(obj, *paths, default=None):
+    """Return the first present value among dotted paths (a.b.c)."""
+    for path in paths:
+        cur = obj
+        ok = True
+        for key in path.split("."):
+            if isinstance(cur, dict) and key in cur:
+                cur = cur[key]
+            else:
+                ok = False
+                break
+        if ok and cur not in (None, ""):
+            return cur
+    return default
+
+
+def _flatten_results(payload):
+    """Pull listing dicts out of the response, whatever the wrapper shape."""
+    out = []
+    tiers = payload.get("tieredResults") or payload.get("results") or []
+    if isinstance(tiers, list):
+        for t in tiers:
+            if isinstance(t, dict) and isinstance(t.get("results"), list):
+                out.extend(t["results"])
+            elif isinstance(t, dict) and ("address" in t or "bedrooms" in t):
+                out.append(t)
+    emb = _dig(payload, "_embedded.listings", "data.results")
+    if isinstance(emb, list):
+        out.extend(emb)
+    return out
+
+
+def _image(listing):
+    """Best-effort main photo URL, with the {size} slot filled."""
+    tmpl = _dig(listing, "mainPhoto.templatedUrl", "image.templatedUrl")
+    if isinstance(tmpl, str):
+        return tmpl.replace("{size}", IMG_SIZE)
+    server = _dig(listing, "mainPhoto.server", "image.server")
+    uri = _dig(listing, "mainPhoto.uri", "image.uri", "mainPhoto.url")
+    if server and uri:
+        return server.rstrip("/") + "/" + IMG_SIZE + "/" + str(uri).lstrip("/")
+    imgs = listing.get("images") or listing.get("media")
+    if isinstance(imgs, list) and imgs:
+        t = _dig(imgs[0], "templatedUrl", "url")
+        if isinstance(t, str):
+            return t.replace("{size}", IMG_SIZE)
+    return None
+
+
+def _int(v):
     try:
-        with urllib.request.urlopen(req, timeout=40) as r:
-            return json.loads(r.read().decode())
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode(errors="ignore")[:300]
-        raise RuntimeError(f"HTTP {e.code} from {url}: {detail}") from None
-
-
-def get_token():
-    tok = os.environ.get("DOMAIN_ACCESS_TOKEN")
-    if tok:
-        return tok.strip()
-    cid = os.environ.get("DOMAIN_CLIENT_ID")
-    sec = os.environ.get("DOMAIN_CLIENT_SECRET")
-    if not (cid and sec):
+        return int(str(v).strip())
+    except Exception:
         return None
-    resp = _post(
-        TOKEN_URL,
-        {"client_id": cid, "client_secret": sec,
-         "grant_type": "client_credentials", "scope": "api_listings_read"},
-        {"Content-Type": "application/x-www-form-urlencoded"},
-        is_json=False,
-    )
-    return resp.get("access_token")
-
-
-def search_suburb(token, suburb, pc):
-    payload = {
-        "listingType": "Sale",
-        "propertyTypes": ["House"],
-        "minBedrooms": MIN_BEDS,
-        "maxPrice": MAX_PRICE,
-        "pageSize": 20,
-        "locations": [{
-            "state": "WA", "suburb": suburb, "postCode": pc,
-            "includeSurroundingSuburbs": False,
-        }],
-    }
-    headers = {"Authorization": "Bearer " + token, "Content-Type": "application/json"}
-    return _post(SEARCH_URL, payload, headers, is_json=True)
 
 
 def normalise(items, suburb, pc, median_low_k):
     out = []
-    for it in items:
-        if it.get("type") != "PropertyListing":
+    for L in items:
+        if not isinstance(L, dict):
             continue
-        L = it.get("listing", {})
-        pd = L.get("propertyDetails", {}) or {}
-        price = (L.get("priceDetails", {}) or {}).get("price")
-        beds = pd.get("bedrooms")
-        land = pd.get("landArea")
-        if price and price > MAX_PRICE:
+        price_n = _int(_dig(L, "price.value", "price.from", "priceDetails.price"))
+        price_txt = _dig(L, "price.display", "priceText", "price.label", default="Contact agent")
+        beds = _int(_dig(L, "bedrooms", "features.general.bedrooms", "general.bedrooms"))
+        baths = _int(_dig(L, "bathrooms", "features.general.bathrooms"))
+        cars = _int(_dig(L, "carspaces", "carSpaces", "features.general.carspaces"))
+        land = _int(_dig(L, "landSize.value", "landSize.displayValue", "propertySizes.land.displayValue"))
+        if price_n and price_n > MAX_PRICE:
             continue
-        if beds and beds < MIN_BEDS:
+        if beds is not None and beds < MIN_BEDS:
             continue
-        slug = L.get("listingSlug") or L.get("seoUrl") or ""
-        listing_id = L.get("id")
-        # direct link to the exact property page when we have a slug or id
-        if slug:
-            url = "https://www.domain.com.au/" + slug.lstrip("/")
-            direct = True
-        elif listing_id:
-            url = f"https://www.domain.com.au/{listing_id}"
-            direct = True
+        slug = _dig(L, "prettyUrl", "_links.canonical.href", "listingUrl", "url")
+        if isinstance(slug, str) and slug.startswith("http"):
+            url = slug
+        elif isinstance(slug, str):
+            url = "https://www.realestate.com.au" + ("" if slug.startswith("/") else "/") + slug
         else:
-            url = f"https://www.domain.com.au/sale/{suburb.lower().replace(' ', '-')}-wa-{pc}/"
-            direct = False
-        meets = bool(beds and beds >= MIN_BEDS and (not land or land >= MIN_LAND)
-                     and (not price or price <= MAX_PRICE))
-        bargain = bool(price and median_low_k and price <= median_low_k * 1000 * 0.97)
+            url = f"https://www.realestate.com.au/buy/in-{suburb.lower().replace(' ', '+')}%2c+wa+{pc}/list-1"
+        addr = _dig(L, "address.streetAddress", "address.displayAddress", "title", default=f"{suburb} {pc}")
+        bargain = bool(price_n and median_low_k and price_n <= median_low_k * 1000 * 0.97)
+        meets = bool((beds is None or beds >= MIN_BEDS) and (not land or land >= MIN_LAND)
+                     and (not price_n or price_n <= MAX_PRICE))
         out.append({
-            "suburb": suburb, "pc": pc, "price": price,
-            "priceText": (L.get("priceDetails", {}) or {}).get("displayPrice") or
-                         (f"${price:,}" if price else "Contact agent"),
-            "beds": beds, "baths": pd.get("bathrooms"), "cars": pd.get("carspaces"),
-            "land": land, "address": pd.get("displayableAddress") or f"{suburb} {pc}",
-            "url": url, "direct": direct, "bargain": bargain, "meets": meets,
-            "reason": _reason(beds, land, price, median_low_k, bargain),
+            "suburb": suburb, "pc": pc, "price": price_n, "priceText": price_txt,
+            "beds": beds, "baths": baths, "cars": cars, "land": land,
+            "address": addr, "image": _image(L), "url": url, "direct": True,
+            "bargain": bargain, "meets": meets,
+            "reason": _reason(beds, land, price_n, median_low_k, bargain),
         })
         if len(out) >= PER_SUBURB:
             break
@@ -144,58 +162,78 @@ def _reason(beds, land, price, median_low_k, bargain):
     return f"{head} - meets beds/land/budget criteria."
 
 
+def search_suburb(key, suburb, pc):
+    loc = f"{suburb}, WA {pc}"
+    params = {
+        "channel": "buy", "page": "1", "pageSize": "20",
+        "searchLocation": loc, "search": loc, "surroundingSuburbs": "false",
+        "sortType": "relevance", "maximumPrice": str(MAX_PRICE),
+        "minimumBedrooms": str(MIN_BEDS), "propertyTypes": "house",
+    }
+    url = LIST_URL + "?" + urllib.parse.urlencode(params)
+    headers = {"X-RapidAPI-Key": key, "X-RapidAPI-Host": HOST}
+    return _get(url, headers)
+
+
 def main():
-    try:
-        token = get_token()
-    except Exception as e:
-        print(f"ERROR getting Domain access token: {e}", file=sys.stderr)
-        print("Leaving the committed sample data/listings.json untouched.")
+    key = os.environ.get("RAPIDAPI_KEY")
+    if not key:
+        print("No RAPIDAPI_KEY secret. Leaving the committed sample untouched.")
         return 0
-    if not token:
-        print("No Domain credentials (DOMAIN_CLIENT_ID/SECRET or DOMAIN_ACCESS_TOKEN). "
-              "Leaving the committed sample data/listings.json untouched.")
-        return 0
-    print("Got Domain access token; searching target suburbs...")
+    print(f"Using Realty in AU via {HOST}; searching target suburbs...")
 
     with open(SUBURBS_PATH) as fh:
         suburbs = json.load(fh)["suburbs"]
-    targets = [s for s in suburbs if s.get("band")]  # in-budget shopping list
+    targets = [s for s in suburbs if s.get("band")][:SUBURB_CAP]
 
     listings = []
+    logged_shape = False
     for s in targets:
         try:
-            items = search_suburb(token, s["name"], s["pc"])
-            got = normalise(items, s["name"], s["pc"], s.get("mlo"))
-            print(f"  {s['name']} {s['pc']}: {len(got)} listing(s)")
-            listings.extend(got)
-        except Exception as e:  # one suburb failing must not kill the run
-            print(f"  warn: {s['name']} {s['pc']} failed: {e}", file=sys.stderr)
-    # bargains first, then by price ascending
+            payload = search_suburb(key, s["name"], s["pc"])
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode(errors="ignore")[:200]
+            print(f"  warn: {s['name']} HTTP {e.code}: {detail}", file=sys.stderr)
+            continue
+        except Exception as e:
+            print(f"  warn: {s['name']} failed: {e}", file=sys.stderr)
+            continue
+        items = _flatten_results(payload)
+        if not logged_shape:
+            print(f"  [shape] top-level keys: {list(payload.keys())[:12]}")
+            if items:
+                print(f"  [shape] first listing keys: {list(items[0].keys())[:25]}")
+                print(f"  [shape] first image resolved to: {_image(items[0])}")
+            logged_shape = True
+        got = normalise(items, s["name"], s["pc"], s.get("mlo"))
+        print(f"  {s['name']} {s['pc']}: {len(items)} raw, {len(got)} kept")
+        listings.extend(got)
+
     listings.sort(key=lambda x: (not x["bargain"], x["price"] or 9_9_9_9_9_9_9))
     listings = listings[:TOTAL_CAP]
 
     if not listings:
-        print("No live listings returned (check the project is in Production, not "
-              "Sandbox, and that the plan includes residential listing search). "
-              "Keeping the committed sample so the page does not go blank.")
+        print("No live listings parsed. Keeping the committed sample so the page "
+              "does not go blank. Check the [shape] logs above and adjust field "
+              "paths in normalise()/_image() if needed.")
         return 0
 
-    payload = {
+    out = {
         "meta": {
-            "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
-            "source": "domain-api",
-            "note": "Live houses from the Domain Developer API matching the brief "
-                    "(3+ beds, <=$1.1M, in-budget target suburbs). Bargains = priced "
-                    "below the suburb median. Refreshed daily by GitHub Actions.",
+            "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
+            "source": "realty-in-au",
+            "note": "Live houses with photos from the Realty in AU API (RapidAPI) "
+                    "matching the brief (3+ beds, <=$1.1M, in-budget suburbs). "
+                    "Bargains = below the suburb median. Refreshed daily.",
             "criteria": {"max_price": MAX_PRICE, "min_land": MIN_LAND,
                          "min_beds": MIN_BEDS, "types": ["House"]},
         },
         "listings": listings,
     }
     with open(OUT_PATH, "w") as fh:
-        json.dump(payload, fh, indent=2)
+        json.dump(out, fh, indent=2)
         fh.write("\n")
-    print(f"Wrote {len(listings)} listings to data/listings.json")
+    print(f"Wrote {len(listings)} listings (with photos) to data/listings.json")
     return 0
 
 

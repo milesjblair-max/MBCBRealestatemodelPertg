@@ -107,6 +107,11 @@ ok(await page.$('.avm-fit .ring') !== null, 'AVM fit ring renders');
 ok((await page.$$('.avm-col.pros li')).length > 0, 'AVM pros render');
 ok((await page.$$('.avm-lookup a')).length === 4, 'AVM renders 4 lookup links');
 
+// ---- property cards each have a photo slot (real photos when live feed on) ----
+const pcards = await page.$$eval('#propGrid .pcard', els => els.length);
+const pphotos = await page.$$eval('#propGrid .pcard .pphoto', els => els.length);
+ok(pcards > 0 && pcards === pphotos, 'every property card has a photo slot: ' + pphotos + '/' + pcards);
+
 // ---- map: Como once, no duplicate; bubbles; legend key ----
 await page.evaluate(() => showTab('modelling', false));
 await page.waitForTimeout(150);
