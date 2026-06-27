@@ -117,7 +117,7 @@
   .heat-grid{display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start}
   @media(max-width:880px){.heat-grid{grid-template-columns:1fr}}
   .map-wrap{position:relative;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:20px}
-  .map-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:14px;font-size:11.5px;color:var(--muted)}
+  .map-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-bottom:14px;font-size:11.5px;color:var(--muted)}
   .map-legend .lg-row{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
   .lg-grad{width:60px;height:9px;border-radius:5px;background:linear-gradient(90deg,#2a4a5e,#3aa6a0,#d8a657)}
   .lg-sw{width:13px;height:13px;border-radius:50%;display:inline-block;flex:none}
@@ -487,13 +487,13 @@
     </div>
     <div class="heat-grid">
       <div class="map-wrap">
-        <svg id="heatMap" viewBox="110 62 380 350" role="img" aria-label="Map of Perth suburbs scored by fit, centred on Como"></svg>
         <div class="map-legend">
           <span class="lg-row"><span class="lg-grad"></span>fit: teal = lower, <b style="color:var(--sand)">gold = best</b></span>
           <span class="lg-row"><span class="lg-sw" style="background:rgba(207,122,99,.75)"></span>over budget</span>
           <span class="lg-row"><span class="lg-star">&#9733;</span>Como (anchor)</span>
           <span class="lg-row lg-note">bigger bubble = better fit</span>
         </div>
+        <svg id="heatMap" viewBox="110 62 380 350" role="img" aria-label="Map of Perth suburbs scored by fit, centred on Como"></svg>
       </div>
       <div>
         <div class="rank-list" id="rankList"></div>
