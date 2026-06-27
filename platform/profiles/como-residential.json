@@ -1,0 +1,25 @@
+{
+  "id": "como-residential",
+  "label": "Como family home (residential)",
+  "asset_class": "residential",
+  "currency": "AUD",
+  "geography": {
+    "anchor": { "name": "Como", "postcode": "6152" },
+    "market": "Perth WA"
+  },
+  "budget_band": [800000, 1100000],
+  "horizon_years": { "primary": 3, "tail": 5 },
+  "criteria": [
+    { "key": "land_min_sqm", "label": "Land over 500sqm", "type": "filter", "value": 500 },
+    { "key": "price_band", "label": "Price $800k-$1.1M", "type": "filter", "value": [800000, 1100000] },
+    { "key": "beds_min", "label": "More than 3 bedrooms", "type": "filter", "value": 4 },
+    { "key": "growth", "label": "Growth after the dip", "type": "weight", "weight": 0.25 },
+    { "key": "proximity", "label": "Near family in Como", "type": "weight", "weight": 0.20 },
+    { "key": "family", "label": "Family area", "type": "weight", "weight": 0.15 },
+    { "key": "land", "label": "Backyard for the kids", "type": "weight", "weight": 0.15 },
+    { "key": "post", "label": "Good postcode / school zone", "type": "weight", "weight": 0.15 },
+    { "key": "kdr", "label": "Modern, or KDR-viable", "type": "weight", "weight": 0.10 },
+    { "key": "capital", "label": "Patient capital, low holding cost", "type": "context" }
+  ],
+  "data_sources": ["domain", "abs", "rba", "landgate"]
+}

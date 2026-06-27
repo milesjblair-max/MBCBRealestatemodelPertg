@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "profile": {
+    "id": "como-residential",
+    "label": "Como family home (residential)",
+    "asset_class": "residential",
+    "currency": "AUD",
+    "geography": {
+      "anchor": {
+        "name": "Como",
+        "postcode": "6152"
+      },
+      "market": "Perth WA"
+    },
+    "budget_band": [
+      800000,
+      1100000
+    ],
+    "horizon_years": {
+      "primary": 3,
+      "tail": 5
+    }
+  },
+  "asset_strategy": {
+    "asset_class": "residential",
+    "valuation_basis": "hedonic + land value + knock-down-rebuild optionality",
+    "score_dimensions": [
+      "growth",
+      "family",
+      "land",
+      "kdr",
+      "proximity",
+      "post"
+    ],
+    "required_inputs": [
+      "median_price",
+      "household_income",
+      "rents",
+      "build_cost",
+      "real_cash_rate"
+    ],
+    "leading_indicators": [
+      "days_on_market",
+      "stock_vs_avg",
+      "pool_permits",
+      "cadastre_ratio",
+      "school_zone_pressure"
+    ]
+  },
+  "timing": {
+    "weights": {
+      "bear": 30,
+      "base": 50,
+      "bull": 20
+    },
+    "buy_window": {
+      "open": true,
+      "from": "Mid-27",
+      "to": "End-27",
+      "label": "soft patch",
+      "rationale": "overvaluation plus cooling signals; mean-reversion opens a window without a crash"
+    },
+    "inputs": {
+      "valuation_gap_pct": 4.0,
+      "signal_score": -0.1
+    },
+    "factors": [
+      "valuation gap +4.0% vs fundamentals",
+      "leading-indicator score -0.10",
+      "derived tilt +0.050 (bearish)"
+    ],
+    "method": "error-correction spine + weighted leading-indicator score; weights and window derived, not hand-set"
+  },
+  "criteria": {
+    "filters": [
+      {
+        "key": "land_min_sqm",
+        "label": "Land over 500sqm",
+        "type": "filter",
+        "value": 500
+      },
+      {
+        "key": "price_band",
+        "label": "Price $800k-$1.1M",
+        "type": "filter",
+        "value": [
+          800000,
+          1100000
+        ]
+      },
+      {
+        "key": "beds_min",
+        "label": "More than 3 bedrooms",
+        "type": "filter",
+        "value": 4
+      }
+    ],
+    "weights": [
+      {
+        "key": "growth",
+        "label": "Growth after the dip",
+        "type": "weight",
+        "weight": 0.25
+      },
+      {
+        "key": "proximity",
+        "label": "Near family in Como",
+        "type": "weight",
+        "weight": 0.2
+      },
+      {
+        "key": "family",
+        "label": "Family area",
+        "type": "weight",
+        "weight": 0.15
+      },
+      {
+        "key": "land",
+        "label": "Backyard for the kids",
+        "type": "weight",
+        "weight": 0.15
+      },
+      {
+        "key": "post",
+        "label": "Good postcode / school zone",
+        "type": "weight",
+        "weight": 0.15
+      },
+      {
+        "key": "kdr",
+        "label": "Modern, or KDR-viable",
+        "type": "weight",
+        "weight": 0.1
+      }
+    ],
+    "context": [
+      {
+        "key": "capital",
+        "label": "Patient capital, low holding cost",
+        "type": "context"
+      }
+    ]
+  },
+  "data_sources": [
+    "domain",
+    "abs",
+    "rba",
+    "landgate"
+  ]
+}

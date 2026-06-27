@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:,">
+<title>Platform demo - config-driven model</title>
+<style>
+  :root{--ink:#0c1b2a;--ink-2:#13293d;--ink-3:#1c3a52;--line:#26465f;--paper:#f3f1e9;
+    --teal:#3aa6a0;--teal-bright:#5fd0c8;--sand:#d8a657;--bull:#6fae8f;--bear:#cf7a63;
+    --muted:#9fb3c4;--muted-2:#6f8aa0;--r:14px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1100px 560px at 80% -10%,#163049,transparent 60%),var(--ink);
+    color:var(--paper);font-family:"Inter",-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 0 70px;overflow-x:hidden}
+  .wrap{max-width:920px;margin:0 auto;padding:0 18px}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:600;letter-spacing:-.01em}
+  header{padding:34px 0 18px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-bright);font-weight:600}
+  h1{font-size:clamp(24px,4vw,36px);margin-top:10px}
+  .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+  .chip{font-size:12px;padding:5px 11px;border-radius:100px;border:1px solid var(--line);background:rgba(58,166,160,.08);color:var(--paper);white-space:nowrap}
+  .chip b{color:var(--teal-bright)}
+  select{font-family:inherit;font-size:13px;font-weight:600;color:var(--paper);background:var(--ink-2);
+    border:1px solid var(--line);border-radius:9px;padding:8px 12px;cursor:pointer}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+  .panel h3{font-size:16px;margin-bottom:4px}
+  .panel .sub{font-size:12px;color:var(--muted-2);margin-bottom:14px}
+  .splitbar{display:flex;height:12px;border-radius:6px;overflow:hidden;border:1px solid var(--line);margin:6px 0 10px}
+  .splitbar span{height:100%}
+  .wlabels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+  .wlabels b{font-variant-numeric:tabular-nums}
+  .window{margin-top:14px;font-size:13px;color:var(--paper);background:rgba(216,166,87,.08);border:1px solid rgba(216,166,87,.3);border-radius:10px;padding:11px 13px}
+  .window .lab{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--sand);font-weight:700}
+  .factors{margin:12px 0 0;padding-left:16px}
+  .factors li{font-size:12.5px;color:var(--muted);line-height:1.7}
+  .kv{font-size:13px;color:var(--muted);line-height:1.9}
+  .kv b{color:var(--paper)}
+  .crit{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .crit:last-child{border-bottom:none}
+  .crit .w{color:var(--teal-bright);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .crit .f{color:var(--sand);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+  .note{font-size:11.5px;color:var(--muted-2);margin-top:18px;line-height:1.6}
+  .note code{background:var(--ink-3);padding:1px 5px;border-radius:4px;color:var(--teal-bright)}
+  .err{color:var(--bear);font-size:14px;padding:20px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Platform demo &middot; config-driven engine</div>
+    <h1 id="title">Loading...</h1>
+    <div class="row">
+      <label class="chip" for="profileSel">Profile</label>
+      <select id="profileSel" aria-label="Choose profile"></select>
+      <span class="chip" id="assetChip"></span>
+      <span class="chip" id="bandChip"></span>
+    </div>
+  </header>
+
+  <div id="body"></div>
+
+  <p class="note">This page renders entirely from <code>dist/&lt;profile&gt;/bundle.json</code>, which the
+  build pipeline (<code>platform/build.py</code>) generates from a declarative profile plus the shared
+  engine. Switch the profile to see the <b>same engine</b> produce a different asset class, valuation
+  basis, and a <b>derived</b> buy-timing call. Nothing here is hand-set per user. This is a Phase-0
+  proof, isolated on the <code>develop</code> branch; it does not touch production.</p>
+</div>
+
+<script>
+const fmtAUD = n => n>=1e6 ? '$'+(n/1e6).toFixed(2)+'M' : '$'+Math.round(n/1000)+'k';
+const COLORS = {bear:'var(--bear)', base:'var(--teal)', bull:'var(--bull)'};
+
+async function loadIndex(){
+  try{ const r = await fetch('../dist/index.json',{cache:'no-store'}); if(r.ok) return (await r.json()).profiles; }catch(_){}
+  return ['como-residential','perth-commercial'];
+}
+async function loadBundle(id){
+  const r = await fetch(`../dist/${id}/bundle.json`,{cache:'no-store'});
+  if(!r.ok) throw new Error('bundle not found - run: python3 platform/build.py');
+  return r.json();
+}
+function render(b){
+  const p=b.profile, t=b.timing, w=t.weights;
+  document.getElementById('title').textContent = p.label;
+  document.getElementById('assetChip').innerHTML = `Asset class <b>${p.asset_class}</b>`;
+  document.getElementById('bandChip').innerHTML = `Budget <b>${fmtAUD(p.budget_band[0])}-${fmtAUD(p.budget_band[1])}</b>`;
+  const win=t.buy_window;
+  const weightsRow = ['bear','base','bull'].map(k=>`<span style="width:${w[k]}%;background:${COLORS[k]}"></span>`).join('');
+  const crit = c => `<div class="crit"><span>${c.label||c.key}${c.type==='filter'?' <span class="f">filter</span>':''}</span>`+
+                    `<span class="w">${c.type==='weight'?Math.round(c.weight*100)+'%':(Array.isArray(c.value)?fmtAUD(c.value[0])+'-'+fmtAUD(c.value[1]):(c.value??''))}</span></div>`;
+  document.getElementById('body').innerHTML = `
+    <div class="grid">
+      <div class="panel">
+        <h3>Buy-timing (derived by the engine)</h3>
+        <div class="sub">${t.method}</div>
+        <div class="splitbar">${weightsRow}</div>
+        <div class="wlabels"><span style="color:var(--bear)">Bear <b>${w.bear}%</b></span>
+          <span style="color:var(--teal-bright)">Base <b>${w.base}%</b></span>
+          <span style="color:var(--bull)">Bull <b>${w.bull}%</b></span></div>
+        <div class="window"><div class="lab">Buy window &middot; ${win.label}</div>
+          ${win.open?`Open ${win.from} to ${win.to}. `:''}${win.rationale}.</div>
+        <ul class="factors">${t.factors.map(f=>`<li>${f}</li>`).join('')}</ul>
+      </div>
+      <div class="panel">
+        <h3>Asset strategy</h3>
+        <div class="sub">swapped in via the registry for asset_class = ${p.asset_class}</div>
+        <div class="kv">Valuation basis: <b>${b.asset_strategy.valuation_basis}</b></div>
+        <div class="kv">Score dimensions: <b>${b.asset_strategy.score_dimensions.join(', ')}</b></div>
+        <div class="kv">Leading indicators: <b>${b.asset_strategy.leading_indicators.join(', ')}</b></div>
+        <div class="kv">Data sources: <b>${(b.data_sources||[]).join(', ')||'-'}</b></div>
+      </div>
+      <div class="panel" style="grid-column:1/-1">
+        <h3>Preferences (from the profile config)</h3>
+        <div class="sub">the user owns this; ${b.criteria.weights.length} weighted, ${b.criteria.filters.length} hard filters</div>
+        ${b.criteria.filters.map(crit).join('')}
+        ${b.criteria.weights.map(crit).join('')}
+      </div>
+    </div>`;
+}
+async function boot(){
+  const sel=document.getElementById('profileSel');
+  const ids=await loadIndex();
+  sel.innerHTML=ids.map(id=>`<option value="${id}">${id}</option>`).join('');
+  const params=new URLSearchParams(location.search);
+  let current=params.get('profile'); if(!ids.includes(current)) current=ids[0];
+  sel.value=current;
+  async function show(id){
+    try{ render(await loadBundle(id)); }
+    catch(e){ document.getElementById('body').innerHTML=`<div class="err">${e.message}</div>`; }
+  }
+  sel.onchange=()=>{ const id=sel.value; history.replaceState(null,'','?profile='+id); show(id); };
+  show(current);
+}
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "id": "perth-commercial",
+  "label": "Perth metro commercial (investor)",
+  "asset_class": "commercial",
+  "currency": "AUD",
+  "geography": {
+    "anchor": { "name": "Perth CBD", "postcode": "6000" },
+    "market": "Perth WA"
+  },
+  "budget_band": [1000000, 5000000],
+  "horizon_years": { "primary": 3, "tail": 7 },
+  "criteria": [
+    { "key": "price_band", "label": "Price $1M-$5M", "type": "filter", "value": [1000000, 5000000] },
+    { "key": "min_yield", "label": "Net yield at least 6%", "type": "filter", "value": 0.06 },
+    { "key": "cap_rate", "label": "Cap-rate compression upside", "type": "weight", "weight": 0.30 },
+    { "key": "wale", "label": "Lease term (WALE)", "type": "weight", "weight": 0.20 },
+    { "key": "covenant", "label": "Tenant covenant strength", "type": "weight", "weight": 0.20 },
+    { "key": "location", "label": "Location / catchment", "type": "weight", "weight": 0.20 },
+    { "key": "reposition", "label": "Repositioning upside", "type": "weight", "weight": 0.10 }
+  ],
+  "data_sources": ["abs", "rba", "cotality-commercial"]
+}

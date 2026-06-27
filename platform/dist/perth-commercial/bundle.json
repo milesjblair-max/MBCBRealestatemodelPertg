@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "profile": {
+    "id": "perth-commercial",
+    "label": "Perth metro commercial (investor)",
+    "asset_class": "commercial",
+    "currency": "AUD",
+    "geography": {
+      "anchor": {
+        "name": "Perth CBD",
+        "postcode": "6000"
+      },
+      "market": "Perth WA"
+    },
+    "budget_band": [
+      1000000,
+      5000000
+    ],
+    "horizon_years": {
+      "primary": 3,
+      "tail": 7
+    }
+  },
+  "asset_strategy": {
+    "asset_class": "commercial",
+    "valuation_basis": "capitalisation rate / net yield / NOI / WALE",
+    "score_dimensions": [
+      "cap_rate",
+      "wale",
+      "covenant",
+      "location",
+      "reposition"
+    ],
+    "required_inputs": [
+      "noi",
+      "cap_rate",
+      "market_cap_rate",
+      "wale_years",
+      "vacancy"
+    ],
+    "leading_indicators": [
+      "cap_rate_trend",
+      "vacancy_trend",
+      "incentive_levels",
+      "transaction_volume"
+    ]
+  },
+  "timing": {
+    "weights": {
+      "bear": 17,
+      "base": 50,
+      "bull": 33
+    },
+    "buy_window": {
+      "open": false,
+      "from": null,
+      "to": null,
+      "label": "rising market",
+      "rationale": "undervalued and heating; waiting risks paying more"
+    },
+    "inputs": {
+      "valuation_gap_pct": -8.0,
+      "signal_score": 0.1
+    },
+    "factors": [
+      "valuation gap -8.0% vs fundamentals",
+      "leading-indicator score +0.10",
+      "derived tilt -0.080 (bullish)"
+    ],
+    "method": "error-correction spine + weighted leading-indicator score; weights and window derived, not hand-set"
+  },
+  "criteria": {
+    "filters": [
+      {
+        "key": "price_band",
+        "label": "Price $1M-$5M",
+        "type": "filter",
+        "value": [
+          1000000,
+          5000000
+        ]
+      },
+      {
+        "key": "min_yield",
+        "label": "Net yield at least 6%",
+        "type": "filter",
+        "value": 0.06
+      }
+    ],
+    "weights": [
+      {
+        "key": "cap_rate",
+        "label": "Cap-rate compression upside",
+        "type": "weight",
+        "weight": 0.3
+      },
+      {
+        "key": "wale",
+        "label": "Lease term (WALE)",
+        "type": "weight",
+        "weight": 0.2
+      },
+      {
+        "key": "covenant",
+        "label": "Tenant covenant strength",
+        "type": "weight",
+        "weight": 0.2
+      },
+      {
+        "key": "location",
+        "label": "Location / catchment",
+        "type": "weight",
+        "weight": 0.2
+      },
+      {
+        "key": "reposition",
+        "label": "Repositioning upside",
+        "type": "weight",
+        "weight": 0.1
+      }
+    ],
+    "context": []
+  },
+  "data_sources": [
+    "abs",
+    "rba",
+    "cotality-commercial"
+  ]
+}
