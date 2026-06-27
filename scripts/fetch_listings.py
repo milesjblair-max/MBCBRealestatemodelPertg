@@ -26,6 +26,7 @@ tweak (check the workflow logs).
 import datetime
 import json
 import os
+import re
 import sys
 import urllib.request
 import urllib.parse
@@ -86,21 +87,46 @@ def _flatten_results(payload):
     return out
 
 
+_IMG_EXT = re.compile(r"\.(jpe?g|png|webp)(\?|$)", re.I)
+
+
+def _img_from(obj):
+    """Recursively find a usable reastatic photo URL anywhere in the object."""
+    if isinstance(obj, dict):
+        # a {server, uri/url} pair is REA's common image shape
+        server = obj.get("server")
+        uri = obj.get("uri") or obj.get("url") or obj.get("templatedUrl")
+        if isinstance(server, str) and isinstance(uri, str):
+            joined = server.rstrip("/") + "/" + uri.lstrip("/")
+            if "{size}" in joined:
+                return joined.replace("{size}", IMG_SIZE)
+            if "reastatic" in joined:
+                return joined
+        for v in obj.values():
+            r = _img_from(v)
+            if r:
+                return r
+    elif isinstance(obj, list):
+        for v in obj:
+            r = _img_from(v)
+            if r:
+                return r
+    elif isinstance(obj, str):
+        if "reastatic" in obj and ("{size}" in obj or _IMG_EXT.search(obj)):
+            return obj.replace("{size}", IMG_SIZE)
+    return None
+
+
 def _image(listing):
     """Best-effort main photo URL, with the {size} slot filled."""
-    tmpl = _dig(listing, "mainPhoto.templatedUrl", "image.templatedUrl")
-    if isinstance(tmpl, str):
+    tmpl = _dig(listing, "mainPhoto.templatedUrl", "mainPhoto.url", "image.templatedUrl")
+    if isinstance(tmpl, str) and "reastatic" in tmpl:
         return tmpl.replace("{size}", IMG_SIZE)
-    server = _dig(listing, "mainPhoto.server", "image.server")
-    uri = _dig(listing, "mainPhoto.uri", "image.uri", "mainPhoto.url")
-    if server and uri:
-        return server.rstrip("/") + "/" + IMG_SIZE + "/" + str(uri).lstrip("/")
-    imgs = listing.get("images") or listing.get("media")
-    if isinstance(imgs, list) and imgs:
-        t = _dig(imgs[0], "templatedUrl", "url")
-        if isinstance(t, str):
-            return t.replace("{size}", IMG_SIZE)
-    return None
+    # fall back to scanning mainPhoto, then the images array, then the whole listing
+    return (_img_from(listing.get("mainPhoto"))
+            or _img_from(listing.get("images"))
+            or _img_from(listing.get("media"))
+            or _img_from(listing))
 
 
 def _int(v):
@@ -108,6 +134,12 @@ def _int(v):
         return int(str(v).strip())
     except Exception:
         return None
+
+
+PT_DENY = ("unit", "apartment", "flat", "studio", "block of units",
+           "retirement", "new apartments")
+UO_TEXT = ("u/o", "under offer", "under contract", "deposit taken", "sold",
+           "leased", "now settled")
 
 
 def normalise(items, suburb, pc, median_low_k):
@@ -119,8 +151,16 @@ def normalise(items, suburb, pc, median_low_k):
         price_txt = _dig(L, "price.display", "priceText", "price.label", default="Contact agent")
         beds = _int(_dig(L, "bedrooms", "features.general.bedrooms", "general.bedrooms"))
         baths = _int(_dig(L, "bathrooms", "features.general.bathrooms"))
-        cars = _int(_dig(L, "carspaces", "carSpaces", "features.general.carspaces"))
+        cars = _int(_dig(L, "carspaces", "carSpaces", "features.general.carspaces",
+                         "features.general.parkingSpaces"))
         land = _int(_dig(L, "landSize.value", "landSize.displayValue", "propertySizes.land.displayValue"))
+        ptype = str(_dig(L, "propertyType", default="")).lower()
+        if any(d in ptype for d in PT_DENY):
+            continue                                   # skip units/apartments; we want houses
+        if any(u in (price_txt or "").lower() for u in UO_TEXT):
+            continue                                   # skip under-offer / sold
+        if land is not None and land < 450:
+            continue                                   # below the 500sqm brief (small tolerance)
         if price_n and price_n > MAX_PRICE:
             continue
         if beds is not None and beds < MIN_BEDS:
@@ -203,6 +243,8 @@ def main():
             print(f"  [shape] top-level keys: {list(payload.keys())[:12]}")
             if items:
                 print(f"  [shape] first listing keys: {list(items[0].keys())[:25]}")
+                print(f"  [shape] propertyType={items[0].get('propertyType')!r}")
+                print(f"  [shape] images repr: {repr(items[0].get('images'))[:320]}")
                 print(f"  [shape] first image resolved to: {_image(items[0])}")
             logged_shape = True
         got = normalise(items, s["name"], s["pc"], s.get("mlo"))
