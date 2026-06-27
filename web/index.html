@@ -282,8 +282,9 @@
   .sec-head.toggle{cursor:pointer;user-select:none}
   .sec-head.toggle:hover h2{color:var(--teal-bright)}
   .sec-head.toggle:focus-visible{outline:2px solid var(--teal-bright);outline-offset:4px;border-radius:6px}
-  .sec-head .caret{margin-left:auto;flex:none;color:var(--muted);font-size:13px;line-height:1;transition:transform .2s ease,color .2s ease;padding-left:12px}
-  .sec-head.toggle:hover .caret{color:var(--teal-bright)}
+  .sec-head .caret{margin-left:auto;flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(58,166,160,.12);border:1px solid var(--line);color:var(--teal-bright);transition:transform .25s ease,background .2s ease,border-color .2s ease}
+  .sec-head .caret svg{display:block}
+  .sec-head.toggle:hover .caret{background:rgba(58,166,160,.24);border-color:var(--teal)}
   section.collapsed > :not(.sec-head){display:none!important}
   section.collapsed .caret{transform:rotate(-90deg)}
   section.collapsed .sec-head{margin-bottom:0}
@@ -822,7 +823,6 @@ function initAVM(){
 // The price estimator (A) is exempt: it stays open always.
 function initCollapsibles(){
   document.querySelectorAll("section[data-tab]").forEach(sec=>{
-    if(sec.id==="avm") return;
     const head=sec.querySelector(".sec-head"); if(!head || head.dataset.toggle) return;
     head.dataset.toggle="1";
     head.classList.add("toggle");
@@ -830,7 +830,8 @@ function initCollapsibles(){
     head.setAttribute("tabindex","0");
     head.setAttribute("aria-expanded", String(!sec.classList.contains("collapsed")));
     const car=document.createElement("span");
-    car.className="caret"; car.setAttribute("aria-hidden","true"); car.innerHTML="&#9662;";
+    car.className="caret"; car.setAttribute("aria-hidden","true");
+    car.innerHTML='<svg viewBox="0 0 16 16" width="15" height="15"><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     head.appendChild(car);
     const toggle=()=>{ const c=sec.classList.toggle("collapsed"); head.setAttribute("aria-expanded", String(!c)); };
     head.addEventListener("click",toggle);
