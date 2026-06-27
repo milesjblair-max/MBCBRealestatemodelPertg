@@ -37,11 +37,13 @@ REF_BEDS = 4
 REF_BATHS = 2
 REF_LAND = {"S": 600, "N": 650}      # typical established block by river side
 
-# Marginal land value inside a HOME price is far below the raw land rate: an
-# owner-occupier pays for utility (a bigger yard), not subdividable land value,
-# until the block is genuinely big. So a moderate rate, tapering on large blocks.
-LAND_RATE = 0.45                     # $000 per sqm of difference from reference
-LAND_TAPER_OVER = 250                # sqm above reference where marginal rate halves
+# Marginal land value SCALES with the suburb's price level: a sqm of extra land
+# in Como is worth far more than one in Nollamara. The rate is LAND_K x the
+# suburb median midpoint ($000s) per sqm, tapering a little on very large blocks.
+# (A flat rate badly undervalued big blocks in premium suburbs.)
+LAND_K = 0.0011                      # marginal land rate as a fraction of the suburb median
+LAND_TAPER_OVER = 350                # sqm beyond reference where the marginal rate eases
+LAND_TAPER = 0.7                     # marginal-rate multiplier past the taper point
 
 BED_VALUE = 25                       # $000 per bedroom vs reference
 BATH_VALUE = 15                      # $000 per bathroom vs reference
@@ -90,15 +92,16 @@ def estimate(suburb, land=None, beds=None, baths=None, condition=None,
     notes = []
     value = mid
 
-    # Land: linear, tapering above +250sqm over the reference block.
+    # Land: per-sqm rate scaled to the suburb, tapering on very large blocks.
     if land is not None:
+        rate = LAND_K * mid
         diff = land - ref_land
         if diff > LAND_TAPER_OVER:
-            adj = LAND_TAPER_OVER * LAND_RATE + (diff - LAND_TAPER_OVER) * LAND_RATE * 0.5
+            adj = LAND_TAPER_OVER * rate + (diff - LAND_TAPER_OVER) * rate * LAND_TAPER
         elif diff < -LAND_TAPER_OVER:
-            adj = -LAND_TAPER_OVER * LAND_RATE + (diff + LAND_TAPER_OVER) * LAND_RATE * 0.5
+            adj = -LAND_TAPER_OVER * rate + (diff + LAND_TAPER_OVER) * rate * LAND_TAPER
         else:
-            adj = diff * LAND_RATE
+            adj = diff * rate
         value += adj
         notes.append(f"land {land}sqm vs ~{ref_land}sqm typical: {adj:+.0f}k")
 

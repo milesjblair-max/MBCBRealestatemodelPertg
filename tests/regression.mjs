@@ -93,17 +93,19 @@ ok(srcLinks.some(l => /reiwa\.com\.au/.test(l.href)) && srcLinks.some(l => /core
 // ---- AVM engine + lookups ----
 const avm = await page.evaluate(() => {
   const r = avmEstimate('Shelley', 696, 3, 1, 'original');
+  const como = avmEstimate('Como', 1100, 4, 3, 'good');  // large premium block
   const looks = avmLookups('31 saunders street como', r);
   return {
-    likely: r.likely, low: r.low, high: r.high, conf: r.conf,
+    likely: r.likely, low: r.low, high: r.high, conf: r.conf, comoLikely: como.likely,
     nLooks: looks.length,
     allGoogle: looks.every(l => /^https:\/\/www\.google\.com\/search\?q=/.test(l[1])),
     looksValid: looks.every(l => { try { new URL(l[1]); return true; } catch (e) { return false; } })
   };
 });
-ok(avm.likely === 915, 'AVM Shelley 3/1/696 original likely = $915k (got ' + avm.likely + ')');
+ok(avm.likely === 970, 'AVM Shelley 3/1/696 original likely = $970k (got ' + avm.likely + ')');
+ok(avm.comoLikely === 2385, 'AVM Como 1100sqm 4/3 likely = $2.385M, land scaled to suburb (got ' + avm.comoLikely + ')');
 ok(avm.low < avm.likely && avm.high > avm.likely, 'AVM range brackets the likely value');
-ok(avm.nLooks === 4, 'AVM produces 4 sale-history lookups');
+ok(avm.nLooks === 5, 'AVM produces 5 cross-check / sale-history lookups');
 ok(avm.allGoogle && avm.looksValid, 'AVM lookups are all valid Google searches');
 
 // ---- AVM UI renders ----
@@ -116,7 +118,7 @@ await page.waitForTimeout(150);
 ok((await page.textContent('.avm-headline .big')).includes('$'), 'AVM headline renders a dollar figure');
 ok(await page.$('.avm-fit .ring') !== null, 'AVM fit ring renders');
 ok((await page.$$('.avm-col.pros li')).length > 0, 'AVM pros render');
-ok((await page.$$('.avm-lookup a')).length === 4, 'AVM renders 4 lookup links');
+ok((await page.$$('.avm-lookup a')).length === 5, 'AVM renders 5 lookup links');
 
 // ---- photo band shows only when a listing has a photo; never an empty band ----
 ok(await page.$('#propGrid .pcard') !== null, 'property cards render');

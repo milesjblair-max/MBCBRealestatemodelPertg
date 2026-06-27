@@ -678,7 +678,7 @@ function fmtK(n){ return "$"+Math.round(n/1000)+"k"; }
 // ---- Tier 2 AVM-lite: estimate a price range from visible attributes -------
 const AVM = {
   REF_BEDS:4, REF_BATHS:2, REF_LAND:{S:600,N:650},
-  LAND_RATE:0.45, TAPER:250, BED:25, BATH:15,
+  LAND_K:0.0011, TAPER:350, LAND_TAPER:0.7, BED:25, BATH:15,
   COND:{original:.96,dated:.98,good:1,renovated:1.06,new:1.13},
   BASE_SPREAD:.12, MIN:.07, MAX:.20
 };
@@ -691,10 +691,10 @@ function avmEstimate(name, land, beds, baths, cond){
   const mid=(s.mlo+s.mhi)/2, refLand=AVM.REF_LAND[s.reg]||600;
   let value=mid; const notes=[];
   if(land!=null){
-    const d=land-refLand; let adj;
-    if(d>AVM.TAPER) adj=AVM.TAPER*AVM.LAND_RATE+(d-AVM.TAPER)*AVM.LAND_RATE*0.5;
-    else if(d<-AVM.TAPER) adj=-AVM.TAPER*AVM.LAND_RATE+(d+AVM.TAPER)*AVM.LAND_RATE*0.5;
-    else adj=d*AVM.LAND_RATE;
+    const rate=AVM.LAND_K*mid, d=land-refLand; let adj;
+    if(d>AVM.TAPER) adj=AVM.TAPER*rate+(d-AVM.TAPER)*rate*AVM.LAND_TAPER;
+    else if(d<-AVM.TAPER) adj=-AVM.TAPER*rate+(d+AVM.TAPER)*rate*AVM.LAND_TAPER;
+    else adj=d*rate;
     value+=adj; notes.push(`land ${land}sqm vs ~${refLand}sqm typical ${avmSign(adj)}`);
   }
   if(beds!=null){ const adj=(beds-AVM.REF_BEDS)*AVM.BED; value+=adj; notes.push(`${beds} bed vs ${AVM.REF_BEDS} ${avmSign(adj)}`); }
@@ -769,10 +769,11 @@ function avmLookups(addr, r){
   const ctx=((addr||"").trim() || r.suburb)+" WA "+r.pc;
   const g=q=>"https://www.google.com/search?q="+encodeURIComponent(q);
   return [
+    ["property.com.au valuation", g("site:property.com.au "+ctx)],
+    ["onthehouse estimate", g("site:onthehouse.com.au "+ctx)],
     ["Sale history", g(ctx+" sold price history")],
     ["realestate.com.au", g("site:realestate.com.au/property "+ctx)],
-    ["Domain", g("site:domain.com.au/property-profile "+ctx)],
-    ["onthehouse.com.au", g("site:onthehouse.com.au "+ctx)]
+    ["Domain", g("site:domain.com.au/property-profile "+ctx)]
   ];
 }
 
@@ -818,7 +819,7 @@ function renderAVM(){
     </div>
     <div class="avm-why"><b>How the estimate was built:</b> typical ${r.suburb} home ${avmFmt(r.mid)}${r.notes.length?", then "+r.notes.join(", "):""}.</div>
     <div class="avm-lookup">
-      <span class="ll">Pull the real last-sale and nearby sold prices (free public sources, opens in a new tab):</span>
+      <span class="ll">Cross-check the value or pull the last sale (free public sources; property.com.au and onthehouse show a full valuation, opens in a new tab):</span>
       ${looks}
     </div>`;
 }
