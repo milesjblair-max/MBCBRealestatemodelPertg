@@ -29,8 +29,13 @@ import { checkBearer } from "@/lib/auth";
 
 // The live-listings tool calls an external API and reads env vars, so the route
 // must run on the Node.js runtime, not the Edge runtime.
+//
+// maxDuration is 300s: with Fluid Compute enabled (server/vercel.json) the
+// platform keeps a warm instance and can hold a streaming MCP response open for
+// the whole call, so a long tool turn (e.g. several live-listing fetches) will
+// not be cut off. Mirrored in vercel.json so the limit is explicit either way.
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 const json = (data: unknown) => ({
   content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }],
@@ -195,7 +200,7 @@ const handler = createMcpHandler(
   },
   {
     basePath: "/api",
-    maxDuration: 60,
+    maxDuration: 300,
     verboseLogs: true,
   },
 );
