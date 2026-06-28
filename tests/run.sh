@@ -43,6 +43,28 @@ else
   echo "  (mcp/ not present, skipped)"
 fi
 
+echo "== 6. Phase 2 server: vendored engine/data in sync with canonical =="
+if [ -d server ]; then
+  node server/scripts/sync-engine.mjs >/dev/null 2>&1
+  # listings.json is a volatile daily-refreshed fallback, so exclude it; the
+  # live tool fetches fresh anyway. Everything else must match exactly.
+  drift="$(git status --porcelain -- server/lib server/data | grep -v 'server/data/listings.json')"
+  if [ -z "$drift" ]; then
+    echo "  server/lib/engine and server/data match mcp/src and data/"
+  else
+    echo "  OUT OF SYNC: run 'node server/scripts/sync-engine.mjs' and commit"; echo "$drift"; fail=1
+  fi
+else
+  echo "  (server/ not present, skipped)"
+fi
+
+echo "== 7. no em/en/minus dashes in Phase 1/2 sources =="
+if grep -rlP "[\x{2013}\x{2014}\x{2212}]" mcp/src mcp/test mcp/*.md server/app server/lib server/scripts server/*.md data/profile.schema.json data/profiles 2>/dev/null; then
+  echo "  DASH FOUND ^^^"; fail=1
+else
+  echo "  clean"
+fi
+
 echo
 if [ "$fail" -eq 0 ]; then echo "ALL PASS - safe to deploy"; else echo "FAILURES above - do NOT deploy"; fi
 exit $fail

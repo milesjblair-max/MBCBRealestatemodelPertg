@@ -561,6 +561,17 @@
     </table></div>
     <p style="font-size:12px;color:var(--muted-2);margin-top:8px">Source discipline: suburb medians diverge 10-20% between providers, so pick one per metric and hold it constant; treat single-suburb medians as ranges.</p>
 
+    <h3 class="subh">Build log: how this tool was engineered</h3>
+    <div class="appendix">
+      <p style="margin-top:0">A short, plain-English record of the engineering behind the page, kept so the work stays legible. The full technical journal lives in <code>mcp/BUILD_LOG.md</code>.</p>
+      <h4>Phase 1: the engine, extracted and proven</h4>
+      <p>The model maths that powers this page (the price estimate, the suburb scoring, the forecast) was pulled out of the web page into a standalone, strongly typed TypeScript library. A cross-language test then runs the same inputs through both the new library and the original Python and checks every number agrees to the dollar: 179 checks, all passing. That test is wired into the deploy gate, so the page and the model can never silently drift apart.</p>
+      <h4>Dynamic profiles: one model, any buyer</h4>
+      <p>The buyer's criteria were originally hard-wired in. They are now an input. Tell the engine your area, income, cash position and what matters to you, and it works out a realistic budget band, a buy-timing posture (act now, balanced, or patient and opportunistic) and a suburb ranking tuned to you. Someone renting with a small deposit and someone with a strong cash position and a low-cost facility get different answers, as they should. Scoped to Western Australia to start.</p>
+      <h4>Phase 2: an MCP server (the model as a tool an AI can call)</h4>
+      <p>MCP (Model Context Protocol) is a standard way to expose app logic as tools an AI assistant can call directly. Phase 2 wraps each engine function (price estimate, property assessment, forecast, suburb ranking, listing match) as an MCP tool and hosts them on Vercel, so an assistant can answer "what is this house worth, and does it fit me?" by calling the very same parity-tested model that sits behind this page. It is private and access-controlled; this page stays the public, zero-setup view.</p>
+    </div>
+
     <h3 class="subh">Appendix</h3>
     <div class="appendix">
       <h4>Scenario assumptions</h4>

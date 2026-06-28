@@ -177,21 +177,69 @@ npm test            # typecheck + parity + profile (this is what the deploy gate
 
 ---
 
-## What Phase 2 (the actual MCP server) will add
+## Phase 2: the MCP server (built, in `server/`)
 
-This engine is transport-agnostic on purpose. Phase 2 wraps it:
+The engine was transport-agnostic on purpose. Phase 2 wraps it as a real
+Model Context Protocol server and deploys it to Vercel. Layout:
 
-- `app/api/mcp/route.ts` using `@modelcontextprotocol/sdk` + the `mcp-handler`
-  adapter, over **Streamable HTTP** (stateless, so it runs on Vercel serverless
-  with no Redis).
-- One MCP `tool` per engine function: `estimate_price`, `score_suburb`,
-  `rank_suburbs`, `forecast`, `assess_property`, `search_listings`. Each tool's
-  input schema comes straight from the types in `src/types.ts`.
-- A bearer-token check on the route, `RAPIDAPI_KEY` as a Vercel env var for the
-  live listings tool, and deploy via Git-connect to Vercel.
+```
+server/
+  app/api/[transport]/route.ts   the MCP handler: one tool per engine function
+  app/page.tsx                   a landing page documenting the endpoint + tools
+  lib/schema.ts                  zod schemas (the tool contract; mirror types.ts)
+  lib/auth.ts                    bearer-token gate (open if no token set)
+  lib/listings-live.ts           TS port of fetch_listings.py (RapidAPI)
+  lib/engine/  +  data/          VENDORED copies of mcp/src and data/ (generated)
+  scripts/sync-engine.mjs        regenerates the vendored copies from canonical
+```
 
-Because the engine is already typed and parity-tested, Phase 2 is mostly
-plumbing: schema -> call engine -> return. The hard correctness work is done.
+**The shape:** `AI client -> POST /api/mcp -> mcp-handler -> zod tool schemas
+-> ENGINE`. The handler is created with `createMcpHandler` over **Streamable
+HTTP**, **stateless** (no Redis), so it runs on a single Vercel serverless
+function. The route file is `[transport]/route.ts` with `basePath: "/api"`, so
+the endpoint is `POST /api/mcp`.
+
+**The eleven tools** (one per engine capability): `estimate_price`,
+`assess_property`, `forecast`, `score_suburb`, `rank_suburbs`, `list_suburbs`,
+`onboarding_questions`, `resolve_profile`, `rank_suburbs_for_profile`,
+`match_listings`, `search_listings`. Each input schema is a zod object in
+`lib/schema.ts` that mirrors the engine's `types.ts` - the same types that gave
+us the parity-tested engine now define what a client sees.
+
+### Three problems Phase 2 had to solve (the genuinely instructive bits)
+
+1. **Data loading that survives bundling.** The Phase 1 engine read its JSON with
+   `readFileSync(join(here, "..", "..", "data", name))`. A serverless bundler
+   cannot SEE a computed path, so those files would not ship and the function
+   would `ENOENT` at runtime. Fix: switch `data.ts` to **static JSON imports**
+   (`import suburbs from "../../data/suburbs.json"`). A bundler can follow a
+   static import and include the file; tsx and Next both resolve them natively;
+   and the relative path lines up in both trees (repo `data/` from `mcp/src`,
+   `server/data/` from the vendored copy). Parity stayed 179/179 - same parsed
+   data, different loader.
+
+2. **A self-contained deploy without abandoning single-source-of-truth.** Vercel
+   wants one root directory with everything inside it; our engine and data live
+   elsewhere in the repo. Rather than import across directories (fragile) or
+   copy by hand (drifts), `sync-engine.mjs` **vendors** `mcp/src -> lib/engine`
+   and `data -> data` verbatim, runs on `prebuild`, and the deploy gate fails if
+   the committed copies drift. Same pattern the HTML already uses for its inline
+   data: a generated copy plus a gate that enforces equality.
+
+3. **`.js` specifiers through webpack.** The engine uses NodeNext-style imports
+   (`import "./util.js"` meaning `util.ts`). tsx handles that; webpack needs
+   `resolve.extensionAlias = { ".js": [".ts", ...] }` in `next.config.mjs`. One
+   line, but the build fails cryptically without it.
+
+**Auth and secrets.** A small wrapper checks `Authorization: Bearer <token>`
+against `MCP_BEARER_TOKEN`; if the var is unset the endpoint is open, so a fresh
+deploy works before the secret is wired. `RAPIDAPI_KEY` powers the live-listings
+tool; with no key it returns the committed sample.
+
+**Verified before deploy:** `next build` green; a local `npm start` answered
+`initialize`, `tools/list` (all 11), `estimate_price` (Shelley 720sqm = $1.075M,
+matching the engine), `rank_suburbs_for_profile` (patient-opportunistic, $2.32M
+ceiling, Shelley #1) and the WA guard (`anchor: "Sydney"` -> a clean error).
 
 ---
 
@@ -209,3 +257,10 @@ plumbing: schema -> call engine -> return. The hard correctness work is done.
 - "Phase 2 is a Vercel-hosted **Streamable-HTTP** MCP server: one tool per engine
   function, schemas derived from the types, bearer-token auth, secrets as env
   vars. Stateless, so no Redis needed."
+- "Hosting an engine serverless surfaces real bundling constraints: I moved data
+  loading from `readFileSync` (invisible to the file tracer) to **static JSON
+  imports** so the data actually ships, and **vendored** the engine into the
+  deploy root with a sync script the gate enforces - keeping one source of truth
+  while staying self-contained."
+- "I verified the server end to end before deploying - `initialize`, `tools/list`
+  and real tool calls against a local build - not just that it compiled."

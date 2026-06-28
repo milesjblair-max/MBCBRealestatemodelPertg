@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BuyerProfile",
+  "description": "What a user stipulates when they plug into the MCP. Drives budget, criteria weights, location anchor and buy-timing. WA (Perth) scope for now.",
+  "type": "object",
+  "required": ["region", "anchor"],
+  "additionalProperties": false,
+  "properties": {
+    "region": {
+      "type": "string",
+      "enum": ["WA"],
+      "description": "Geographic scope. Only WA (Perth) is supported for now."
+    },
+    "anchor": {
+      "type": "string",
+      "description": "The suburb the user wants to live near (must exist in data/suburbs.json). Distance to every suburb is computed from here."
+    },
+    "age": { "type": "integer", "minimum": 18, "maximum": 100 },
+    "income": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Gross annual household income (AUD)."
+    },
+    "finances": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "deposit": { "type": "number", "minimum": 0, "description": "Cash available for the deposit (AUD)." },
+        "cash_buffer": { "type": "number", "minimum": 0, "description": "Extra liquid cash beyond the deposit (AUD)." },
+        "credit_line": { "type": "number", "minimum": 0, "description": "Available line of credit / family facility (AUD)." },
+        "credit_rate_pct": { "type": "number", "minimum": 0, "description": "Interest rate on that facility (e.g. 0 for an interest-free family loan)." },
+        "currently_renting": { "type": "boolean", "description": "True if paying rent now (rent is a holding cost that makes waiting expensive)." },
+        "monthly_commitments": { "type": "number", "minimum": 0, "description": "Existing monthly debt repayments (AUD), reduces borrowing power." }
+      }
+    },
+    "life_stage": {
+      "type": "string",
+      "enum": ["young_single", "young_couple", "young_family", "established_family", "downsizer"],
+      "description": "Optional shortcut: picks sensible default criteria weights, which the user can still override."
+    },
+    "criteria": {
+      "type": "object",
+      "description": "Importance 0-5 for each dimension. Omitted dimensions fall back to the life_stage preset. Normalised internally.",
+      "additionalProperties": false,
+      "properties": {
+        "growth": { "type": "number", "minimum": 0, "maximum": 5 },
+        "schools": { "type": "number", "minimum": 0, "maximum": 5 },
+        "family": { "type": "number", "minimum": 0, "maximum": 5 },
+        "land": { "type": "number", "minimum": 0, "maximum": 5 },
+        "proximity": { "type": "number", "minimum": 0, "maximum": 5 },
+        "amenity": { "type": "number", "minimum": 0, "maximum": 5 },
+        "project": { "type": "number", "minimum": 0, "maximum": 5, "description": "Appetite for a knock-down-rebuild or renovation." }
+      }
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "min_beds": { "type": "integer", "minimum": 0 },
+        "min_land": { "type": "number", "minimum": 0 },
+        "max_distance_km": { "type": "number", "minimum": 0, "description": "Hard cap on distance from the anchor." }
+      }
+    },
+    "horizon_years": { "type": "number", "minimum": 0, "description": "How long until they want to be in the home." }
+  }
+}

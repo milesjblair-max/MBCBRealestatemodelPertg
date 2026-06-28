@@ -32,5 +32,7 @@ npm run demo    # estimate, suburb ranking, forecast, assessment
 
 ## Status
 
-Phase 1 (this): engine extracted, typed, parity-tested. **Done.**
-Phase 2 (next): wrap each function as an MCP tool, host on Vercel.
+Phase 1: engine extracted, typed, parity-tested. **Done.**
+Dynamic profiles: criteria, budget and buy-timing made per-buyer (WA). **Done.**
+Phase 2: each function wrapped as an MCP tool and hosted on Vercel. **Done** -
+see [`../server`](../server) and the Phase 2 section of [BUILD_LOG.md](./BUILD_LOG.md).

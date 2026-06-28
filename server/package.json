@@ -1,0 +1,29 @@
+{
+  "name": "como-mcp-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Phase 2: the Como model engine exposed as a Model Context Protocol server over Streamable HTTP, deployable to Vercel. One MCP tool per engine function.",
+  "scripts": {
+    "sync": "node scripts/sync-engine.mjs",
+    "predev": "npm run sync",
+    "prebuild": "npm run sync",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.26.0",
+    "mcp-handler": "^1.1.0",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0"
+  }
+}
