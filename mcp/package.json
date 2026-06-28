@@ -7,8 +7,10 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "parity": "tsx test/parity.ts",
+    "profile": "tsx test/profile.test.ts",
+    "test:engine": "npm run -s parity && npm run -s profile",
     "demo": "tsx src/index.ts",
-    "test": "npm run typecheck && npm run parity"
+    "test": "npm run typecheck && npm run test:engine"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

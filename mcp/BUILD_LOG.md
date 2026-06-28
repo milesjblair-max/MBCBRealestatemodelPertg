@@ -107,6 +107,62 @@ is what surfaces this; without it the bug ships silently.
 
 ---
 
+## Update: from one hardcoded buyer to any buyer (the dynamic pivot)
+
+Phase 1 shipped the engine, but every number was wired to one person: Como as the
+anchor, the buyer's $800k-$1.1M band, his 25/20/15... criteria weights baked into
+`criteria.json`. To be an MCP a stranger can plug in, the engine has to take the
+buyer as **input**, not as a constant.
+
+**Before -> After (this change):**
+
+| Was hardcoded | Now an input |
+|---|---|
+| Anchor = Como, distance = a fixed `km` column | `anchor` is any suburb; distance is computed live by haversine from its lat/lng |
+| Criteria weights = the buyer's fixed split | `criteria` is 0-5 per dimension, merged over a life-stage preset, normalised to sum 1 |
+| Budget band = $800k-$1.1M constant | `budgetBand(profile)` derives it from income (serviceability) and own funds (LVR) |
+| "Patience is cheap" = a stated assumption | `buyTiming(profile)` derives posture from the buyer's actual cash position |
+
+**The new modules (each one thing, all stdlib/no deps):**
+
+- `geo.ts` - `haversineKm` + `distanceKm(anchor, suburb)`. The anchor stops being
+  Como; "where you want to live" is now a real coordinate. I added `lat`/`lng` to
+  all 14 suburbs in `data/suburbs.json` to support it.
+- `finance.ts` - the adaptable core. `borrowingCapacity` is a standard annuity PV
+  at the APRA-buffered rate; `budgetBand` takes the **min** of two bounds (total
+  funds vs LVR-on-own-funds); `buyTiming` scores urgency 0-100 from renting,
+  funds-to-budget ratio, a sub-2% credit facility, horizon and age.
+- `profile.ts` - `resolveProfile` is the gatekeeper: it enforces **WA-only**
+  (region + a known anchor), merges criteria over a life-stage preset, and returns
+  the working parameters (`weights`, `budget`, `timing`, `filters`).
+- `recommend.ts` - scores suburbs **and** live listings against the resolved
+  profile instead of the fixed criteria, so the area suggestions and listing
+  matches move with the user.
+- `onboarding.ts` - the question set the MCP will ask a new user, versioned with
+  the engine, plus a flat-answers -> `BuyerProfile` mapper.
+
+**Why this is the right shape for an MCP.** An MCP tool is only as good as the
+contract around its inputs. By making the buyer a typed `BuyerProfile` (with a
+JSON Schema in `data/profile.schema.json`) and resolving it through one guarded
+function, Phase 2 can expose `set_profile` / `rank_for_me` tools whose schemas
+fall straight out of `types.ts` - the same trick as the rest of the engine.
+
+**The brief, made testable.** The spec said a small-deposit renter "should not buy
+in the same period" as a cash-rich buyer with a 0% facility. That is now a unit
+test, not a claim: `profile.test.ts` asserts the cash-rich Como profile resolves
+to `patient-opportunistic` (urgency < 40) and the renting first-home Bayswater
+profile to `act-now` (urgency >= 65), and that flipping the 0% facility to 7%
+raises urgency. 23 deterministic checks cover the WA guard, budget monotonicity,
+the timing contrast, anchor-dependent ranking, and weight normalisation.
+
+**Testing lesson carried forward.** Parity (TS == Python) only covers the
+buyer-agnostic engine. This layer is new and TS-only, so it gets its own
+self-contained unit suite rather than a golden file. The gate now runs both:
+`test:engine = parity + profile`, wired into `tests/run.sh` step 5 so no dynamic
+feature can regress unnoticed - which is the standing rule for this repo.
+
+---
+
 ## How to run it
 
 ```bash
@@ -114,8 +170,9 @@ cd mcp
 npm install
 npm run typecheck   # tsc --noEmit
 npm run parity      # TS engine vs Python model, 179 checks
-npm run demo        # see the engine produce an estimate, ranking, forecast
-npm test            # typecheck + parity (this is what the deploy gate runs)
+npm run profile     # dynamic profile-layer unit tests, 23 checks
+npm run demo        # see two buyers get different budgets, timing and rankings
+npm test            # typecheck + parity + profile (this is what the deploy gate runs)
 ```
 
 ---

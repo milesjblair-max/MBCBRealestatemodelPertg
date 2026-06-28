@@ -39,5 +39,24 @@ export function roundHalfUp1000(x: number): number {
 
 /** Format $000s like the tool: "$915k" or "$2.38M". */
 export function fmtK(k: number): string {
-  return k >= 1000 ? `$${(k / 1000).toFixed(2)}M` : `$${k}k`;
+  return k >= 1000 ? `$${(k / 1000).toFixed(2)}M` : `$${Math.round(k)}k`;
+}
+
+/** Format full dollars: "$1.76M" / "$720k". */
+export function fmtDollars(n: number): string {
+  return fmtK(n / 1000);
+}
+
+/** Pull a dollar figure out of REA free-text price ("From $999k"); null if none. */
+export function parsePrice(text?: string | null): number | null {
+  if (!text) return null;
+  const m = String(text).match(/\$\s*([\d][\d,.]*)\s*([kKmM])?/);
+  if (!m) return null;
+  let n = parseFloat(m[1]!.replace(/,/g, ""));
+  if (Number.isNaN(n)) return null;
+  const s = (m[2] ?? "").toLowerCase();
+  if (s === "k") n *= 1e3;
+  else if (s === "m") n *= 1e6;
+  else if (n < 100) n *= 1e6;
+  return n >= 50000 ? Math.round(n) : null;
 }

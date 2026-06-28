@@ -16,14 +16,89 @@ export interface Suburb {
   name: string;
   pc: string;
   reg: River;
-  km: number;
+  km: number; // legacy: straight-line km to Como (the original anchor)
+  lat: number;
+  lng: number;
   school: number;
   prox: number;
   mlo: number; // median low ($000s)
   mhi: number; // median high ($000s)
-  band: boolean; // sits within / below the $800k-$1.1M band
+  band: boolean; // sits within / below the original buyer's $800k-$1.1M band
   scores: SuburbScores;
   why?: string;
+}
+
+// ---- Dynamic buyer profile (what a user stipulates to the MCP) -------------
+
+export type LifeStage =
+  | "young_single"
+  | "young_couple"
+  | "young_family"
+  | "established_family"
+  | "downsizer";
+
+/** Importance 0-5 per dimension. */
+export interface CriteriaInput {
+  growth?: number;
+  schools?: number;
+  family?: number;
+  land?: number;
+  proximity?: number;
+  amenity?: number;
+  project?: number; // appetite for KDR / renovation
+}
+
+export interface Finances {
+  deposit?: number;
+  cash_buffer?: number;
+  credit_line?: number;
+  credit_rate_pct?: number;
+  currently_renting?: boolean;
+  monthly_commitments?: number;
+}
+
+export interface BuyerProfile {
+  region: "WA";
+  anchor: string; // a suburb in the dataset
+  age?: number;
+  income?: number;
+  finances?: Finances;
+  life_stage?: LifeStage;
+  criteria?: CriteriaInput;
+  filters?: { min_beds?: number; min_land?: number; max_distance_km?: number };
+  horizon_years?: number;
+}
+
+/** Normalised weights over the suburb scoring dimensions (sum to 1). */
+export interface ScoringWeights {
+  growth: number;
+  family: number;
+  land: number;
+  kdr: number;
+  prox: number;
+  post: number;
+  school: number;
+}
+
+export interface BudgetBand {
+  floor: number;
+  ceiling: number;
+  borrowingCapacity: number;
+}
+
+export interface BuyTiming {
+  posture: "act-now" | "balanced" | "patient-opportunistic";
+  urgency: number; // 0-100
+  rationale: string[];
+}
+
+export interface ResolvedProfile {
+  anchor: Suburb;
+  weights: ScoringWeights;
+  budget: BudgetBand;
+  timing: BuyTiming;
+  filters: { min_beds: number; min_land: number; max_distance_km: number | null };
+  lifeStage: LifeStage;
 }
 
 export type CriteriaWeights = Record<keyof SuburbScores, number>;

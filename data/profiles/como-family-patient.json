@@ -1,0 +1,18 @@
+{
+  "region": "WA",
+  "anchor": "Como",
+  "age": 34,
+  "income": 240000,
+  "finances": {
+    "deposit": 200000,
+    "cash_buffer": 600000,
+    "credit_line": 800000,
+    "credit_rate_pct": 0,
+    "currently_renting": false,
+    "monthly_commitments": 0
+  },
+  "life_stage": "young_family",
+  "criteria": { "schools": 4, "family": 5, "land": 4, "proximity": 5, "growth": 4, "project": 3 },
+  "filters": { "min_beds": 4, "min_land": 500 },
+  "horizon_years": 3
+}

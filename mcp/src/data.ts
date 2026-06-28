@@ -40,3 +40,25 @@ export function findSuburb(name: string): Suburb | undefined {
   const n = name.trim().toLowerCase();
   return SUBURBS.find((s) => s.name.toLowerCase() === n);
 }
+
+export interface Listing {
+  suburb: string;
+  pc?: string;
+  price?: number | null;
+  priceText?: string;
+  beds?: number | null;
+  baths?: number | null;
+  cars?: number | null;
+  land?: number | null;
+  address?: string;
+  image?: string | null;
+  url?: string;
+  new?: boolean;
+}
+export function loadListings(): Listing[] {
+  try {
+    return loadJson<{ listings: Listing[] }>("listings.json").listings ?? [];
+  } catch {
+    return [];
+  }
+}
