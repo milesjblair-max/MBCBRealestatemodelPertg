@@ -2,7 +2,11 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# test deps (created by tests/run.sh / CI)
-node_modules/
-package.json
-package-lock.json
+# root test deps (created by tests/run.sh / CI) - anchored so nested projects can commit theirs
+/node_modules/
+/package.json
+/package-lock.json
+
+# mcp build deps / output
+mcp/node_modules/
+mcp/dist/

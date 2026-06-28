@@ -29,6 +29,15 @@ if [ ! -e node_modules/playwright-core ]; then
 fi
 if node tests/regression.mjs; then echo "  regression ok"; else echo "  regression FAILED"; fail=1; fi
 
+echo "== 5. MCP engine parity (TS == Python) =="
+if [ -d mcp ]; then
+  ( cd mcp && [ -d node_modules ] || npm install --silent >/dev/null 2>&1
+    npm run --silent parity >/tmp/mcp_parity.log 2>&1 )
+  if [ $? -eq 0 ]; then echo "  $(grep -o 'parity: .*' /tmp/mcp_parity.log | tail -1)"; else echo "  MCP parity FAILED"; cat /tmp/mcp_parity.log | tail -6; fail=1; fi
+else
+  echo "  (mcp/ not present, skipped)"
+fi
+
 echo
 if [ "$fail" -eq 0 ]; then echo "ALL PASS - safe to deploy"; else echo "FAILURES above - do NOT deploy"; fi
 exit $fail

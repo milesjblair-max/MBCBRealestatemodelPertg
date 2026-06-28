@@ -1,0 +1,18 @@
+{
+  "name": "como-mcp-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Phase 1: the Como model engine, extracted into a typed TypeScript library with cross-language parity tests against the Python reference. Foundation for the MCP server.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "parity": "tsx test/parity.ts",
+    "demo": "tsx src/index.ts",
+    "test": "npm run typecheck && npm run parity"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
