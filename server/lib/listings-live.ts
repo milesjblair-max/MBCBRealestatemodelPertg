@@ -9,8 +9,9 @@
 // With no RAPIDAPI_KEY in the environment this returns the committed sample
 // (the same fallback the static page uses), so the tool always answers.
 
-import { SUBURBS, loadListings, type Listing } from "@/lib/engine/data";
-import { parsePrice } from "@/lib/engine/util";
+import { SUBURBS, loadListings, type Listing } from "./engine/data.js";
+import { findWaSuburb } from "./engine/baselayer.js";
+import { parsePrice } from "./engine/util.js";
 
 const MAX_PRICE = 1_100_000;
 const MIN_BEDS = 3;
@@ -238,4 +239,90 @@ export async function fetchSuburbListings(suburb: string, pc: string): Promise<L
     console.warn(`[listings] live fetch failed for ${suburb}: ${(e as Error).message}`);
     return [];
   }
+}
+
+export interface FilteredListingsResult {
+  source: "realty-in-au" | "sample";
+  suburb: string;
+  pc: string;
+  filters: { minLand: number | null; minBeds: number | null; maxPrice: number | null };
+  count: number;
+  dropped: { unknownLand: number; belowLand: number; tooFewBeds: number; overPrice: number };
+  note: string;
+  listings: Listing[];
+}
+
+export interface HardFilterOpts { minLand?: number | null; minBeds?: number | null; maxPrice?: number | null }
+
+/** Pure hard-filter over listings. Unknown land is NOT a pass against a land
+ *  minimum: it is dropped and counted as unknownLand (not belowLand), because
+ *  "no published size" is not the same as "small". Exported for testing. */
+export function applyHardFilters(listings: Listing[], opts: HardFilterOpts): { kept: Listing[]; dropped: { unknownLand: number; belowLand: number; tooFewBeds: number; overPrice: number } } {
+  const minLand = opts.minLand ?? null;
+  const minBeds = opts.minBeds ?? null;
+  const maxPrice = opts.maxPrice ?? null;
+  const dropped = { unknownLand: 0, belowLand: 0, tooFewBeds: 0, overPrice: 0 };
+  const kept: Listing[] = [];
+  for (const L of listings) {
+    const price = L.price ?? parsePrice(L.priceText);
+    if (minBeds != null && (L.beds == null || L.beds < minBeds)) { dropped.tooFewBeds++; continue; }
+    if (maxPrice != null && price != null && price > maxPrice) { dropped.overPrice++; continue; }
+    if (minLand != null) {
+      if (L.land == null) { dropped.unknownLand++; continue; }
+      if (L.land < minLand) { dropped.belowLand++; continue; }
+    }
+    kept.push(L);
+  }
+  kept.sort((a, b) => (a.price ?? 9e9) - (b.price ?? 9e9));
+  return { kept, dropped };
+}
+
+/** Individual live houses for ANY WA suburb (statewide, incl. off-metro like
+ *  Mandurah), with HARD filters applied. This is the gap-closer: the engine can
+ *  fetch any WA suburb's listings, so there is no need to web-scrape portals for
+ *  "Mandurah houses over 700sqm". Honest about what it drops: a listing with no
+ *  published land size is NOT counted as meeting a land minimum (it is dropped
+ *  and reported separately, because unknown land is not the same as small land). */
+export async function findSuburbListingsFiltered(
+  suburbName: string,
+  opts: { minLand?: number; minBeds?: number; maxPrice?: number; cap?: number } = {},
+): Promise<FilteredListingsResult> {
+  const wa = findWaSuburb(suburbName);
+  if (!wa) throw new Error(`Unknown WA suburb '${suburbName}'. WA only; check the spelling.`);
+
+  const minLand = opts.minLand ?? null;
+  const minBeds = opts.minBeds ?? null;
+  const maxPrice = opts.maxPrice ?? null;
+  const cap = opts.cap ?? 20;
+  const filters = { minLand, minBeds, maxPrice };
+
+  const all = await fetchSuburbListings(wa.name, wa.pc);
+  const live = all.length > 0;
+  const { kept, dropped } = applyHardFilters(all, filters);
+
+  const bits: string[] = [];
+  if (minLand != null) bits.push(`land >= ${minLand}sqm`);
+  if (minBeds != null) bits.push(`${minBeds}+ beds`);
+  if (maxPrice != null) bits.push(`<= $${Math.round(maxPrice / 1000)}k`);
+  const crit = bits.length ? ` matching ${bits.join(", ")}` : "";
+
+  let note: string;
+  if (!live) {
+    note = `No live listings for ${wa.name} (set RAPIDAPI_KEY for live data, or the feed returned nothing right now).`;
+  } else {
+    note = `${kept.length} live house(s) in ${wa.name}${crit}, from Realty in AU via RapidAPI (not an official REA feed).`;
+    if (minLand != null && dropped.unknownLand > 0)
+      note += ` ${dropped.unknownLand} listing(s) were dropped for having NO published land size - unknown, not necessarily small; widen by removing the land filter to see them.`;
+  }
+
+  return {
+    source: live ? "realty-in-au" : "sample",
+    suburb: wa.name,
+    pc: wa.pc,
+    filters,
+    count: kept.length,
+    dropped,
+    note,
+    listings: kept.slice(0, cap),
+  };
 }

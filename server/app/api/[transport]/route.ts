@@ -24,7 +24,7 @@ import { nearbyWaSuburbs } from "@/lib/engine/baselayer";
 import type { BuyerProfile } from "@/lib/engine/types";
 
 import { ProfileSchema, CONDITIONS } from "@/lib/schema";
-import { searchListingsLive, fetchSuburbListings } from "@/lib/listings-live";
+import { searchListingsLive, fetchSuburbListings, findSuburbListingsFiltered } from "@/lib/listings-live";
 import { recommendAreas } from "@/lib/area-recommend";
 import { checkBearer } from "@/lib/auth";
 import { registerPrompts } from "@/lib/prompts";
@@ -184,6 +184,7 @@ const handler = createMcpHandler(
             "Estimate a specific house's price and fit (estimate_price, assess_property)",
             "Resolve your budget, affordability gap to your anchor, and buy-timing (resolve_profile)",
             "Fully fit-rank the curated WA suburb set on every criterion and count which are viable (rank_suburbs_for_profile)",
+            "Get individual live houses in ANY WA suburb (incl. off-metro like Mandurah) with hard land/beds/price filters (find_listings) - e.g. 'Mandurah houses over 700sqm', no web-scraping needed",
             "Match current listings to your filters (match_listings, search_listings)",
             "Forecast the market to mid-2029 across bear/base/bull (forecast)",
             "Open a full visual dashboard for your profile (every tool returns dashboardUrl)",
@@ -295,6 +296,25 @@ const handler = createMcpHandler(
           listings,
           criteria_fit: "not evaluated here (no profile). Use match_listings with a profile for a per-listing 'meets' verdict.",
         });
+      },
+    );
+
+    server.tool(
+      "find_listings",
+      "Find INDIVIDUAL live for-sale houses in ANY WA suburb (statewide, including off-metro suburbs like Mandurah, Halls Head, Albany) with HARD filters applied: min_land, min_beds, max_price. Returns individual listings (address, price, beds, land, photo, link), not suburb aggregates. This is how to get e.g. 'Mandurah houses over 700sqm' without leaving the engine. Honest about drops: a listing with no published land size is NOT counted as meeting a land minimum (reported separately as unknownLand). Needs RAPIDAPI_KEY for live data.",
+      {
+        suburb: z.string().describe("Any WA suburb to search, e.g. 'Mandurah'."),
+        min_land: z.number().positive().optional().describe("Hard floor on land size in sqm, e.g. 700. Listings with no published land size are dropped and counted separately."),
+        min_beds: z.number().int().positive().optional().describe("Hard floor on bedrooms, e.g. 3."),
+        max_price: z.number().positive().optional().describe("Hard ceiling on price in dollars, e.g. 1100000."),
+        cap: z.number().int().min(1).max(40).optional().describe("Max listings to return. Default 20."),
+      },
+      async ({ suburb, min_land, min_beds, max_price, cap }) => {
+        try {
+          return json(await findSuburbListingsFiltered(suburb, { minLand: min_land, minBeds: min_beds, maxPrice: max_price, cap }));
+        } catch (e) {
+          return json({ error: (e as Error).message });
+        }
       },
     );
 
