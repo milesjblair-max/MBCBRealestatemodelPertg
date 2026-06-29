@@ -119,7 +119,7 @@ const handler = createMcpHandler(
 
     server.tool(
       "nearby_suburbs",
-      "Find the WA suburbs nearest ANY anchor - anchor anywhere in WA (Mandurah, Albany, Geraldton, not just the curated set). Returns real suburbs sorted by distance from the WA-wide base layer (~1800 suburbs). This is geographic coverage; price and fit scoring for arbitrary suburbs is being layered on next.",
+      "Locate the WA suburbs nearest ANY anchor - anchor anywhere in WA (Mandurah, Albany, Geraldton, not just the curated set). Returns real suburbs sorted by distance from the WA-wide base layer (~1800 suburbs). This is geography ONLY (no scoring). To fit-score those neighbours for a buyer (proximity + land + budget against live prices), use recommend_areas instead.",
       {
         anchor: z.string().describe("Any WA suburb to centre on, e.g. 'Mandurah'."),
         radius_km: z.number().positive().optional().describe("Max distance from the anchor in km. Default 15."),
@@ -171,13 +171,19 @@ const handler = createMcpHandler(
           what:
             "A house-price and suburb-fit engine for a WA buyer. Tell it where you want to live, your income and cash, and what matters, and it works out a realistic budget, whether you can afford your anchor suburb, a buy-timing call, a ranked shortlist of suburbs, matching listings, and a market forecast - with a one-click visual dashboard.",
           start_here:
-            "Give your anchor suburb + income + deposit + what matters most (schools / proximity / land). I will resolve your profile and return a dashboard link. No commands to memorise.",
+            `This call is just the menu - it tells you nothing about YOUR situation. The real ` +
+            `output (budget, affordability gap to your anchor, buy-timing, ranked suburbs) only ` +
+            `comes once you give a profile. Two steps: call onboarding_questions to see what to ` +
+            `provide, then resolve_profile (or recommend_areas) with your anchor suburb + income + ` +
+            `deposit + what matters most (schools / proximity / land). You do not memorise tool ` +
+            `names - just answer those questions - but you do have to provide the profile; there is ` +
+            `no useful one-word answer without it.`,
           what_it_can_do: [
-            "Anchor ANYWHERE in WA and fit-rank nearby suburbs by YOUR criteria with real live prices (recommend_areas) - statewide, e.g. Mandurah, Albany",
-            "Find the nearest real suburbs to any WA anchor (nearby_suburbs) - ~1800 suburbs",
+            "Anchor ANYWHERE in WA (~1800 suburbs) and fit-rank nearby suburbs by YOUR criteria (recommend_areas). Scored on proximity + land + budget against real live listing prices. Schools/growth/family are NOT scored outside the curated set (see coverage).",
+            "Find the nearest real suburbs to any WA anchor, located only, not fit-scored (nearby_suburbs)",
             "Estimate a specific house's price and fit (estimate_price, assess_property)",
             "Resolve your budget, affordability gap to your anchor, and buy-timing (resolve_profile)",
-            "Rank the model's curated WA suburb set for you and count which are viable (rank_suburbs_for_profile)",
+            "Fully fit-rank the curated WA suburb set on every criterion and count which are viable (rank_suburbs_for_profile)",
             "Match current listings to your filters (match_listings, search_listings)",
             "Forecast the market to mid-2029 across bear/base/bull (forecast)",
             "Open a full visual dashboard for your profile (every tool returns dashboardUrl)",
@@ -185,10 +191,14 @@ const handler = createMcpHandler(
           prompts: ["find_a_home", "see_listings", "estimate_a_listing", "about_this_tool"],
           suburbs: SUBURBS.map((s) => s.name),
           coverage:
-            `Geographic coverage is now WA-wide: ~1800 suburbs in the base layer, so you can anchor anywhere ` +
-            `(use nearby_suburbs). Rich fit-scoring (budget + criteria + listings) currently runs on the ${SUBURBS.length} ` +
-            `curated suburbs; for an anchor outside that set, nearby_suburbs returns the real neighbours but price/fit ` +
-            `scoring for them is still being layered in. Be honest about which suburbs are fully scored vs only located.`,
+            `Two tiers, state them plainly. TIER 1 - full fit-scoring on every criterion ` +
+            `(budget, proximity, land, schools, growth, family, KDR) runs ONLY on the ${SUBURBS.length} ` +
+            `curated suburbs: ${SUBURBS.map((s) => s.name).join(", ")} (rank_suburbs_for_profile). ` +
+            `TIER 2 - geography is WA-wide (~1800 suburbs in the base layer), so you can anchor anywhere; ` +
+            `for an anchor outside the curated set, recommend_areas locates the real neighbours and scores ` +
+            `them on proximity + land + budget against live listing prices, but does NOT yet score ` +
+            `schools/growth/family for them (that layer is pending: ABS demographics + Landgate growth, both free). ` +
+            `nearby_suburbs locates without scoring at all. Never imply a Tier-2 suburb is fully scored when it is not.`,
           example_dashboard: dashboardUrl({
             region: "WA",
             anchor: "Como",
@@ -291,8 +301,17 @@ const handler = createMcpHandler(
       "Prefer the guided prompts: /find_a_home (budget, timing " +
       "and a suburb ranking), /estimate_a_listing (price + fit for one house), and " +
       "/about_this_tool (orientation). Never invent a financial figure the user did " +
-      "not give; if one is missing, ask. If a suburb or state outside the dataset is " +
-      "requested, say it is out of scope. estimate_price and forecast are buyer-agnostic. " +
+      "not give; if one is missing, ask. " +
+      "ANCHOR ROUTING (important): the anchor can be ANY of the ~1800 WA suburbs, not just " +
+      "the curated set. If the anchor is NOT one of the curated suburbs (call list_suburbs " +
+      "to check), use recommend_areas - it fit-scores any WA anchor and its neighbours on " +
+      "proximity + land + budget against live listing prices (schools/growth/family are not " +
+      "scored off-panel, and it says so). Do NOT tell the user an off-panel anchor like " +
+      "Mandurah cannot be fit-scored - it can, via recommend_areas. rank_suburbs_for_profile " +
+      "is the full-criteria ranker but covers ONLY the curated set, so use it when the buyer " +
+      "wants the curated shortlist, not as the anchor test. A WA suburb is only 'out of scope' " +
+      "if it is not in WA at all; an off-panel WA suburb is in scope via recommend_areas. " +
+      "estimate_price and forecast are buyer-agnostic. " +
       "Rendering: give a concise Markdown summary first (works everywhere), then, when " +
       "supported, a self-contained HTML artifact dashboard built only from the tools' " +
       "numbers. Do NOT use the separate 'visualize' MCP-app tool to draw charts (it is " +
