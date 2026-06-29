@@ -16,7 +16,6 @@ import { z } from "zod";
 import { estimate } from "@/lib/engine/avm";
 import { assessProperty } from "@/lib/engine/assess";
 import { buildTimeline, metrics, BASELINE_WEIGHTS } from "@/lib/engine/scenario";
-import { scoreSuburb, rank } from "@/lib/engine/scoring";
 import { resolveProfile } from "@/lib/engine/profile";
 import { rankSuburbsForProfile, matchListings } from "@/lib/engine/recommend";
 import { ONBOARDING_QUESTIONS } from "@/lib/engine/onboarding";
@@ -101,23 +100,9 @@ const handler = createMcpHandler(
       },
     );
 
-    // ---- Suburb scoring (legacy Como criteria) -----------------------------
-    server.tool(
-      "score_suburb",
-      "Score a single suburb 0-100 against the original Como buyer's fixed criteria. Use rank_suburbs_for_profile for a custom buyer.",
-      {
-        suburb: z.string(),
-        prior: z.number().min(0).max(100).optional().describe("Proximity-vs-schools slider, 0-100. Default 50."),
-      },
-      async ({ suburb, prior }) => json(scoreSuburb(suburb, prior ?? 50)),
-    );
-
-    server.tool(
-      "rank_suburbs",
-      "Rank the suburbs in the model's CURATED WA dataset (a fixed middle-ring set, NOT all of Perth) 0-100 against the original Como buyer's fixed criteria. Use rank_suburbs_for_profile for a custom buyer.",
-      { prior: z.number().min(0).max(100).optional().describe("Proximity-vs-schools slider, 0-100. Default 50.") },
-      async ({ prior }) => json(rank(prior ?? 50)),
-    );
+    // Note: there is deliberately ONE suburb-ranking path, rank_suburbs_for_profile,
+    // so a caller cannot accidentally get a stale answer. The original Como buyer is
+    // just a profile you can pass to it; there is no separate fixed-Como tool.
 
     // ---- Reference data -----------------------------------------------------
     server.tool(
