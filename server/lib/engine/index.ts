@@ -16,6 +16,9 @@ export { rankSuburbsForProfile, scoreSuburbForProfile, matchListings } from "./r
 export { ONBOARDING_QUESTIONS, profileFromAnswers } from "./onboarding.js";
 export { distanceKm, proximityScore } from "./geo.js";
 
+// WA-wide base layer (anchor anywhere in WA, not just the curated 14)
+export { WA_SUBURBS, findWaSuburb, nearbyWaSuburbs } from "./baselayer.js";
+
 export { SUBURBS, CRITERIA_WEIGHTS, BASELINE, findSuburb, loadListings } from "./data.js";
 export type { Suburb, Estimate, Condition, BuyerProfile, ResolvedProfile } from "./types.js";
 

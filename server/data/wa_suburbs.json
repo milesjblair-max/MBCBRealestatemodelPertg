@@ -1,0 +1,12635 @@
+{
+"source": "matthewproctor/australianpostcodes (public domain); ABS SA2 names",
+"note": "Free, factual base layer: name, postcode, precise lat/lng, ABS SA2. Medians, scores and listings are layered on elsewhere, never invented here.",
+"count": 1804,
+"suburbs": [
+{
+"name": "Abba River",
+"pc": "6280",
+"lat": -33.68048,
+"lng": 115.50333,
+"sa2": "Capel"
+},
+{
+"name": "Abbey",
+"pc": "6280",
+"lat": -33.66125,
+"lng": 115.25941,
+"sa2": "Capel"
+},
+{
+"name": "Acton Park",
+"pc": "6280",
+"lat": -33.76278,
+"lng": 115.36395,
+"sa2": "Capel"
+},
+{
+"name": "Adamsvale",
+"pc": "6375",
+"lat": -32.19986,
+"lng": 117.67261,
+"sa2": "Brookton"
+},
+{
+"name": "Agnew",
+"pc": "6435",
+"lat": -27.6728,
+"lng": 121.628,
+"sa2": ""
+},
+{
+"name": "Ajana",
+"pc": "6532",
+"lat": -27.84024,
+"lng": 114.69243,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Albany",
+"pc": "6330",
+"lat": -35.02693,
+"lng": 117.88372,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Albany Dc",
+"pc": "6331",
+"lat": -35.0269,
+"lng": 117.884,
+"sa2": ""
+},
+{
+"name": "Aldersyde",
+"pc": "6306",
+"lat": -32.31703,
+"lng": 117.27558,
+"sa2": "Brookton"
+},
+{
+"name": "Alexander Heights",
+"pc": "6064",
+"lat": -31.8269,
+"lng": 115.86713,
+"sa2": "Marangaroo"
+},
+{
+"name": "Alexandra Bridge",
+"pc": "6288",
+"lat": -34.1604,
+"lng": 115.20273,
+"sa2": "Augusta"
+},
+{
+"name": "Alfred Cove",
+"pc": "6154",
+"lat": -32.03186,
+"lng": 115.81814,
+"sa2": "Melville"
+},
+{
+"name": "Alkimos",
+"pc": "6038",
+"lat": -31.61716,
+"lng": 115.68059,
+"sa2": "Alkimos - Eglinton"
+},
+{
+"name": "Allanooka",
+"pc": "6525",
+"lat": -29.04674,
+"lng": 115.07032,
+"sa2": "Irwin"
+},
+{
+"name": "Allanson",
+"pc": "6225",
+"lat": -33.32854,
+"lng": 116.08648,
+"sa2": "Wagin"
+},
+{
+"name": "Alma",
+"pc": "6535",
+"lat": -28.28637,
+"lng": 114.64805,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ambania",
+"pc": "6632",
+"lat": -28.58611,
+"lng": 115.16266,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ambergate",
+"pc": "6280",
+"lat": -33.70855,
+"lng": 115.32609,
+"sa2": "Capel"
+},
+{
+"name": "Amelup",
+"pc": "6338",
+"lat": -34.2529,
+"lng": 118.21589,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Angelo River",
+"pc": "6642",
+"lat": -23.57367,
+"lng": 118.49503,
+"sa2": "Meekatharra"
+},
+{
+"name": "Anketell",
+"pc": "6167",
+"lat": -32.21791,
+"lng": 115.85931,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Anniebrook",
+"pc": "6280",
+"lat": -33.66496,
+"lng": 115.16953,
+"sa2": "Capel"
+},
+{
+"name": "Antonymyre",
+"pc": "6714",
+"lat": -20.6543,
+"lng": 117.09156,
+"sa2": "Roebourne"
+},
+{
+"name": "Applecross",
+"pc": "6153",
+"lat": -32.01161,
+"lng": 115.83873,
+"sa2": "Booragoon"
+},
+{
+"name": "Applecross North",
+"pc": "6153",
+"lat": -32.0116,
+"lng": 115.839,
+"sa2": "Booragoon"
+},
+{
+"name": "Ardath",
+"pc": "6419",
+"lat": -32.04486,
+"lng": 118.13567,
+"sa2": "Merredin"
+},
+{
+"name": "Ardross",
+"pc": "6153",
+"lat": -32.0221,
+"lng": 115.83535,
+"sa2": "Booragoon"
+},
+{
+"name": "Argyle",
+"pc": "6239",
+"lat": -33.53926,
+"lng": 115.76152,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Armadale",
+"pc": "6112",
+"lat": -32.1473,
+"lng": 116.01288,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Arrino",
+"pc": "6519",
+"lat": -29.54886,
+"lng": 115.51515,
+"sa2": "Morawa"
+},
+{
+"name": "Arrowsmith",
+"pc": "6525",
+"lat": -29.54568,
+"lng": 115.05385,
+"sa2": "Irwin"
+},
+{
+"name": "Arrowsmith East",
+"pc": "6519",
+"lat": -29.51697,
+"lng": 115.35384,
+"sa2": "Morawa"
+},
+{
+"name": "Arthur River",
+"pc": "6315",
+"lat": -33.34544,
+"lng": 117.03694,
+"sa2": "Wagin"
+},
+{
+"name": "Ascot",
+"pc": "6104",
+"lat": -31.93546,
+"lng": 115.92973,
+"sa2": "Belmont - Ascot - Redcliffe"
+},
+{
+"name": "Ashby",
+"pc": "6065",
+"lat": -31.73315,
+"lng": 115.7994,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Ashendon",
+"pc": "6111",
+"lat": -32.21168,
+"lng": 116.19084,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Ashfield",
+"pc": "6054",
+"lat": -31.91723,
+"lng": 115.9366,
+"sa2": "Lockridge - Kiara"
+},
+{
+"name": "Attadale",
+"pc": "6156",
+"lat": -32.02486,
+"lng": 115.79968,
+"sa2": "Willagee"
+},
+{
+"name": "Atwell",
+"pc": "6164",
+"lat": -32.14601,
+"lng": 115.86513,
+"sa2": "Jandakot"
+},
+{
+"name": "Aubin Grove",
+"pc": "6164",
+"lat": -32.1684,
+"lng": 115.86114,
+"sa2": "Jandakot"
+},
+{
+"name": "Augusta",
+"pc": "6290",
+"lat": -34.31605,
+"lng": 115.1597,
+"sa2": "Augusta"
+},
+{
+"name": "Australind",
+"pc": "6233",
+"lat": -33.27512,
+"lng": 115.72853,
+"sa2": "Harvey"
+},
+{
+"name": "Aveley",
+"pc": "6069",
+"lat": -31.77754,
+"lng": 115.98647,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Avon Valley National Park",
+"pc": "6084",
+"lat": -31.62695,
+"lng": 116.18762,
+"sa2": "Chittering"
+},
+{
+"name": "Baandee",
+"pc": "6412",
+"lat": -31.54519,
+"lng": 117.98334,
+"sa2": "Cunderdin"
+},
+{
+"name": "Babakin",
+"pc": "6428",
+"lat": -32.15096,
+"lng": 118.04203,
+"sa2": "Merredin"
+},
+{
+"name": "Babbage Island",
+"pc": "6701",
+"lat": -24.87531,
+"lng": 113.63212,
+"sa2": "Exmouth"
+},
+{
+"name": "Badgebup",
+"pc": "6317",
+"lat": -33.6335,
+"lng": 117.89865,
+"sa2": "Kulin"
+},
+{
+"name": "Badgerin Rock",
+"pc": "6475",
+"lat": -30.76958,
+"lng": 117.31001,
+"sa2": "Dowerin"
+},
+{
+"name": "Badgin",
+"pc": "6302",
+"lat": -31.80602,
+"lng": 116.99688,
+"sa2": "York - Beverley"
+},
+{
+"name": "Badgingarra",
+"pc": "6521",
+"lat": -30.43849,
+"lng": 115.62688,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Badjaling",
+"pc": "6383",
+"lat": -31.99889,
+"lng": 117.49936,
+"sa2": "Cunderdin"
+},
+{
+"name": "Bailup",
+"pc": "6082",
+"lat": -31.75867,
+"lng": 116.30839,
+"sa2": "Mundaring"
+},
+{
+"name": "Bakers Hill",
+"pc": "6562",
+"lat": -31.74943,
+"lng": 116.45694,
+"sa2": "Northam"
+},
+{
+"name": "Balbarrup",
+"pc": "6258",
+"lat": -34.21532,
+"lng": 116.24599,
+"sa2": "Pemberton"
+},
+{
+"name": "Balcatta",
+"pc": "6021",
+"lat": -31.86018,
+"lng": 115.81047,
+"sa2": "Stirling - Osborne Park"
+},
+{
+"name": "Baldivis",
+"pc": "6171",
+"lat": -32.32222,
+"lng": 115.82852,
+"sa2": "Baldivis - South"
+},
+{
+"name": "Balga",
+"pc": "6061",
+"lat": -31.85764,
+"lng": 115.83579,
+"sa2": "Dianella - North"
+},
+{
+"name": "Balingup",
+"pc": "6253",
+"lat": -33.78661,
+"lng": 115.98443,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Balkuling",
+"pc": "6383",
+"lat": -31.94903,
+"lng": 117.16177,
+"sa2": "Cunderdin"
+},
+{
+"name": "Balla Balla",
+"pc": "6714",
+"lat": -20.69246,
+"lng": 117.78682,
+"sa2": "Roebourne"
+},
+{
+"name": "Balladong",
+"pc": "6302",
+"lat": -31.92724,
+"lng": 116.73951,
+"sa2": "York - Beverley"
+},
+{
+"name": "Balladonia",
+"pc": "6443",
+"lat": -32.4581,
+"lng": 123.86675,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Ballajura",
+"pc": "6066",
+"lat": -31.83679,
+"lng": 115.89358,
+"sa2": "Ballajura"
+},
+{
+"name": "Ballaying",
+"pc": "6315",
+"lat": -33.35476,
+"lng": 117.5944,
+"sa2": "Wagin"
+},
+{
+"name": "Ballidu",
+"pc": "6606",
+"lat": -30.59645,
+"lng": 116.76994,
+"sa2": "Dowerin"
+},
+{
+"name": "Bally Bally",
+"pc": "6304",
+"lat": -32.18432,
+"lng": 117.11631,
+"sa2": "York - Beverley"
+},
+{
+"name": "Bambun",
+"pc": "6503",
+"lat": -31.43395,
+"lng": 115.88165,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Bandy Creek",
+"pc": "6450",
+"lat": -33.82455,
+"lng": 121.93989,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Bandya",
+"pc": "6440",
+"lat": -27.73365,
+"lng": 122.18262,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Banjup",
+"pc": "6164",
+"lat": -32.15702,
+"lng": 115.88901,
+"sa2": "Jandakot"
+},
+{
+"name": "Banksia Grove",
+"pc": "6031",
+"lat": -31.70324,
+"lng": 115.80499,
+"sa2": "Neerabup National Park"
+},
+{
+"name": "Banksiadale",
+"pc": "6213",
+"lat": -32.59598,
+"lng": 116.09203,
+"sa2": "Murray"
+},
+{
+"name": "Bannister",
+"pc": "6390",
+"lat": -32.58209,
+"lng": 116.48552,
+"sa2": "Murray"
+},
+{
+"name": "Barbalin",
+"pc": "6479",
+"lat": -30.88144,
+"lng": 118.11296,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Barberton",
+"pc": "6510",
+"lat": -30.73626,
+"lng": 116.02822,
+"sa2": "Moora"
+},
+{
+"name": "Barrabup",
+"pc": "6275",
+"lat": -33.88305,
+"lng": 115.68013,
+"sa2": "Pemberton"
+},
+{
+"name": "Barragup",
+"pc": "6209",
+"lat": -32.5502,
+"lng": 115.796,
+"sa2": "Pinjarra"
+},
+{
+"name": "Barrow Island",
+"pc": "6712",
+"lat": -20.78043,
+"lng": 115.40227,
+"sa2": "Roebourne"
+},
+{
+"name": "Baskerville",
+"pc": "6056",
+"lat": -31.7972,
+"lng": 116.05056,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Bassendean",
+"pc": "6054",
+"lat": -31.90764,
+"lng": 115.94259,
+"sa2": "Lockridge - Kiara"
+},
+{
+"name": "Bassendean Dc",
+"pc": "6054",
+"lat": -31.9032,
+"lng": 115.928,
+"sa2": "Lockridge - Kiara"
+},
+{
+"name": "Bateman",
+"pc": "6150",
+"lat": -32.05958,
+"lng": 115.84438,
+"sa2": "Winthrop"
+},
+{
+"name": "Baudin",
+"pc": "6284",
+"lat": -33.87253,
+"lng": 115.46634,
+"sa2": "Margaret River"
+},
+{
+"name": "Baynton",
+"pc": "6714",
+"lat": -20.75204,
+"lng": 116.80047,
+"sa2": "Roebourne"
+},
+{
+"name": "Bayonet Head",
+"pc": "6330",
+"lat": -34.97514,
+"lng": 117.93774,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Bayswater",
+"pc": "6053",
+"lat": -31.91648,
+"lng": 115.91723,
+"sa2": "Bayswater - Embleton - Bedford"
+},
+{
+"name": "Beachlands",
+"pc": "6530",
+"lat": -28.78467,
+"lng": 114.60317,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Beacon",
+"pc": "6472",
+"lat": -30.45205,
+"lng": 117.87145,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Beaconsfield",
+"pc": "6162",
+"lat": -32.06722,
+"lng": 115.77063,
+"sa2": "Fremantle - South"
+},
+{
+"name": "Beadell",
+"pc": "6440",
+"lat": -28.35073,
+"lng": 127.5184,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Beaufort River",
+"pc": "6394",
+"lat": -33.58828,
+"lng": 117.04612,
+"sa2": "Wagin"
+},
+{
+"name": "Beaumont",
+"pc": "6450",
+"lat": -33.50221,
+"lng": 122.65485,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Beckenham",
+"pc": "6107",
+"lat": -32.0275,
+"lng": 115.94935,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Bedford",
+"pc": "6052",
+"lat": -31.91562,
+"lng": 115.88471,
+"sa2": "Bayswater - Embleton - Bedford"
+},
+{
+"name": "Bedfordale",
+"pc": "6112",
+"lat": -32.14961,
+"lng": 116.05433,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Beechboro",
+"pc": "6063",
+"lat": -31.86802,
+"lng": 115.93875,
+"sa2": "Beechboro"
+},
+{
+"name": "Beechina",
+"pc": "6556",
+"lat": -31.85899,
+"lng": 116.31391,
+"sa2": "Malmalling - Reservoir"
+},
+{
+"name": "Beedelup",
+"pc": "6260",
+"lat": -34.35164,
+"lng": 115.93684,
+"sa2": "Pemberton"
+},
+{
+"name": "Beela",
+"pc": "6224",
+"lat": -33.24054,
+"lng": 115.8976,
+"sa2": "Harvey"
+},
+{
+"name": "Beelerup",
+"pc": "6239",
+"lat": -33.54341,
+"lng": 115.854,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Beeliar",
+"pc": "6164",
+"lat": -32.13126,
+"lng": 115.81155,
+"sa2": "Jandakot"
+},
+{
+"name": "Beenong",
+"pc": "6353",
+"lat": -33.03672,
+"lng": 118.62742,
+"sa2": "Kulin"
+},
+{
+"name": "Beermullah",
+"pc": "6503",
+"lat": -31.23466,
+"lng": 115.79137,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Bejoording",
+"pc": "6566",
+"lat": -31.38326,
+"lng": 116.53391,
+"sa2": "Toodyay"
+},
+{
+"name": "Beldon",
+"pc": "6027",
+"lat": -31.7726,
+"lng": 115.76727,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Belhus",
+"pc": "6069",
+"lat": -31.78241,
+"lng": 116.01344,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Bellevue",
+"pc": "6056",
+"lat": -31.89997,
+"lng": 116.02369,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Belmont",
+"pc": "6104",
+"lat": -31.95385,
+"lng": 115.92611,
+"sa2": "Belmont - Ascot - Redcliffe"
+},
+{
+"name": "Bencubbin",
+"pc": "6477",
+"lat": -30.81642,
+"lng": 117.86245,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Bendering",
+"pc": "6367",
+"lat": -32.3884,
+"lng": 118.304,
+"sa2": "Kulin"
+},
+{
+"name": "Benger",
+"pc": "6223",
+"lat": -33.17231,
+"lng": 115.84035,
+"sa2": "Harvey"
+},
+{
+"name": "Benjaberring",
+"pc": "6463",
+"lat": -31.10658,
+"lng": 117.29112,
+"sa2": "Dowerin"
+},
+{
+"name": "Benjinup",
+"pc": "6255",
+"lat": -33.79702,
+"lng": 116.27425,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Bennett Springs",
+"pc": "6063",
+"lat": -31.8584,
+"lng": 115.946,
+"sa2": "Beechboro"
+},
+{
+"name": "Bentley",
+"pc": "6102",
+"lat": -32.00411,
+"lng": 115.8964,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "Bentley Dc",
+"pc": "6102",
+"lat": -31.9924,
+"lng": 115.889,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "Bentley South",
+"pc": "6102",
+"lat": -32.00411,
+"lng": 115.8964,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "Beresford",
+"pc": "6530",
+"lat": -28.75821,
+"lng": 114.61962,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Berkshire Valley",
+"pc": "6510",
+"lat": -30.57718,
+"lng": 116.1735,
+"sa2": "Moora"
+},
+{
+"name": "Bernier Island",
+"pc": "6701",
+"lat": -24.85043,
+"lng": 113.1382,
+"sa2": "Exmouth"
+},
+{
+"name": "Bertram",
+"pc": "6167",
+"lat": -32.24754,
+"lng": 115.84766,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Beverley",
+"pc": "6304",
+"lat": -32.10982,
+"lng": 116.92287,
+"sa2": "York - Beverley"
+},
+{
+"name": "Bibra Lake",
+"pc": "6163",
+"lat": -32.10225,
+"lng": 115.82403,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Bibra Lake Dc",
+"pc": "6163",
+"lat": -32.0977,
+"lng": 115.8,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Bickley",
+"pc": "6076",
+"lat": -32.00338,
+"lng": 116.09044,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Bicton",
+"pc": "6157",
+"lat": -32.03006,
+"lng": 115.7845,
+"sa2": "Bicton - Palmyra"
+},
+{
+"name": "Biddelia",
+"pc": "6260",
+"lat": -34.23475,
+"lng": 115.70358,
+"sa2": "Pemberton"
+},
+{
+"name": "Big Grove",
+"pc": "6330",
+"lat": -35.08426,
+"lng": 117.8834,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Bilbarin",
+"pc": "6375",
+"lat": -32.2041,
+"lng": 117.95532,
+"sa2": "Brookton"
+},
+{
+"name": "Bilingurr",
+"pc": "6725",
+"lat": -17.9255,
+"lng": 122.23362,
+"sa2": "Roebuck"
+},
+{
+"name": "Bimbijy",
+"pc": "6472",
+"lat": -29.73271,
+"lng": 118.05954,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Bindi Bindi",
+"pc": "6574",
+"lat": -30.59389,
+"lng": 116.36302,
+"sa2": "Moora"
+},
+{
+"name": "Bindoon",
+"pc": "6502",
+"lat": -31.3735,
+"lng": 116.09526,
+"sa2": "Toodyay"
+},
+{
+"name": "Bindoon Training Area",
+"pc": "6502",
+"lat": -31.24432,
+"lng": 116.27377,
+"sa2": "Toodyay"
+},
+{
+"name": "Binduli",
+"pc": "6430",
+"lat": -30.79707,
+"lng": 121.38974,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Binningup",
+"pc": "6233",
+"lat": -33.13577,
+"lng": 115.72062,
+"sa2": "Harvey"
+},
+{
+"name": "Binnu",
+"pc": "6532",
+"lat": -28.01741,
+"lng": 114.54099,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Birchmont",
+"pc": "6214",
+"lat": -32.71596,
+"lng": 115.71481,
+"sa2": "Pinjarra"
+},
+{
+"name": "Bluff Point",
+"pc": "6530",
+"lat": -28.73676,
+"lng": 114.62495,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Blythewood",
+"pc": "6208",
+"lat": -32.67562,
+"lng": 115.86188,
+"sa2": "Pinjarra"
+},
+{
+"name": "Boallia",
+"pc": "6280",
+"lat": -33.77419,
+"lng": 115.26867,
+"sa2": "Capel"
+},
+{
+"name": "Bobalong",
+"pc": "6320",
+"lat": -34.00954,
+"lng": 117.62556,
+"sa2": "Kojonup"
+},
+{
+"name": "Bodallin",
+"pc": "6424",
+"lat": -31.36974,
+"lng": 118.86046,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Boddington",
+"pc": "6390",
+"lat": -32.79801,
+"lng": 116.47776,
+"sa2": "Murray"
+},
+{
+"name": "Boilup",
+"pc": "6394",
+"lat": -33.75925,
+"lng": 117.0056,
+"sa2": "Wagin"
+},
+{
+"name": "Bokal",
+"pc": "6392",
+"lat": -33.44172,
+"lng": 116.90273,
+"sa2": "Wagin"
+},
+{
+"name": "Bolgart",
+"pc": "6568",
+"lat": -31.27427,
+"lng": 116.50873,
+"sa2": "Toodyay"
+},
+{
+"name": "Bonnie Rock",
+"pc": "6479",
+"lat": -30.56026,
+"lng": 118.28462,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Bonniefield",
+"pc": "6525",
+"lat": -29.18467,
+"lng": 114.91842,
+"sa2": "Irwin"
+},
+{
+"name": "Boodarie",
+"pc": "6722",
+"lat": -20.42731,
+"lng": 118.55349,
+"sa2": "South Hedland"
+},
+{
+"name": "Boodarockin",
+"pc": "6423",
+"lat": -31.0041,
+"lng": 118.82972,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Bookara",
+"pc": "6525",
+"lat": -29.11736,
+"lng": 114.8958,
+"sa2": "Irwin"
+},
+{
+"name": "Boolading",
+"pc": "6392",
+"lat": -33.35976,
+"lng": 116.62323,
+"sa2": "Wagin"
+},
+{
+"name": "Boonanarring",
+"pc": "6503",
+"lat": -31.24732,
+"lng": 115.83565,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Boorabbin",
+"pc": "6429",
+"lat": -30.83726,
+"lng": 120.22026,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Booragoon",
+"pc": "6154",
+"lat": -32.0364,
+"lng": 115.83797,
+"sa2": "Melville"
+},
+{
+"name": "Booralaming",
+"pc": "6475",
+"lat": -30.88375,
+"lng": 117.35956,
+"sa2": "Dowerin"
+},
+{
+"name": "Boorara",
+"pc": "6431",
+"lat": -30.79107,
+"lng": 121.64537,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Boorara Brook",
+"pc": "6262",
+"lat": -34.67617,
+"lng": 116.17861,
+"sa2": "Pemberton"
+},
+{
+"name": "Bootenal",
+"pc": "6532",
+"lat": -28.85639,
+"lng": 114.72977,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Boothendarra",
+"pc": "6521",
+"lat": -30.25397,
+"lng": 115.732,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Boraning",
+"pc": "6391",
+"lat": -33.1057,
+"lng": 116.709,
+"sa2": "Wagin"
+},
+{
+"name": "Boranup",
+"pc": "6286",
+"lat": -34.0808,
+"lng": 115.0155,
+"sa2": "Augusta"
+},
+{
+"name": "Borden",
+"pc": "6338",
+"lat": -34.07231,
+"lng": 118.26217,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Borderdale",
+"pc": "6320",
+"lat": -34.03712,
+"lng": 117.42492,
+"sa2": "Kojonup"
+},
+{
+"name": "Bornholm",
+"pc": "6330",
+"lat": -35.04627,
+"lng": 117.58106,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Boscabel",
+"pc": "6394",
+"lat": -33.69871,
+"lng": 117.11377,
+"sa2": "Wagin"
+},
+{
+"name": "Boulder",
+"pc": "6432",
+"lat": -30.77685,
+"lng": 121.49323,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Boundain",
+"pc": "6312",
+"lat": -32.9466,
+"lng": 117.3884,
+"sa2": "Wagin"
+},
+{
+"name": "Bouvard",
+"pc": "6210",
+"lat": -32.6898,
+"lng": 115.64,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Bovell",
+"pc": "6280",
+"lat": -33.66532,
+"lng": 115.36188,
+"sa2": "Capel"
+},
+{
+"name": "Bow Bridge",
+"pc": "6333",
+"lat": -34.96774,
+"lng": 116.97667,
+"sa2": "Denmark"
+},
+{
+"name": "Bowelling",
+"pc": "6225",
+"lat": -33.4212,
+"lng": 116.48445,
+"sa2": "Wagin"
+},
+{
+"name": "Bowes",
+"pc": "6535",
+"lat": -28.49686,
+"lng": 114.62605,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Bowgada",
+"pc": "6623",
+"lat": -29.34239,
+"lng": 116.16192,
+"sa2": "Morawa"
+},
+{
+"name": "Boxwood Hill",
+"pc": "6338",
+"lat": -34.36603,
+"lng": 118.75029,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Boya",
+"pc": "6056",
+"lat": -31.91508,
+"lng": 116.05324,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Boyanup",
+"pc": "6237",
+"lat": -33.48197,
+"lng": 115.72755,
+"sa2": "Gelorup - Stratham"
+},
+{
+"name": "Boyatup",
+"pc": "6450",
+"lat": -33.74371,
+"lng": 123.08806,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Boyerine",
+"pc": "6316",
+"lat": -33.47528,
+"lng": 117.40157,
+"sa2": "Katanning"
+},
+{
+"name": "Boyup Brook",
+"pc": "6244",
+"lat": -33.82947,
+"lng": 116.38411,
+"sa2": "Wagin"
+},
+{
+"name": "Brabham",
+"pc": "6055",
+"lat": -31.8271,
+"lng": 115.969,
+"sa2": "Perth Airport"
+},
+{
+"name": "Bramley",
+"pc": "6285",
+"lat": -33.91582,
+"lng": 115.08261,
+"sa2": "Pemberton"
+},
+{
+"name": "Brazier",
+"pc": "6251",
+"lat": -33.72768,
+"lng": 115.82248,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Breera",
+"pc": "6503",
+"lat": -31.44344,
+"lng": 115.96914,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Bremer Bay",
+"pc": "6338",
+"lat": -34.39785,
+"lng": 119.18969,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Brentwood",
+"pc": "6153",
+"lat": -32.04276,
+"lng": 115.84803,
+"sa2": "Booragoon"
+},
+{
+"name": "Breton Bay",
+"pc": "6043",
+"lat": -31.19195,
+"lng": 115.45046,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Bridgetown",
+"pc": "6255",
+"lat": -33.95829,
+"lng": 116.13812,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Brigadoon",
+"pc": "6069",
+"lat": -31.77988,
+"lng": 116.08283,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Bringo",
+"pc": "6532",
+"lat": -28.74981,
+"lng": 114.82484,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Broadwater",
+"pc": "6280",
+"lat": -33.66017,
+"lng": 115.28471,
+"sa2": "Capel"
+},
+{
+"name": "Broadway Nedlands",
+"pc": "6009",
+"lat": -31.98368,
+"lng": 115.8145,
+"sa2": "Nedlands - Dalkeith - Crawley"
+},
+{
+"name": "Broadwood",
+"pc": "6430",
+"lat": -30.79707,
+"lng": 121.38974,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Brockman",
+"pc": "6701",
+"lat": -24.87627,
+"lng": 113.65081,
+"sa2": "Exmouth"
+},
+{
+"name": "Broke",
+"pc": "6398",
+"lat": -34.93492,
+"lng": 116.4194,
+"sa2": "Pemberton"
+},
+{
+"name": "Brookdale",
+"pc": "6112",
+"lat": -32.16898,
+"lng": 116.00404,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Brookhampton",
+"pc": "6239",
+"lat": -33.61098,
+"lng": 115.87181,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Brookton",
+"pc": "6306",
+"lat": -32.36635,
+"lng": 117.00759,
+"sa2": "Brookton"
+},
+{
+"name": "Broome",
+"pc": "6725",
+"lat": -17.96443,
+"lng": 122.23037,
+"sa2": "Roebuck"
+},
+{
+"name": "Broomehill",
+"pc": "6318",
+"lat": -33.84468,
+"lng": 117.63957,
+"sa2": "Kojonup"
+},
+{
+"name": "Broomehill East",
+"pc": "6318",
+"lat": -33.88817,
+"lng": 117.69685,
+"sa2": "Kojonup"
+},
+{
+"name": "Broomehill Village",
+"pc": "6318",
+"lat": -33.8447,
+"lng": 117.64,
+"sa2": "Kojonup"
+},
+{
+"name": "Broomehill West",
+"pc": "6318",
+"lat": -33.8791,
+"lng": 117.55501,
+"sa2": "Kojonup"
+},
+{
+"name": "Brown Hill",
+"pc": "6431",
+"lat": -30.74992,
+"lng": 121.52856,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Brown Range",
+"pc": "6701",
+"lat": -24.89263,
+"lng": 113.71752,
+"sa2": "Exmouth"
+},
+{
+"name": "Bruce Rock",
+"pc": "6418",
+"lat": -31.85095,
+"lng": 118.15908,
+"sa2": "Merredin"
+},
+{
+"name": "Brunswick",
+"pc": "6224",
+"lat": -33.25253,
+"lng": 115.83925,
+"sa2": "Harvey"
+},
+{
+"name": "Buckingham",
+"pc": "6225",
+"lat": -33.35332,
+"lng": 116.34376,
+"sa2": "Wagin"
+},
+{
+"name": "Buckland",
+"pc": "6401",
+"lat": -31.53489,
+"lng": 116.63541,
+"sa2": "Northam"
+},
+{
+"name": "Bulgarra",
+"pc": "6714",
+"lat": -20.7279,
+"lng": 116.85766,
+"sa2": "Roebourne"
+},
+{
+"name": "Bull Creek",
+"pc": "6149",
+"lat": -32.0566,
+"lng": 115.86487,
+"sa2": "Leeming"
+},
+{
+"name": "Bullabulling",
+"pc": "6429",
+"lat": -31.00014,
+"lng": 120.89313,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Bullaring",
+"pc": "6373",
+"lat": -32.52587,
+"lng": 117.78425,
+"sa2": "Brookton"
+},
+{
+"name": "Buller",
+"pc": "6532",
+"lat": -28.65287,
+"lng": 114.62022,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Bullfinch",
+"pc": "6484",
+"lat": -30.98334,
+"lng": 119.11189,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Bullock Hills",
+"pc": "6317",
+"lat": -33.40791,
+"lng": 117.70389,
+"sa2": "Kulin"
+},
+{
+"name": "Bullsbrook",
+"pc": "6084",
+"lat": -31.65536,
+"lng": 115.99774,
+"sa2": "Chittering"
+},
+{
+"name": "Bulong",
+"pc": "6431",
+"lat": -30.68783,
+"lng": 121.82494,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Bulyee",
+"pc": "6306",
+"lat": -32.33428,
+"lng": 117.51011,
+"sa2": "Brookton"
+},
+{
+"name": "Bunbury",
+"pc": "6230",
+"lat": -33.321,
+"lng": 115.63835,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Bundanoon",
+"pc": "6522",
+"lat": -29.30659,
+"lng": 115.48782,
+"sa2": "Morawa"
+},
+{
+"name": "Bungulla",
+"pc": "6410",
+"lat": -31.77653,
+"lng": 117.79294,
+"sa2": "Cunderdin"
+},
+{
+"name": "Buniche",
+"pc": "6353",
+"lat": -33.00605,
+"lng": 118.75771,
+"sa2": "Kulin"
+},
+{
+"name": "Bunjil",
+"pc": "6620",
+"lat": -29.6524,
+"lng": 116.365,
+"sa2": "Morawa"
+},
+{
+"name": "Buntine",
+"pc": "6613",
+"lat": -29.98521,
+"lng": 116.58458,
+"sa2": "Moora"
+},
+{
+"name": "Burakin",
+"pc": "6467",
+"lat": -30.57066,
+"lng": 117.12648,
+"sa2": "Dowerin"
+},
+{
+"name": "Buraminya",
+"pc": "6452",
+"lat": -33.09658,
+"lng": 123.32559,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Burekup",
+"pc": "6227",
+"lat": -33.32424,
+"lng": 115.81668,
+"sa2": "Dardanup"
+},
+{
+"name": "Burges",
+"pc": "6302",
+"lat": -31.8314,
+"lng": 116.76134,
+"sa2": "York - Beverley"
+},
+{
+"name": "Burlong",
+"pc": "6401",
+"lat": -31.67379,
+"lng": 116.61117,
+"sa2": "Northam"
+},
+{
+"name": "Burma Road",
+"pc": "6532",
+"lat": -28.97039,
+"lng": 115.0295,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Burns Beach",
+"pc": "6028",
+"lat": -31.72469,
+"lng": 115.7249,
+"sa2": "Iluka - Burns Beach"
+},
+{
+"name": "Burnside",
+"pc": "6285",
+"lat": -33.91785,
+"lng": 115.04284,
+"sa2": "Pemberton"
+},
+{
+"name": "Burracoppin",
+"pc": "6421",
+"lat": -31.42637,
+"lng": 118.42231,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Burran Rock",
+"pc": "6490",
+"lat": -31.24383,
+"lng": 118.01549,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Burrup",
+"pc": "6714",
+"lat": -20.62306,
+"lng": 116.76889,
+"sa2": "Roebourne"
+},
+{
+"name": "Burswood",
+"pc": "6100",
+"lat": -31.96331,
+"lng": 115.89676,
+"sa2": "Victoria Park - Lathlain - Burswood"
+},
+{
+"name": "Burtville",
+"pc": "6440",
+"lat": -28.7699,
+"lng": 122.635,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Bushmead",
+"pc": "6055",
+"lat": -31.9229,
+"lng": 116.027,
+"sa2": "Perth Airport"
+},
+{
+"name": "Busselton",
+"pc": "6280",
+"lat": -33.65316,
+"lng": 115.34549,
+"sa2": "Capel"
+},
+{
+"name": "Butler",
+"pc": "6036",
+"lat": -31.64176,
+"lng": 115.70413,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Byford",
+"pc": "6122",
+"lat": -32.22172,
+"lng": 116.00884,
+"sa2": "Mundijong"
+},
+{
+"name": "Cable Beach",
+"pc": "6726",
+"lat": -17.95216,
+"lng": 122.2115,
+"sa2": "Broome"
+},
+{
+"name": "Cadoux",
+"pc": "6466",
+"lat": -30.74081,
+"lng": 117.12648,
+"sa2": "Dowerin"
+},
+{
+"name": "Caiguna",
+"pc": "6443",
+"lat": -32.2689,
+"lng": 125.48953,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Calingiri",
+"pc": "6569",
+"lat": -31.08934,
+"lng": 116.44814,
+"sa2": "Moora"
+},
+{
+"name": "Calista",
+"pc": "6167",
+"lat": -32.24712,
+"lng": 115.80655,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Caljie",
+"pc": "6302",
+"lat": -31.72848,
+"lng": 116.93922,
+"sa2": "York - Beverley"
+},
+{
+"name": "Callcup",
+"pc": "6260",
+"lat": -34.59143,
+"lng": 115.91454,
+"sa2": "Pemberton"
+},
+{
+"name": "Camballin",
+"pc": "6728",
+"lat": -17.95182,
+"lng": 124.25225,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Cambridge Gulf",
+"pc": "6743",
+"lat": -15.15904,
+"lng": 128.55651,
+"sa2": "Kununurra"
+},
+{
+"name": "Camillo",
+"pc": "6111",
+"lat": -32.1122,
+"lng": 116.004,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Campion",
+"pc": "6421",
+"lat": -31.0289,
+"lng": 118.498,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Cancanning",
+"pc": "6315",
+"lat": -33.1119,
+"lng": 117.52197,
+"sa2": "Wagin"
+},
+{
+"name": "Cane",
+"pc": "6710",
+"lat": -22.19305,
+"lng": 115.97826,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Canna",
+"pc": "6627",
+"lat": -28.83815,
+"lng": 115.9941,
+"sa2": "Morawa"
+},
+{
+"name": "Canning Bridge Applecross",
+"pc": "6153",
+"lat": -32.0107,
+"lng": 115.854,
+"sa2": "Booragoon"
+},
+{
+"name": "Canning Mills",
+"pc": "6111",
+"lat": -32.07108,
+"lng": 116.10497,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Canning Vale",
+"pc": "6155",
+"lat": -32.08888,
+"lng": 115.91781,
+"sa2": "Canning Vale - East"
+},
+{
+"name": "Canning Vale Dc",
+"pc": "6155",
+"lat": -32.0582,
+"lng": 115.918,
+"sa2": "Canning Vale - East"
+},
+{
+"name": "Canning Vale South",
+"pc": "6155",
+"lat": -32.09089,
+"lng": 115.9194,
+"sa2": "Canning Vale - East"
+},
+{
+"name": "Cannington",
+"pc": "6107",
+"lat": -32.01787,
+"lng": 115.93467,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Cape Arid",
+"pc": "6452",
+"lat": -33.70491,
+"lng": 123.44997,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Cape Burney",
+"pc": "6532",
+"lat": -28.86081,
+"lng": 114.64855,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Cape Le Grand",
+"pc": "6450",
+"lat": -33.95644,
+"lng": 122.15013,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Cape Range National Park",
+"pc": "6707",
+"lat": -22.14932,
+"lng": 113.91884,
+"sa2": "Exmouth"
+},
+{
+"name": "Cape Riche",
+"pc": "6328",
+"lat": -34.6167,
+"lng": 118.767,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Capel",
+"pc": "6271",
+"lat": -33.54263,
+"lng": 115.56171,
+"sa2": "Capel"
+},
+{
+"name": "Capel River",
+"pc": "6271",
+"lat": -33.62774,
+"lng": 115.66243,
+"sa2": "Capel"
+},
+{
+"name": "Capricorn",
+"pc": "6642",
+"lat": -23.91414,
+"lng": 119.76296,
+"sa2": "Meekatharra"
+},
+{
+"name": "Caraban",
+"pc": "6041",
+"lat": -31.36244,
+"lng": 115.54543,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Carabooda",
+"pc": "6033",
+"lat": -31.59889,
+"lng": 115.7161,
+"sa2": "Carabooda - Pinjar"
+},
+{
+"name": "Carani",
+"pc": "6566",
+"lat": -30.99328,
+"lng": 116.41116,
+"sa2": "Toodyay"
+},
+{
+"name": "Carbla",
+"pc": "6701",
+"lat": -26.18022,
+"lng": 114.37792,
+"sa2": "Exmouth"
+},
+{
+"name": "Carbunup River",
+"pc": "6280",
+"lat": -33.70541,
+"lng": 115.18548,
+"sa2": "Capel"
+},
+{
+"name": "Cardiff",
+"pc": "6225",
+"lat": -33.46998,
+"lng": 116.25058,
+"sa2": "Wagin"
+},
+{
+"name": "Cardup",
+"pc": "6122",
+"lat": -32.25664,
+"lng": 115.981,
+"sa2": "Mundijong"
+},
+{
+"name": "Carey Park",
+"pc": "6230",
+"lat": -33.35935,
+"lng": 115.65305,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Carine",
+"pc": "6020",
+"lat": -31.85115,
+"lng": 115.77765,
+"sa2": "Trigg - North Beach - Watermans Bay"
+},
+{
+"name": "Carlisle",
+"pc": "6101",
+"lat": -31.97863,
+"lng": 115.91711,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "Carlisle North",
+"pc": "6101",
+"lat": -31.97863,
+"lng": 115.91711,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "Carlisle South",
+"pc": "6101",
+"lat": -31.97863,
+"lng": 115.91711,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "Carlotta",
+"pc": "6275",
+"lat": -34.09423,
+"lng": 115.77961,
+"sa2": "Pemberton"
+},
+{
+"name": "Carmel",
+"pc": "6076",
+"lat": -32.01895,
+"lng": 116.07408,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Carnamah",
+"pc": "6517",
+"lat": -29.7225,
+"lng": 115.89949,
+"sa2": "Morawa"
+},
+{
+"name": "Carnarvon",
+"pc": "6701",
+"lat": -24.88775,
+"lng": 113.66218,
+"sa2": "Exmouth"
+},
+{
+"name": "Carrabin",
+"pc": "6423",
+"lat": -31.4033,
+"lng": 118.69223,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Carramar",
+"pc": "6031",
+"lat": -31.70612,
+"lng": 115.78796,
+"sa2": "Neerabup National Park"
+},
+{
+"name": "Carrarang",
+"pc": "6532",
+"lat": -26.33268,
+"lng": 113.37635,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Carrolup",
+"pc": "6317",
+"lat": -33.75861,
+"lng": 117.36836,
+"sa2": "Kulin"
+},
+{
+"name": "Cartmeticup",
+"pc": "6316",
+"lat": -33.48345,
+"lng": 117.50981,
+"sa2": "Katanning"
+},
+{
+"name": "Cascade",
+"pc": "6450",
+"lat": -33.47762,
+"lng": 121.08041,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Castletown",
+"pc": "6450",
+"lat": -33.83925,
+"lng": 121.90447,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Casuarina",
+"pc": "6167",
+"lat": -32.23759,
+"lng": 115.87458,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Cataby",
+"pc": "6507",
+"lat": -30.73509,
+"lng": 115.53866,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Catterick",
+"pc": "6255",
+"lat": -33.85356,
+"lng": 116.16313,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Caversham",
+"pc": "6055",
+"lat": -31.87573,
+"lng": 115.97487,
+"sa2": "Perth Airport"
+},
+{
+"name": "Centennial Park",
+"pc": "6330",
+"lat": -35.0155,
+"lng": 117.885,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Cervantes",
+"pc": "6511",
+"lat": -30.50173,
+"lng": 115.07625,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Chadwick",
+"pc": "6450",
+"lat": -33.83894,
+"lng": 121.8933,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Champion Lakes",
+"pc": "6111",
+"lat": -32.11712,
+"lng": 115.98603,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Chandler",
+"pc": "6490",
+"lat": -31.08268,
+"lng": 118.37179,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Changerup",
+"pc": "6394",
+"lat": -33.73534,
+"lng": 116.8453,
+"sa2": "Wagin"
+},
+{
+"name": "Channybearup",
+"pc": "6260",
+"lat": -34.40548,
+"lng": 115.97548,
+"sa2": "Pemberton"
+},
+{
+"name": "Chapman Hill",
+"pc": "6280",
+"lat": -33.79547,
+"lng": 115.32859,
+"sa2": "Capel"
+},
+{
+"name": "Charley Creek",
+"pc": "6239",
+"lat": -33.57602,
+"lng": 115.90647,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Cherry Tree Pool",
+"pc": "6395",
+"lat": -33.79405,
+"lng": 117.27861,
+"sa2": "Kojonup"
+},
+{
+"name": "Cheynes",
+"pc": "6328",
+"lat": -34.82405,
+"lng": 118.32855,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Chichester",
+"pc": "6751",
+"lat": -21.88705,
+"lng": 117.99888,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Chidlow",
+"pc": "6556",
+"lat": -31.858,
+"lng": 116.27168,
+"sa2": "Malmalling - Reservoir"
+},
+{
+"name": "Chittering",
+"pc": "6084",
+"lat": -31.46888,
+"lng": 116.05043,
+"sa2": "Chittering"
+},
+{
+"name": "Chowerup",
+"pc": "6244",
+"lat": -34.08321,
+"lng": 116.69745,
+"sa2": "Wagin"
+},
+{
+"name": "Christmas Island",
+"pc": "6798",
+"lat": -10.44753,
+"lng": 105.69045,
+"sa2": "Christmas Island"
+},
+{
+"name": "Churchlands",
+"pc": "6018",
+"lat": -31.92155,
+"lng": 115.78976,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "City Beach",
+"pc": "6015",
+"lat": -31.93931,
+"lng": 115.76344,
+"sa2": "City Beach"
+},
+{
+"name": "City Delivery Centre",
+"pc": "6000",
+"lat": -31.955,
+"lng": 115.855,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "Clackline",
+"pc": "6564",
+"lat": -31.70943,
+"lng": 116.5197,
+"sa2": "Northam"
+},
+{
+"name": "Claremont",
+"pc": "6010",
+"lat": -31.98425,
+"lng": 115.778,
+"sa2": "Swanbourne - Mount Claremont"
+},
+{
+"name": "Claremont North",
+"pc": "6010",
+"lat": -31.98425,
+"lng": 115.778,
+"sa2": "Swanbourne - Mount Claremont"
+},
+{
+"name": "Clarkson",
+"pc": "6030",
+"lat": -31.68437,
+"lng": 115.72678,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Cleary",
+"pc": "6472",
+"lat": -30.435,
+"lng": 117.64575,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Cleaverville",
+"pc": "6714",
+"lat": -20.66124,
+"lng": 116.99819,
+"sa2": "Roebourne"
+},
+{
+"name": "Clifton",
+"pc": "6210",
+"lat": -32.76547,
+"lng": 115.63962,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Cloverdale",
+"pc": "6105",
+"lat": -31.96245,
+"lng": 115.94473,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Coblinine",
+"pc": "6317",
+"lat": -33.61468,
+"lng": 117.69705,
+"sa2": "Kulin"
+},
+{
+"name": "Coburn",
+"pc": "6532",
+"lat": -26.74842,
+"lng": 114.40902,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Cockatoo Island",
+"pc": "6731",
+"lat": -16.09391,
+"lng": 123.60918,
+"sa2": ""
+},
+{
+"name": "Cockburn Central",
+"pc": "6164",
+"lat": -32.12133,
+"lng": 115.84844,
+"sa2": "Jandakot"
+},
+{
+"name": "Cocklebiddy",
+"pc": "6443",
+"lat": -32.0367,
+"lng": 126.0954,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Codjatotine",
+"pc": "6308",
+"lat": -32.66023,
+"lng": 116.82635,
+"sa2": "Brookton"
+},
+{
+"name": "Cold Harbour",
+"pc": "6302",
+"lat": -31.87844,
+"lng": 116.84089,
+"sa2": "York - Beverley"
+},
+{
+"name": "Collanilling",
+"pc": "6315",
+"lat": -33.22886,
+"lng": 117.54263,
+"sa2": "Wagin"
+},
+{
+"name": "College Grove",
+"pc": "6230",
+"lat": -33.37439,
+"lng": 115.65827,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Collie",
+"pc": "6225",
+"lat": -33.35807,
+"lng": 116.15122,
+"sa2": "Wagin"
+},
+{
+"name": "Collie Burn",
+"pc": "6225",
+"lat": -33.39406,
+"lng": 116.19029,
+"sa2": "Wagin"
+},
+{
+"name": "Collingwood Heights",
+"pc": "6330",
+"lat": -34.99878,
+"lng": 117.91684,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Collingwood Park",
+"pc": "6330",
+"lat": -35.00686,
+"lng": 117.92209,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Collins",
+"pc": "6260",
+"lat": -34.46357,
+"lng": 116.10748,
+"sa2": "Pemberton"
+},
+{
+"name": "Collins Siding",
+"pc": "6260",
+"lat": -34.4636,
+"lng": 116.107,
+"sa2": "Pemberton"
+},
+{
+"name": "Commodine",
+"pc": "6311",
+"lat": -32.77264,
+"lng": 117.32119,
+"sa2": "Wagin"
+},
+{
+"name": "Como",
+"pc": "6152",
+"lat": -32.00109,
+"lng": 115.86172,
+"sa2": "Manning - Waterford"
+},
+{
+"name": "Condingup",
+"pc": "6450",
+"lat": -33.74765,
+"lng": 122.5269,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Congelin",
+"pc": "6391",
+"lat": -32.8535,
+"lng": 116.891,
+"sa2": "Wagin"
+},
+{
+"name": "Connolly",
+"pc": "6027",
+"lat": -31.7518,
+"lng": 115.75059,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Contine",
+"pc": "6311",
+"lat": -32.83011,
+"lng": 116.98852,
+"sa2": "Wagin"
+},
+{
+"name": "Coodanup",
+"pc": "6210",
+"lat": -32.55687,
+"lng": 115.74807,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Coogee",
+"pc": "6166",
+"lat": -32.11613,
+"lng": 115.76579,
+"sa2": "Beeliar - Wattleup"
+},
+{
+"name": "Cookernup",
+"pc": "6219",
+"lat": -33.0035,
+"lng": 115.8515,
+"sa2": "Harvey"
+},
+{
+"name": "Cooladar Hill",
+"pc": "6638",
+"lat": -28.49852,
+"lng": 118.16378,
+"sa2": "Meekatharra"
+},
+{
+"name": "Coolbellup",
+"pc": "6163",
+"lat": -32.08341,
+"lng": 115.80686,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Coolbinia",
+"pc": "6050",
+"lat": -31.91387,
+"lng": 115.85439,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Coolcalalaya",
+"pc": "6532",
+"lat": -27.53822,
+"lng": 115.02122,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Coolgardie",
+"pc": "6429",
+"lat": -30.95427,
+"lng": 121.17593,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Cooljarloo",
+"pc": "6507",
+"lat": -30.62912,
+"lng": 115.46453,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Cooloongup",
+"pc": "6168",
+"lat": -32.29458,
+"lng": 115.76292,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Coolup",
+"pc": "6214",
+"lat": -32.73998,
+"lng": 115.87455,
+"sa2": "Pinjarra"
+},
+{
+"name": "Coomalbidgup",
+"pc": "6450",
+"lat": -33.72187,
+"lng": 121.36355,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Coomberdale",
+"pc": "6512",
+"lat": -30.46816,
+"lng": 116.03672,
+"sa2": "Moora"
+},
+{
+"name": "Coonabidgee",
+"pc": "6503",
+"lat": -31.3399,
+"lng": 115.86102,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Coondle",
+"pc": "6566",
+"lat": -31.47134,
+"lng": 116.44817,
+"sa2": "Toodyay"
+},
+{
+"name": "Coorow",
+"pc": "6515",
+"lat": -29.8824,
+"lng": 116.02164,
+"sa2": "Morawa"
+},
+{
+"name": "Cooya Pooya",
+"pc": "6714",
+"lat": -20.96497,
+"lng": 117.08528,
+"sa2": "Roebourne"
+},
+{
+"name": "Copley",
+"pc": "6562",
+"lat": -31.79614,
+"lng": 116.47684,
+"sa2": "Northam"
+},
+{
+"name": "Coral Bay",
+"pc": "6701",
+"lat": -23.14367,
+"lng": 113.77154,
+"sa2": "Exmouth"
+},
+{
+"name": "Cordering",
+"pc": "6393",
+"lat": -33.5121,
+"lng": 116.67535,
+"sa2": "Wagin"
+},
+{
+"name": "Corinthia",
+"pc": "6426",
+"lat": -31.13318,
+"lng": 119.16669,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Corrigin",
+"pc": "6375",
+"lat": -32.33406,
+"lng": 117.87743,
+"sa2": "Brookton"
+},
+{
+"name": "Cosmo Newbery",
+"pc": "6440",
+"lat": -27.92414,
+"lng": 123.38034,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Cossack",
+"pc": "6720",
+"lat": -20.68101,
+"lng": 117.18552,
+"sa2": "Roebourne"
+},
+{
+"name": "Cottesloe",
+"pc": "6011",
+"lat": -31.98965,
+"lng": 115.76305,
+"sa2": "Mosman Park - Peppermint Grove"
+},
+{
+"name": "Courtenay",
+"pc": "6288",
+"lat": -34.18394,
+"lng": 115.27045,
+"sa2": "Augusta"
+},
+{
+"name": "Cowalellup",
+"pc": "6336",
+"lat": -34.09517,
+"lng": 118.55571,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Cowalla",
+"pc": "6503",
+"lat": -31.08628,
+"lng": 115.5303,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Cowaramup",
+"pc": "6284",
+"lat": -33.85221,
+"lng": 115.10142,
+"sa2": "Margaret River"
+},
+{
+"name": "Cowcowing",
+"pc": "6485",
+"lat": -31.01196,
+"lng": 117.44904,
+"sa2": "Dowerin"
+},
+{
+"name": "Coyrecup",
+"pc": "6317",
+"lat": -33.66138,
+"lng": 117.8384,
+"sa2": "Kulin"
+},
+{
+"name": "Craigie",
+"pc": "6025",
+"lat": -31.78524,
+"lng": 115.76758,
+"sa2": "Padbury"
+},
+{
+"name": "Cramphorne",
+"pc": "6420",
+"lat": -31.8735,
+"lng": 118.39602,
+"sa2": "Merredin"
+},
+{
+"name": "Cranbrook",
+"pc": "6321",
+"lat": -34.25005,
+"lng": 117.50262,
+"sa2": "Kojonup"
+},
+{
+"name": "Crawley",
+"pc": "6009",
+"lat": -31.98206,
+"lng": 115.81077,
+"sa2": "Nedlands - Dalkeith - Crawley"
+},
+{
+"name": "Crooked Brook",
+"pc": "6236",
+"lat": -33.4979,
+"lng": 115.81831,
+"sa2": "Dardanup"
+},
+{
+"name": "Crossman",
+"pc": "6390",
+"lat": -32.8193,
+"lng": 116.61192,
+"sa2": "Murray"
+},
+{
+"name": "Crowea",
+"pc": "6258",
+"lat": -34.54632,
+"lng": 116.14947,
+"sa2": "Pemberton"
+},
+{
+"name": "Cuballing",
+"pc": "6311",
+"lat": -32.81888,
+"lng": 117.17918,
+"sa2": "Wagin"
+},
+{
+"name": "Cubbine",
+"pc": "6383",
+"lat": -31.88174,
+"lng": 117.35065,
+"sa2": "Cunderdin"
+},
+{
+"name": "Cue",
+"pc": "6640",
+"lat": -27.42458,
+"lng": 117.89672,
+"sa2": "Meekatharra"
+},
+{
+"name": "Culbin",
+"pc": "6391",
+"lat": -33.1669,
+"lng": 116.842,
+"sa2": "Wagin"
+},
+{
+"name": "Culham",
+"pc": "6566",
+"lat": -31.41348,
+"lng": 116.47795,
+"sa2": "Toodyay"
+},
+{
+"name": "Cullacabardee",
+"pc": "6067",
+"lat": -31.81299,
+"lng": 115.90541,
+"sa2": "Landsdale"
+},
+{
+"name": "Cullalla",
+"pc": "6503",
+"lat": -31.21729,
+"lng": 115.99784,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Cundeelee",
+"pc": "6434",
+"lat": -31.01561,
+"lng": 123.14637,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Cunderdin",
+"pc": "6407",
+"lat": -31.65157,
+"lng": 117.23716,
+"sa2": "Cunderdin"
+},
+{
+"name": "Cundinup",
+"pc": "6275",
+"lat": -33.84436,
+"lng": 115.79799,
+"sa2": "Pemberton"
+},
+{
+"name": "Cunjardine",
+"pc": "6401",
+"lat": -31.43986,
+"lng": 116.85694,
+"sa2": "Northam"
+},
+{
+"name": "Currambine",
+"pc": "6028",
+"lat": -31.73506,
+"lng": 115.74502,
+"sa2": "Iluka - Burns Beach"
+},
+{
+"name": "Cuthbert",
+"pc": "6330",
+"lat": -35.01602,
+"lng": 117.7931,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Daadenning Creek",
+"pc": "6410",
+"lat": -31.77653,
+"lng": 117.79294,
+"sa2": "Cunderdin"
+},
+{
+"name": "Daggar Hills",
+"pc": "6638",
+"lat": -28.16349,
+"lng": 117.64071,
+"sa2": "Meekatharra"
+},
+{
+"name": "Daglish",
+"pc": "6008",
+"lat": -31.95185,
+"lng": 115.80973,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Dale",
+"pc": "6304",
+"lat": -32.21334,
+"lng": 116.73472,
+"sa2": "York - Beverley"
+},
+{
+"name": "Daliak",
+"pc": "6302",
+"lat": -31.87361,
+"lng": 116.72753,
+"sa2": "York - Beverley"
+},
+{
+"name": "Dalkeith",
+"pc": "6009",
+"lat": -31.99477,
+"lng": 115.79881,
+"sa2": "Nedlands - Dalkeith - Crawley"
+},
+{
+"name": "Dalwallinu",
+"pc": "6609",
+"lat": -30.2866,
+"lng": 116.66312,
+"sa2": "Moora"
+},
+{
+"name": "Dalyellup",
+"pc": "6230",
+"lat": -33.41094,
+"lng": 115.61872,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Dalyup",
+"pc": "6450",
+"lat": -33.71878,
+"lng": 121.59685,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Dampier",
+"pc": "6713",
+"lat": -20.66212,
+"lng": 116.71077,
+"sa2": "Roebourne"
+},
+{
+"name": "Dampier Archipelago",
+"pc": "6713",
+"lat": -20.5405,
+"lng": 116.73121,
+"sa2": "Roebourne"
+},
+{
+"name": "Dampier Peninsula",
+"pc": "6725",
+"lat": -16.94381,
+"lng": 122.75389,
+"sa2": "Roebuck"
+},
+{
+"name": "Dandanning",
+"pc": "6479",
+"lat": -31.00806,
+"lng": 118.17943,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Dandaragan",
+"pc": "6507",
+"lat": -30.65831,
+"lng": 115.70353,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Dangin",
+"pc": "6383",
+"lat": -32.05264,
+"lng": 117.3499,
+"sa2": "Cunderdin"
+},
+{
+"name": "Darch",
+"pc": "6065",
+"lat": -31.81323,
+"lng": 115.84483,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Dardadine",
+"pc": "6392",
+"lat": -33.2321,
+"lng": 116.791,
+"sa2": "Wagin"
+},
+{
+"name": "Dardanup",
+"pc": "6236",
+"lat": -33.39795,
+"lng": 115.72078,
+"sa2": "Dardanup"
+},
+{
+"name": "Dardanup West",
+"pc": "6236",
+"lat": -33.39795,
+"lng": 115.72078,
+"sa2": "Dardanup"
+},
+{
+"name": "Darkan",
+"pc": "6392",
+"lat": -33.3345,
+"lng": 116.73315,
+"sa2": "Wagin"
+},
+{
+"name": "Darling Downs",
+"pc": "6122",
+"lat": -32.19671,
+"lng": 115.9866,
+"sa2": "Mundijong"
+},
+{
+"name": "Darlington",
+"pc": "6070",
+"lat": -31.92263,
+"lng": 116.08276,
+"sa2": "Glen Forrest - Darlington"
+},
+{
+"name": "Darradup",
+"pc": "6275",
+"lat": -34.09939,
+"lng": 115.56748,
+"sa2": "Pemberton"
+},
+{
+"name": "Dartmoor",
+"pc": "6532",
+"lat": -28.0272,
+"lng": 115.14004,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Dartnall",
+"pc": "6320",
+"lat": -34.02253,
+"lng": 117.76602,
+"sa2": "Kojonup"
+},
+{
+"name": "Datatine",
+"pc": "6317",
+"lat": -33.42567,
+"lng": 117.8629,
+"sa2": "Kulin"
+},
+{
+"name": "Davenport",
+"pc": "6230",
+"lat": -33.35721,
+"lng": 115.66665,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Dawesville",
+"pc": "6210",
+"lat": -32.6346,
+"lng": 115.634,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Dayton",
+"pc": "6055",
+"lat": -31.8556,
+"lng": 115.969,
+"sa2": "Perth Airport"
+},
+{
+"name": "De Grey",
+"pc": "6722",
+"lat": -20.31228,
+"lng": 119.24813,
+"sa2": "South Hedland"
+},
+{
+"name": "Deanmill",
+"pc": "6258",
+"lat": -34.24924,
+"lng": 116.08273,
+"sa2": "Pemberton"
+},
+{
+"name": "Deepdale",
+"pc": "6532",
+"lat": -28.78199,
+"lng": 114.67718,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Deepdene",
+"pc": "6290",
+"lat": -34.27073,
+"lng": 115.09991,
+"sa2": "Augusta"
+},
+{
+"name": "Denbarker",
+"pc": "6324",
+"lat": -34.69653,
+"lng": 117.46416,
+"sa2": "Plantagenet"
+},
+{
+"name": "Denham",
+"pc": "6537",
+"lat": -25.9272,
+"lng": 113.54237,
+"sa2": "Exmouth"
+},
+{
+"name": "Denmark",
+"pc": "6333",
+"lat": -34.96176,
+"lng": 117.35065,
+"sa2": "Denmark"
+},
+{
+"name": "Derby",
+"pc": "6728",
+"lat": -17.43999,
+"lng": 123.74401,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Devils Creek",
+"pc": "6630",
+"lat": -28.67311,
+"lng": 115.51616,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Dewars Pool",
+"pc": "6567",
+"lat": -31.38664,
+"lng": 116.35533,
+"sa2": "Toodyay"
+},
+{
+"name": "Diamond Tree",
+"pc": "6258",
+"lat": -34.33529,
+"lng": 116.11109,
+"sa2": "Pemberton"
+},
+{
+"name": "Dianella",
+"pc": "6059",
+"lat": -31.88437,
+"lng": 115.86992,
+"sa2": "Dianella - South"
+},
+{
+"name": "Dindiloa",
+"pc": "6532",
+"lat": -28.43241,
+"lng": 114.78903,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Dingup",
+"pc": "6258",
+"lat": -34.28206,
+"lng": 116.23615,
+"sa2": "Pemberton"
+},
+{
+"name": "Dinninup",
+"pc": "6244",
+"lat": -33.81297,
+"lng": 116.54265,
+"sa2": "Wagin"
+},
+{
+"name": "Dirk Hartog",
+"pc": "6537",
+"lat": -25.8024,
+"lng": 113.025,
+"sa2": "Exmouth"
+},
+{
+"name": "Dirk Hartog Island",
+"pc": "6537",
+"lat": -25.8024,
+"lng": 113.02503,
+"sa2": "Exmouth"
+},
+{
+"name": "Dixvale",
+"pc": "6258",
+"lat": -34.20635,
+"lng": 116.05509,
+"sa2": "Pemberton"
+},
+{
+"name": "Djugun",
+"pc": "6725",
+"lat": -17.93937,
+"lng": 122.22874,
+"sa2": "Roebuck"
+},
+{
+"name": "Dog Swamp",
+"pc": "6060",
+"lat": -31.90938,
+"lng": 115.84598,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Dongara",
+"pc": "6525",
+"lat": -29.24517,
+"lng": 114.93255,
+"sa2": "Irwin"
+},
+{
+"name": "Dongolocking",
+"pc": "6315",
+"lat": -33.1454,
+"lng": 117.76867,
+"sa2": "Wagin"
+},
+{
+"name": "Donnelly River",
+"pc": "6258",
+"lat": -34.08076,
+"lng": 115.97001,
+"sa2": "Pemberton"
+},
+{
+"name": "Donnybrook",
+"pc": "6239",
+"lat": -33.57884,
+"lng": 115.82801,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Doobarda",
+"pc": "6112",
+"lat": -32.1738,
+"lng": 115.9473,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Doodenanning",
+"pc": "6383",
+"lat": -31.86117,
+"lng": 117.1922,
+"sa2": "Cunderdin"
+},
+{
+"name": "Doodlakine",
+"pc": "6411",
+"lat": -31.51333,
+"lng": 117.84165,
+"sa2": "Cunderdin"
+},
+{
+"name": "Doongin",
+"pc": "6409",
+"lat": -31.58592,
+"lng": 117.50262,
+"sa2": "Cunderdin"
+},
+{
+"name": "Dorre Island",
+"pc": "6701",
+"lat": -25.06224,
+"lng": 113.10842,
+"sa2": "Exmouth"
+},
+{
+"name": "Doubleview",
+"pc": "6018",
+"lat": -31.89991,
+"lng": 115.78125,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Dowerin",
+"pc": "6461",
+"lat": -31.19563,
+"lng": 117.03197,
+"sa2": "Dowerin"
+},
+{
+"name": "Drome",
+"pc": "6330",
+"lat": -34.92447,
+"lng": 117.79206,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Drummond Cove",
+"pc": "6532",
+"lat": -28.67265,
+"lng": 114.61558,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Dryandra",
+"pc": "6311",
+"lat": -32.77687,
+"lng": 116.9711,
+"sa2": "Wagin"
+},
+{
+"name": "Drysdale River",
+"pc": "6740",
+"lat": -14.76963,
+"lng": 126.77389,
+"sa2": "Kununurra"
+},
+{
+"name": "Dudawa",
+"pc": "6519",
+"lat": -29.37543,
+"lng": 115.77856,
+"sa2": "Morawa"
+},
+{
+"name": "Dudinin",
+"pc": "6363",
+"lat": -32.95244,
+"lng": 118.00432,
+"sa2": "Kulin"
+},
+{
+"name": "Dudley Park",
+"pc": "6210",
+"lat": -32.5492,
+"lng": 115.73219,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Dukin",
+"pc": "6475",
+"lat": -30.90819,
+"lng": 117.54073,
+"sa2": "Dowerin"
+},
+{
+"name": "Dulbelling",
+"pc": "6383",
+"lat": -31.97052,
+"lng": 117.25423,
+"sa2": "Cunderdin"
+},
+{
+"name": "Dulyalbin",
+"pc": "6425",
+"lat": -31.55389,
+"lng": 119.0713,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Dumbarton",
+"pc": "6566",
+"lat": -31.57424,
+"lng": 116.49822,
+"sa2": "Toodyay"
+},
+{
+"name": "Dumberning",
+"pc": "6312",
+"lat": -32.97927,
+"lng": 117.15631,
+"sa2": "Wagin"
+},
+{
+"name": "Dumbleyung",
+"pc": "6350",
+"lat": -33.31473,
+"lng": 117.74206,
+"sa2": "Kulin"
+},
+{
+"name": "Duncraig",
+"pc": "6023",
+"lat": -31.83061,
+"lng": 115.77527,
+"sa2": "Duncraig"
+},
+{
+"name": "Dundas",
+"pc": "6443",
+"lat": -32.39069,
+"lng": 121.75903,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Dunn Rock",
+"pc": "6355",
+"lat": -33.35767,
+"lng": 119.55358,
+"sa2": "Kulin"
+},
+{
+"name": "Dunsborough",
+"pc": "6281",
+"lat": -33.6174,
+"lng": 115.10111,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "Durack",
+"pc": "6743",
+"lat": -16.3103,
+"lng": 128.24807,
+"sa2": "Kununurra"
+},
+{
+"name": "Duranillin",
+"pc": "6393",
+"lat": -33.52069,
+"lng": 116.79687,
+"sa2": "Wagin"
+},
+{
+"name": "Durawah",
+"pc": "6532",
+"lat": -28.57118,
+"lng": 114.9383,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Dwarda",
+"pc": "6308",
+"lat": -32.76841,
+"lng": 116.67944,
+"sa2": "Brookton"
+},
+{
+"name": "Dwellingup",
+"pc": "6213",
+"lat": -32.71425,
+"lng": 116.0665,
+"sa2": "Murray"
+},
+{
+"name": "Eagle Bay",
+"pc": "6281",
+"lat": -33.56205,
+"lng": 115.06224,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "East Augusta",
+"pc": "6290",
+"lat": -34.31433,
+"lng": 115.17221,
+"sa2": "Augusta"
+},
+{
+"name": "East Ballidu",
+"pc": "6606",
+"lat": -30.55968,
+"lng": 116.88863,
+"sa2": "Dowerin"
+},
+{
+"name": "East Beverley",
+"pc": "6304",
+"lat": -32.02496,
+"lng": 117.03281,
+"sa2": "York - Beverley"
+},
+{
+"name": "East Bowes",
+"pc": "6535",
+"lat": -28.38025,
+"lng": 114.67002,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "East Bunbury",
+"pc": "6230",
+"lat": -33.34037,
+"lng": 115.65464,
+"sa2": "Withers - Usher"
+},
+{
+"name": "East Cannington",
+"pc": "6107",
+"lat": -32.00567,
+"lng": 115.96332,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "East Carnarvon",
+"pc": "6701",
+"lat": -24.86438,
+"lng": 113.67776,
+"sa2": "Exmouth"
+},
+{
+"name": "East Chapman",
+"pc": "6532",
+"lat": -28.69346,
+"lng": 114.84059,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "East Damboring",
+"pc": "6606",
+"lat": -30.59645,
+"lng": 116.76994,
+"sa2": "Dowerin"
+},
+{
+"name": "East Fremantle",
+"pc": "6158",
+"lat": -32.03675,
+"lng": 115.7664,
+"sa2": "East Fremantle"
+},
+{
+"name": "East Lyons River",
+"pc": "6705",
+"lat": -24.29642,
+"lng": 117.31379,
+"sa2": "Exmouth"
+},
+{
+"name": "East Munglinup",
+"pc": "6450",
+"lat": -33.72238,
+"lng": 120.92573,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "East Murchison",
+"pc": "6640",
+"lat": -26.37765,
+"lng": 117.14599,
+"sa2": "Meekatharra"
+},
+{
+"name": "East Nabawa",
+"pc": "6532",
+"lat": -28.49029,
+"lng": 114.86481,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "East Nannup",
+"pc": "6275",
+"lat": -34.02555,
+"lng": 115.7972,
+"sa2": "Pemberton"
+},
+{
+"name": "East Newdegate",
+"pc": "6355",
+"lat": -33.09248,
+"lng": 119.27506,
+"sa2": "Kulin"
+},
+{
+"name": "East Perth",
+"pc": "6004",
+"lat": -31.95401,
+"lng": 115.87879,
+"sa2": "East Perth"
+},
+{
+"name": "East Pingelly",
+"pc": "6308",
+"lat": -32.528,
+"lng": 117.27272,
+"sa2": "Brookton"
+},
+{
+"name": "East Popanyinning",
+"pc": "6309",
+"lat": -32.63333,
+"lng": 117.29113,
+"sa2": "Wagin"
+},
+{
+"name": "East Rockingham",
+"pc": "6168",
+"lat": -32.25858,
+"lng": 115.76372,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "East Victoria Park",
+"pc": "6101",
+"lat": -31.98466,
+"lng": 115.90836,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "East Wickepin",
+"pc": "6370",
+"lat": -32.7828,
+"lng": 117.70756,
+"sa2": "Kulin"
+},
+{
+"name": "East Yuna",
+"pc": "6532",
+"lat": -28.40296,
+"lng": 115.12469,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Eastbrook",
+"pc": "6260",
+"lat": -34.38156,
+"lng": 116.06963,
+"sa2": "Pemberton"
+},
+{
+"name": "Eaton",
+"pc": "6232",
+"lat": -33.31696,
+"lng": 115.71585,
+"sa2": "Eaton - Pelican Point"
+},
+{
+"name": "Eden Hill",
+"pc": "6054",
+"lat": -31.89064,
+"lng": 115.94218,
+"sa2": "Lockridge - Kiara"
+},
+{
+"name": "Edgewater",
+"pc": "6027",
+"lat": -31.7648,
+"lng": 115.78146,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Eganu",
+"pc": "6515",
+"lat": -30.03456,
+"lng": 115.74262,
+"sa2": "Morawa"
+},
+{
+"name": "Eglinton",
+"pc": "6034",
+"lat": -31.58776,
+"lng": 115.66875,
+"sa2": "Alkimos - Eglinton"
+},
+{
+"name": "Eighty Mile Beach",
+"pc": "6725",
+"lat": -19.72427,
+"lng": 120.74101,
+"sa2": "Roebuck"
+},
+{
+"name": "Elabbin",
+"pc": "6490",
+"lat": -31.23768,
+"lng": 118.14835,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Elachbutting",
+"pc": "6479",
+"lat": -30.60434,
+"lng": 118.60594,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Elgin",
+"pc": "6237",
+"lat": -33.5357,
+"lng": 115.63209,
+"sa2": "Gelorup - Stratham"
+},
+{
+"name": "Elleker",
+"pc": "6330",
+"lat": -35.008,
+"lng": 117.72645,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Ellenbrook",
+"pc": "6069",
+"lat": -31.76456,
+"lng": 116.00592,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Ellenbrook East",
+"pc": "6069",
+"lat": -31.7646,
+"lng": 116.006,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Ellendale",
+"pc": "6532",
+"lat": -28.89695,
+"lng": 114.93074,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Embleton",
+"pc": "6062",
+"lat": -31.90313,
+"lng": 115.91049,
+"sa2": "Noranda"
+},
+{
+"name": "Emu Flat",
+"pc": "6431",
+"lat": -31.03486,
+"lng": 122.55133,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Emu Hill",
+"pc": "6369",
+"lat": -32.0833,
+"lng": 118.333,
+"sa2": "Merredin"
+},
+{
+"name": "Emu Point",
+"pc": "6330",
+"lat": -34.99777,
+"lng": 117.93837,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Eneabba",
+"pc": "6518",
+"lat": -29.81423,
+"lng": 115.26687,
+"sa2": "Morawa"
+},
+{
+"name": "Ennuin",
+"pc": "6484",
+"lat": -30.66868,
+"lng": 118.92354,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Eradu",
+"pc": "6532",
+"lat": -28.69657,
+"lng": 115.03769,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Eradu South",
+"pc": "6532",
+"lat": -28.77525,
+"lng": 115.07203,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Erskine",
+"pc": "6210",
+"lat": -32.55901,
+"lng": 115.69444,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Esperance",
+"pc": "6450",
+"lat": -33.86131,
+"lng": 121.89142,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Etmilyn",
+"pc": "6213",
+"lat": -32.74624,
+"lng": 116.13269,
+"sa2": "Murray"
+},
+{
+"name": "Eucla",
+"pc": "6443",
+"lat": -31.67622,
+"lng": 128.88912,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Eurardy",
+"pc": "6532",
+"lat": -27.48996,
+"lng": 114.71778,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ewlyamartup",
+"pc": "6317",
+"lat": -33.69219,
+"lng": 117.68811,
+"sa2": "Kulin"
+},
+{
+"name": "Exmouth",
+"pc": "6707",
+"lat": -21.93134,
+"lng": 114.12368,
+"sa2": "Exmouth"
+},
+{
+"name": "Exmouth Gulf",
+"pc": "6707",
+"lat": -22.67715,
+"lng": 114.0539,
+"sa2": "Exmouth"
+},
+{
+"name": "Fairbridge",
+"pc": "6208",
+"lat": -32.58306,
+"lng": 115.93462,
+"sa2": "Pinjarra"
+},
+{
+"name": "Falcon",
+"pc": "6210",
+"lat": -32.58828,
+"lng": 115.65617,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Ferguson",
+"pc": "6236",
+"lat": -33.4381,
+"lng": 115.845,
+"sa2": "Dardanup"
+},
+{
+"name": "Ferndale",
+"pc": "6148",
+"lat": -32.03076,
+"lng": 115.92535,
+"sa2": "Riverton - Shelley - Rossmoyne"
+},
+{
+"name": "Feysville",
+"pc": "6431",
+"lat": -31.01051,
+"lng": 121.5988,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Fimiston",
+"pc": "6432",
+"lat": -30.7766,
+"lng": 121.50414,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Finucane",
+"pc": "6722",
+"lat": -20.29679,
+"lng": 118.56978,
+"sa2": "South Hedland"
+},
+{
+"name": "Fitzgerald",
+"pc": "6337",
+"lat": -33.74742,
+"lng": 119.45786,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Fitzgerald River National Park",
+"pc": "6346",
+"lat": -33.98748,
+"lng": 119.50238,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Fitzroy Crossing",
+"pc": "6765",
+"lat": -18.19365,
+"lng": 125.56037,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Flint",
+"pc": "6302",
+"lat": -32.23266,
+"lng": 116.43764,
+"sa2": "York - Beverley"
+},
+{
+"name": "Floreat",
+"pc": "6014",
+"lat": -31.93443,
+"lng": 115.79065,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Floreat Forum",
+"pc": "6014",
+"lat": -31.93803,
+"lng": 115.79289,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Flynn",
+"pc": "6302",
+"lat": -32.03288,
+"lng": 116.47136,
+"sa2": "York - Beverley"
+},
+{
+"name": "Forest Grove",
+"pc": "6286",
+"lat": -34.07235,
+"lng": 115.10689,
+"sa2": "Augusta"
+},
+{
+"name": "Forest Hill",
+"pc": "6324",
+"lat": -34.61541,
+"lng": 117.44228,
+"sa2": "Plantagenet"
+},
+{
+"name": "Forrest",
+"pc": "6434",
+"lat": -30.9089,
+"lng": 127.45759,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Forrest Beach",
+"pc": "6271",
+"lat": -33.57502,
+"lng": 115.48257,
+"sa2": "Capel"
+},
+{
+"name": "Forrestania",
+"pc": "6359",
+"lat": -32.41584,
+"lng": 119.75496,
+"sa2": "Kulin"
+},
+{
+"name": "Forrestdale",
+"pc": "6112",
+"lat": -32.14779,
+"lng": 115.93696,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Forrestfield",
+"pc": "6058",
+"lat": -31.98315,
+"lng": 116.00001,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Fortescue",
+"pc": "6716",
+"lat": -21.67564,
+"lng": 115.86271,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Francois Peron National Park",
+"pc": "6537",
+"lat": -25.82039,
+"lng": 113.55,
+"sa2": "Exmouth"
+},
+{
+"name": "Frankland",
+"pc": "6396",
+"lat": -34.3029,
+"lng": 116.93814,
+"sa2": "Kojonup"
+},
+{
+"name": "Frankland River",
+"pc": "6396",
+"lat": -34.3029,
+"lng": 116.938,
+"sa2": "Kojonup"
+},
+{
+"name": "Fraser Range",
+"pc": "6443",
+"lat": -32.0115,
+"lng": 122.79764,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Fremantle",
+"pc": "6160",
+"lat": -32.05393,
+"lng": 115.76048,
+"sa2": "Fremantle"
+},
+{
+"name": "Frenchman Bay",
+"pc": "6330",
+"lat": -35.09432,
+"lng": 117.94965,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Furnissdale",
+"pc": "6209",
+"lat": -32.56061,
+"lng": 115.77266,
+"sa2": "Pinjarra"
+},
+{
+"name": "Gabalong",
+"pc": "6574",
+"lat": -30.71891,
+"lng": 116.39002,
+"sa2": "Moora"
+},
+{
+"name": "Gabbadah",
+"pc": "6041",
+"lat": -31.28103,
+"lng": 115.50433,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Gabbin",
+"pc": "6476",
+"lat": -30.69728,
+"lng": 117.69042,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Gairdner",
+"pc": "6337",
+"lat": -34.20371,
+"lng": 118.93805,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Gap Ridge",
+"pc": "6714",
+"lat": -20.7373,
+"lng": 116.76652,
+"sa2": "Roebourne"
+},
+{
+"name": "Garden Island",
+"pc": "6168",
+"lat": -32.20433,
+"lng": 115.67763,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Gascoyne Junction",
+"pc": "6705",
+"lat": -25.05416,
+"lng": 115.20785,
+"sa2": "Exmouth"
+},
+{
+"name": "Gascoyne River",
+"pc": "6705",
+"lat": -25.43482,
+"lng": 116.09621,
+"sa2": "Exmouth"
+},
+{
+"name": "Geegully Creek",
+"pc": "6728",
+"lat": -18.30459,
+"lng": 123.82767,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Gelorup",
+"pc": "6230",
+"lat": -33.41636,
+"lng": 115.64168,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Geographe",
+"pc": "6280",
+"lat": -33.63763,
+"lng": 115.37651,
+"sa2": "Capel"
+},
+{
+"name": "Georgina",
+"pc": "6532",
+"lat": -28.87674,
+"lng": 114.75325,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Geraldton",
+"pc": "6530",
+"lat": -28.77965,
+"lng": 114.61445,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Geraldton Dc",
+"pc": "6530",
+"lat": -28.7738,
+"lng": 114.612,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ghooli",
+"pc": "6426",
+"lat": -31.27374,
+"lng": 119.51191,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Gibb",
+"pc": "6743",
+"lat": -16.42245,
+"lng": 126.46945,
+"sa2": "Kununurra"
+},
+{
+"name": "Gibson",
+"pc": "6448",
+"lat": -33.58819,
+"lng": 121.85626,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Gibson Desert North",
+"pc": "0872",
+"lat": -22.2876,
+"lng": 126.89244,
+"sa2": "Barkly"
+},
+{
+"name": "Gibson Desert South",
+"pc": "0872",
+"lat": -25.0143,
+"lng": 126.93,
+"sa2": "Barkly"
+},
+{
+"name": "Gidgegannup",
+"pc": "6083",
+"lat": -31.79307,
+"lng": 116.1966,
+"sa2": "Toodyay"
+},
+{
+"name": "Gilgering",
+"pc": "6302",
+"lat": -32.04747,
+"lng": 116.78861,
+"sa2": "York - Beverley"
+},
+{
+"name": "Gillimanning",
+"pc": "6370",
+"lat": -32.7828,
+"lng": 117.70756,
+"sa2": "Kulin"
+},
+{
+"name": "Gillingarra",
+"pc": "6510",
+"lat": -30.91221,
+"lng": 116.03617,
+"sa2": "Moora"
+},
+{
+"name": "Gilroyd",
+"pc": "6701",
+"lat": -25.89196,
+"lng": 115.16372,
+"sa2": "Exmouth"
+},
+{
+"name": "Gingerah",
+"pc": "6725",
+"lat": -18.3669,
+"lng": 122.99895,
+"sa2": "Roebuck"
+},
+{
+"name": "Gingin",
+"pc": "6503",
+"lat": -31.34968,
+"lng": 115.90678,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Ginginup",
+"pc": "6503",
+"lat": -31.31193,
+"lng": 115.92215,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Girrawheen",
+"pc": "6064",
+"lat": -31.84068,
+"lng": 115.84032,
+"sa2": "Marangaroo"
+},
+{
+"name": "Gledhow",
+"pc": "6330",
+"lat": -35.0079,
+"lng": 117.82795,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Glen Forrest",
+"pc": "6071",
+"lat": -31.91094,
+"lng": 116.10425,
+"sa2": "Glen Forrest - Darlington"
+},
+{
+"name": "Glen Iris",
+"pc": "6230",
+"lat": -33.33986,
+"lng": 115.67985,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Glen Mervyn",
+"pc": "6239",
+"lat": -33.53024,
+"lng": 116.06986,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Glencoe",
+"pc": "6316",
+"lat": -33.46714,
+"lng": 117.63285,
+"sa2": "Katanning"
+},
+{
+"name": "Glendalough",
+"pc": "6016",
+"lat": -31.91923,
+"lng": 115.82003,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Glenfield",
+"pc": "6532",
+"lat": -28.69948,
+"lng": 114.62079,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Glengarry",
+"pc": "6023",
+"lat": -31.8275,
+"lng": 115.78,
+"sa2": "Duncraig"
+},
+{
+"name": "Glenlynn",
+"pc": "6256",
+"lat": -34.01837,
+"lng": 116.15205,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Glenoran",
+"pc": "6258",
+"lat": -34.22945,
+"lng": 115.95476,
+"sa2": "Pemberton"
+},
+{
+"name": "Glentromie",
+"pc": "6509",
+"lat": -30.91769,
+"lng": 116.23623,
+"sa2": "Moora"
+},
+{
+"name": "Gnangara",
+"pc": "6065",
+"lat": -31.77567,
+"lng": 115.86568,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Gnarabup",
+"pc": "6285",
+"lat": -33.99784,
+"lng": 114.99899,
+"sa2": "Pemberton"
+},
+{
+"name": "Gnoorea",
+"pc": "6714",
+"lat": -20.83612,
+"lng": 116.38653,
+"sa2": "Roebourne"
+},
+{
+"name": "Gnowangerup",
+"pc": "6335",
+"lat": -33.93726,
+"lng": 118.00784,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Gnowellen",
+"pc": "6328",
+"lat": -34.39208,
+"lng": 118.57124,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Golden Bay",
+"pc": "6174",
+"lat": -32.42625,
+"lng": 115.76344,
+"sa2": "Singleton - Golden Bay - Secret Harbour"
+},
+{
+"name": "Goldsworthy",
+"pc": "6723",
+"lat": -20.3398,
+"lng": 119.518,
+"sa2": ""
+},
+{
+"name": "Goode Beach",
+"pc": "6330",
+"lat": -35.08617,
+"lng": 117.92876,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Goodlands",
+"pc": "6468",
+"lat": -29.99526,
+"lng": 117.27429,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Goomalling",
+"pc": "6460",
+"lat": -31.29665,
+"lng": 116.83045,
+"sa2": "Dowerin"
+},
+{
+"name": "Goomarin",
+"pc": "6415",
+"lat": -31.23824,
+"lng": 118.41456,
+"sa2": "Merredin"
+},
+{
+"name": "Gooseberry Hill",
+"pc": "6076",
+"lat": -31.95544,
+"lng": 116.05112,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Gorge Rock",
+"pc": "6375",
+"lat": -32.45677,
+"lng": 118.04262,
+"sa2": "Brookton"
+},
+{
+"name": "Gorrie",
+"pc": "6556",
+"lat": -31.8921,
+"lng": 116.30182,
+"sa2": "Malmalling - Reservoir"
+},
+{
+"name": "Gosnells",
+"pc": "6110",
+"lat": -32.0823,
+"lng": 115.99027,
+"sa2": "Maddington - Orange Grove - Martin"
+},
+{
+"name": "Gracetown",
+"pc": "6284",
+"lat": -33.86416,
+"lng": 114.98823,
+"sa2": "Margaret River"
+},
+{
+"name": "Granville",
+"pc": "6503",
+"lat": -31.43395,
+"lng": 115.88165,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Grass Patch",
+"pc": "6446",
+"lat": -33.18366,
+"lng": 121.71955,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Grass Valley",
+"pc": "6403",
+"lat": -31.63665,
+"lng": 116.82035,
+"sa2": "Northam"
+},
+{
+"name": "Green Head",
+"pc": "6514",
+"lat": -30.05397,
+"lng": 115.02287,
+"sa2": "Morawa"
+},
+{
+"name": "Green Range",
+"pc": "6328",
+"lat": -34.71311,
+"lng": 118.32062,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Green Valley",
+"pc": "6330",
+"lat": -34.87809,
+"lng": 117.81942,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Greenbushes",
+"pc": "6254",
+"lat": -33.8568,
+"lng": 116.05323,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Greenfields",
+"pc": "6210",
+"lat": -32.52865,
+"lng": 115.76463,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Greenhills",
+"pc": "6302",
+"lat": -31.91707,
+"lng": 116.9643,
+"sa2": "York - Beverley"
+},
+{
+"name": "Greenmount",
+"pc": "6056",
+"lat": -31.89835,
+"lng": 116.04895,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Greenough",
+"pc": "6532",
+"lat": -28.92013,
+"lng": 114.70397,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Greenwood",
+"pc": "6024",
+"lat": -31.82483,
+"lng": 115.80479,
+"sa2": "Greenwood - Warwick"
+},
+{
+"name": "Greenwoods Valley",
+"pc": "6405",
+"lat": -31.51568,
+"lng": 116.90922,
+"sa2": "Cunderdin"
+},
+{
+"name": "Gregory",
+"pc": "6535",
+"lat": -28.18729,
+"lng": 114.25081,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Grey",
+"pc": "6521",
+"lat": -30.65993,
+"lng": 115.13778,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Greys Plain",
+"pc": "6701",
+"lat": -24.88291,
+"lng": 113.69975,
+"sa2": "Exmouth"
+},
+{
+"name": "Grimwade",
+"pc": "6253",
+"lat": -33.70068,
+"lng": 116.05184,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Guilderton",
+"pc": "6041",
+"lat": -31.34181,
+"lng": 115.50565,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Guildford",
+"pc": "6055",
+"lat": -31.89898,
+"lng": 115.97181,
+"sa2": "Perth Airport"
+},
+{
+"name": "Gundaring",
+"pc": "6315",
+"lat": -33.31661,
+"lng": 117.49586,
+"sa2": "Wagin"
+},
+{
+"name": "Gunyidi",
+"pc": "6513",
+"lat": -30.14479,
+"lng": 116.05563,
+"sa2": "Morawa"
+},
+{
+"name": "Gutha",
+"pc": "6623",
+"lat": -28.98924,
+"lng": 116.1113,
+"sa2": "Morawa"
+},
+{
+"name": "Gwambygine",
+"pc": "6302",
+"lat": -31.97346,
+"lng": 116.80925,
+"sa2": "York - Beverley"
+},
+{
+"name": "Gwelup",
+"pc": "6018",
+"lat": -31.86925,
+"lng": 115.79625,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Gwelup Dc",
+"pc": "6018",
+"lat": -31.8761,
+"lng": 115.799,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Gwindinup",
+"pc": "6237",
+"lat": -33.5229,
+"lng": 115.74942,
+"sa2": "Gelorup - Stratham"
+},
+{
+"name": "Hacketts Gully",
+"pc": "6076",
+"lat": -31.98102,
+"lng": 116.10312,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Halls Creek",
+"pc": "6770",
+"lat": -18.22294,
+"lng": 127.67007,
+"sa2": "Halls Creek"
+},
+{
+"name": "Halls Head",
+"pc": "6210",
+"lat": -32.53632,
+"lng": 115.71518,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Hamel",
+"pc": "6215",
+"lat": -32.868,
+"lng": 115.90147,
+"sa2": "Waroona"
+},
+{
+"name": "Hamelin Bay",
+"pc": "6288",
+"lat": -34.22833,
+"lng": 115.05595,
+"sa2": "Augusta"
+},
+{
+"name": "Hamelin Pool",
+"pc": "6532",
+"lat": -26.40928,
+"lng": 114.46252,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Hamersley",
+"pc": "6022",
+"lat": -31.85148,
+"lng": 115.81373,
+"sa2": "Balcatta - Hamersley"
+},
+{
+"name": "Hamersley Range",
+"pc": "6716",
+"lat": -22.31562,
+"lng": 117.00029,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Hamilton Hill",
+"pc": "6163",
+"lat": -32.08603,
+"lng": 115.77649,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Hammond Park",
+"pc": "6164",
+"lat": -32.16844,
+"lng": 115.84944,
+"sa2": "Jandakot"
+},
+{
+"name": "Hannans",
+"pc": "6430",
+"lat": -30.72397,
+"lng": 121.45355,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Harris River",
+"pc": "6225",
+"lat": -33.26509,
+"lng": 116.1456,
+"sa2": "Wagin"
+},
+{
+"name": "Harrisdale",
+"pc": "6112",
+"lat": -32.1176,
+"lng": 115.932,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Harrismith",
+"pc": "6361",
+"lat": -32.93628,
+"lng": 117.85651,
+"sa2": "Kulin"
+},
+{
+"name": "Harvey",
+"pc": "6220",
+"lat": -33.08231,
+"lng": 115.90568,
+"sa2": "Harvey"
+},
+{
+"name": "Hastings",
+"pc": "6308",
+"lat": -32.55961,
+"lng": 116.79783,
+"sa2": "Brookton"
+},
+{
+"name": "Hatter Hill",
+"pc": "6356",
+"lat": -33.0339,
+"lng": 119.882,
+"sa2": "Kulin"
+},
+{
+"name": "Hay",
+"pc": "6333",
+"lat": -34.96013,
+"lng": 117.40058,
+"sa2": "Denmark"
+},
+{
+"name": "Haynes",
+"pc": "6112",
+"lat": -32.1528,
+"lng": 115.975,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Hazelmere",
+"pc": "6055",
+"lat": -31.91062,
+"lng": 116.0098,
+"sa2": "Perth Airport"
+},
+{
+"name": "Hazelvale",
+"pc": "6333",
+"lat": -34.92729,
+"lng": 116.85337,
+"sa2": "Denmark"
+},
+{
+"name": "Heathridge",
+"pc": "6027",
+"lat": -31.75934,
+"lng": 115.75795,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Helena Valley",
+"pc": "6056",
+"lat": -31.92007,
+"lng": 116.03438,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Henderson",
+"pc": "6166",
+"lat": -32.14576,
+"lng": 115.77859,
+"sa2": "Beeliar - Wattleup"
+},
+{
+"name": "Henley Brook",
+"pc": "6055",
+"lat": -31.80111,
+"lng": 115.97484,
+"sa2": "Perth Airport"
+},
+{
+"name": "Henty",
+"pc": "6236",
+"lat": -33.37909,
+"lng": 115.80942,
+"sa2": "Dardanup"
+},
+{
+"name": "Herdsman",
+"pc": "6017",
+"lat": -31.92046,
+"lng": 115.80455,
+"sa2": "Tuart Hill - Joondanna"
+},
+{
+"name": "Herne Hill",
+"pc": "6056",
+"lat": -31.82917,
+"lng": 116.01663,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Herron",
+"pc": "6210",
+"lat": -32.7549,
+"lng": 115.671,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Hester",
+"pc": "6255",
+"lat": -33.90783,
+"lng": 116.15974,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Hester Brook",
+"pc": "6255",
+"lat": -33.90808,
+"lng": 116.10667,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Hickety",
+"pc": "6532",
+"lat": -28.44956,
+"lng": 114.73857,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Higginsville",
+"pc": "6443",
+"lat": -31.74558,
+"lng": 121.71431,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "High Wycombe",
+"pc": "6057",
+"lat": -31.93652,
+"lng": 116.00631,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Highbury",
+"pc": "6313",
+"lat": -33.07634,
+"lng": 117.22058,
+"sa2": "Wagin"
+},
+{
+"name": "Highgate",
+"pc": "6003",
+"lat": -31.93922,
+"lng": 115.86916,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "Hilbert",
+"pc": "6112",
+"lat": -32.1776,
+"lng": 115.983,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Hill River",
+"pc": "6521",
+"lat": -30.32612,
+"lng": 115.23372,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Hillarys",
+"pc": "6025",
+"lat": -31.80833,
+"lng": 115.74388,
+"sa2": "Padbury"
+},
+{
+"name": "Hillman",
+"pc": "6168",
+"lat": -32.28289,
+"lng": 115.76304,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Hillman River",
+"pc": "6391",
+"lat": -33.428,
+"lng": 116.817,
+"sa2": "Wagin"
+},
+{
+"name": "Hillside",
+"pc": "6312",
+"lat": -32.92105,
+"lng": 117.18536,
+"sa2": "Wagin"
+},
+{
+"name": "Hilton",
+"pc": "6163",
+"lat": -32.0702,
+"lng": 115.784,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Hindmarsh",
+"pc": "6462",
+"lat": -31.18289,
+"lng": 117.19087,
+"sa2": "Dowerin"
+},
+{
+"name": "Hines Hill",
+"pc": "6413",
+"lat": -31.51123,
+"lng": 118.08886,
+"sa2": "Merredin"
+},
+{
+"name": "Hithergreen",
+"pc": "6280",
+"lat": -33.73455,
+"lng": 115.4798,
+"sa2": "Capel"
+},
+{
+"name": "Hocking",
+"pc": "6065",
+"lat": -31.76983,
+"lng": 115.82012,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Hoddys Well",
+"pc": "6566",
+"lat": -31.63579,
+"lng": 116.46336,
+"sa2": "Toodyay"
+},
+{
+"name": "Hoffman",
+"pc": "6220",
+"lat": -33.08457,
+"lng": 116.09105,
+"sa2": "Harvey"
+},
+{
+"name": "Holleton",
+"pc": "6426",
+"lat": -31.9452,
+"lng": 119.16714,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Holmwood",
+"pc": "6522",
+"lat": -29.0466,
+"lng": 115.63346,
+"sa2": "Morawa"
+},
+{
+"name": "Holt Rock",
+"pc": "6355",
+"lat": -32.67766,
+"lng": 119.41166,
+"sa2": "Kulin"
+},
+{
+"name": "Holyoake",
+"pc": "6213",
+"lat": -32.69867,
+"lng": 116.06842,
+"sa2": "Murray"
+},
+{
+"name": "Home Island Cocos (Keeling) Islands",
+"pc": "6799",
+"lat": -12.16417,
+"lng": 96.87096,
+"sa2": "Cocos (Keeling) Islands"
+},
+{
+"name": "Hope Valley",
+"pc": "6165",
+"lat": -32.20078,
+"lng": 115.80573,
+"sa2": "Kwinana Industrial"
+},
+{
+"name": "Hopeland",
+"pc": "6125",
+"lat": -32.36428,
+"lng": 115.90922,
+"sa2": "Serpentine - Jarrahdale"
+},
+{
+"name": "Hopetoun",
+"pc": "6348",
+"lat": -33.85391,
+"lng": 120.0203,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Horrocks",
+"pc": "6535",
+"lat": -28.38082,
+"lng": 114.432,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Houtman Abrolhos",
+"pc": "6530",
+"lat": -28.7777,
+"lng": 113.858,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Hovea",
+"pc": "6071",
+"lat": -31.87571,
+"lng": 116.11254,
+"sa2": "Glen Forrest - Darlington"
+},
+{
+"name": "Howatharra",
+"pc": "6532",
+"lat": -28.54598,
+"lng": 114.6298,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Howick",
+"pc": "6450",
+"lat": -33.75236,
+"lng": 122.78288,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Hulongine",
+"pc": "6460",
+"lat": -31.36737,
+"lng": 116.81673,
+"sa2": "Dowerin"
+},
+{
+"name": "Huntingdale",
+"pc": "6110",
+"lat": -32.08666,
+"lng": 115.96709,
+"sa2": "Maddington - Orange Grove - Martin"
+},
+{
+"name": "Hyden",
+"pc": "6359",
+"lat": -32.44904,
+"lng": 118.86565,
+"sa2": "Kulin"
+},
+{
+"name": "Ikewa",
+"pc": "6522",
+"lat": -29.15963,
+"lng": 115.55625,
+"sa2": "Morawa"
+},
+{
+"name": "Iluka",
+"pc": "6028",
+"lat": -31.73891,
+"lng": 115.72915,
+"sa2": "Iluka - Burns Beach"
+},
+{
+"name": "Indee",
+"pc": "6721",
+"lat": -20.93171,
+"lng": 118.46994,
+"sa2": "Port Hedland"
+},
+{
+"name": "Inggarda",
+"pc": "6701",
+"lat": -24.98612,
+"lng": 114.24585,
+"sa2": "Exmouth"
+},
+{
+"name": "Inglehope",
+"pc": "6213",
+"lat": -32.75931,
+"lng": 116.19296,
+"sa2": "Murray"
+},
+{
+"name": "Inglewood",
+"pc": "6052",
+"lat": -31.91684,
+"lng": 115.88512,
+"sa2": "Bayswater - Embleton - Bedford"
+},
+{
+"name": "Inkpen",
+"pc": "6302",
+"lat": -31.83859,
+"lng": 116.58328,
+"sa2": "York - Beverley"
+},
+{
+"name": "Innaloo",
+"pc": "6018",
+"lat": -31.89429,
+"lng": 115.79624,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Innawanga",
+"pc": "6751",
+"lat": -23.37207,
+"lng": 117.03616,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Irishtown",
+"pc": "6401",
+"lat": -31.5913,
+"lng": 116.64687,
+"sa2": "Northam"
+},
+{
+"name": "Irrunytju",
+"pc": "0872",
+"lat": -25.1299,
+"lng": 132.57,
+"sa2": "Barkly"
+},
+{
+"name": "Irwin",
+"pc": "6525",
+"lat": -29.29061,
+"lng": 115.0466,
+"sa2": "Irwin"
+},
+{
+"name": "Israelite Bay",
+"pc": "6452",
+"lat": -33.46422,
+"lng": 123.91155,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Isseka",
+"pc": "6535",
+"lat": -28.43455,
+"lng": 114.65176,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Jackitup",
+"pc": "6335",
+"lat": -33.90559,
+"lng": 118.0982,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Jacup",
+"pc": "6337",
+"lat": -33.84694,
+"lng": 119.21147,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Jalbarragup",
+"pc": "6275",
+"lat": -34.03953,
+"lng": 115.61938,
+"sa2": "Pemberton"
+},
+{
+"name": "Jaloran",
+"pc": "6315",
+"lat": -33.17305,
+"lng": 117.42865,
+"sa2": "Wagin"
+},
+{
+"name": "Jandabup",
+"pc": "6065",
+"lat": -31.73683,
+"lng": 115.85325,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Jandakot",
+"pc": "6164",
+"lat": -32.10714,
+"lng": 115.85986,
+"sa2": "Jandakot"
+},
+{
+"name": "Jane Brook",
+"pc": "6056",
+"lat": -31.86192,
+"lng": 116.05948,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Jardee",
+"pc": "6258",
+"lat": -34.31813,
+"lng": 116.06261,
+"sa2": "Pemberton"
+},
+{
+"name": "Jarlmadangah Burru",
+"pc": "6728",
+"lat": -17.95182,
+"lng": 124.25225,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Jarrahdale",
+"pc": "6124",
+"lat": -32.37593,
+"lng": 116.15958,
+"sa2": "Serpentine - Jarrahdale"
+},
+{
+"name": "Jarrahwood",
+"pc": "6275",
+"lat": -33.79619,
+"lng": 115.66528,
+"sa2": "Pemberton"
+},
+{
+"name": "Jelcobine",
+"pc": "6306",
+"lat": -32.39752,
+"lng": 116.81916,
+"sa2": "Brookton"
+},
+{
+"name": "Jennacubbine",
+"pc": "6401",
+"lat": -31.46457,
+"lng": 116.71462,
+"sa2": "Northam"
+},
+{
+"name": "Jennapullin",
+"pc": "6401",
+"lat": -31.52839,
+"lng": 116.7169,
+"sa2": "Northam"
+},
+{
+"name": "Jerdacuttup",
+"pc": "6346",
+"lat": -33.777,
+"lng": 120.453,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Jerramungup",
+"pc": "6337",
+"lat": -33.94209,
+"lng": 118.91843,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Jibberding",
+"pc": "6612",
+"lat": -29.94597,
+"lng": 116.84985,
+"sa2": "Meekatharra"
+},
+{
+"name": "Jigalong",
+"pc": "6753",
+"lat": -22.97989,
+"lng": 119.78892,
+"sa2": "Newman"
+},
+{
+"name": "Jilakin",
+"pc": "6365",
+"lat": -32.67707,
+"lng": 118.40804,
+"sa2": "Kulin"
+},
+{
+"name": "Jindalee",
+"pc": "6036",
+"lat": -31.65068,
+"lng": 115.69202,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Jindong",
+"pc": "6280",
+"lat": -33.74235,
+"lng": 115.23586,
+"sa2": "Capel"
+},
+{
+"name": "Jingalup",
+"pc": "6395",
+"lat": -33.96553,
+"lng": 117.03005,
+"sa2": "Kojonup"
+},
+{
+"name": "Jitarning",
+"pc": "6365",
+"lat": -32.78741,
+"lng": 117.98742,
+"sa2": "Kulin"
+},
+{
+"name": "Jolimont",
+"pc": "6014",
+"lat": -31.94763,
+"lng": 115.81159,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Joondalup",
+"pc": "6027",
+"lat": -31.73392,
+"lng": 115.76573,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Joondalup Dc",
+"pc": "6027",
+"lat": -31.7412,
+"lng": 115.759,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Joondanna",
+"pc": "6060",
+"lat": -31.91089,
+"lng": 115.84572,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Julimar",
+"pc": "6567",
+"lat": -31.50725,
+"lng": 116.30097,
+"sa2": "Toodyay"
+},
+{
+"name": "Juna Downs",
+"pc": "6751",
+"lat": -22.85692,
+"lng": 118.62367,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Jurien Bay",
+"pc": "6516",
+"lat": -30.29383,
+"lng": 115.11777,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Kadathinni",
+"pc": "6519",
+"lat": -29.63583,
+"lng": 115.5849,
+"sa2": "Morawa"
+},
+{
+"name": "Kalamunda",
+"pc": "6076",
+"lat": -31.9756,
+"lng": 116.05659,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Kalannie",
+"pc": "6468",
+"lat": -30.36678,
+"lng": 117.12097,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Kalbarri",
+"pc": "6536",
+"lat": -27.71042,
+"lng": 114.16462,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Kalbarri National Park",
+"pc": "6536",
+"lat": -27.8207,
+"lng": 114.46127,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Kalgan",
+"pc": "6330",
+"lat": -34.89475,
+"lng": 118.00052,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Kalgoorlie",
+"pc": "6430",
+"lat": -30.749,
+"lng": 121.466,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Kalgup",
+"pc": "6280",
+"lat": -33.68048,
+"lng": 115.50333,
+"sa2": "Capel"
+},
+{
+"name": "Kallaroo",
+"pc": "6025",
+"lat": -31.789,
+"lng": 115.739,
+"sa2": "Padbury"
+},
+{
+"name": "Kaloorup",
+"pc": "6280",
+"lat": -33.79544,
+"lng": 115.21128,
+"sa2": "Capel"
+},
+{
+"name": "Kalumburu",
+"pc": "6740",
+"lat": -14.29359,
+"lng": 126.64463,
+"sa2": "Kununurra"
+},
+{
+"name": "Kambalda",
+"pc": "6442",
+"lat": -31.2016,
+"lng": 121.663,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Kambalda East",
+"pc": "6442",
+"lat": -31.2036,
+"lng": 121.66679,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Kambalda West",
+"pc": "6442",
+"lat": -31.23194,
+"lng": 121.61121,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Kangaroo Gully",
+"pc": "6255",
+"lat": -33.95985,
+"lng": 116.18312,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Kanowna",
+"pc": "6431",
+"lat": -30.48576,
+"lng": 121.35035,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Kanpa",
+"pc": "0872",
+"lat": -25.1299,
+"lng": 132.57,
+"sa2": "Barkly"
+},
+{
+"name": "Karakin",
+"pc": "6044",
+"lat": -31.0647,
+"lng": 115.39724,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Karalundi",
+"pc": "6642",
+"lat": -26.1252,
+"lng": 118.68,
+"sa2": "Meekatharra"
+},
+{
+"name": "Karawara",
+"pc": "6152",
+"lat": -32.00953,
+"lng": 115.88065,
+"sa2": "Manning - Waterford"
+},
+{
+"name": "Kardinya",
+"pc": "6163",
+"lat": -32.06871,
+"lng": 115.81489,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Karijini",
+"pc": "6751",
+"lat": -22.55912,
+"lng": 118.456,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Karlgarin",
+"pc": "6358",
+"lat": -32.38147,
+"lng": 118.7198,
+"sa2": "Kulin"
+},
+{
+"name": "Karlkurla",
+"pc": "6430",
+"lat": -30.75984,
+"lng": 121.43824,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Karloning",
+"pc": "6479",
+"lat": -30.60683,
+"lng": 118.16584,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Karloo",
+"pc": "6530",
+"lat": -28.79982,
+"lng": 114.64103,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Karnup",
+"pc": "6176",
+"lat": -32.42507,
+"lng": 115.79302,
+"sa2": "Karnup"
+},
+{
+"name": "Karragullen",
+"pc": "6111",
+"lat": -32.10038,
+"lng": 116.11681,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Karrakatta",
+"pc": "6010",
+"lat": -31.96529,
+"lng": 115.80051,
+"sa2": "Swanbourne - Mount Claremont"
+},
+{
+"name": "Karrakup",
+"pc": "6122",
+"lat": -32.24702,
+"lng": 116.05604,
+"sa2": "Mundijong"
+},
+{
+"name": "Karramindie",
+"pc": "6429",
+"lat": -31.0236,
+"lng": 121.4578,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Karranadgin",
+"pc": "6460",
+"lat": -31.21693,
+"lng": 116.7291,
+"sa2": "Dowerin"
+},
+{
+"name": "Karratha",
+"pc": "6714",
+"lat": -20.73371,
+"lng": 116.84474,
+"sa2": "Roebourne"
+},
+{
+"name": "Karratha Industrial Estate",
+"pc": "6714",
+"lat": -20.76781,
+"lng": 116.87088,
+"sa2": "Roebourne"
+},
+{
+"name": "Karridale",
+"pc": "6288",
+"lat": -34.20387,
+"lng": 115.14025,
+"sa2": "Augusta"
+},
+{
+"name": "Karrinyup",
+"pc": "6018",
+"lat": -31.8739,
+"lng": 115.77081,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Karroun Hill",
+"pc": "6472",
+"lat": -29.97546,
+"lng": 118.20565,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Katanning",
+"pc": "6317",
+"lat": -33.68937,
+"lng": 117.55512,
+"sa2": "Kulin"
+},
+{
+"name": "Katrine",
+"pc": "6401",
+"lat": -31.53489,
+"lng": 116.63541,
+"sa2": "Northam"
+},
+{
+"name": "Kauring",
+"pc": "6302",
+"lat": -31.94531,
+"lng": 117.00876,
+"sa2": "York - Beverley"
+},
+{
+"name": "Kealy",
+"pc": "6280",
+"lat": -33.67123,
+"lng": 115.23564,
+"sa2": "Capel"
+},
+{
+"name": "Kebaringup",
+"pc": "6335",
+"lat": -34.0215,
+"lng": 118.1402,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Kellerberrin",
+"pc": "6410",
+"lat": -31.63301,
+"lng": 117.72296,
+"sa2": "Cunderdin"
+},
+{
+"name": "Kelmscott",
+"pc": "6111",
+"lat": -32.11442,
+"lng": 116.01482,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Kelmscott Dc",
+"pc": "6111",
+"lat": -32.1299,
+"lng": 116.007,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Kendenup",
+"pc": "6323",
+"lat": -34.4586,
+"lng": 117.57306,
+"sa2": "Plantagenet"
+},
+{
+"name": "Kenmare",
+"pc": "6316",
+"lat": -33.56473,
+"lng": 117.2261,
+"sa2": "Katanning"
+},
+{
+"name": "Kennedy Range",
+"pc": "6701",
+"lat": -24.68611,
+"lng": 114.95166,
+"sa2": "Exmouth"
+},
+{
+"name": "Kensington",
+"pc": "6151",
+"lat": -31.98305,
+"lng": 115.88296,
+"sa2": "South Perth - Kensington"
+},
+{
+"name": "Kentdale",
+"pc": "6333",
+"lat": -34.94591,
+"lng": 117.05251,
+"sa2": "Denmark"
+},
+{
+"name": "Kenwick",
+"pc": "6107",
+"lat": -32.03319,
+"lng": 115.98216,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Keralup",
+"pc": "6182",
+"lat": -32.4358,
+"lng": 115.84,
+"sa2": "Karnup"
+},
+{
+"name": "Kewdale",
+"pc": "6105",
+"lat": -31.97973,
+"lng": 115.95963,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Keysbrook",
+"pc": "6126",
+"lat": -32.43637,
+"lng": 116.02957,
+"sa2": "Serpentine - Jarrahdale"
+},
+{
+"name": "Kiara",
+"pc": "6054",
+"lat": -31.88439,
+"lng": 115.93809,
+"sa2": "Lockridge - Kiara"
+},
+{
+"name": "Kimbolton",
+"pc": "6728",
+"lat": -16.65575,
+"lng": 124.37719,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "King Leopold Ranges",
+"pc": "6728",
+"lat": -17.06255,
+"lng": 125.70817,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "King River",
+"pc": "6330",
+"lat": -34.93198,
+"lng": 117.9126,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Kings Park",
+"pc": "6005",
+"lat": -31.96115,
+"lng": 115.84163,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "Kingsford",
+"pc": "6701",
+"lat": -24.86484,
+"lng": 113.69321,
+"sa2": "Exmouth"
+},
+{
+"name": "Kingsley",
+"pc": "6026",
+"lat": -31.81154,
+"lng": 115.80439,
+"sa2": "Woodvale"
+},
+{
+"name": "Kingston",
+"pc": "6256",
+"lat": -34.12749,
+"lng": 116.39187,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Kingsway",
+"pc": "6065",
+"lat": -31.8132,
+"lng": 115.8486,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Kinross",
+"pc": "6028",
+"lat": -31.72145,
+"lng": 115.74132,
+"sa2": "Iluka - Burns Beach"
+},
+{
+"name": "Kirk Rock",
+"pc": "6370",
+"lat": -32.63501,
+"lng": 117.73537,
+"sa2": "Kulin"
+},
+{
+"name": "Kirup",
+"pc": "6251",
+"lat": -33.70966,
+"lng": 115.89389,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Kiwirrkurra",
+"pc": "0872",
+"lat": -22.8151,
+"lng": 127.762,
+"sa2": "Barkly"
+},
+{
+"name": "Kojaneerup South",
+"pc": "6328",
+"lat": -34.50309,
+"lng": 118.37314,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Kojarena",
+"pc": "6532",
+"lat": -28.72353,
+"lng": 114.86397,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Kojonup",
+"pc": "6395",
+"lat": -33.82838,
+"lng": 117.15899,
+"sa2": "Kojonup"
+},
+{
+"name": "Kokeby",
+"pc": "6304",
+"lat": -32.21193,
+"lng": 116.97444,
+"sa2": "York - Beverley"
+},
+{
+"name": "Kondinin",
+"pc": "6367",
+"lat": -32.42038,
+"lng": 118.39294,
+"sa2": "Kulin"
+},
+{
+"name": "Kondut",
+"pc": "6605",
+"lat": -30.71891,
+"lng": 116.84391,
+"sa2": "Dowerin"
+},
+{
+"name": "Konnongorring",
+"pc": "6603",
+"lat": -31.0393,
+"lng": 116.77296,
+"sa2": "Dowerin"
+},
+{
+"name": "Koojan",
+"pc": "6510",
+"lat": -30.80928,
+"lng": 116.02641,
+"sa2": "Moora"
+},
+{
+"name": "Kookynie",
+"pc": "6431",
+"lat": -29.71512,
+"lng": 122.10504,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Koolan Island",
+"pc": "6733",
+"lat": -16.13154,
+"lng": 123.75736,
+"sa2": ""
+},
+{
+"name": "Koolanooka",
+"pc": "6623",
+"lat": -29.2691,
+"lng": 116.07209,
+"sa2": "Morawa"
+},
+{
+"name": "Koolyanobbing",
+"pc": "6427",
+"lat": -30.83892,
+"lng": 119.55717,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Koomberkine",
+"pc": "6461",
+"lat": -30.9789,
+"lng": 116.98977,
+"sa2": "Dowerin"
+},
+{
+"name": "Koondoola",
+"pc": "6064",
+"lat": -31.84126,
+"lng": 115.86282,
+"sa2": "Marangaroo"
+},
+{
+"name": "Koongamia",
+"pc": "6056",
+"lat": -31.90626,
+"lng": 116.04049,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Koorda",
+"pc": "6475",
+"lat": -30.82207,
+"lng": 117.48215,
+"sa2": "Dowerin"
+},
+{
+"name": "Korbel",
+"pc": "6415",
+"lat": -31.65258,
+"lng": 118.15034,
+"sa2": "Merredin"
+},
+{
+"name": "Kordabup",
+"pc": "6333",
+"lat": -34.9121,
+"lng": 117.12464,
+"sa2": "Denmark"
+},
+{
+"name": "Korrelocking",
+"pc": "6485",
+"lat": -31.19872,
+"lng": 117.48918,
+"sa2": "Dowerin"
+},
+{
+"name": "Kronkup",
+"pc": "6330",
+"lat": -35.03843,
+"lng": 117.62258,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Kudardup",
+"pc": "6290",
+"lat": -34.24748,
+"lng": 115.16311,
+"sa2": "Augusta"
+},
+{
+"name": "Kuender",
+"pc": "6353",
+"lat": -32.867,
+"lng": 118.51879,
+"sa2": "Kulin"
+},
+{
+"name": "Kukerin",
+"pc": "6352",
+"lat": -33.19133,
+"lng": 118.0818,
+"sa2": "Kulin"
+},
+{
+"name": "Kulikup",
+"pc": "6244",
+"lat": -33.80755,
+"lng": 116.71331,
+"sa2": "Wagin"
+},
+{
+"name": "Kulin",
+"pc": "6365",
+"lat": -32.67563,
+"lng": 118.23546,
+"sa2": "Kulin"
+},
+{
+"name": "Kulin West",
+"pc": "6365",
+"lat": -32.62038,
+"lng": 118.10744,
+"sa2": "Kulin"
+},
+{
+"name": "Kulja",
+"pc": "6470",
+"lat": -30.35806,
+"lng": 117.31464,
+"sa2": "Dowerin"
+},
+{
+"name": "Kumarina",
+"pc": "6642",
+"lat": -25.30981,
+"lng": 119.44644,
+"sa2": "Meekatharra"
+},
+{
+"name": "Kundat Djaru",
+"pc": "6770",
+"lat": -18.22294,
+"lng": 127.67007,
+"sa2": "Halls Creek"
+},
+{
+"name": "Kunjin",
+"pc": "6375",
+"lat": -32.35749,
+"lng": 117.75241,
+"sa2": "Brookton"
+},
+{
+"name": "Kununoppin",
+"pc": "6489",
+"lat": -31.11287,
+"lng": 117.91896,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Kununurra",
+"pc": "6743",
+"lat": -15.60495,
+"lng": 128.76547,
+"sa2": "Kununurra"
+},
+{
+"name": "Kupartiya",
+"pc": "6765",
+"lat": -18.19365,
+"lng": 125.56037,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Kurnalpi",
+"pc": "6431",
+"lat": -30.34739,
+"lng": 121.96363,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Kurrenkutten",
+"pc": "6375",
+"lat": -32.35341,
+"lng": 118.1238,
+"sa2": "Brookton"
+},
+{
+"name": "Kweda",
+"pc": "6306",
+"lat": -32.33588,
+"lng": 117.36487,
+"sa2": "Brookton"
+},
+{
+"name": "Kwelkan",
+"pc": "6490",
+"lat": -31.14039,
+"lng": 117.99898,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Kwinana Beach",
+"pc": "6167",
+"lat": -32.22609,
+"lng": 115.77638,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Kwinana Town Centre",
+"pc": "6167",
+"lat": -32.24764,
+"lng": 115.81352,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Kwolyin",
+"pc": "6385",
+"lat": -31.9359,
+"lng": 117.71388,
+"sa2": "Merredin"
+},
+{
+"name": "Lagrange",
+"pc": "6725",
+"lat": -18.72112,
+"lng": 121.87976,
+"sa2": "Roebuck"
+},
+{
+"name": "Lake Argyle",
+"pc": "6743",
+"lat": -16.32149,
+"lng": 128.79962,
+"sa2": "Kununurra"
+},
+{
+"name": "Lake Austin",
+"pc": "6640",
+"lat": -27.49585,
+"lng": 118.03527,
+"sa2": "Meekatharra"
+},
+{
+"name": "Lake Biddy",
+"pc": "6355",
+"lat": -32.91177,
+"lng": 118.96321,
+"sa2": "Kulin"
+},
+{
+"name": "Lake Brown",
+"pc": "6479",
+"lat": -30.94638,
+"lng": 118.34469,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Lake Camm",
+"pc": "6355",
+"lat": -32.95722,
+"lng": 119.60486,
+"sa2": "Kulin"
+},
+{
+"name": "Lake Carnegie",
+"pc": "6646",
+"lat": -26.23933,
+"lng": 122.5599,
+"sa2": "Meekatharra"
+},
+{
+"name": "Lake Clifton",
+"pc": "6215",
+"lat": -32.88433,
+"lng": 115.71312,
+"sa2": "Waroona"
+},
+{
+"name": "Lake Coogee",
+"pc": "6166",
+"lat": -32.128,
+"lng": 115.786,
+"sa2": "Beeliar - Wattleup"
+},
+{
+"name": "Lake Darlot",
+"pc": "6438",
+"lat": -27.93035,
+"lng": 121.2992,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Lake Deborah",
+"pc": "6484",
+"lat": -30.46721,
+"lng": 119.75692,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Lake Grace",
+"pc": "6353",
+"lat": -33.10089,
+"lng": 118.46997,
+"sa2": "Kulin"
+},
+{
+"name": "Lake Hinds",
+"pc": "6603",
+"lat": -30.75342,
+"lng": 116.56622,
+"sa2": "Dowerin"
+},
+{
+"name": "Lake Jasper",
+"pc": "6260",
+"lat": -34.41643,
+"lng": 115.66917,
+"sa2": "Pemberton"
+},
+{
+"name": "Lake King",
+"pc": "6356",
+"lat": -33.0874,
+"lng": 119.6882,
+"sa2": "Kulin"
+},
+{
+"name": "Lake Margarette",
+"pc": "6475",
+"lat": -30.74994,
+"lng": 117.50091,
+"sa2": "Dowerin"
+},
+{
+"name": "Lake Muir",
+"pc": "6258",
+"lat": -34.43593,
+"lng": 116.504,
+"sa2": "Pemberton"
+},
+{
+"name": "Lake Ninan",
+"pc": "6603",
+"lat": -30.94243,
+"lng": 116.63966,
+"sa2": "Dowerin"
+},
+{
+"name": "Lake Toolbrunup",
+"pc": "6320",
+"lat": -34.13044,
+"lng": 117.89998,
+"sa2": "Kojonup"
+},
+{
+"name": "Lake Wells",
+"pc": "6440",
+"lat": -27.1933,
+"lng": 123.03208,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Lakelands",
+"pc": "6180",
+"lat": -32.47271,
+"lng": 115.77071,
+"sa2": "Mandurah - North"
+},
+{
+"name": "Lakewood",
+"pc": "6431",
+"lat": -30.82841,
+"lng": 121.50736,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Lamington",
+"pc": "6430",
+"lat": -30.73493,
+"lng": 121.46281,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Lancelin",
+"pc": "6044",
+"lat": -31.04541,
+"lng": 115.35328,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Landsdale",
+"pc": "6065",
+"lat": -31.80427,
+"lng": 115.86174,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Lange",
+"pc": "6330",
+"lat": -34.99156,
+"lng": 117.89275,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Langford",
+"pc": "6147",
+"lat": -32.03979,
+"lng": 115.94842,
+"sa2": "Beckenham - Kenwick - Langford"
+},
+{
+"name": "Latham",
+"pc": "6616",
+"lat": -29.75427,
+"lng": 116.56099,
+"sa2": "Morawa"
+},
+{
+"name": "Lathlain",
+"pc": "6100",
+"lat": -31.9679,
+"lng": 115.90811,
+"sa2": "Victoria Park - Lathlain - Burswood"
+},
+{
+"name": "Laverton",
+"pc": "6440",
+"lat": -28.62566,
+"lng": 122.40134,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Learmonth",
+"pc": "6707",
+"lat": -22.2618,
+"lng": 114.09642,
+"sa2": "Exmouth"
+},
+{
+"name": "Leda",
+"pc": "6170",
+"lat": -32.27155,
+"lng": 115.80182,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Ledge Point",
+"pc": "6043",
+"lat": -31.10669,
+"lng": 115.37563,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Leederville",
+"pc": "6007",
+"lat": -31.93196,
+"lng": 115.84128,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Leeman",
+"pc": "6514",
+"lat": -29.94707,
+"lng": 114.98238,
+"sa2": "Morawa"
+},
+{
+"name": "Leeming",
+"pc": "6149",
+"lat": -32.07962,
+"lng": 115.86566,
+"sa2": "Leeming"
+},
+{
+"name": "Leeuwin",
+"pc": "6290",
+"lat": -34.35169,
+"lng": 115.16605,
+"sa2": "Augusta"
+},
+{
+"name": "Leinster",
+"pc": "6437",
+"lat": -27.916,
+"lng": 120.69915,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Lennard Brook",
+"pc": "6503",
+"lat": -31.37997,
+"lng": 115.91244,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Leonora",
+"pc": "6438",
+"lat": -28.885,
+"lng": 121.33083,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Leschenault",
+"pc": "6233",
+"lat": -33.23158,
+"lng": 115.72851,
+"sa2": "Harvey"
+},
+{
+"name": "Lesley",
+"pc": "6111",
+"lat": -32.1054,
+"lng": 116.194,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Lesmurdie",
+"pc": "6076",
+"lat": -32.01318,
+"lng": 116.03811,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Lexia",
+"pc": "6065",
+"lat": -31.77826,
+"lng": 115.9115,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Lime Lake",
+"pc": "6315",
+"lat": -33.41599,
+"lng": 117.37227,
+"sa2": "Wagin"
+},
+{
+"name": "Linfarne",
+"pc": "6258",
+"lat": -34.16686,
+"lng": 116.11461,
+"sa2": "Pemberton"
+},
+{
+"name": "Little Grove",
+"pc": "6330",
+"lat": -35.06825,
+"lng": 117.87014,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Little Italy",
+"pc": "6355",
+"lat": -32.62474,
+"lng": 119.1534,
+"sa2": "Kulin"
+},
+{
+"name": "Little Sandy Desert",
+"pc": "6646",
+"lat": -24.9455,
+"lng": 121.59143,
+"sa2": "Meekatharra"
+},
+{
+"name": "Lockier",
+"pc": "6522",
+"lat": -29.19418,
+"lng": 115.34618,
+"sa2": "Morawa"
+},
+{
+"name": "Lockridge",
+"pc": "6054",
+"lat": -31.88189,
+"lng": 115.94983,
+"sa2": "Lockridge - Kiara"
+},
+{
+"name": "Lockyer",
+"pc": "6330",
+"lat": -35.00533,
+"lng": 117.85687,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Lol Gray",
+"pc": "6311",
+"lat": -32.73428,
+"lng": 116.98935,
+"sa2": "Wagin"
+},
+{
+"name": "Londonderry",
+"pc": "6429",
+"lat": -31.1851,
+"lng": 121.2364,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Lort River",
+"pc": "6447",
+"lat": -33.26689,
+"lng": 121.38411,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Lowden",
+"pc": "6240",
+"lat": -33.54348,
+"lng": 115.95863,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Lower Chittering",
+"pc": "6084",
+"lat": -31.56062,
+"lng": 116.08267,
+"sa2": "Chittering"
+},
+{
+"name": "Lower Hotham",
+"pc": "6390",
+"lat": -32.93029,
+"lng": 116.41385,
+"sa2": "Murray"
+},
+{
+"name": "Lower King",
+"pc": "6330",
+"lat": -34.95379,
+"lng": 117.93572,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Lowlands",
+"pc": "6330",
+"lat": -35.06288,
+"lng": 117.52584,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Ludlow",
+"pc": "6280",
+"lat": -33.61394,
+"lng": 115.48648,
+"sa2": "Capel"
+},
+{
+"name": "Lumeah",
+"pc": "6395",
+"lat": -33.99463,
+"lng": 117.23184,
+"sa2": "Kojonup"
+},
+{
+"name": "Lyalls Mill",
+"pc": "6225",
+"lat": -33.46099,
+"lng": 116.12592,
+"sa2": "Wagin"
+},
+{
+"name": "Lyndon",
+"pc": "6701",
+"lat": -23.37177,
+"lng": 114.32685,
+"sa2": "Exmouth"
+},
+{
+"name": "Lynwood",
+"pc": "6147",
+"lat": -32.04023,
+"lng": 115.93206,
+"sa2": "Beckenham - Kenwick - Langford"
+},
+{
+"name": "Macleod",
+"pc": "6701",
+"lat": -24.41218,
+"lng": 113.50261,
+"sa2": "Exmouth"
+},
+{
+"name": "Maddington",
+"pc": "6109",
+"lat": -32.05029,
+"lng": 115.98449,
+"sa2": "Maddington - Orange Grove - Martin"
+},
+{
+"name": "Madeley",
+"pc": "6065",
+"lat": -31.8132,
+"lng": 115.82759,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Madora Bay",
+"pc": "6210",
+"lat": -32.47379,
+"lng": 115.75065,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Madura",
+"pc": "6443",
+"lat": -31.89871,
+"lng": 127.02268,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Magenta",
+"pc": "6355",
+"lat": -33.35767,
+"lng": 119.55358,
+"sa2": "Kulin"
+},
+{
+"name": "Magitup",
+"pc": "6338",
+"lat": -34.13455,
+"lng": 118.16114,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Mahogany Creek",
+"pc": "6072",
+"lat": -31.91423,
+"lng": 116.13299,
+"sa2": "Mundaring"
+},
+{
+"name": "Mahomets Flats",
+"pc": "6530",
+"lat": -28.79237,
+"lng": 114.61342,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Maida Vale",
+"pc": "6057",
+"lat": -31.95301,
+"lng": 116.02417,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Maitland",
+"pc": "6714",
+"lat": -20.9943,
+"lng": 116.68967,
+"sa2": "Roebourne"
+},
+{
+"name": "Malabaine",
+"pc": "6401",
+"lat": -31.63238,
+"lng": 116.71369,
+"sa2": "Northam"
+},
+{
+"name": "Malaga",
+"pc": "6090",
+"lat": -31.86259,
+"lng": 115.89654,
+"sa2": "Malaga"
+},
+{
+"name": "Malaga Dc",
+"pc": "6945",
+"lat": -31.8556,
+"lng": 115.893,
+"sa2": ""
+},
+{
+"name": "Malebelling",
+"pc": "6302",
+"lat": -31.8309,
+"lng": 116.91518,
+"sa2": "York - Beverley"
+},
+{
+"name": "Mallee Hill",
+"pc": "6353",
+"lat": -33.21185,
+"lng": 118.7202,
+"sa2": "Kulin"
+},
+{
+"name": "Malmalling",
+"pc": "6556",
+"lat": -31.96686,
+"lng": 116.33119,
+"sa2": "Malmalling - Reservoir"
+},
+{
+"name": "Malyalling",
+"pc": "6370",
+"lat": -32.7152,
+"lng": 117.59774,
+"sa2": "Kulin"
+},
+{
+"name": "Mandogalup",
+"pc": "6167",
+"lat": -32.19356,
+"lng": 115.8422,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Mandurah",
+"pc": "6210",
+"lat": -32.54616,
+"lng": 115.72201,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Mandurah Dc",
+"pc": "6210",
+"lat": -32.5346,
+"lng": 115.729,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Mandurah East",
+"pc": "6210",
+"lat": -32.54616,
+"lng": 115.72201,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Mandurah North",
+"pc": "6210",
+"lat": -32.5147,
+"lng": 115.74037,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Mangowine",
+"pc": "6479",
+"lat": -31.0471,
+"lng": 118.105,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Manjimup",
+"pc": "6258",
+"lat": -34.24916,
+"lng": 116.14375,
+"sa2": "Pemberton"
+},
+{
+"name": "Manmanning",
+"pc": "6465",
+"lat": -30.88946,
+"lng": 117.22058,
+"sa2": "Dowerin"
+},
+{
+"name": "Manning",
+"pc": "6152",
+"lat": -32.01167,
+"lng": 115.86886,
+"sa2": "Manning - Waterford"
+},
+{
+"name": "Mantamaru",
+"pc": "0872",
+"lat": -25.1299,
+"lng": 132.57,
+"sa2": "Barkly"
+},
+{
+"name": "Manypeaks",
+"pc": "6328",
+"lat": -34.83828,
+"lng": 118.17298,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Marangaroo",
+"pc": "6064",
+"lat": -31.82781,
+"lng": 115.84134,
+"sa2": "Marangaroo"
+},
+{
+"name": "Maranup",
+"pc": "6256",
+"lat": -33.95338,
+"lng": 116.02542,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Marbelup",
+"pc": "6330",
+"lat": -34.98523,
+"lng": 117.72439,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Marble Bar",
+"pc": "6760",
+"lat": -21.04876,
+"lng": 119.97405,
+"sa2": "East Pilbara"
+},
+{
+"name": "Marchagee",
+"pc": "6515",
+"lat": -30.04305,
+"lng": 116.113,
+"sa2": "Morawa"
+},
+{
+"name": "Mardella",
+"pc": "6125",
+"lat": -32.33423,
+"lng": 115.96489,
+"sa2": "Serpentine - Jarrahdale"
+},
+{
+"name": "Mardie",
+"pc": "6714",
+"lat": -21.0618,
+"lng": 116.16655,
+"sa2": "Roebourne"
+},
+{
+"name": "Margaret River",
+"pc": "6285",
+"lat": -33.96105,
+"lng": 115.07674,
+"sa2": "Pemberton"
+},
+{
+"name": "Mariginiup",
+"pc": "6065",
+"lat": -31.70691,
+"lng": 115.85046,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Marmion",
+"pc": "6020",
+"lat": -31.84316,
+"lng": 115.75762,
+"sa2": "Trigg - North Beach - Watermans Bay"
+},
+{
+"name": "Marne",
+"pc": "6608",
+"lat": -30.46189,
+"lng": 116.68016,
+"sa2": "Moora"
+},
+{
+"name": "Marracoonda",
+"pc": "6317",
+"lat": -33.67145,
+"lng": 117.46413,
+"sa2": "Kulin"
+},
+{
+"name": "Marradong",
+"pc": "6390",
+"lat": -32.93886,
+"lng": 116.45485,
+"sa2": "Murray"
+},
+{
+"name": "Marrah",
+"pc": "6532",
+"lat": -28.43247,
+"lng": 114.98184,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Marrinup",
+"pc": "6213",
+"lat": -32.65425,
+"lng": 116.01559,
+"sa2": "Murray"
+},
+{
+"name": "Martin",
+"pc": "6110",
+"lat": -32.07891,
+"lng": 116.06219,
+"sa2": "Maddington - Orange Grove - Martin"
+},
+{
+"name": "Marvel Loch",
+"pc": "6426",
+"lat": -31.46747,
+"lng": 119.48945,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Marybrook",
+"pc": "6280",
+"lat": -33.67431,
+"lng": 115.19221,
+"sa2": "Capel"
+},
+{
+"name": "Massey Bay",
+"pc": "6701",
+"lat": -24.9063,
+"lng": 113.68529,
+"sa2": "Exmouth"
+},
+{
+"name": "Mauds Landing",
+"pc": "6701",
+"lat": -23.1291,
+"lng": 113.781,
+"sa2": "Exmouth"
+},
+{
+"name": "Mawson",
+"pc": "6383",
+"lat": -31.9842,
+"lng": 117.19,
+"sa2": "Cunderdin"
+},
+{
+"name": "Maya",
+"pc": "6614",
+"lat": -29.85651,
+"lng": 116.58458,
+"sa2": "Morawa"
+},
+{
+"name": "Mayanup",
+"pc": "6244",
+"lat": -33.95605,
+"lng": 116.44558,
+"sa2": "Wagin"
+},
+{
+"name": "Maylands",
+"pc": "6051",
+"lat": -31.93826,
+"lng": 115.90245,
+"sa2": "Maylands"
+},
+{
+"name": "Mcalinden",
+"pc": "6225",
+"lat": -33.5876,
+"lng": 116.32778,
+"sa2": "Wagin"
+},
+{
+"name": "Mcbeath",
+"pc": "6770",
+"lat": -18.24101,
+"lng": 127.68856,
+"sa2": "Halls Creek"
+},
+{
+"name": "Mckail",
+"pc": "6330",
+"lat": -34.9851,
+"lng": 117.83101,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Meadow",
+"pc": "6532",
+"lat": -26.81648,
+"lng": 114.61455,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Meadow Springs",
+"pc": "6210",
+"lat": -32.49938,
+"lng": 115.76046,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Meckering",
+"pc": "6405",
+"lat": -31.62734,
+"lng": 117.00862,
+"sa2": "Cunderdin"
+},
+{
+"name": "Meda",
+"pc": "6728",
+"lat": -17.4056,
+"lng": 124.05308,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Medina",
+"pc": "6167",
+"lat": -32.23627,
+"lng": 115.80537,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Meekatharra",
+"pc": "6642",
+"lat": -26.59521,
+"lng": 118.49754,
+"sa2": "Meekatharra"
+},
+{
+"name": "Meeking",
+"pc": "6392",
+"lat": -33.247,
+"lng": 116.628,
+"sa2": "Wagin"
+},
+{
+"name": "Meelon",
+"pc": "6208",
+"lat": -32.69279,
+"lng": 115.93993,
+"sa2": "Pinjarra"
+},
+{
+"name": "Meenaar",
+"pc": "6401",
+"lat": -31.6371,
+"lng": 116.89576,
+"sa2": "Northam"
+},
+{
+"name": "Meerup",
+"pc": "6262",
+"lat": -34.63712,
+"lng": 116.08414,
+"sa2": "Pemberton"
+},
+{
+"name": "Melaleuca",
+"pc": "6065",
+"lat": -31.76324,
+"lng": 115.81668,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Melville",
+"pc": "6156",
+"lat": -32.04146,
+"lng": 115.80347,
+"sa2": "Willagee"
+},
+{
+"name": "Menora",
+"pc": "6050",
+"lat": -31.92316,
+"lng": 115.86082,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Menzies",
+"pc": "6436",
+"lat": -29.69155,
+"lng": 121.02894,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Merilup",
+"pc": "6352",
+"lat": -33.31783,
+"lng": 118.20685,
+"sa2": "Kulin"
+},
+{
+"name": "Merivale",
+"pc": "6450",
+"lat": -33.81403,
+"lng": 122.20693,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Merkanooka",
+"pc": "6625",
+"lat": -29.2237,
+"lng": 115.805,
+"sa2": "Morawa"
+},
+{
+"name": "Merredin",
+"pc": "6415",
+"lat": -31.48264,
+"lng": 118.27239,
+"sa2": "Merredin"
+},
+{
+"name": "Merriwa",
+"pc": "6030",
+"lat": -31.66731,
+"lng": 115.71274,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Meru",
+"pc": "6530",
+"lat": -28.7996,
+"lng": 114.67612,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Metricup",
+"pc": "6280",
+"lat": -33.80487,
+"lng": 115.12164,
+"sa2": "Capel"
+},
+{
+"name": "Mettler",
+"pc": "6328",
+"lat": -34.56948,
+"lng": 118.58722,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Miamoon",
+"pc": "6612",
+"lat": -30.15156,
+"lng": 116.48217,
+"sa2": "Meekatharra"
+},
+{
+"name": "Middle Swan",
+"pc": "6056",
+"lat": -31.87233,
+"lng": 116.01735,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Middlesex",
+"pc": "6258",
+"lat": -34.31926,
+"lng": 116.16385,
+"sa2": "Pemberton"
+},
+{
+"name": "Middleton Beach",
+"pc": "6330",
+"lat": -35.02278,
+"lng": 117.90898,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Midland",
+"pc": "6056",
+"lat": -31.89176,
+"lng": 116.01346,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Midland Dc",
+"pc": "6936",
+"lat": -31.8918,
+"lng": 116.013,
+"sa2": ""
+},
+{
+"name": "Midvale",
+"pc": "6056",
+"lat": -31.88603,
+"lng": 116.02832,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Miling",
+"pc": "6575",
+"lat": -30.39537,
+"lng": 116.37217,
+"sa2": "Moora"
+},
+{
+"name": "Millars Well",
+"pc": "6714",
+"lat": -20.7428,
+"lng": 116.81721,
+"sa2": "Roebourne"
+},
+{
+"name": "Millbridge",
+"pc": "6232",
+"lat": -33.30759,
+"lng": 115.73416,
+"sa2": "Eaton - Pelican Point"
+},
+{
+"name": "Millbrook",
+"pc": "6330",
+"lat": -34.91928,
+"lng": 117.87689,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Millendon",
+"pc": "6056",
+"lat": -31.8073,
+"lng": 116.02851,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Mills Lake",
+"pc": "6336",
+"lat": -33.83151,
+"lng": 118.5331,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Millstream",
+"pc": "6716",
+"lat": -21.41965,
+"lng": 117.16063,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Milo",
+"pc": "6525",
+"lat": -29.29221,
+"lng": 115.19732,
+"sa2": "Irwin"
+},
+{
+"name": "Milpara",
+"pc": "6330",
+"lat": -34.9868,
+"lng": 117.86228,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Mimegarra",
+"pc": "6507",
+"lat": -30.8766,
+"lng": 115.40886,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Mindarabin",
+"pc": "6336",
+"lat": -33.9035,
+"lng": 118.36449,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Mindarie",
+"pc": "6030",
+"lat": -31.69008,
+"lng": 115.70605,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Mindarra",
+"pc": "6503",
+"lat": -31.08213,
+"lng": 115.93488,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Minding",
+"pc": "6315",
+"lat": -33.28274,
+"lng": 117.19681,
+"sa2": "Wagin"
+},
+{
+"name": "Mingenew",
+"pc": "6522",
+"lat": -29.19296,
+"lng": 115.4422,
+"sa2": "Morawa"
+},
+{
+"name": "Minigin",
+"pc": "6312",
+"lat": -32.95234,
+"lng": 117.05892,
+"sa2": "Wagin"
+},
+{
+"name": "Minilya",
+"pc": "6701",
+"lat": -23.81582,
+"lng": 114.00937,
+"sa2": "Exmouth"
+},
+{
+"name": "Minnenooka",
+"pc": "6532",
+"lat": -28.87844,
+"lng": 114.87091,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Minnivale",
+"pc": "6462",
+"lat": -31.08745,
+"lng": 117.1322,
+"sa2": "Dowerin"
+},
+{
+"name": "Minyirr",
+"pc": "6725",
+"lat": -17.99113,
+"lng": 122.20567,
+"sa2": "Roebuck"
+},
+{
+"name": "Mira Mar",
+"pc": "6330",
+"lat": -35.01471,
+"lng": 117.9026,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Mirrabooka",
+"pc": "6061",
+"lat": -31.8662,
+"lng": 115.86625,
+"sa2": "Dianella - North"
+},
+{
+"name": "Mitchell Plateau",
+"pc": "6740",
+"lat": -14.87778,
+"lng": 125.85932,
+"sa2": "Kununurra"
+},
+{
+"name": "Mobrup",
+"pc": "6395",
+"lat": -34.13159,
+"lng": 116.91176,
+"sa2": "Kojonup"
+},
+{
+"name": "Mocardy",
+"pc": "6603",
+"lat": -30.87179,
+"lng": 116.90254,
+"sa2": "Dowerin"
+},
+{
+"name": "Mogumber",
+"pc": "6506",
+"lat": -31.00636,
+"lng": 116.01774,
+"sa2": "Moora"
+},
+{
+"name": "Mokine",
+"pc": "6401",
+"lat": -31.74738,
+"lng": 116.55749,
+"sa2": "Northam"
+},
+{
+"name": "Mokup",
+"pc": "6394",
+"lat": -33.6166,
+"lng": 116.825,
+"sa2": "Wagin"
+},
+{
+"name": "Mollerin",
+"pc": "6475",
+"lat": -30.40064,
+"lng": 117.50262,
+"sa2": "Dowerin"
+},
+{
+"name": "Molloy Island",
+"pc": "6290",
+"lat": -34.26987,
+"lng": 115.21004,
+"sa2": "Augusta"
+},
+{
+"name": "Monjebup",
+"pc": "6338",
+"lat": -34.29272,
+"lng": 118.54575,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Monjingup",
+"pc": "6450",
+"lat": -33.76676,
+"lng": 121.77453,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Monkey Mia",
+"pc": "6537",
+"lat": -25.79431,
+"lng": 113.71876,
+"sa2": "Exmouth"
+},
+{
+"name": "Moodiarrup",
+"pc": "6393",
+"lat": -33.61181,
+"lng": 116.75803,
+"sa2": "Wagin"
+},
+{
+"name": "Moojebing",
+"pc": "6317",
+"lat": -33.61148,
+"lng": 117.5508,
+"sa2": "Kulin"
+},
+{
+"name": "Mooliabeenee",
+"pc": "6504",
+"lat": -31.30272,
+"lng": 116.07685,
+"sa2": "Chittering"
+},
+{
+"name": "Moondah",
+"pc": "6503",
+"lat": -31.34871,
+"lng": 115.97879,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Moondyne",
+"pc": "6567",
+"lat": -31.54814,
+"lng": 116.22615,
+"sa2": "Toodyay"
+},
+{
+"name": "Moonies Hill",
+"pc": "6320",
+"lat": -34.0934,
+"lng": 117.53833,
+"sa2": "Kojonup"
+},
+{
+"name": "Moonyoonooka",
+"pc": "6532",
+"lat": -28.78032,
+"lng": 114.75639,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Moora",
+"pc": "6510",
+"lat": -30.64107,
+"lng": 116.00799,
+"sa2": "Moora"
+},
+{
+"name": "Moore River National Park",
+"pc": "6503",
+"lat": -31.10677,
+"lng": 115.67811,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Mooriary",
+"pc": "6522",
+"lat": -29.28434,
+"lng": 115.33955,
+"sa2": "Morawa"
+},
+{
+"name": "Moorine Rock",
+"pc": "6425",
+"lat": -31.31333,
+"lng": 119.12552,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Morangup",
+"pc": "6083",
+"lat": -31.61203,
+"lng": 116.3324,
+"sa2": "Toodyay"
+},
+{
+"name": "Morawa",
+"pc": "6623",
+"lat": -29.21258,
+"lng": 116.01018,
+"sa2": "Morawa"
+},
+{
+"name": "Morbinning",
+"pc": "6304",
+"lat": -32.11064,
+"lng": 117.15874,
+"sa2": "York - Beverley"
+},
+{
+"name": "Mordalup",
+"pc": "6258",
+"lat": -34.30087,
+"lng": 116.6643,
+"sa2": "Pemberton"
+},
+{
+"name": "Moresby",
+"pc": "6530",
+"lat": -28.73407,
+"lng": 114.66372,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Morgantown",
+"pc": "6701",
+"lat": -24.87653,
+"lng": 113.66012,
+"sa2": "Exmouth"
+},
+{
+"name": "Morley",
+"pc": "6062",
+"lat": -31.88896,
+"lng": 115.91817,
+"sa2": "Noranda"
+},
+{
+"name": "Mornington",
+"pc": "6221",
+"lat": -33.14702,
+"lng": 115.94473,
+"sa2": "Harvey"
+},
+{
+"name": "Mosman Park",
+"pc": "6012",
+"lat": -32.01354,
+"lng": 115.76344,
+"sa2": "Mosman Park - Peppermint Grove"
+},
+{
+"name": "Moulyinning",
+"pc": "6351",
+"lat": -33.22822,
+"lng": 117.92633,
+"sa2": "Kulin"
+},
+{
+"name": "Mount Adams",
+"pc": "6525",
+"lat": -29.34343,
+"lng": 115.01223,
+"sa2": "Irwin"
+},
+{
+"name": "Mount Anketell",
+"pc": "6714",
+"lat": -20.72819,
+"lng": 117.02106,
+"sa2": "Roebourne"
+},
+{
+"name": "Mount Barker",
+"pc": "6324",
+"lat": -34.63075,
+"lng": 117.66536,
+"sa2": "Plantagenet"
+},
+{
+"name": "Mount Budd",
+"pc": "6522",
+"lat": -29.17654,
+"lng": 115.64915,
+"sa2": "Morawa"
+},
+{
+"name": "Mount Burges",
+"pc": "6429",
+"lat": -30.84059,
+"lng": 121.26304,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Mount Caroline",
+"pc": "6410",
+"lat": -31.73335,
+"lng": 117.63937,
+"sa2": "Cunderdin"
+},
+{
+"name": "Mount Claremont",
+"pc": "6010",
+"lat": -31.96373,
+"lng": 115.78376,
+"sa2": "Swanbourne - Mount Claremont"
+},
+{
+"name": "Mount Clarence",
+"pc": "6330",
+"lat": -35.01997,
+"lng": 117.89875,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Mount Cooke",
+"pc": "6390",
+"lat": -32.41417,
+"lng": 116.30778,
+"sa2": "Murray"
+},
+{
+"name": "Mount Elphinstone",
+"pc": "6330",
+"lat": -35.02252,
+"lng": 117.85948,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Mount Erin",
+"pc": "6532",
+"lat": -28.57986,
+"lng": 114.85537,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Mount Hampton",
+"pc": "6426",
+"lat": -31.72525,
+"lng": 118.88162,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Mount Hardey",
+"pc": "6302",
+"lat": -31.89973,
+"lng": 116.85817,
+"sa2": "York - Beverley"
+},
+{
+"name": "Mount Hardman",
+"pc": "6765",
+"lat": -17.82642,
+"lng": 124.77408,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Mount Hawthorn",
+"pc": "6016",
+"lat": -31.91958,
+"lng": 115.83558,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Mount Helena",
+"pc": "6082",
+"lat": -31.87804,
+"lng": 116.21058,
+"sa2": "Mundaring"
+},
+{
+"name": "Mount Hill",
+"pc": "6528",
+"lat": -29.00916,
+"lng": 114.91339,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Mount Holland",
+"pc": "6426",
+"lat": -32.13529,
+"lng": 119.57024,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Mount Horner",
+"pc": "6525",
+"lat": -29.16156,
+"lng": 115.1865,
+"sa2": "Irwin"
+},
+{
+"name": "Mount Jackson",
+"pc": "6426",
+"lat": -30.19554,
+"lng": 119.12261,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Mount Lawley",
+"pc": "6050",
+"lat": -31.93206,
+"lng": 115.87411,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Mount Lindesay",
+"pc": "6333",
+"lat": -34.81294,
+"lng": 117.34714,
+"sa2": "Denmark"
+},
+{
+"name": "Mount Lindsay",
+"pc": "6333",
+"lat": -34.8227,
+"lng": 117.421,
+"sa2": "Denmark"
+},
+{
+"name": "Mount Madden",
+"pc": "6356",
+"lat": -33.26027,
+"lng": 119.83199,
+"sa2": "Kulin"
+},
+{
+"name": "Mount Magnet",
+"pc": "6638",
+"lat": -28.0652,
+"lng": 117.84884,
+"sa2": "Meekatharra"
+},
+{
+"name": "Mount Melville",
+"pc": "6330",
+"lat": -35.01414,
+"lng": 117.86986,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Mount Nasura",
+"pc": "6112",
+"lat": -32.14016,
+"lng": 116.0257,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Mount Ney",
+"pc": "6447",
+"lat": -33.45683,
+"lng": 122.50859,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Mount Observation",
+"pc": "6302",
+"lat": -31.94245,
+"lng": 116.49423,
+"sa2": "York - Beverley"
+},
+{
+"name": "Mount Palmer",
+"pc": "6426",
+"lat": -31.40061,
+"lng": 119.67988,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Mount Pleasant",
+"pc": "6153",
+"lat": -32.0248,
+"lng": 115.84849,
+"sa2": "Booragoon"
+},
+{
+"name": "Mount Richon",
+"pc": "6112",
+"lat": -32.15996,
+"lng": 116.02061,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Mount Romance",
+"pc": "6333",
+"lat": -34.8353,
+"lng": 117.08174,
+"sa2": "Denmark"
+},
+{
+"name": "Mount Sheila",
+"pc": "6751",
+"lat": -22.49145,
+"lng": 117.72366,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Mount Sheridan",
+"pc": "6355",
+"lat": -32.88922,
+"lng": 119.2071,
+"sa2": "Kulin"
+},
+{
+"name": "Mount Stirling",
+"pc": "6383",
+"lat": -31.88118,
+"lng": 117.52836,
+"sa2": "Cunderdin"
+},
+{
+"name": "Mount Tarcoola",
+"pc": "6530",
+"lat": -28.79662,
+"lng": 114.62568,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Mount Walker",
+"pc": "6369",
+"lat": -32.06974,
+"lng": 118.8207,
+"sa2": "Merredin"
+},
+{
+"name": "Mount Wells",
+"pc": "6390",
+"lat": -32.60516,
+"lng": 116.3149,
+"sa2": "Murray"
+},
+{
+"name": "Mouroubra",
+"pc": "6472",
+"lat": -29.80851,
+"lng": 117.71251,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Muchea",
+"pc": "6501",
+"lat": -31.53824,
+"lng": 115.92315,
+"sa2": "Chittering"
+},
+{
+"name": "Muckenburra",
+"pc": "6503",
+"lat": -31.32953,
+"lng": 115.76076,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Mueller Ranges",
+"pc": "6770",
+"lat": -18.7062,
+"lng": 126.87356,
+"sa2": "Halls Creek"
+},
+{
+"name": "Muja",
+"pc": "6225",
+"lat": -33.4412,
+"lng": 116.32973,
+"sa2": "Wagin"
+},
+{
+"name": "Mukinbudin",
+"pc": "6479",
+"lat": -30.90934,
+"lng": 118.25648,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Mulataga",
+"pc": "6714",
+"lat": -20.74947,
+"lng": 116.86887,
+"sa2": "Roebourne"
+},
+{
+"name": "Mulga Downs",
+"pc": "6751",
+"lat": -22.23421,
+"lng": 119.02442,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Mullaloo",
+"pc": "6027",
+"lat": -31.78035,
+"lng": 115.74385,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Mullalyup",
+"pc": "6252",
+"lat": -33.75203,
+"lng": 115.95863,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Mullewa",
+"pc": "6630",
+"lat": -28.53955,
+"lng": 115.51326,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Mullingar",
+"pc": "6430",
+"lat": -30.70213,
+"lng": 121.47278,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Muluckine",
+"pc": "6401",
+"lat": -31.67275,
+"lng": 116.72837,
+"sa2": "Northam"
+},
+{
+"name": "Mumballup",
+"pc": "6225",
+"lat": -33.53389,
+"lng": 116.12592,
+"sa2": "Wagin"
+},
+{
+"name": "Mumberkine",
+"pc": "6401",
+"lat": -31.41472,
+"lng": 116.65665,
+"sa2": "Northam"
+},
+{
+"name": "Mundabullangana",
+"pc": "6721",
+"lat": -20.52011,
+"lng": 118.06009,
+"sa2": "Port Hedland"
+},
+{
+"name": "Mundaring",
+"pc": "6073",
+"lat": -31.9256,
+"lng": 116.16548,
+"sa2": "Mundaring"
+},
+{
+"name": "Mundaring Dc",
+"pc": "6073",
+"lat": -31.9012,
+"lng": 116.167,
+"sa2": "Mundaring"
+},
+{
+"name": "Mundaring Weir",
+"pc": "6073",
+"lat": -31.9256,
+"lng": 116.165,
+"sa2": "Mundaring"
+},
+{
+"name": "Mundijong",
+"pc": "6123",
+"lat": -32.2996,
+"lng": 115.98457,
+"sa2": "Mundijong"
+},
+{
+"name": "Mundrabilla",
+"pc": "6443",
+"lat": -31.87337,
+"lng": 127.87283,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Mungalup",
+"pc": "6225",
+"lat": -33.41637,
+"lng": 116.08191,
+"sa2": "Wagin"
+},
+{
+"name": "Munglinup",
+"pc": "6450",
+"lat": -33.70482,
+"lng": 120.86275,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Munster",
+"pc": "6166",
+"lat": -32.15094,
+"lng": 115.81131,
+"sa2": "Beeliar - Wattleup"
+},
+{
+"name": "Muntadgin",
+"pc": "6420",
+"lat": -31.75955,
+"lng": 118.55992,
+"sa2": "Merredin"
+},
+{
+"name": "Muradup",
+"pc": "6394",
+"lat": -33.85804,
+"lng": 116.94264,
+"sa2": "Wagin"
+},
+{
+"name": "Murchison",
+"pc": "6630",
+"lat": -26.1402,
+"lng": 116.16048,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Murdoch",
+"pc": "6150",
+"lat": -32.0699,
+"lng": 115.8426,
+"sa2": "Winthrop"
+},
+{
+"name": "Murdong",
+"pc": "6317",
+"lat": -33.74627,
+"lng": 117.59629,
+"sa2": "Kulin"
+},
+{
+"name": "Muresk",
+"pc": "6401",
+"lat": -31.71932,
+"lng": 116.71213,
+"sa2": "Northam"
+},
+{
+"name": "Myalup",
+"pc": "6220",
+"lat": -33.03628,
+"lng": 115.73257,
+"sa2": "Harvey"
+},
+{
+"name": "Myara",
+"pc": "6207",
+"lat": -32.47481,
+"lng": 116.05664,
+"sa2": "Murray"
+},
+{
+"name": "Myaree",
+"pc": "6154",
+"lat": -32.03998,
+"lng": 115.81565,
+"sa2": "Melville"
+},
+{
+"name": "Myrup",
+"pc": "6450",
+"lat": -33.78807,
+"lng": 121.92544,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Nabawa",
+"pc": "6532",
+"lat": -28.49874,
+"lng": 114.79241,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Nairibin",
+"pc": "6350",
+"lat": -33.3365,
+"lng": 117.94281,
+"sa2": "Kulin"
+},
+{
+"name": "Nalkain",
+"pc": "6485",
+"lat": -31.07175,
+"lng": 117.44017,
+"sa2": "Dowerin"
+},
+{
+"name": "Nalyerlup",
+"pc": "6338",
+"lat": -34.14464,
+"lng": 118.41023,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Namban",
+"pc": "6512",
+"lat": -30.38074,
+"lng": 115.9276,
+"sa2": "Moora"
+},
+{
+"name": "Nambeelup",
+"pc": "6207",
+"lat": -32.51107,
+"lng": 115.84294,
+"sa2": "Murray"
+},
+{
+"name": "Nambung",
+"pc": "6521",
+"lat": -30.50627,
+"lng": 115.23372,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Nanarup",
+"pc": "6330",
+"lat": -34.99349,
+"lng": 118.04583,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Nanga",
+"pc": "6537",
+"lat": -26.55487,
+"lng": 113.94959,
+"sa2": "Exmouth"
+},
+{
+"name": "Nanga Brook",
+"pc": "6215",
+"lat": -32.84563,
+"lng": 116.06081,
+"sa2": "Waroona"
+},
+{
+"name": "Nangeenan",
+"pc": "6414",
+"lat": -31.53091,
+"lng": 118.18248,
+"sa2": "Merredin"
+},
+{
+"name": "Nangetty",
+"pc": "6522",
+"lat": -29.03702,
+"lng": 115.41598,
+"sa2": "Morawa"
+},
+{
+"name": "Nannup",
+"pc": "6275",
+"lat": -33.98214,
+"lng": 115.76805,
+"sa2": "Pemberton"
+},
+{
+"name": "Nanson",
+"pc": "6532",
+"lat": -28.56237,
+"lng": 114.75962,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Nanutarra",
+"pc": "6751",
+"lat": -22.54251,
+"lng": 115.49988,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Napier",
+"pc": "6330",
+"lat": -34.78789,
+"lng": 117.95446,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Naraling",
+"pc": "6532",
+"lat": -28.39961,
+"lng": 114.85749,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Narembeen",
+"pc": "6369",
+"lat": -32.06534,
+"lng": 118.39577,
+"sa2": "Merredin"
+},
+{
+"name": "Narngulu",
+"pc": "6532",
+"lat": -28.80054,
+"lng": 114.67167,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Narra Tarra",
+"pc": "6532",
+"lat": -28.63401,
+"lng": 114.76387,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Narrakine",
+"pc": "6391",
+"lat": -32.9923,
+"lng": 116.767,
+"sa2": "Wagin"
+},
+{
+"name": "Narraloggan",
+"pc": "6302",
+"lat": -31.88117,
+"lng": 117.10021,
+"sa2": "York - Beverley"
+},
+{
+"name": "Narrikup",
+"pc": "6326",
+"lat": -34.77744,
+"lng": 117.69042,
+"sa2": "Plantagenet"
+},
+{
+"name": "Narrogin",
+"pc": "6312",
+"lat": -32.9312,
+"lng": 117.17853,
+"sa2": "Wagin"
+},
+{
+"name": "Narrogin Valley",
+"pc": "6312",
+"lat": -32.94081,
+"lng": 117.21802,
+"sa2": "Wagin"
+},
+{
+"name": "Naturaliste",
+"pc": "6281",
+"lat": -33.55745,
+"lng": 115.03737,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "Naval Base",
+"pc": "6165",
+"lat": -32.19875,
+"lng": 115.78238,
+"sa2": "Kwinana Industrial"
+},
+{
+"name": "Neale",
+"pc": "6440",
+"lat": -28.27582,
+"lng": 125.28471,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Nedlands",
+"pc": "6009",
+"lat": -31.97915,
+"lng": 115.80373,
+"sa2": "Nedlands - Dalkeith - Crawley"
+},
+{
+"name": "Nedlands Dc",
+"pc": "6009",
+"lat": -31.9754,
+"lng": 115.793,
+"sa2": "Nedlands - Dalkeith - Crawley"
+},
+{
+"name": "Needilup",
+"pc": "6336",
+"lat": -33.95304,
+"lng": 118.77204,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Neendaling",
+"pc": "6353",
+"lat": -33.11666,
+"lng": 118.31984,
+"sa2": "Kulin"
+},
+{
+"name": "Neerabup",
+"pc": "6031",
+"lat": -31.69226,
+"lng": 115.76087,
+"sa2": "Neerabup National Park"
+},
+{
+"name": "Neergabby",
+"pc": "6503",
+"lat": -31.30299,
+"lng": 115.6576,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Nembudding",
+"pc": "6485",
+"lat": -31.14829,
+"lng": 117.58627,
+"sa2": "Dowerin"
+},
+{
+"name": "Neridup",
+"pc": "6450",
+"lat": -33.65063,
+"lng": 122.20079,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Nerramyne",
+"pc": "6630",
+"lat": -27.72475,
+"lng": 115.50152,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Nerren Nerren",
+"pc": "6532",
+"lat": -27.12962,
+"lng": 114.62536,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "New Norcia",
+"pc": "6509",
+"lat": -30.97108,
+"lng": 116.21459,
+"sa2": "Moora"
+},
+{
+"name": "Newcarlbeon",
+"pc": "6475",
+"lat": -30.63623,
+"lng": 117.36555,
+"sa2": "Dowerin"
+},
+{
+"name": "Newdegate",
+"pc": "6355",
+"lat": -33.09322,
+"lng": 119.02363,
+"sa2": "Kulin"
+},
+{
+"name": "Newlands",
+"pc": "6251",
+"lat": -33.66991,
+"lng": 115.8774,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Newman",
+"pc": "6753",
+"lat": -22.97989,
+"lng": 119.78892,
+"sa2": "Newman"
+},
+{
+"name": "Ngaanyatjarra-Giles",
+"pc": "0872",
+"lat": -25.0555,
+"lng": 128.311,
+"sa2": "Barkly"
+},
+{
+"name": "Nickol",
+"pc": "6714",
+"lat": -20.74175,
+"lng": 116.79971,
+"sa2": "Roebourne"
+},
+{
+"name": "Nilgen",
+"pc": "6044",
+"lat": -30.97107,
+"lng": 115.36701,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Nillup",
+"pc": "6288",
+"lat": -34.13511,
+"lng": 115.26934,
+"sa2": "Augusta"
+},
+{
+"name": "Ningaloo",
+"pc": "6701",
+"lat": -22.67991,
+"lng": 113.69805,
+"sa2": "Exmouth"
+},
+{
+"name": "Nippering",
+"pc": "6350",
+"lat": -33.25346,
+"lng": 117.69791,
+"sa2": "Kulin"
+},
+{
+"name": "Nirimba",
+"pc": "6208",
+"lat": -32.66626,
+"lng": 115.74812,
+"sa2": "Pinjarra"
+},
+{
+"name": "Noggerup",
+"pc": "6225",
+"lat": -33.60494,
+"lng": 116.10301,
+"sa2": "Wagin"
+},
+{
+"name": "Nokaning",
+"pc": "6415",
+"lat": -31.37312,
+"lng": 118.2319,
+"sa2": "Merredin"
+},
+{
+"name": "Nolba",
+"pc": "6532",
+"lat": -28.23974,
+"lng": 114.87276,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Nollamara",
+"pc": "6061",
+"lat": -31.88057,
+"lng": 115.84723,
+"sa2": "Dianella - North"
+},
+{
+"name": "Nomans Lake",
+"pc": "6312",
+"lat": -33.01113,
+"lng": 117.50171,
+"sa2": "Wagin"
+},
+{
+"name": "Noranda",
+"pc": "6062",
+"lat": -31.87545,
+"lng": 115.89647,
+"sa2": "Noranda"
+},
+{
+"name": "Nornalup",
+"pc": "6333",
+"lat": -35.00876,
+"lng": 116.83204,
+"sa2": "Denmark"
+},
+{
+"name": "Norpa",
+"pc": "6415",
+"lat": -31.57951,
+"lng": 118.41635,
+"sa2": "Merredin"
+},
+{
+"name": "Norseman",
+"pc": "6443",
+"lat": -32.19777,
+"lng": 121.77886,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "North Baandee",
+"pc": "6412",
+"lat": -31.37015,
+"lng": 117.93458,
+"sa2": "Cunderdin"
+},
+{
+"name": "North Bannister",
+"pc": "6390",
+"lat": -32.58209,
+"lng": 116.48552,
+"sa2": "Murray"
+},
+{
+"name": "North Beach",
+"pc": "6020",
+"lat": -31.86117,
+"lng": 115.7582,
+"sa2": "Trigg - North Beach - Watermans Bay"
+},
+{
+"name": "North Bodallin",
+"pc": "6424",
+"lat": -31.09061,
+"lng": 118.93071,
+"sa2": "Mukinbudin"
+},
+{
+"name": "North Boyanup",
+"pc": "6237",
+"lat": -33.42333,
+"lng": 115.70649,
+"sa2": "Gelorup - Stratham"
+},
+{
+"name": "North Burngup",
+"pc": "6353",
+"lat": -32.87641,
+"lng": 118.78884,
+"sa2": "Kulin"
+},
+{
+"name": "North Cascade",
+"pc": "6445",
+"lat": -32.93256,
+"lng": 121.11916,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "North Coogee",
+"pc": "6163",
+"lat": -32.1025,
+"lng": 115.763,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "North Dandalup",
+"pc": "6207",
+"lat": -32.5198,
+"lng": 115.96667,
+"sa2": "Murray"
+},
+{
+"name": "North Eradu",
+"pc": "6532",
+"lat": -28.5504,
+"lng": 115.13638,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "North Fremantle",
+"pc": "6159",
+"lat": -32.0353,
+"lng": 115.74864,
+"sa2": "Fremantle"
+},
+{
+"name": "North Greenbushes",
+"pc": "6254",
+"lat": -33.81825,
+"lng": 116.0548,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "North Jindong",
+"pc": "6280",
+"lat": -33.72983,
+"lng": 115.19925,
+"sa2": "Capel"
+},
+{
+"name": "North Kellerberrin",
+"pc": "6410",
+"lat": -31.48021,
+"lng": 117.64491,
+"sa2": "Cunderdin"
+},
+{
+"name": "North Kukerin",
+"pc": "6352",
+"lat": -33.17633,
+"lng": 118.06534,
+"sa2": "Kulin"
+},
+{
+"name": "North Kununoppin",
+"pc": "6489",
+"lat": -31.04413,
+"lng": 117.94424,
+"sa2": "Mukinbudin"
+},
+{
+"name": "North Lake",
+"pc": "6163",
+"lat": -32.07897,
+"lng": 115.82185,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "North Lake Grace",
+"pc": "6353",
+"lat": -33.03157,
+"lng": 118.46994,
+"sa2": "Kulin"
+},
+{
+"name": "North Moulyinning",
+"pc": "6351",
+"lat": -33.13054,
+"lng": 117.90947,
+"sa2": "Kulin"
+},
+{
+"name": "North Perth",
+"pc": "6006",
+"lat": -31.92735,
+"lng": 115.85513,
+"sa2": "North Perth"
+},
+{
+"name": "North Plantations",
+"pc": "6701",
+"lat": -24.82553,
+"lng": 113.76773,
+"sa2": "Exmouth"
+},
+{
+"name": "North Stirlings",
+"pc": "6338",
+"lat": -34.248,
+"lng": 118.07314,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "North Tammin",
+"pc": "6409",
+"lat": -31.4845,
+"lng": 117.49408,
+"sa2": "Cunderdin"
+},
+{
+"name": "North Trayning",
+"pc": "6488",
+"lat": -31.03844,
+"lng": 117.78799,
+"sa2": "Mukinbudin"
+},
+{
+"name": "North Walpole",
+"pc": "6398",
+"lat": -34.8839,
+"lng": 116.71065,
+"sa2": "Pemberton"
+},
+{
+"name": "North West Cape",
+"pc": "6707",
+"lat": -21.88764,
+"lng": 114.1294,
+"sa2": "Exmouth"
+},
+{
+"name": "North Wialki",
+"pc": "6473",
+"lat": -30.28597,
+"lng": 118.22883,
+"sa2": "Mukinbudin"
+},
+{
+"name": "North Yelbeni",
+"pc": "6487",
+"lat": -31.05435,
+"lng": 117.6695,
+"sa2": "Mukinbudin"
+},
+{
+"name": "North Yunderup",
+"pc": "6208",
+"lat": -32.57591,
+"lng": 115.79189,
+"sa2": "Pinjarra"
+},
+{
+"name": "Northam",
+"pc": "6401",
+"lat": -31.64787,
+"lng": 116.67421,
+"sa2": "Northam"
+},
+{
+"name": "Northampton",
+"pc": "6535",
+"lat": -28.35224,
+"lng": 114.63006,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Northbridge",
+"pc": "6003",
+"lat": -31.94363,
+"lng": 115.85384,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "Northcliffe",
+"pc": "6262",
+"lat": -34.6331,
+"lng": 116.12415,
+"sa2": "Pemberton"
+},
+{
+"name": "Northern Gully",
+"pc": "6532",
+"lat": -28.66011,
+"lng": 114.9193,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Northlands",
+"pc": "6905",
+"lat": -27.6728,
+"lng": 121.628,
+"sa2": ""
+},
+{
+"name": "Northlands Po",
+"pc": "6905",
+"lat": -27.6728,
+"lng": 121.628,
+"sa2": ""
+},
+{
+"name": "Nowergup",
+"pc": "6032",
+"lat": -31.64593,
+"lng": 115.76935,
+"sa2": "Carabooda - Pinjar"
+},
+{
+"name": "Nugadong",
+"pc": "6609",
+"lat": -30.19841,
+"lng": 116.80986,
+"sa2": "Moora"
+},
+{
+"name": "Nukarni",
+"pc": "6480",
+"lat": -31.29854,
+"lng": 118.27605,
+"sa2": "Merredin"
+},
+{
+"name": "Nullagine",
+"pc": "6758",
+"lat": -22.00634,
+"lng": 120.34355,
+"sa2": "East Pilbara"
+},
+{
+"name": "Nullaki",
+"pc": "6330",
+"lat": -35.01996,
+"lng": 117.39234,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Nulsen",
+"pc": "6450",
+"lat": -33.8545,
+"lng": 121.87155,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Nungarin",
+"pc": "6490",
+"lat": -31.09021,
+"lng": 118.20827,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Nunierra",
+"pc": "6630",
+"lat": -28.15414,
+"lng": 115.68448,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Nunile",
+"pc": "6566",
+"lat": -31.52222,
+"lng": 116.52142,
+"sa2": "Toodyay"
+},
+{
+"name": "Nyabing",
+"pc": "6341",
+"lat": -33.62546,
+"lng": 118.20588,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Nyamup",
+"pc": "6258",
+"lat": -34.3288,
+"lng": 116.306,
+"sa2": "Pemberton"
+},
+{
+"name": "O'Connor",
+"pc": "6163",
+"lat": -32.06024,
+"lng": 115.7937,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Oakajee",
+"pc": "6532",
+"lat": -28.6011,
+"lng": 114.61768,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Oakford",
+"pc": "6121",
+"lat": -32.20433,
+"lng": 115.92416,
+"sa2": "Mundijong"
+},
+{
+"name": "Oakley",
+"pc": "6208",
+"lat": -32.64361,
+"lng": 115.94426,
+"sa2": "Pinjarra"
+},
+{
+"name": "Ocean Beach",
+"pc": "6333",
+"lat": -35.00715,
+"lng": 117.32645,
+"sa2": "Denmark"
+},
+{
+"name": "Ocean Reef",
+"pc": "6027",
+"lat": -31.76005,
+"lng": 115.73328,
+"sa2": "Ocean Reef"
+},
+{
+"name": "Ogilvie",
+"pc": "6535",
+"lat": -28.16598,
+"lng": 114.7568,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Old Plains",
+"pc": "6569",
+"lat": -31.14353,
+"lng": 116.35674,
+"sa2": "Moora"
+},
+{
+"name": "Oldbury",
+"pc": "6121",
+"lat": -32.25446,
+"lng": 115.90703,
+"sa2": "Mundijong"
+},
+{
+"name": "Ongerup",
+"pc": "6336",
+"lat": -33.96596,
+"lng": 118.48548,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Onslow",
+"pc": "6710",
+"lat": -21.66272,
+"lng": 115.10698,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Oombulgurri",
+"pc": "6740",
+"lat": -15.18001,
+"lng": 127.84479,
+"sa2": "Kununurra"
+},
+{
+"name": "Ora Banda",
+"pc": "6431",
+"lat": -30.2439,
+"lng": 120.95455,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Orana",
+"pc": "6330",
+"lat": -34.99193,
+"lng": 117.85631,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Orange Grove",
+"pc": "6109",
+"lat": -32.03155,
+"lng": 116.02194,
+"sa2": "Maddington - Orange Grove - Martin"
+},
+{
+"name": "Orange Springs",
+"pc": "6503",
+"lat": -31.00417,
+"lng": 115.61486,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Orchid Valley",
+"pc": "6394",
+"lat": -34.00762,
+"lng": 116.82388,
+"sa2": "Wagin"
+},
+{
+"name": "Ord River",
+"pc": "6770",
+"lat": -17.40072,
+"lng": 128.02548,
+"sa2": "Halls Creek"
+},
+{
+"name": "Orelia",
+"pc": "6167",
+"lat": -32.23503,
+"lng": 115.82082,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Osborne Park",
+"pc": "6017",
+"lat": -31.91426,
+"lng": 115.82307,
+"sa2": "Tuart Hill - Joondanna"
+},
+{
+"name": "Osborne Park Dc",
+"pc": "6017",
+"lat": -31.9002,
+"lng": 115.812,
+"sa2": "Tuart Hill - Joondanna"
+},
+{
+"name": "Osmington",
+"pc": "6285",
+"lat": -33.90713,
+"lng": 115.20305,
+"sa2": "Pemberton"
+},
+{
+"name": "O\u2019Connor",
+"pc": "6163",
+"lat": -32.10225,
+"lng": 115.82403,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Padbury",
+"pc": "6025",
+"lat": -31.80077,
+"lng": 115.77345,
+"sa2": "Padbury"
+},
+{
+"name": "Palgarup",
+"pc": "6258",
+"lat": -34.17443,
+"lng": 116.17234,
+"sa2": "Pemberton"
+},
+{
+"name": "Pallinup",
+"pc": "6335",
+"lat": -33.98383,
+"lng": 117.93604,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Palmdale",
+"pc": "6328",
+"lat": -34.68793,
+"lng": 118.15317,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Palmer",
+"pc": "6225",
+"lat": -33.30465,
+"lng": 116.24072,
+"sa2": "Wagin"
+},
+{
+"name": "Palmyra",
+"pc": "6157",
+"lat": -32.04584,
+"lng": 115.78471,
+"sa2": "Bicton - Palmyra"
+},
+{
+"name": "Palmyra Dc",
+"pc": "6157",
+"lat": -32.0516,
+"lng": 115.791,
+"sa2": "Bicton - Palmyra"
+},
+{
+"name": "Pannawonica",
+"pc": "6716",
+"lat": -21.63862,
+"lng": 116.32188,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Pantapin",
+"pc": "6384",
+"lat": -32.03086,
+"lng": 117.66695,
+"sa2": "Cunderdin"
+},
+{
+"name": "Papulankutja",
+"pc": "0872",
+"lat": -25.1299,
+"lng": 132.57,
+"sa2": "Barkly"
+},
+{
+"name": "Paraburdoo",
+"pc": "6754",
+"lat": -23.19539,
+"lng": 117.71388,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Paradise",
+"pc": "6236",
+"lat": -33.37366,
+"lng": 115.77144,
+"sa2": "Dardanup"
+},
+{
+"name": "Pardoo",
+"pc": "6721",
+"lat": -20.05558,
+"lng": 119.82219,
+"sa2": "Port Hedland"
+},
+{
+"name": "Parker Range",
+"pc": "6426",
+"lat": -31.91685,
+"lng": 119.8182,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Parkerville",
+"pc": "6081",
+"lat": -31.87531,
+"lng": 116.13864,
+"sa2": "Mundaring"
+},
+{
+"name": "Parkeston",
+"pc": "6434",
+"lat": -30.73179,
+"lng": 121.50567,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Parkfield",
+"pc": "6233",
+"lat": -33.17575,
+"lng": 115.71698,
+"sa2": "Harvey"
+},
+{
+"name": "Parklands",
+"pc": "6180",
+"lat": -32.49703,
+"lng": 115.76826,
+"sa2": "Mandurah - North"
+},
+{
+"name": "Parkwood",
+"pc": "6147",
+"lat": -32.04677,
+"lng": 115.91268,
+"sa2": "Beckenham - Kenwick - Langford"
+},
+{
+"name": "Parmelia",
+"pc": "6167",
+"lat": -32.25007,
+"lng": 115.82566,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Parryville",
+"pc": "6333",
+"lat": -34.99183,
+"lng": 117.11017,
+"sa2": "Denmark"
+},
+{
+"name": "Patjarr",
+"pc": "0872",
+"lat": -24.6163,
+"lng": 126.314,
+"sa2": "Barkly"
+},
+{
+"name": "Paulls Valley",
+"pc": "6076",
+"lat": -31.95501,
+"lng": 116.11122,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Paynedale",
+"pc": "6239",
+"lat": -33.65033,
+"lng": 115.76004,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Paynes Find",
+"pc": "6612",
+"lat": -29.28329,
+"lng": 117.49213,
+"sa2": "Meekatharra"
+},
+{
+"name": "Paynesville",
+"pc": "6638",
+"lat": -28.01449,
+"lng": 118.57682,
+"sa2": "Meekatharra"
+},
+{
+"name": "Peaceful Bay",
+"pc": "6333",
+"lat": -35.03859,
+"lng": 116.92272,
+"sa2": "Denmark"
+},
+{
+"name": "Peak Hill",
+"pc": "6642",
+"lat": -25.09401,
+"lng": 118.29846,
+"sa2": "Meekatharra"
+},
+{
+"name": "Pearsall",
+"pc": "6065",
+"lat": -31.78012,
+"lng": 115.81364,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Peedamulla",
+"pc": "6710",
+"lat": -21.87129,
+"lng": 115.68011,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Peerabeelup",
+"pc": "6260",
+"lat": -34.33674,
+"lng": 115.77581,
+"sa2": "Pemberton"
+},
+{
+"name": "Pegs Creek",
+"pc": "6714",
+"lat": -20.73175,
+"lng": 116.8388,
+"sa2": "Roebourne"
+},
+{
+"name": "Pelican Point",
+"pc": "6230",
+"lat": -33.31505,
+"lng": 115.69504,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Pemberton",
+"pc": "6260",
+"lat": -34.44327,
+"lng": 116.03694,
+"sa2": "Pemberton"
+},
+{
+"name": "Peppermint Grove",
+"pc": "6011",
+"lat": -31.99798,
+"lng": 115.7677,
+"sa2": "Mosman Park - Peppermint Grove"
+},
+{
+"name": "Peppermint Grove Beach",
+"pc": "6271",
+"lat": -33.52882,
+"lng": 115.5062,
+"sa2": "Capel"
+},
+{
+"name": "Perenjori",
+"pc": "6620",
+"lat": -29.44354,
+"lng": 116.28867,
+"sa2": "Morawa"
+},
+{
+"name": "Perillup",
+"pc": "6324",
+"lat": -34.57081,
+"lng": 117.23244,
+"sa2": "Plantagenet"
+},
+{
+"name": "Peron",
+"pc": "6168",
+"lat": -32.27499,
+"lng": 115.70036,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Perth",
+"pc": "6000",
+"lat": -31.95257,
+"lng": 115.86105,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "Perth Airport",
+"pc": "6105",
+"lat": -31.96573,
+"lng": 115.95863,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Perth Bc",
+"pc": "6849",
+"lat": -31.9488,
+"lng": 115.864,
+"sa2": ""
+},
+{
+"name": "Perth East St Georges Tce",
+"pc": "6832",
+"lat": -31.955,
+"lng": 115.857,
+"sa2": ""
+},
+{
+"name": "Perth Gpo",
+"pc": "6000",
+"lat": -31.9513,
+"lng": 115.859,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "Perup",
+"pc": "6258",
+"lat": -34.2971,
+"lng": 116.45545,
+"sa2": "Pemberton"
+},
+{
+"name": "Petrudor",
+"pc": "6468",
+"lat": -30.43693,
+"lng": 116.98643,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Piara Waters",
+"pc": "6112",
+"lat": -32.1247,
+"lng": 115.918,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Piawaning",
+"pc": "6572",
+"lat": -30.7963,
+"lng": 116.396,
+"sa2": "Moora"
+},
+{
+"name": "Piccadilly",
+"pc": "6430",
+"lat": -30.7403,
+"lng": 121.467,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Pickering Brook",
+"pc": "6076",
+"lat": -32.05012,
+"lng": 116.19588,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Picton",
+"pc": "6229",
+"lat": -33.35067,
+"lng": 115.69631,
+"sa2": "East Bunbury - Glen Iris"
+},
+{
+"name": "Picton East",
+"pc": "6229",
+"lat": -33.33898,
+"lng": 115.7257,
+"sa2": "East Bunbury - Glen Iris"
+},
+{
+"name": "Piesse Brook",
+"pc": "6076",
+"lat": -31.97555,
+"lng": 116.07329,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Piesseville",
+"pc": "6315",
+"lat": -33.19223,
+"lng": 117.28698,
+"sa2": "Wagin"
+},
+{
+"name": "Pindar",
+"pc": "6631",
+"lat": -28.54417,
+"lng": 115.9468,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Pingaring",
+"pc": "6357",
+"lat": -32.68997,
+"lng": 118.81307,
+"sa2": "Kulin"
+},
+{
+"name": "Pingelly",
+"pc": "6308",
+"lat": -32.53277,
+"lng": 117.08407,
+"sa2": "Brookton"
+},
+{
+"name": "Pingrup",
+"pc": "6343",
+"lat": -33.54387,
+"lng": 118.85968,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Pinjar",
+"pc": "6065",
+"lat": -31.76324,
+"lng": 115.81668,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Pinjarra",
+"pc": "6208",
+"lat": -32.62701,
+"lng": 115.87888,
+"sa2": "Pinjarra"
+},
+{
+"name": "Pink Lake",
+"pc": "6450",
+"lat": -33.84984,
+"lng": 121.79133,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Pintharuka",
+"pc": "6623",
+"lat": -29.06098,
+"lng": 116.11123,
+"sa2": "Morawa"
+},
+{
+"name": "Pinwernying",
+"pc": "6317",
+"lat": -33.66604,
+"lng": 117.54012,
+"sa2": "Kulin"
+},
+{
+"name": "Pippingarra",
+"pc": "6722",
+"lat": -20.45341,
+"lng": 118.80912,
+"sa2": "South Hedland"
+},
+{
+"name": "Pithara",
+"pc": "6608",
+"lat": -30.38687,
+"lng": 116.66926,
+"sa2": "Moora"
+},
+{
+"name": "Plumridge Lakes",
+"pc": "6431",
+"lat": -29.45944,
+"lng": 126.17563,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Point Grey",
+"pc": "6208",
+"lat": -32.65452,
+"lng": 115.68596,
+"sa2": "Pinjarra"
+},
+{
+"name": "Point Samson",
+"pc": "6720",
+"lat": -20.62789,
+"lng": 117.18166,
+"sa2": "Roebourne"
+},
+{
+"name": "Popanyinning",
+"pc": "6309",
+"lat": -32.6626,
+"lng": 117.12389,
+"sa2": "Wagin"
+},
+{
+"name": "Porongurup",
+"pc": "6324",
+"lat": -34.65947,
+"lng": 117.89466,
+"sa2": "Plantagenet"
+},
+{
+"name": "Port Albany",
+"pc": "6330",
+"lat": -35.0304,
+"lng": 117.89792,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Port Denison",
+"pc": "6525",
+"lat": -29.26441,
+"lng": 114.92796,
+"sa2": "Irwin"
+},
+{
+"name": "Port Hedland",
+"pc": "6721",
+"lat": -20.38391,
+"lng": 118.64838,
+"sa2": "Port Hedland"
+},
+{
+"name": "Port Kennedy",
+"pc": "6172",
+"lat": -32.37601,
+"lng": 115.7516,
+"sa2": "Port Kennedy"
+},
+{
+"name": "Postans",
+"pc": "6167",
+"lat": -32.22061,
+"lng": 115.81099,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Preston Beach",
+"pc": "6215",
+"lat": -32.87759,
+"lng": 115.67414,
+"sa2": "Waroona"
+},
+{
+"name": "Preston Settlement",
+"pc": "6225",
+"lat": -33.41693,
+"lng": 116.15806,
+"sa2": "Wagin"
+},
+{
+"name": "Prevelly",
+"pc": "6285",
+"lat": -33.97574,
+"lng": 114.99534,
+"sa2": "Pemberton"
+},
+{
+"name": "Prince Regent River",
+"pc": "6740",
+"lat": -15.72777,
+"lng": 125.4813,
+"sa2": "Kununurra"
+},
+{
+"name": "Pumphreys Bridge",
+"pc": "6308",
+"lat": -32.6668,
+"lng": 116.90738,
+"sa2": "Brookton"
+},
+{
+"name": "Purnululu",
+"pc": "6770",
+"lat": -17.50956,
+"lng": 128.3929,
+"sa2": "Halls Creek"
+},
+{
+"name": "Quairading",
+"pc": "6383",
+"lat": -32.01269,
+"lng": 117.39551,
+"sa2": "Cunderdin"
+},
+{
+"name": "Qualeup",
+"pc": "6394",
+"lat": -33.90442,
+"lng": 116.80705,
+"sa2": "Wagin"
+},
+{
+"name": "Quedjinup",
+"pc": "6281",
+"lat": -33.63772,
+"lng": 115.08996,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "Queens Park",
+"pc": "6107",
+"lat": -32.00424,
+"lng": 115.9423,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Queenwood",
+"pc": "6239",
+"lat": -33.54268,
+"lng": 115.90126,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Quelagetting",
+"pc": "6405",
+"lat": -31.48291,
+"lng": 117.09641,
+"sa2": "Cunderdin"
+},
+{
+"name": "Quellington",
+"pc": "6302",
+"lat": -31.7844,
+"lng": 116.83798,
+"sa2": "York - Beverley"
+},
+{
+"name": "Quindalup",
+"pc": "6281",
+"lat": -33.66712,
+"lng": 115.14229,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "Quindanning",
+"pc": "6391",
+"lat": -33.03289,
+"lng": 116.48935,
+"sa2": "Wagin"
+},
+{
+"name": "Quinninup",
+"pc": "6258",
+"lat": -34.43352,
+"lng": 116.22225,
+"sa2": "Pemberton"
+},
+{
+"name": "Quinns Rocks",
+"pc": "6030",
+"lat": -31.66052,
+"lng": 115.69593,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Raaf Waggrakine",
+"pc": "6530",
+"lat": -28.78467,
+"lng": 114.60317,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ranford",
+"pc": "6390",
+"lat": -32.79278,
+"lng": 116.4949,
+"sa2": "Murray"
+},
+{
+"name": "Rangeway",
+"pc": "6530",
+"lat": -28.78484,
+"lng": 114.62977,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ravensthorpe",
+"pc": "6346",
+"lat": -33.58176,
+"lng": 120.04702,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Ravenswood",
+"pc": "6208",
+"lat": -32.57823,
+"lng": 115.87538,
+"sa2": "Pinjarra"
+},
+{
+"name": "Rawlinna",
+"pc": "6434",
+"lat": -31.00924,
+"lng": 125.3316,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Red Gully",
+"pc": "6503",
+"lat": -30.98074,
+"lng": 115.7974,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Red Hill",
+"pc": "6056",
+"lat": -31.82935,
+"lng": 116.07681,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Redbank",
+"pc": "6721",
+"lat": -20.34503,
+"lng": 118.61423,
+"sa2": "Port Hedland"
+},
+{
+"name": "Redcliffe",
+"pc": "6104",
+"lat": -31.93818,
+"lng": 115.94355,
+"sa2": "Belmont - Ascot - Redcliffe"
+},
+{
+"name": "Redgate",
+"pc": "6286",
+"lat": -34.02722,
+"lng": 115.02836,
+"sa2": "Augusta"
+},
+{
+"name": "Redmond",
+"pc": "6327",
+"lat": -34.88778,
+"lng": 117.69278,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Redmond West",
+"pc": "6327",
+"lat": -34.84694,
+"lng": 117.58872,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Reedy",
+"pc": "6640",
+"lat": -27.1206,
+"lng": 118.08363,
+"sa2": "Meekatharra"
+},
+{
+"name": "Regans Ford",
+"pc": "6507",
+"lat": -30.97193,
+"lng": 115.70147,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Reinscourt",
+"pc": "6280",
+"lat": -33.65014,
+"lng": 115.40307,
+"sa2": "Capel"
+},
+{
+"name": "Remlap",
+"pc": "6472",
+"lat": -29.99693,
+"lng": 117.65171,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Reservoir",
+"pc": "6076",
+"lat": -31.99876,
+"lng": 116.18221,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Ridgewood",
+"pc": "6030",
+"lat": -31.65927,
+"lng": 115.72117,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Ringbark",
+"pc": "6258",
+"lat": -34.2066,
+"lng": 116.11522,
+"sa2": "Pemberton"
+},
+{
+"name": "Riverton",
+"pc": "6148",
+"lat": -32.03383,
+"lng": 115.89317,
+"sa2": "Riverton - Shelley - Rossmoyne"
+},
+{
+"name": "Rivervale",
+"pc": "6103",
+"lat": -31.96088,
+"lng": 115.92019,
+"sa2": "Rivervale"
+},
+{
+"name": "Robinson",
+"pc": "6330",
+"lat": -35.03315,
+"lng": 117.83163,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Rockingham",
+"pc": "6168",
+"lat": -32.2781,
+"lng": 115.73514,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Rockingham Beach",
+"pc": "6168",
+"lat": -32.26766,
+"lng": 115.73968,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Rockingham Dc",
+"pc": "6168",
+"lat": -32.2751,
+"lng": 115.772,
+"sa2": "Rockingham Lakes"
+},
+{
+"name": "Rocklea",
+"pc": "6751",
+"lat": -22.88391,
+"lng": 117.44861,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Rockwell",
+"pc": "6532",
+"lat": -28.34633,
+"lng": 114.91524,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Rocky Gully",
+"pc": "6397",
+"lat": -34.63188,
+"lng": 116.93814,
+"sa2": "Plantagenet"
+},
+{
+"name": "Roebourne",
+"pc": "6718",
+"lat": -20.75055,
+"lng": 117.19706,
+"sa2": "Roebourne"
+},
+{
+"name": "Roebuck",
+"pc": "6725",
+"lat": -17.8711,
+"lng": 122.37112,
+"sa2": "Roebuck"
+},
+{
+"name": "Roelands",
+"pc": "6226",
+"lat": -33.29278,
+"lng": 115.86401,
+"sa2": "Harvey"
+},
+{
+"name": "Roleystone",
+"pc": "6111",
+"lat": -32.12576,
+"lng": 116.06157,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Rosa Brook",
+"pc": "6285",
+"lat": -33.94017,
+"lng": 115.19423,
+"sa2": "Pemberton"
+},
+{
+"name": "Rosa Glen",
+"pc": "6285",
+"lat": -34.00343,
+"lng": 115.2002,
+"sa2": "Pemberton"
+},
+{
+"name": "Rossmore",
+"pc": "6401",
+"lat": -31.40034,
+"lng": 116.76783,
+"sa2": "Northam"
+},
+{
+"name": "Rossmoyne",
+"pc": "6148",
+"lat": -32.03864,
+"lng": 115.86771,
+"sa2": "Riverton - Shelley - Rossmoyne"
+},
+{
+"name": "Rothsay",
+"pc": "6620",
+"lat": -29.17966,
+"lng": 116.71594,
+"sa2": "Morawa"
+},
+{
+"name": "Rottnest Island",
+"pc": "6161",
+"lat": -32.00352,
+"lng": 115.51481,
+"sa2": "Fremantle"
+},
+{
+"name": "Ruabon",
+"pc": "6280",
+"lat": -33.64609,
+"lng": 115.50552,
+"sa2": "Capel"
+},
+{
+"name": "Rudds Gully",
+"pc": "6532",
+"lat": -28.84846,
+"lng": 114.67354,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Ryansbrook",
+"pc": "6395",
+"lat": -34.08971,
+"lng": 117.15857,
+"sa2": "Kojonup"
+},
+{
+"name": "Sabina River",
+"pc": "6280",
+"lat": -33.74948,
+"lng": 115.4198,
+"sa2": "Capel"
+},
+{
+"name": "Safety Bay",
+"pc": "6169",
+"lat": -32.31007,
+"lng": 115.7319,
+"sa2": "Warnbro"
+},
+{
+"name": "Saint Ronans",
+"pc": "6302",
+"lat": -31.8994,
+"lng": 116.651,
+"sa2": "York - Beverley"
+},
+{
+"name": "Salmon Gums",
+"pc": "6445",
+"lat": -32.98152,
+"lng": 121.64382,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Salter Point",
+"pc": "6152",
+"lat": -32.02114,
+"lng": 115.86282,
+"sa2": "Manning - Waterford"
+},
+{
+"name": "Samson",
+"pc": "6163",
+"lat": -32.07227,
+"lng": 115.79955,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "San Remo",
+"pc": "6210",
+"lat": -32.49018,
+"lng": 115.74479,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Sandpatch",
+"pc": "6330",
+"lat": -35.05659,
+"lng": 117.78164,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Sandsprings",
+"pc": "6532",
+"lat": -28.78881,
+"lng": 114.9517,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Sandstone",
+"pc": "6639",
+"lat": -28.64015,
+"lng": 119.04599,
+"sa2": "Meekatharra"
+},
+{
+"name": "Sandy Gully",
+"pc": "6535",
+"lat": -28.29912,
+"lng": 114.49891,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Sawyers Valley",
+"pc": "6074",
+"lat": -31.97479,
+"lng": 116.25409,
+"sa2": "Mundaring"
+},
+{
+"name": "Scaddan",
+"pc": "6447",
+"lat": -33.44065,
+"lng": 121.7224,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Scarborough",
+"pc": "6019",
+"lat": -31.89803,
+"lng": 115.7716,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Schroeder",
+"pc": "6285",
+"lat": -34.01488,
+"lng": 115.39203,
+"sa2": "Pemberton"
+},
+{
+"name": "Scotsdale",
+"pc": "6333",
+"lat": -34.91363,
+"lng": 117.25295,
+"sa2": "Denmark"
+},
+{
+"name": "Scott River",
+"pc": "6288",
+"lat": -34.28325,
+"lng": 115.27003,
+"sa2": "Augusta"
+},
+{
+"name": "Scott River East",
+"pc": "6275",
+"lat": -34.28203,
+"lng": 115.47057,
+"sa2": "Pemberton"
+},
+{
+"name": "Scotts Brook",
+"pc": "6244",
+"lat": -33.93564,
+"lng": 116.66699,
+"sa2": "Wagin"
+},
+{
+"name": "Seabird",
+"pc": "6042",
+"lat": -31.26389,
+"lng": 115.46151,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Secret Harbour",
+"pc": "6173",
+"lat": -32.40513,
+"lng": 115.76344,
+"sa2": "Singleton - Golden Bay - Secret Harbour"
+},
+{
+"name": "Seppings",
+"pc": "6330",
+"lat": -35.00787,
+"lng": 117.9113,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Serpentine",
+"pc": "6125",
+"lat": -32.3617,
+"lng": 115.97678,
+"sa2": "Serpentine - Jarrahdale"
+},
+{
+"name": "Seville Grove",
+"pc": "6112",
+"lat": -32.136,
+"lng": 115.99073,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Shackleton",
+"pc": "6386",
+"lat": -32.00184,
+"lng": 117.87803,
+"sa2": "Merredin"
+},
+{
+"name": "Shadforth",
+"pc": "6333",
+"lat": -34.96132,
+"lng": 117.27855,
+"sa2": "Denmark"
+},
+{
+"name": "Shannon",
+"pc": "6262",
+"lat": -34.75815,
+"lng": 116.38128,
+"sa2": "Pemberton"
+},
+{
+"name": "Shannon River Mill",
+"pc": "6258",
+"lat": -34.8665,
+"lng": 116.369,
+"sa2": "Pemberton"
+},
+{
+"name": "Shark Bay",
+"pc": "6537",
+"lat": -25.78342,
+"lng": 113.29877,
+"sa2": "Exmouth"
+},
+{
+"name": "Shay Gap",
+"pc": "6761",
+"lat": -20.4235,
+"lng": 120.13,
+"sa2": ""
+},
+{
+"name": "Shelley",
+"pc": "6148",
+"lat": -32.02785,
+"lng": 115.88953,
+"sa2": "Riverton - Shelley - Rossmoyne"
+},
+{
+"name": "Shenton Park",
+"pc": "6008",
+"lat": -31.95881,
+"lng": 115.80532,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Sherlock",
+"pc": "6714",
+"lat": -20.89862,
+"lng": 117.74167,
+"sa2": "Roebourne"
+},
+{
+"name": "Shoalwater",
+"pc": "6169",
+"lat": -32.29337,
+"lng": 115.71077,
+"sa2": "Warnbro"
+},
+{
+"name": "Shotts",
+"pc": "6225",
+"lat": -33.37578,
+"lng": 116.25343,
+"sa2": "Wagin"
+},
+{
+"name": "Siesta Park",
+"pc": "6280",
+"lat": -33.65525,
+"lng": 115.22397,
+"sa2": "Capel"
+},
+{
+"name": "Silver Sands",
+"pc": "6210",
+"lat": -32.5109,
+"lng": 115.73491,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Sinagra",
+"pc": "6065",
+"lat": -31.73995,
+"lng": 115.80277,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Sinclair",
+"pc": "6450",
+"lat": -33.86357,
+"lng": 121.87264,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Singleton",
+"pc": "6175",
+"lat": -32.44668,
+"lng": 115.75456,
+"sa2": "Singleton - Golden Bay - Secret Harbour"
+},
+{
+"name": "Sir Samuel",
+"pc": "6437",
+"lat": -27.5939,
+"lng": 120.577,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Skeleton Rock",
+"pc": "6426",
+"lat": -31.87143,
+"lng": 119.40152,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Smith Brook",
+"pc": "6258",
+"lat": -34.36582,
+"lng": 116.20724,
+"sa2": "Pemberton"
+},
+{
+"name": "Solus",
+"pc": "6207",
+"lat": -32.4839,
+"lng": 116.12233,
+"sa2": "Murray"
+},
+{
+"name": "Somerville",
+"pc": "6430",
+"lat": -30.77075,
+"lng": 121.45383,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Sorrento",
+"pc": "6020",
+"lat": -31.82541,
+"lng": 115.75276,
+"sa2": "Trigg - North Beach - Watermans Bay"
+},
+{
+"name": "South Bodallin",
+"pc": "6424",
+"lat": -31.53526,
+"lng": 118.88475,
+"sa2": "Mukinbudin"
+},
+{
+"name": "South Boulder",
+"pc": "6432",
+"lat": -30.79169,
+"lng": 121.49562,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "South Bunbury",
+"pc": "6230",
+"lat": -33.34955,
+"lng": 115.64107,
+"sa2": "Withers - Usher"
+},
+{
+"name": "South Burracoppin",
+"pc": "6421",
+"lat": -31.58926,
+"lng": 118.64223,
+"sa2": "Mukinbudin"
+},
+{
+"name": "South Carnarvon",
+"pc": "6701",
+"lat": -24.89206,
+"lng": 113.65736,
+"sa2": "Exmouth"
+},
+{
+"name": "South Caroling",
+"pc": "6383",
+"lat": -32.152,
+"lng": 117.387,
+"sa2": "Cunderdin"
+},
+{
+"name": "South Datatine",
+"pc": "6317",
+"lat": -33.49765,
+"lng": 117.87473,
+"sa2": "Kulin"
+},
+{
+"name": "South Doodlakine",
+"pc": "6411",
+"lat": -31.68644,
+"lng": 117.91393,
+"sa2": "Cunderdin"
+},
+{
+"name": "South Fremantle",
+"pc": "6162",
+"lat": -32.06779,
+"lng": 115.75255,
+"sa2": "Fremantle - South"
+},
+{
+"name": "South Glencoe",
+"pc": "6317",
+"lat": -33.52833,
+"lng": 117.65622,
+"sa2": "Kulin"
+},
+{
+"name": "South Greenough",
+"pc": "6528",
+"lat": -29.0057,
+"lng": 114.79848,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "South Guildford",
+"pc": "6055",
+"lat": -31.91017,
+"lng": 115.96687,
+"sa2": "Perth Airport"
+},
+{
+"name": "South Hedland",
+"pc": "6722",
+"lat": -20.39272,
+"lng": 118.60156,
+"sa2": "South Hedland"
+},
+{
+"name": "South Kalgoorlie",
+"pc": "6430",
+"lat": -30.76301,
+"lng": 121.47875,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "South Kukerin",
+"pc": "6352",
+"lat": -33.22512,
+"lng": 118.10989,
+"sa2": "Kulin"
+},
+{
+"name": "South Kumminin",
+"pc": "6368",
+"lat": -32.20076,
+"lng": 118.43968,
+"sa2": "Merredin"
+},
+{
+"name": "South Kununoppin",
+"pc": "6489",
+"lat": -31.18057,
+"lng": 117.95231,
+"sa2": "Mukinbudin"
+},
+{
+"name": "South Lake",
+"pc": "6164",
+"lat": -32.1041,
+"lng": 115.84026,
+"sa2": "Jandakot"
+},
+{
+"name": "South Lake Grace",
+"pc": "6353",
+"lat": -33.24482,
+"lng": 118.4702,
+"sa2": "Kulin"
+},
+{
+"name": "South Murchison",
+"pc": "6635",
+"lat": -26.98951,
+"lng": 116.50811,
+"sa2": "Meekatharra"
+},
+{
+"name": "South Newdegate",
+"pc": "6355",
+"lat": -33.21716,
+"lng": 119.02546,
+"sa2": "Kulin"
+},
+{
+"name": "South Perth",
+"pc": "6151",
+"lat": -31.98095,
+"lng": 115.86392,
+"sa2": "South Perth - Kensington"
+},
+{
+"name": "South Perth Angelo St",
+"pc": "6151",
+"lat": -31.98074,
+"lng": 115.86283,
+"sa2": "South Perth - Kensington"
+},
+{
+"name": "South Plantations",
+"pc": "6701",
+"lat": -24.85214,
+"lng": 113.73011,
+"sa2": "Exmouth"
+},
+{
+"name": "South Quairading",
+"pc": "6383",
+"lat": -32.15414,
+"lng": 117.37209,
+"sa2": "Cunderdin"
+},
+{
+"name": "South Stirling",
+"pc": "6324",
+"lat": -34.61809,
+"lng": 118.25658,
+"sa2": "Plantagenet"
+},
+{
+"name": "South Tammin",
+"pc": "6409",
+"lat": -31.67004,
+"lng": 117.49123,
+"sa2": "Cunderdin"
+},
+{
+"name": "South Trayning",
+"pc": "6488",
+"lat": -31.22374,
+"lng": 117.79208,
+"sa2": "Mukinbudin"
+},
+{
+"name": "South Yelbeni",
+"pc": "6487",
+"lat": -31.29763,
+"lng": 117.65418,
+"sa2": "Mukinbudin"
+},
+{
+"name": "South Yilgarn",
+"pc": "6426",
+"lat": -31.78974,
+"lng": 119.24933,
+"sa2": "Mukinbudin"
+},
+{
+"name": "South Yuna",
+"pc": "6532",
+"lat": -28.36498,
+"lng": 115.01232,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "South Yunderup",
+"pc": "6208",
+"lat": -32.58579,
+"lng": 115.7867,
+"sa2": "Pinjarra"
+},
+{
+"name": "Southampton",
+"pc": "6253",
+"lat": -33.84496,
+"lng": 115.92147,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Southern Brook",
+"pc": "6401",
+"lat": -31.55896,
+"lng": 116.83028,
+"sa2": "Northam"
+},
+{
+"name": "Southern Cross",
+"pc": "6426",
+"lat": -31.2332,
+"lng": 119.32976,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Southern River",
+"pc": "6110",
+"lat": -32.10472,
+"lng": 115.95944,
+"sa2": "Maddington - Orange Grove - Martin"
+},
+{
+"name": "Spalding",
+"pc": "6530",
+"lat": -28.73869,
+"lng": 114.63333,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Spearwood",
+"pc": "6163",
+"lat": -32.10253,
+"lng": 115.78264,
+"sa2": "Murdoch - Kardinya"
+},
+{
+"name": "Spencer Park",
+"pc": "6330",
+"lat": -35.00833,
+"lng": 117.89632,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Spencers Brook",
+"pc": "6401",
+"lat": -31.72323,
+"lng": 116.65538,
+"sa2": "Northam"
+},
+{
+"name": "Springfield",
+"pc": "6525",
+"lat": -29.2752,
+"lng": 114.95,
+"sa2": "Irwin"
+},
+{
+"name": "Springs",
+"pc": "6308",
+"lat": -32.5813,
+"lng": 116.53916,
+"sa2": "Brookton"
+},
+{
+"name": "St George Ranges",
+"pc": "6728",
+"lat": -18.48783,
+"lng": 124.39523,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "St James",
+"pc": "6102",
+"lat": -31.99617,
+"lng": 115.91436,
+"sa2": "Bentley - Wilson - St James"
+},
+{
+"name": "St Ronans",
+"pc": "6302",
+"lat": -31.89938,
+"lng": 116.65097,
+"sa2": "York - Beverley"
+},
+{
+"name": "Stake Hill",
+"pc": "6181",
+"lat": -32.4924,
+"lng": 115.799,
+"sa2": "Pinjarra"
+},
+{
+"name": "Stirling",
+"pc": "6021",
+"lat": -31.88645,
+"lng": 115.80987,
+"sa2": "Stirling - Osborne Park"
+},
+{
+"name": "Stirling Estate",
+"pc": "6271",
+"lat": -33.49741,
+"lng": 115.54459,
+"sa2": "Capel"
+},
+{
+"name": "Stirling Range National Park",
+"pc": "6338",
+"lat": -34.40062,
+"lng": 118.10391,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Stoneville",
+"pc": "6081",
+"lat": -31.87711,
+"lng": 116.17051,
+"sa2": "Mundaring"
+},
+{
+"name": "Stove Hill",
+"pc": "6714",
+"lat": -20.78282,
+"lng": 116.83096,
+"sa2": "Roebourne"
+},
+{
+"name": "Strathalbyn",
+"pc": "6530",
+"lat": -28.75213,
+"lng": 114.64124,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Stratham",
+"pc": "6237",
+"lat": -33.47137,
+"lng": 115.59366,
+"sa2": "Gelorup - Stratham"
+},
+{
+"name": "Stratherne",
+"pc": "6309",
+"lat": -32.66009,
+"lng": 117.3499,
+"sa2": "Wagin"
+},
+{
+"name": "Stratton",
+"pc": "6056",
+"lat": -31.87008,
+"lng": 116.03394,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Strelley",
+"pc": "6721",
+"lat": -20.45489,
+"lng": 119.00207,
+"sa2": "Port Hedland"
+},
+{
+"name": "Sturt Creek",
+"pc": "6770",
+"lat": -19.34958,
+"lng": 127.78367,
+"sa2": "Halls Creek"
+},
+{
+"name": "Subiaco",
+"pc": "6008",
+"lat": -31.94699,
+"lng": 115.82855,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Subiaco East",
+"pc": "6008",
+"lat": -31.94699,
+"lng": 115.82855,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Success",
+"pc": "6164",
+"lat": -32.15366,
+"lng": 115.84635,
+"sa2": "Jandakot"
+},
+{
+"name": "Sunnyside",
+"pc": "6256",
+"lat": -34.02695,
+"lng": 116.25217,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Sunset Beach",
+"pc": "6530",
+"lat": -28.72332,
+"lng": 114.62306,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Swan View",
+"pc": "6056",
+"lat": -31.88585,
+"lng": 116.05229,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Swanbourne",
+"pc": "6010",
+"lat": -31.97106,
+"lng": 115.7668,
+"sa2": "Swanbourne - Mount Claremont"
+},
+{
+"name": "Takalarup",
+"pc": "6324",
+"lat": -34.54772,
+"lng": 118.1016,
+"sa2": "Plantagenet"
+},
+{
+"name": "Talandji",
+"pc": "6710",
+"lat": -22.11873,
+"lng": 114.98957,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Talbot",
+"pc": "6302",
+"lat": -32.02527,
+"lng": 116.62919,
+"sa2": "York - Beverley"
+},
+{
+"name": "Talbot West",
+"pc": "6302",
+"lat": -32.14688,
+"lng": 116.66367,
+"sa2": "York - Beverley"
+},
+{
+"name": "Talgomine",
+"pc": "6490",
+"lat": -31.18447,
+"lng": 118.24675,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Talisker",
+"pc": "6701",
+"lat": -26.27083,
+"lng": 115.25924,
+"sa2": "Exmouth"
+},
+{
+"name": "Tamala",
+"pc": "6532",
+"lat": -26.77208,
+"lng": 113.78913,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Tamala Park",
+"pc": "6030",
+"lat": -31.70742,
+"lng": 115.7222,
+"sa2": "Mindarie - Quinns Rocks - Jindalee"
+},
+{
+"name": "Tambellup",
+"pc": "6320",
+"lat": -34.04095,
+"lng": 117.63932,
+"sa2": "Kojonup"
+},
+{
+"name": "Tammin",
+"pc": "6409",
+"lat": -31.64196,
+"lng": 117.48695,
+"sa2": "Cunderdin"
+},
+{
+"name": "Tampu",
+"pc": "6472",
+"lat": -30.1832,
+"lng": 117.824,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Tanami",
+"pc": "6770",
+"lat": -20.76596,
+"lng": 127.38714,
+"sa2": "Halls Creek"
+},
+{
+"name": "Tandegin",
+"pc": "6415",
+"lat": -31.67329,
+"lng": 118.56567,
+"sa2": "Merredin"
+},
+{
+"name": "Tapping",
+"pc": "6065",
+"lat": -31.71721,
+"lng": 115.79525,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Tarcoola Beach",
+"pc": "6530",
+"lat": -28.80528,
+"lng": 114.62093,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Tardun",
+"pc": "6628",
+"lat": -28.79021,
+"lng": 115.80485,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Tarin Rock",
+"pc": "6353",
+"lat": -33.1096,
+"lng": 118.23244,
+"sa2": "Kulin"
+},
+{
+"name": "Tarwonga",
+"pc": "6391",
+"lat": -33.0803,
+"lng": 117.102,
+"sa2": "Wagin"
+},
+{
+"name": "Teesdale",
+"pc": "6213",
+"lat": -32.73651,
+"lng": 116.00592,
+"sa2": "Murray"
+},
+{
+"name": "Telfer",
+"pc": "6762",
+"lat": -21.09764,
+"lng": 123.79646,
+"sa2": "East Pilbara"
+},
+{
+"name": "Tenindewa",
+"pc": "6632",
+"lat": -28.62423,
+"lng": 115.36345,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Tenterden",
+"pc": "6322",
+"lat": -34.41081,
+"lng": 117.43215,
+"sa2": "Kojonup"
+},
+{
+"name": "The Lakes",
+"pc": "6556",
+"lat": -31.90767,
+"lng": 116.34635,
+"sa2": "Malmalling - Reservoir"
+},
+{
+"name": "The Plains",
+"pc": "6237",
+"lat": -33.57499,
+"lng": 115.68934,
+"sa2": "Gelorup - Stratham"
+},
+{
+"name": "The Spectacles",
+"pc": "6167",
+"lat": -32.22887,
+"lng": 115.84642,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "The Vines",
+"pc": "6069",
+"lat": -31.75828,
+"lng": 116.00246,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Thevenard Island",
+"pc": "6711",
+"lat": -21.4573,
+"lng": 115.02059,
+"sa2": ""
+},
+{
+"name": "Thomson Brook",
+"pc": "6239",
+"lat": -33.62965,
+"lng": 115.9637,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Thornlie",
+"pc": "6108",
+"lat": -32.05704,
+"lng": 115.95271,
+"sa2": "Thornlie"
+},
+{
+"name": "Three Springs",
+"pc": "6519",
+"lat": -29.53323,
+"lng": 115.76179,
+"sa2": "Morawa"
+},
+{
+"name": "Throssell",
+"pc": "6401",
+"lat": -31.69443,
+"lng": 116.82684,
+"sa2": "Northam"
+},
+{
+"name": "Tibradden",
+"pc": "6532",
+"lat": -28.74848,
+"lng": 114.9022,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Tincurrin",
+"pc": "6361",
+"lat": -32.98053,
+"lng": 117.74955,
+"sa2": "Kulin"
+},
+{
+"name": "Tingledale",
+"pc": "6333",
+"lat": -34.95688,
+"lng": 116.8889,
+"sa2": "Denmark"
+},
+{
+"name": "Tjirrkarli",
+"pc": "0872",
+"lat": -26.0017,
+"lng": 125.471,
+"sa2": "Barkly"
+},
+{
+"name": "Tjukurla",
+"pc": "0872",
+"lat": -24.3475,
+"lng": 128.719,
+"sa2": "Barkly"
+},
+{
+"name": "Tom Price",
+"pc": "6751",
+"lat": -22.69614,
+"lng": 117.79501,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Tonebridge",
+"pc": "6244",
+"lat": -34.21945,
+"lng": 116.69381,
+"sa2": "Wagin"
+},
+{
+"name": "Toodyay",
+"pc": "6566",
+"lat": -31.55002,
+"lng": 116.46383,
+"sa2": "Toodyay"
+},
+{
+"name": "Toolibin",
+"pc": "6312",
+"lat": -32.91521,
+"lng": 117.65687,
+"sa2": "Wagin"
+},
+{
+"name": "Toolonga",
+"pc": "6532",
+"lat": -26.76806,
+"lng": 115.19018,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Toompup",
+"pc": "6336",
+"lat": -34.0611,
+"lng": 118.35999,
+"sa2": "Gnowangerup"
+},
+{
+"name": "Torbay",
+"pc": "6330",
+"lat": -34.98304,
+"lng": 117.64499,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Torndirrup",
+"pc": "6330",
+"lat": -35.05566,
+"lng": 117.85146,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Townsendale",
+"pc": "6311",
+"lat": -32.71066,
+"lng": 117.27915,
+"sa2": "Wagin"
+},
+{
+"name": "Trafalgar",
+"pc": "6431",
+"lat": -30.81979,
+"lng": 121.57069,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Trayning",
+"pc": "6488",
+"lat": -31.11404,
+"lng": 117.79216,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Treeby",
+"pc": "6164",
+"lat": -32.1218,
+"lng": 115.895,
+"sa2": "Jandakot"
+},
+{
+"name": "Treeton",
+"pc": "6284",
+"lat": -33.847,
+"lng": 115.20759,
+"sa2": "Margaret River"
+},
+{
+"name": "Trent",
+"pc": "6333",
+"lat": -34.82022,
+"lng": 116.93564,
+"sa2": "Denmark"
+},
+{
+"name": "Trigg",
+"pc": "6029",
+"lat": -31.87362,
+"lng": 115.76048,
+"sa2": "Trigg - North Beach - Watermans Bay"
+},
+{
+"name": "Trigwell",
+"pc": "6244",
+"lat": -33.6732,
+"lng": 116.632,
+"sa2": "Wagin"
+},
+{
+"name": "Tuart Hill",
+"pc": "6060",
+"lat": -31.89657,
+"lng": 115.83552,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Turkey Hill",
+"pc": "6426",
+"lat": -30.95506,
+"lng": 119.36266,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Tutunup",
+"pc": "6280",
+"lat": -33.6624,
+"lng": 115.56047,
+"sa2": "Capel"
+},
+{
+"name": "Two Rocks",
+"pc": "6037",
+"lat": -31.48479,
+"lng": 115.62731,
+"sa2": "Two Rocks"
+},
+{
+"name": "Ucarty",
+"pc": "6462",
+"lat": -31.31565,
+"lng": 117.05116,
+"sa2": "Dowerin"
+},
+{
+"name": "Ucarty West",
+"pc": "6460",
+"lat": -31.35157,
+"lng": 116.93034,
+"sa2": "Dowerin"
+},
+{
+"name": "Uduc",
+"pc": "6220",
+"lat": -33.05183,
+"lng": 115.80332,
+"sa2": "Harvey"
+},
+{
+"name": "Ularring",
+"pc": "6436",
+"lat": -29.19915,
+"lng": 120.23658,
+"sa2": "Leinster - Leonora"
+},
+{
+"name": "Upper Capel",
+"pc": "6239",
+"lat": -33.59794,
+"lng": 115.82059,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Upper Murray",
+"pc": "6390",
+"lat": -32.9889,
+"lng": 116.30684,
+"sa2": "Murray"
+},
+{
+"name": "Upper Swan",
+"pc": "6069",
+"lat": -31.77311,
+"lng": 116.02777,
+"sa2": "Ellenbrook"
+},
+{
+"name": "Upper Warren",
+"pc": "6258",
+"lat": -34.36121,
+"lng": 116.28164,
+"sa2": "Pemberton"
+},
+{
+"name": "Useless Loop",
+"pc": "6537",
+"lat": -26.13333,
+"lng": 113.38333,
+"sa2": "Exmouth"
+},
+{
+"name": "Usher",
+"pc": "6230",
+"lat": -33.37696,
+"lng": 115.62973,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Utakarra",
+"pc": "6530",
+"lat": -28.77765,
+"lng": 114.64091,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Valentine",
+"pc": "6532",
+"lat": -28.54356,
+"lng": 115.05661,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Vancouver Peninsula",
+"pc": "6330",
+"lat": -35.05986,
+"lng": 117.93063,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Varley",
+"pc": "6355",
+"lat": -32.82316,
+"lng": 119.53599,
+"sa2": "Kulin"
+},
+{
+"name": "Vasse",
+"pc": "6280",
+"lat": -33.67415,
+"lng": 115.2529,
+"sa2": "Capel"
+},
+{
+"name": "Victoria Park",
+"pc": "6100",
+"lat": -31.97504,
+"lng": 115.89772,
+"sa2": "Victoria Park - Lathlain - Burswood"
+},
+{
+"name": "Victoria Rock",
+"pc": "6429",
+"lat": -31.5096,
+"lng": 120.81921,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Victory Heights",
+"pc": "6432",
+"lat": -30.77949,
+"lng": 121.47292,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Vittoria",
+"pc": "6230",
+"lat": -33.32815,
+"lng": 115.67405,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Viveash",
+"pc": "6056",
+"lat": -31.876,
+"lng": 115.99882,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Wadderin",
+"pc": "6369",
+"lat": -32.07288,
+"lng": 118.39139,
+"sa2": "Merredin"
+},
+{
+"name": "Waddington",
+"pc": "6509",
+"lat": -30.8388,
+"lng": 116.26742,
+"sa2": "Moora"
+},
+{
+"name": "Waddy Forest",
+"pc": "6515",
+"lat": -29.85648,
+"lng": 116.20508,
+"sa2": "Morawa"
+},
+{
+"name": "Waeel",
+"pc": "6407",
+"lat": -31.65097,
+"lng": 117.16878,
+"sa2": "Cunderdin"
+},
+{
+"name": "Wagerup",
+"pc": "6215",
+"lat": -32.92633,
+"lng": 115.90298,
+"sa2": "Waroona"
+},
+{
+"name": "Waggrakine",
+"pc": "6530",
+"lat": -28.68465,
+"lng": 114.6446,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wagin",
+"pc": "6315",
+"lat": -33.31093,
+"lng": 117.34617,
+"sa2": "Wagin"
+},
+{
+"name": "Waikiki",
+"pc": "6169",
+"lat": -32.31546,
+"lng": 115.75302,
+"sa2": "Warnbro"
+},
+{
+"name": "Walebing",
+"pc": "6510",
+"lat": -30.69491,
+"lng": 116.21185,
+"sa2": "Moora"
+},
+{
+"name": "Walgoolan",
+"pc": "6422",
+"lat": -31.34581,
+"lng": 118.60314,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Walkaway",
+"pc": "6528",
+"lat": -28.94038,
+"lng": 114.83952,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wallareenya",
+"pc": "6721",
+"lat": -20.74577,
+"lng": 118.80961,
+"sa2": "Port Hedland"
+},
+{
+"name": "Wallaroo",
+"pc": "6429",
+"lat": -30.86511,
+"lng": 120.50912,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Walliston",
+"pc": "6076",
+"lat": -31.99961,
+"lng": 116.07224,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Walliston Dc",
+"pc": "6076",
+"lat": -31.994,
+"lng": 116.072,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Walmsley",
+"pc": "6330",
+"lat": -34.98266,
+"lng": 117.91293,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Walpole",
+"pc": "6398",
+"lat": -34.97586,
+"lng": 116.73316,
+"sa2": "Pemberton"
+},
+{
+"name": "Walsall",
+"pc": "6280",
+"lat": -33.79796,
+"lng": 115.37571,
+"sa2": "Capel"
+},
+{
+"name": "Walyormouring",
+"pc": "6460",
+"lat": -31.20513,
+"lng": 116.87828,
+"sa2": "Dowerin"
+},
+{
+"name": "Walyunga National Park",
+"pc": "6084",
+"lat": -31.72763,
+"lng": 116.07091,
+"sa2": "Chittering"
+},
+{
+"name": "Walyurin",
+"pc": "6363",
+"lat": -32.87095,
+"lng": 118.25587,
+"sa2": "Kulin"
+},
+{
+"name": "Wamenusking",
+"pc": "6383",
+"lat": -32.147,
+"lng": 117.61694,
+"sa2": "Cunderdin"
+},
+{
+"name": "Wandana",
+"pc": "6532",
+"lat": -28.17601,
+"lng": 115.31889,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wandering",
+"pc": "6308",
+"lat": -32.67735,
+"lng": 116.67337,
+"sa2": "Brookton"
+},
+{
+"name": "Wandi",
+"pc": "6167",
+"lat": -32.19285,
+"lng": 115.88071,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Wandillup",
+"pc": "6256",
+"lat": -34.01161,
+"lng": 116.08553,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Wandina",
+"pc": "6530",
+"lat": -28.81789,
+"lng": 114.63572,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wanerie",
+"pc": "6503",
+"lat": -31.2015,
+"lng": 115.59545,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Wangara",
+"pc": "6065",
+"lat": -31.7915,
+"lng": 115.82812,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Wangara Dc",
+"pc": "6065",
+"lat": -31.7888,
+"lng": 115.814,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Wannamal",
+"pc": "6505",
+"lat": -31.14629,
+"lng": 116.15958,
+"sa2": "Chittering"
+},
+{
+"name": "Wannanup",
+"pc": "6210",
+"lat": -32.59774,
+"lng": 115.64826,
+"sa2": "Mandurah - South"
+},
+{
+"name": "Wanneroo",
+"pc": "6065",
+"lat": -31.7573,
+"lng": 115.80648,
+"sa2": "Wanneroo - Sinagra"
+},
+{
+"name": "Wansbrough",
+"pc": "6320",
+"lat": -34.14279,
+"lng": 117.67363,
+"sa2": "Kojonup"
+},
+{
+"name": "Warakurna",
+"pc": "0872",
+"lat": -25.0011,
+"lng": 128.288,
+"sa2": "Barkly"
+},
+{
+"name": "Warawarrup",
+"pc": "6220",
+"lat": -33.05212,
+"lng": 115.90768,
+"sa2": "Harvey"
+},
+{
+"name": "Warburton",
+"pc": "6431",
+"lat": -26.13388,
+"lng": 126.57864,
+"sa2": "Trafalgar (WA)"
+},
+{
+"name": "Wardering",
+"pc": "6311",
+"lat": -32.82428,
+"lng": 117.2981,
+"sa2": "Wagin"
+},
+{
+"name": "Warding East",
+"pc": "6405",
+"lat": -31.75851,
+"lng": 117.09035,
+"sa2": "Cunderdin"
+},
+{
+"name": "Warmun",
+"pc": "6743",
+"lat": -17.02973,
+"lng": 128.21077,
+"sa2": "Kununurra"
+},
+{
+"name": "Warnbro",
+"pc": "6169",
+"lat": -32.33676,
+"lng": 115.7595,
+"sa2": "Warnbro"
+},
+{
+"name": "Warner Glen",
+"pc": "6288",
+"lat": -34.12123,
+"lng": 115.21602,
+"sa2": "Augusta"
+},
+{
+"name": "Waroona",
+"pc": "6215",
+"lat": -32.843,
+"lng": 115.85263,
+"sa2": "Waroona"
+},
+{
+"name": "Warrachuppin",
+"pc": "6423",
+"lat": -31.0118,
+"lng": 118.69372,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Warradarge",
+"pc": "6518",
+"lat": -30.05683,
+"lng": 115.32925,
+"sa2": "Morawa"
+},
+{
+"name": "Warralakin",
+"pc": "6421",
+"lat": -30.96134,
+"lng": 118.59492,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Warrenup",
+"pc": "6330",
+"lat": -34.97574,
+"lng": 117.8473,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Warwick",
+"pc": "6024",
+"lat": -31.84213,
+"lng": 115.8128,
+"sa2": "Greenwood - Warwick"
+},
+{
+"name": "Waterbank",
+"pc": "6725",
+"lat": -17.8194,
+"lng": 122.22024,
+"sa2": "Roebuck"
+},
+{
+"name": "Watercarrin",
+"pc": "6407",
+"lat": -31.44058,
+"lng": 117.24132,
+"sa2": "Cunderdin"
+},
+{
+"name": "Waterford",
+"pc": "6152",
+"lat": -32.01446,
+"lng": 115.88966,
+"sa2": "Manning - Waterford"
+},
+{
+"name": "Waterloo",
+"pc": "6228",
+"lat": -33.33474,
+"lng": 115.76935,
+"sa2": "Dardanup"
+},
+{
+"name": "Watermans Bay",
+"pc": "6020",
+"lat": -31.8496,
+"lng": 115.755,
+"sa2": "Trigg - North Beach - Watermans Bay"
+},
+{
+"name": "Watheroo",
+"pc": "6513",
+"lat": -30.2613,
+"lng": 116.06824,
+"sa2": "Morawa"
+},
+{
+"name": "Wattening",
+"pc": "6568",
+"lat": -31.32535,
+"lng": 116.40058,
+"sa2": "Toodyay"
+},
+{
+"name": "Wattle Grove",
+"pc": "6107",
+"lat": -32.00815,
+"lng": 115.997,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Wattleup",
+"pc": "6166",
+"lat": -32.17711,
+"lng": 115.80312,
+"sa2": "Beeliar - Wattleup"
+},
+{
+"name": "Wattoning",
+"pc": "6479",
+"lat": -30.76613,
+"lng": 118.20923,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Webberton",
+"pc": "6530",
+"lat": -28.75346,
+"lng": 114.62959,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wedge Island",
+"pc": "6044",
+"lat": -30.79043,
+"lng": 115.2174,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Wedgecarrup",
+"pc": "6315",
+"lat": -33.42105,
+"lng": 117.184,
+"sa2": "Wagin"
+},
+{
+"name": "Wedgefield",
+"pc": "6721",
+"lat": -20.36351,
+"lng": 118.59037,
+"sa2": "Port Hedland"
+},
+{
+"name": "Welbungin",
+"pc": "6477",
+"lat": -30.82501,
+"lng": 117.99495,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Weld Range",
+"pc": "6640",
+"lat": -27.08928,
+"lng": 117.67463,
+"sa2": "Meekatharra"
+},
+{
+"name": "Wellard",
+"pc": "6170",
+"lat": -32.26327,
+"lng": 115.86291,
+"sa2": "Casuarina - Wandi"
+},
+{
+"name": "Wellesley",
+"pc": "6233",
+"lat": -33.21374,
+"lng": 115.76102,
+"sa2": "Harvey"
+},
+{
+"name": "Wellington Forest",
+"pc": "6236",
+"lat": -33.43395,
+"lng": 115.9461,
+"sa2": "Dardanup"
+},
+{
+"name": "Wellington Mill",
+"pc": "6236",
+"lat": -33.46517,
+"lng": 115.91017,
+"sa2": "Dardanup"
+},
+{
+"name": "Wellstead",
+"pc": "6328",
+"lat": -34.49525,
+"lng": 118.60146,
+"sa2": "Albany Surrounds"
+},
+{
+"name": "Welshpool",
+"pc": "6106",
+"lat": -31.99151,
+"lng": 115.94976,
+"sa2": "Welshpool"
+},
+{
+"name": "Welshpool Dc",
+"pc": "6106",
+"lat": -31.9891,
+"lng": 115.945,
+"sa2": "Welshpool"
+},
+{
+"name": "Wembley",
+"pc": "6014",
+"lat": -31.9343,
+"lng": 115.82,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "Wembley Downs",
+"pc": "6019",
+"lat": -31.91337,
+"lng": 115.77275,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "West Ballidu",
+"pc": "6606",
+"lat": -30.60991,
+"lng": 116.65462,
+"sa2": "Dowerin"
+},
+{
+"name": "West Beach",
+"pc": "6450",
+"lat": -33.87036,
+"lng": 121.88975,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "West Binnu",
+"pc": "6532",
+"lat": -28.01741,
+"lng": 114.54099,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "West Busselton",
+"pc": "6280",
+"lat": -33.65598,
+"lng": 115.32406,
+"sa2": "Capel"
+},
+{
+"name": "West Cape Howe",
+"pc": "6330",
+"lat": -35.10722,
+"lng": 117.6165,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "West Casuarinas",
+"pc": "6630",
+"lat": -28.9321,
+"lng": 115.265,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "West Coolup",
+"pc": "6214",
+"lat": -32.73998,
+"lng": 115.87455,
+"sa2": "Pinjarra"
+},
+{
+"name": "West End",
+"pc": "6530",
+"lat": -28.77833,
+"lng": 114.58585,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "West Fitzgerald",
+"pc": "6337",
+"lat": -33.80364,
+"lng": 119.32774,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "West Holleton",
+"pc": "6369",
+"lat": -32.0281,
+"lng": 119.03491,
+"sa2": "Merredin"
+},
+{
+"name": "West Island Cocos (Keeling) Islands",
+"pc": "6799",
+"lat": -12.1887,
+"lng": 96.82939,
+"sa2": "Cocos (Keeling) Islands"
+},
+{
+"name": "West Kalgoorlie",
+"pc": "6430",
+"lat": -30.78009,
+"lng": 121.4338,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "West Lamington",
+"pc": "6430",
+"lat": -30.75105,
+"lng": 121.45735,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "West Leederville",
+"pc": "6007",
+"lat": -31.94069,
+"lng": 115.83168,
+"sa2": "Wembley - West Leederville - Glendalough"
+},
+{
+"name": "West Lyons River",
+"pc": "6705",
+"lat": -24.45982,
+"lng": 115.61217,
+"sa2": "Exmouth"
+},
+{
+"name": "West Perth",
+"pc": "6005",
+"lat": -31.94533,
+"lng": 115.84743,
+"sa2": "Perth (West) - Northbridge"
+},
+{
+"name": "West Pingelly",
+"pc": "6308",
+"lat": -32.53277,
+"lng": 117.08407,
+"sa2": "Brookton"
+},
+{
+"name": "West Pinjarra",
+"pc": "6208",
+"lat": -32.64161,
+"lng": 115.8087,
+"sa2": "Pinjarra"
+},
+{
+"name": "West Popanyinning",
+"pc": "6309",
+"lat": -32.6808,
+"lng": 116.99147,
+"sa2": "Wagin"
+},
+{
+"name": "West River",
+"pc": "6346",
+"lat": -33.4892,
+"lng": 119.64273,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "West Swan",
+"pc": "6055",
+"lat": -31.84607,
+"lng": 115.9889,
+"sa2": "Perth Airport"
+},
+{
+"name": "West Toodyay",
+"pc": "6566",
+"lat": -31.52802,
+"lng": 116.40514,
+"sa2": "Toodyay"
+},
+{
+"name": "Westdale",
+"pc": "6304",
+"lat": -32.30976,
+"lng": 116.60743,
+"sa2": "York - Beverley"
+},
+{
+"name": "Westfield",
+"pc": "6111",
+"lat": -32.11215,
+"lng": 116.00433,
+"sa2": "Lesmurdie - Bickley - Carmel"
+},
+{
+"name": "Westminster",
+"pc": "6061",
+"lat": -31.86643,
+"lng": 115.84078,
+"sa2": "Dianella - North"
+},
+{
+"name": "Westonia",
+"pc": "6423",
+"lat": -31.28575,
+"lng": 118.69815,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Westwood",
+"pc": "6316",
+"lat": -33.56339,
+"lng": 117.32733,
+"sa2": "Katanning"
+},
+{
+"name": "Whim Creek",
+"pc": "6718",
+"lat": -20.8633,
+"lng": 117.83372,
+"sa2": "Roebourne"
+},
+{
+"name": "Whitby",
+"pc": "6123",
+"lat": -32.28267,
+"lng": 115.99646,
+"sa2": "Mundijong"
+},
+{
+"name": "White Gum Valley",
+"pc": "6162",
+"lat": -32.06135,
+"lng": 115.7682,
+"sa2": "Fremantle - South"
+},
+{
+"name": "White Peak",
+"pc": "6532",
+"lat": -28.6324,
+"lng": 114.64992,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Whiteman",
+"pc": "6068",
+"lat": -31.82247,
+"lng": 115.93497,
+"sa2": "Beechboro"
+},
+{
+"name": "Whittaker",
+"pc": "6207",
+"lat": -32.54777,
+"lng": 116.00867,
+"sa2": "Murray"
+},
+{
+"name": "Wialki",
+"pc": "6473",
+"lat": -30.46595,
+"lng": 118.07521,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Wicherina",
+"pc": "6532",
+"lat": -28.68486,
+"lng": 115.00405,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wicherina South",
+"pc": "6532",
+"lat": -28.78257,
+"lng": 115.01776,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wickepin",
+"pc": "6370",
+"lat": -32.78161,
+"lng": 117.50283,
+"sa2": "Kulin"
+},
+{
+"name": "Wickham",
+"pc": "6720",
+"lat": -20.6732,
+"lng": 117.14727,
+"sa2": "Roebourne"
+},
+{
+"name": "Widgiemooltha",
+"pc": "6443",
+"lat": -31.49492,
+"lng": 121.5746,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Wijilawarrim",
+"pc": "6743",
+"lat": -15.15904,
+"lng": 128.55651,
+"sa2": "Kununurra"
+},
+{
+"name": "Wilberforce",
+"pc": "6302",
+"lat": -31.7733,
+"lng": 116.71295,
+"sa2": "York - Beverley"
+},
+{
+"name": "Wilbinga",
+"pc": "6041",
+"lat": -31.39932,
+"lng": 115.60711,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Wilga",
+"pc": "6243",
+"lat": -33.7,
+"lng": 116.23333,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Wilga West",
+"pc": "6243",
+"lat": -33.70451,
+"lng": 116.13654,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Wilgarrup",
+"pc": "6258",
+"lat": -34.15194,
+"lng": 116.19845,
+"sa2": "Pemberton"
+},
+{
+"name": "Wilgoyne",
+"pc": "6479",
+"lat": -30.77541,
+"lng": 118.43968,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Willagee",
+"pc": "6156",
+"lat": -32.05247,
+"lng": 115.80226,
+"sa2": "Willagee"
+},
+{
+"name": "Willagee Central",
+"pc": "6156",
+"lat": -32.05247,
+"lng": 115.80226,
+"sa2": "Willagee"
+},
+{
+"name": "Willare",
+"pc": "6728",
+"lat": -17.72655,
+"lng": 123.65655,
+"sa2": "Derby - West Kimberley"
+},
+{
+"name": "Willetton",
+"pc": "6155",
+"lat": -32.04878,
+"lng": 115.89215,
+"sa2": "Canning Vale - East"
+},
+{
+"name": "William Bay",
+"pc": "6333",
+"lat": -34.98663,
+"lng": 117.20882,
+"sa2": "Denmark"
+},
+{
+"name": "Williams",
+"pc": "6391",
+"lat": -33.0191,
+"lng": 116.75,
+"sa2": "Wagin"
+},
+{
+"name": "Williamstown",
+"pc": "6430",
+"lat": -30.74444,
+"lng": 121.48513,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Willyung",
+"pc": "6330",
+"lat": -34.93913,
+"lng": 117.85782,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Wilson",
+"pc": "6107",
+"lat": -32.0197,
+"lng": 115.91161,
+"sa2": "Forrestfield - Wattle Grove"
+},
+{
+"name": "Wiluna",
+"pc": "6646",
+"lat": -26.59432,
+"lng": 120.22735,
+"sa2": "Meekatharra"
+},
+{
+"name": "Wilyabrup",
+"pc": "6280",
+"lat": -33.77119,
+"lng": 115.03423,
+"sa2": "Capel"
+},
+{
+"name": "Winchester",
+"pc": "6517",
+"lat": -29.7641,
+"lng": 116.024,
+"sa2": "Morawa"
+},
+{
+"name": "Windabout",
+"pc": "6450",
+"lat": -33.82244,
+"lng": 121.91061,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Windy Harbour",
+"pc": "6262",
+"lat": -34.8084,
+"lng": 116.07398,
+"sa2": "Pemberton"
+},
+{
+"name": "Wingellina",
+"pc": "0872",
+"lat": -26.0644,
+"lng": 128.931,
+"sa2": "Barkly"
+},
+{
+"name": "Winnejup",
+"pc": "6255",
+"lat": -33.9685,
+"lng": 116.32538,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Winthrop",
+"pc": "6150",
+"lat": -32.05179,
+"lng": 115.82972,
+"sa2": "Winthrop"
+},
+{
+"name": "Witchcliffe",
+"pc": "6286",
+"lat": -34.01685,
+"lng": 115.09732,
+"sa2": "Augusta"
+},
+{
+"name": "Withers",
+"pc": "6230",
+"lat": -33.36536,
+"lng": 115.63769,
+"sa2": "Withers - Usher"
+},
+{
+"name": "Wittenoom",
+"pc": "6751",
+"lat": -22.2739,
+"lng": 118.32116,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Wittenoom Hills",
+"pc": "6447",
+"lat": -33.48258,
+"lng": 122.12405,
+"sa2": "Esperance Surrounds"
+},
+{
+"name": "Wogolin",
+"pc": "6370",
+"lat": -32.79779,
+"lng": 117.82856,
+"sa2": "Kulin"
+},
+{
+"name": "Wokalup",
+"pc": "6221",
+"lat": -33.10977,
+"lng": 115.8714,
+"sa2": "Harvey"
+},
+{
+"name": "Womarden",
+"pc": "6519",
+"lat": -29.49603,
+"lng": 115.87895,
+"sa2": "Morawa"
+},
+{
+"name": "Wongamine",
+"pc": "6401",
+"lat": -31.47116,
+"lng": 116.62076,
+"sa2": "Northam"
+},
+{
+"name": "Wongan Hills",
+"pc": "6603",
+"lat": -30.83144,
+"lng": 116.69944,
+"sa2": "Dowerin"
+},
+{
+"name": "Wongoondy",
+"pc": "6630",
+"lat": -28.82625,
+"lng": 115.51612,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Wonnerup",
+"pc": "6280",
+"lat": -33.61813,
+"lng": 115.42219,
+"sa2": "Capel"
+},
+{
+"name": "Wonthella",
+"pc": "6530",
+"lat": -28.76717,
+"lng": 114.62466,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Woodanilling",
+"pc": "6316",
+"lat": -33.5634,
+"lng": 117.43111,
+"sa2": "Katanning"
+},
+{
+"name": "Woodbridge",
+"pc": "6056",
+"lat": -31.89124,
+"lng": 115.9929,
+"sa2": "Kalamunda - Maida Vale - Gooseberry Hill"
+},
+{
+"name": "Woodlands",
+"pc": "6018",
+"lat": -31.90894,
+"lng": 115.79259,
+"sa2": "Wembley Downs - Churchlands - Woodlands"
+},
+{
+"name": "Woodleigh",
+"pc": "6701",
+"lat": -26.20807,
+"lng": 114.87658,
+"sa2": "Exmouth"
+},
+{
+"name": "Woodridge",
+"pc": "6041",
+"lat": -31.33696,
+"lng": 115.59973,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Woodvale",
+"pc": "6026",
+"lat": -31.79451,
+"lng": 115.7961,
+"sa2": "Woodvale"
+},
+{
+"name": "Woogenellup",
+"pc": "6324",
+"lat": -34.52409,
+"lng": 117.87895,
+"sa2": "Plantagenet"
+},
+{
+"name": "Woolgorong",
+"pc": "6630",
+"lat": -27.74558,
+"lng": 115.8304,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Woolocutty",
+"pc": "6369",
+"lat": -32.16528,
+"lng": 119.00867,
+"sa2": "Merredin"
+},
+{
+"name": "Wooramel",
+"pc": "6701",
+"lat": -25.75606,
+"lng": 114.27007,
+"sa2": "Exmouth"
+},
+{
+"name": "Wooroloo",
+"pc": "6558",
+"lat": -31.80298,
+"lng": 116.31314,
+"sa2": "Chidlow"
+},
+{
+"name": "Woorree",
+"pc": "6530",
+"lat": -28.76828,
+"lng": 114.65905,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Woottating",
+"pc": "6562",
+"lat": -31.88202,
+"lng": 116.45586,
+"sa2": "Northam"
+},
+{
+"name": "Worsley",
+"pc": "6225",
+"lat": -33.32053,
+"lng": 115.98024,
+"sa2": "Wagin"
+},
+{
+"name": "Wubin",
+"pc": "6612",
+"lat": -30.10652,
+"lng": 116.63014,
+"sa2": "Meekatharra"
+},
+{
+"name": "Wundowie",
+"pc": "6560",
+"lat": -31.75016,
+"lng": 116.36037,
+"sa2": "Northam"
+},
+{
+"name": "Wungong",
+"pc": "6112",
+"lat": -32.18192,
+"lng": 116.00396,
+"sa2": "Piara Waters - Forrestdale"
+},
+{
+"name": "Wuraming",
+"pc": "6390",
+"lat": -32.83119,
+"lng": 116.27359,
+"sa2": "Murray"
+},
+{
+"name": "Wyalkatchem",
+"pc": "6485",
+"lat": -31.29518,
+"lng": 117.35583,
+"sa2": "Dowerin"
+},
+{
+"name": "Wyening",
+"pc": "6568",
+"lat": -31.15727,
+"lng": 116.54222,
+"sa2": "Toodyay"
+},
+{
+"name": "Wyndham",
+"pc": "6740",
+"lat": -15.5847,
+"lng": 128.22,
+"sa2": "Kununurra"
+},
+{
+"name": "Wyola",
+"pc": "6407",
+"lat": -31.56428,
+"lng": 117.37022,
+"sa2": "Cunderdin"
+},
+{
+"name": "Wyola West",
+"pc": "6407",
+"lat": -31.52713,
+"lng": 117.31803,
+"sa2": "Cunderdin"
+},
+{
+"name": "Xantippe",
+"pc": "6609",
+"lat": -30.24065,
+"lng": 116.99949,
+"sa2": "Moora"
+},
+{
+"name": "Yabberup",
+"pc": "6239",
+"lat": -33.5378,
+"lng": 116.00759,
+"sa2": "Donnybrook - Balingup"
+},
+{
+"name": "Yakamia",
+"pc": "6330",
+"lat": -35.00016,
+"lng": 117.88226,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Yalardy",
+"pc": "6701",
+"lat": -26.09604,
+"lng": 115.24715,
+"sa2": "Exmouth"
+},
+{
+"name": "Yalgoo",
+"pc": "6635",
+"lat": -28.34006,
+"lng": 116.68294,
+"sa2": "Meekatharra"
+},
+{
+"name": "Yallabatharra",
+"pc": "6535",
+"lat": -28.01298,
+"lng": 114.19878,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Yallingup",
+"pc": "6282",
+"lat": -33.6726,
+"lng": 115.03083,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "Yallingup Siding",
+"pc": "6282",
+"lat": -33.69864,
+"lng": 115.10576,
+"sa2": "Busselton Surrounds"
+},
+{
+"name": "Yalyalup",
+"pc": "6280",
+"lat": -33.66524,
+"lng": 115.38606,
+"sa2": "Capel"
+},
+{
+"name": "Yanchep",
+"pc": "6035",
+"lat": -31.53653,
+"lng": 115.73385,
+"sa2": "Yanchep"
+},
+{
+"name": "Yandanooka",
+"pc": "6522",
+"lat": -29.28808,
+"lng": 115.63674,
+"sa2": "Morawa"
+},
+{
+"name": "Yandoo Creek",
+"pc": "6701",
+"lat": -24.31299,
+"lng": 114.32871,
+"sa2": "Exmouth"
+},
+{
+"name": "Yangebup",
+"pc": "6164",
+"lat": -32.12181,
+"lng": 115.80825,
+"sa2": "Jandakot"
+},
+{
+"name": "Yanmah",
+"pc": "6258",
+"lat": -34.18349,
+"lng": 116.01911,
+"sa2": "Pemberton"
+},
+{
+"name": "Yannarie",
+"pc": "6710",
+"lat": -22.86419,
+"lng": 114.95476,
+"sa2": "Ashburton (WA)"
+},
+{
+"name": "Yarawindah",
+"pc": "6509",
+"lat": -31.07857,
+"lng": 116.23844,
+"sa2": "Moora"
+},
+{
+"name": "Yardarino",
+"pc": "6525",
+"lat": -29.25938,
+"lng": 115.00602,
+"sa2": "Irwin"
+},
+{
+"name": "Yarding",
+"pc": "6418",
+"lat": -31.876,
+"lng": 117.95,
+"sa2": "Merredin"
+},
+{
+"name": "Yarloop",
+"pc": "6218",
+"lat": -32.95717,
+"lng": 115.86401,
+"sa2": "Harvey"
+},
+{
+"name": "Yarragadee",
+"pc": "6522",
+"lat": -29.12006,
+"lng": 115.44181,
+"sa2": "Morawa"
+},
+{
+"name": "Yathroo",
+"pc": "6507",
+"lat": -30.84658,
+"lng": 115.85623,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Yeagarup",
+"pc": "6260",
+"lat": -34.48589,
+"lng": 115.93805,
+"sa2": "Pemberton"
+},
+{
+"name": "Yeal",
+"pc": "6503",
+"lat": -31.438,
+"lng": 115.71885,
+"sa2": "Gingin - Dandaragan"
+},
+{
+"name": "Yealering",
+"pc": "6372",
+"lat": -32.62758,
+"lng": 117.62001,
+"sa2": "Kulin"
+},
+{
+"name": "Yebble",
+"pc": "6285",
+"lat": -33.91582,
+"lng": 115.08261,
+"sa2": "Pemberton"
+},
+{
+"name": "Yelbeni",
+"pc": "6487",
+"lat": -31.16919,
+"lng": 117.66293,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Yellowdine",
+"pc": "6426",
+"lat": -31.16831,
+"lng": 119.69003,
+"sa2": "Mukinbudin"
+},
+{
+"name": "Yelverton",
+"pc": "6280",
+"lat": -33.75021,
+"lng": 115.11262,
+"sa2": "Capel"
+},
+{
+"name": "Yerecoin",
+"pc": "6571",
+"lat": -30.91392,
+"lng": 116.44299,
+"sa2": "Moora"
+},
+{
+"name": "Yetna",
+"pc": "6532",
+"lat": -28.62232,
+"lng": 114.68201,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Yilkari",
+"pc": "6430",
+"lat": -30.82493,
+"lng": 121.44336,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Yilliminning",
+"pc": "6312",
+"lat": -32.87191,
+"lng": 117.41675,
+"sa2": "Wagin"
+},
+{
+"name": "Yoganup",
+"pc": "6275",
+"lat": -33.73891,
+"lng": 115.54702,
+"sa2": "Pemberton"
+},
+{
+"name": "Yokine",
+"pc": "6060",
+"lat": -31.9015,
+"lng": 115.84942,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Yokine South",
+"pc": "6060",
+"lat": -31.9105,
+"lng": 115.849,
+"sa2": "Yokine - Coolbinia - Menora"
+},
+{
+"name": "Yoongarillup",
+"pc": "6280",
+"lat": -33.71497,
+"lng": 115.42361,
+"sa2": "Capel"
+},
+{
+"name": "York",
+"pc": "6302",
+"lat": -31.8935,
+"lng": 116.76818,
+"sa2": "York - Beverley"
+},
+{
+"name": "Yorkrakine",
+"pc": "6409",
+"lat": -31.36981,
+"lng": 117.55101,
+"sa2": "Cunderdin"
+},
+{
+"name": "Yornaning",
+"pc": "6311",
+"lat": -32.74201,
+"lng": 117.16362,
+"sa2": "Wagin"
+},
+{
+"name": "Yornup",
+"pc": "6256",
+"lat": -34.05545,
+"lng": 116.16977,
+"sa2": "Bridgetown - Boyup Brook"
+},
+{
+"name": "Yoting",
+"pc": "6383",
+"lat": -31.9622,
+"lng": 117.59166,
+"sa2": "Cunderdin"
+},
+{
+"name": "Youndegin",
+"pc": "6407",
+"lat": -31.79941,
+"lng": 117.29395,
+"sa2": "Cunderdin"
+},
+{
+"name": "Youngs Siding",
+"pc": "6330",
+"lat": -35.00113,
+"lng": 117.5163,
+"sa2": "McKail - Willyung"
+},
+{
+"name": "Yourdamung Lake",
+"pc": "6225",
+"lat": -33.17059,
+"lng": 116.31169,
+"sa2": "Wagin"
+},
+{
+"name": "Yuna",
+"pc": "6532",
+"lat": -28.20052,
+"lng": 115.03326,
+"sa2": "Northampton - Mullewa - Greenough"
+},
+{
+"name": "Zanthus",
+"pc": "6434",
+"lat": -30.75231,
+"lng": 124.03637,
+"sa2": "Kambalda - Coolgardie - Norseman"
+},
+{
+"name": "Zuytdorp",
+"pc": "6536",
+"lat": -27.3997,
+"lng": 114.20011,
+"sa2": "Northampton - Mullewa - Greenough"
+}
+]
+}

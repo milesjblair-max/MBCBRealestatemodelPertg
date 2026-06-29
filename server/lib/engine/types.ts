@@ -28,6 +28,17 @@ export interface Suburb {
   why?: string;
 }
 
+// ---- WA-wide base layer (every WA suburb, so the anchor can be anywhere) ----
+// Free, factual data only (coordinates + ABS SA2). Medians/scores/listings are
+// layered on elsewhere, never invented here. See scripts/build_wa_base_layer.py.
+export interface WaSuburb {
+  name: string;
+  pc: string;
+  lat: number;
+  lng: number;
+  sa2: string; // ABS SA2 name, for later demographic joins
+}
+
 // ---- Dynamic buyer profile (what a user stipulates to the MCP) -------------
 
 export type LifeStage =

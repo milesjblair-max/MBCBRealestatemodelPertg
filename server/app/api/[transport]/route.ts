@@ -20,6 +20,7 @@ import { resolveProfile } from "@/lib/engine/profile";
 import { rankSuburbsForProfile, matchListings } from "@/lib/engine/recommend";
 import { ONBOARDING_QUESTIONS } from "@/lib/engine/onboarding";
 import { SUBURBS, loadListings } from "@/lib/engine/data";
+import { nearbyWaSuburbs } from "@/lib/engine/baselayer";
 import type { BuyerProfile } from "@/lib/engine/types";
 
 import { ProfileSchema, CONDITIONS } from "@/lib/schema";
@@ -116,6 +117,23 @@ const handler = createMcpHandler(
     );
 
     server.tool(
+      "nearby_suburbs",
+      "Find the WA suburbs nearest ANY anchor - anchor anywhere in WA (Mandurah, Albany, Geraldton, not just the curated set). Returns real suburbs sorted by distance from the WA-wide base layer (~1800 suburbs). This is geographic coverage; price and fit scoring for arbitrary suburbs is being layered on next.",
+      {
+        anchor: z.string().describe("Any WA suburb to centre on, e.g. 'Mandurah'."),
+        radius_km: z.number().positive().optional().describe("Max distance from the anchor in km. Default 15."),
+        limit: z.number().int().min(1).max(50).optional().describe("How many suburbs to return. Default 12."),
+      },
+      async ({ anchor, radius_km, limit }) => {
+        try {
+          return json(nearbyWaSuburbs(anchor, { maxKm: radius_km, limit }));
+        } catch (e) {
+          return json({ error: (e as Error).message });
+        }
+      },
+    );
+
+    server.tool(
       "onboarding_questions",
       "Return the onboarding question set the MCP asks a new buyer (region, anchor, age, income, finances, life stage, criteria, filters). Ask these, then call resolve_profile.",
       {},
@@ -135,6 +153,7 @@ const handler = createMcpHandler(
           start_here:
             "Give your anchor suburb + income + deposit + what matters most (schools / proximity / land). I will resolve your profile and return a dashboard link. No commands to memorise.",
           what_it_can_do: [
+            "Anchor ANYWHERE in WA and find the nearest real suburbs (nearby_suburbs) - ~1800 suburbs, e.g. Mandurah returns Halls Head, Erskine, Greenfields",
             "Estimate a specific house's price and fit (estimate_price, assess_property)",
             "Resolve your budget, affordability gap to your anchor, and buy-timing (resolve_profile)",
             "Rank the model's curated WA suburb set for you and count which are viable (rank_suburbs_for_profile)",
@@ -145,9 +164,10 @@ const handler = createMcpHandler(
           prompts: ["find_a_home", "see_listings", "estimate_a_listing", "about_this_tool"],
           suburbs: SUBURBS.map((s) => s.name),
           coverage:
-            `${SUBURBS.length} curated WA suburbs - a middle-ring cluster, NOT all of Perth. Suburbs outside this list ` +
-            `(for example Morley, Yokine, Inglewood, Noranda, or anything further out for more land) are not scored, ` +
-            `so any 'viable' count is of the suburbs the model knows, not of Perth. Say this plainly; do not imply full coverage.`,
+            `Geographic coverage is now WA-wide: ~1800 suburbs in the base layer, so you can anchor anywhere ` +
+            `(use nearby_suburbs). Rich fit-scoring (budget + criteria + listings) currently runs on the ${SUBURBS.length} ` +
+            `curated suburbs; for an anchor outside that set, nearby_suburbs returns the real neighbours but price/fit ` +
+            `scoring for them is still being layered in. Be honest about which suburbs are fully scored vs only located.`,
           example_dashboard: dashboardUrl({
             region: "WA",
             anchor: "Como",
