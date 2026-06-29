@@ -208,8 +208,12 @@ def normalise(items, suburb, pc, median_low_k):
             url = f"https://www.realestate.com.au/buy/in-{suburb.lower().replace(' ', '+')}%2c+wa+{pc}/list-1"
         addr = _dig(L, "address.streetAddress", "address.displayAddress", "title", default=f"{suburb} {pc}")
         bargain = bool(price_n and median_low_k and price_n <= median_low_k * 1000 * 0.97)
-        meets = bool((beds is None or beds >= MIN_BEDS) and (not land or land >= MIN_LAND)
-                     and (not price_n or price_n <= MAX_PRICE))
+        # 'meets' requires KNOWN values that satisfy each hard filter. Unknown is
+        # NOT a pass: null land does not meet a land minimum, it is just unknown.
+        # (Matches the MCP's live matchListings logic.)
+        meets = bool(beds is not None and beds >= MIN_BEDS
+                     and land is not None and land >= MIN_LAND
+                     and price_n is not None and price_n <= MAX_PRICE)
         out.append({
             "suburb": suburb, "pc": pc, "price": price_n, "priceText": price_txt,
             "beds": beds, "baths": baths, "cars": cars, "land": land,

@@ -27,7 +27,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-parkwood-151186220",
       "direct": true,
       "bargain": true,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, $800,000 - priced below the ~$920k suburb median; potential bargain.",
       "new": false
     },
@@ -45,7 +45,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-riverton-150662260",
       "direct": true,
       "bargain": true,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, $849,000 - priced below the ~$1020k suburb median; potential bargain.",
       "new": false
     },
@@ -63,7 +63,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-dianella-150137620",
       "direct": true,
       "bargain": true,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, $900,000 - priced below the ~$970k suburb median; potential bargain.",
       "new": true
     },
@@ -99,7 +99,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151578372",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, $799,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -117,7 +117,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151452192",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "5-bed, $800,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -135,7 +135,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151611676",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, $925,236 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -171,7 +171,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151598836",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, $940,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -207,7 +207,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-wilson-151589916",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, $950,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -243,7 +243,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151286116",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, $965,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -261,7 +261,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bayswater-151423508",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, $979,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -315,7 +315,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bayswater-151333008",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, $999,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -369,7 +369,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-dianella-150701136",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, $1,000,000 - meets beds/land/budget criteria.",
       "new": false
     },
@@ -423,7 +423,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-wilson-150972712",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, 880sqm - meets beds/land/budget criteria.",
       "new": false
     },
@@ -441,7 +441,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-parkwood-151318792",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, 690sqm - meets beds/land/budget criteria.",
       "new": false
     },
@@ -459,7 +459,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-st+james-151130784",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, 801sqm - meets beds/land/budget criteria.",
       "new": false
     },
@@ -477,7 +477,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-dianella-151448052",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, 576sqm - meets beds/land/budget criteria.",
       "new": false
     },
@@ -495,7 +495,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-dianella-151585340",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "4-bed, 720sqm - meets beds/land/budget criteria.",
       "new": false
     },
@@ -531,7 +531,7 @@
       "url": "https://www.realestate.com.au/property-house-wa-bayswater-150546584",
       "direct": true,
       "bargain": false,
-      "meets": true,
+      "meets": false,
       "reason": "3-bed, 722sqm - meets beds/land/budget criteria.",
       "new": false
     }

@@ -279,12 +279,23 @@ const handler = createMcpHandler(
     // ---- Live listings (external API) --------------------------------------
     server.tool(
       "search_listings",
-      "Search live for-sale houses (3+ beds, <=$1.1M, with photos) in the in-budget WA target suburbs via the Realty in AU API. Falls back to the committed sample when no RAPIDAPI_KEY is configured.",
+      "Browse live for-sale houses (3+ beds, <=$1.1M, with photos) in the CURATED in-budget WA suburbs via the Realty in AU API. This is a raw feed with NO buyer profile, so it does NOT judge criteria-fit: to know whether listings meet a specific buyer's filters (land, beds, distance), use match_listings with their profile instead. For listings around an anchor OUTSIDE the curated set (e.g. Mandurah), use recommend_areas. Falls back to the committed sample when no RAPIDAPI_KEY is configured.",
       {
-        suburb: z.string().optional().describe("Restrict to one in-budget suburb; omit to sweep the targets."),
+        suburb: z.string().optional().describe("Restrict to one curated in-budget suburb; omit to sweep the targets."),
         cap: z.number().int().min(1).max(8).optional().describe("How many suburbs to sweep when no suburb is given. Default 4."),
       },
-      async ({ suburb, cap }) => json(await searchListingsLive({ suburb, cap })),
+      async ({ suburb, cap }) => {
+        const r = await searchListingsLive({ suburb, cap });
+        // Strip the baked, profile-less criteria verdict: 'meets'/'reason' only
+        // mean something against a buyer's filters, which this tool does not have.
+        // (match_listings computes a live, null-safe 'meets' from the profile.)
+        const listings = r.listings.map(({ meets, reason, ...keep }) => keep);
+        return json({
+          ...r,
+          listings,
+          criteria_fit: "not evaluated here (no profile). Use match_listings with a profile for a per-listing 'meets' verdict.",
+        });
+      },
     );
 
     // Guided prompts (the "/" menu): the scoped, form-driven front door.

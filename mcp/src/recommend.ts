@@ -61,9 +61,25 @@ export function rankSuburbsForProfile(rp: ResolvedProfile): SuburbMatch[] {
 export interface ListingMatch extends Listing {
   fit: number;
   km: number | null;
+  meets: boolean; // satisfies EVERY hard filter, computed live against THIS profile
+  meetsNotes: string[]; // when meets is false, the plain-English reasons
 }
 
-/** Filter listings to the profile's hard constraints, then rank by suburb fit. */
+/** Match listings to the buyer's profile. Two distinct ideas, kept separate on
+ *  purpose:
+ *
+ *  - EXCLUDE (dropped from the result): a listing that DEFINITELY fails a hard
+ *    filter on KNOWN data - over the budget ceiling, beyond max distance, or
+ *    fewer beds than required. No point showing these.
+ *  - meets (a flag on what IS shown): does it satisfy every hard filter on the
+ *    data we actually have? Crucially, UNKNOWN is not a pass: a listing with
+ *    `land: null` does NOT meet a 700sqm rule, it is simply unknown, so meets is
+ *    false with a note. (This is the null-land bug fix: previously null land was
+ *    silently treated as meeting any land minimum.)
+ *
+ *  Near-miss land (e.g. 520sqm against a 700 rule) is kept but flagged meets:
+ *  false so the buyer can see it under "best fit" without it lying about the
+ *  criteria. `meets` always reflects THIS profile's filters, never a baked value. */
 export function matchListings(rp: ResolvedProfile, listings: Listing[] = []): ListingMatch[] {
   const out: ListingMatch[] = [];
   for (const L of listings) {
@@ -71,18 +87,28 @@ export function matchListings(rp: ResolvedProfile, listings: Listing[] = []): Li
     const dist = s ? distanceKm(rp.anchor, s) : null;
     const price = L.price ?? parsePrice(L.priceText);
 
-    const okBeds = !rp.filters.min_beds || (L.beds ?? 0) >= rp.filters.min_beds;
-    const okLand = !rp.filters.min_land || !L.land || L.land >= rp.filters.min_land;
-    const okBudget = !price || price <= rp.budget.ceiling;
-    const okDist =
-      rp.filters.max_distance_km == null || dist == null || dist <= rp.filters.max_distance_km;
-    if (!(okBeds && okLand && okBudget && okDist)) continue;
+    // Hard EXCLUDES: a known value that definitively breaks a hard filter.
+    if (rp.filters.min_beds && L.beds != null && L.beds < rp.filters.min_beds) continue;
+    if (price && price > rp.budget.ceiling) continue;
+    if (rp.filters.max_distance_km != null && dist != null && dist > rp.filters.max_distance_km) continue;
+
+    // meets: does it satisfy every hard filter on KNOWN data? Unknown != pass.
+    const notes: string[] = [];
+    if (rp.filters.min_land) {
+      if (L.land == null) notes.push(`land size unknown (not confirmed >= ${rp.filters.min_land}sqm)`);
+      else if (L.land < rp.filters.min_land) notes.push(`land ${L.land}sqm is under ${rp.filters.min_land}sqm`);
+    }
+    if (rp.filters.min_beds && L.beds == null) notes.push(`beds unknown (need ${rp.filters.min_beds}+)`);
+    if (!price) notes.push("price on application (not confirmed within budget)");
 
     out.push({
       ...L,
+      meets: notes.length === 0,
+      meetsNotes: notes,
       fit: s ? scoreSuburbForProfile(s, rp).score : 0,
       km: dist != null ? Math.round(dist * 10) / 10 : null,
     });
   }
-  return out.sort((a, b) => b.fit - a.fit);
+  // Confirmed matches first, then by suburb fit.
+  return out.sort((a, b) => Number(b.meets) - Number(a.meets) || b.fit - a.fit);
 }
