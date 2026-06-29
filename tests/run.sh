@@ -58,8 +58,20 @@ else
   echo "  (server/ not present, skipped)"
 fi
 
+echo "== 6b. Phase 2 server: typecheck + deep-link unit tests =="
+if [ -d server ] && [ -d server/node_modules ]; then
+  ( cd server && npm run -s typecheck >/tmp/server_tc.log 2>&1 && npm run -s test >/tmp/server_test.log 2>&1 )
+  if [ $? -eq 0 ]; then
+    echo "  typecheck ok; $(grep -o 'links: .*' /tmp/server_test.log | tail -1)"
+  else
+    echo "  SERVER checks FAILED"; tail -8 /tmp/server_tc.log /tmp/server_test.log; fail=1
+  fi
+else
+  echo "  (server deps not installed, skipped)"
+fi
+
 echo "== 7. no em/en/minus dashes in Phase 1/2 sources =="
-if grep -rlP "[\x{2013}\x{2014}\x{2212}]" mcp/src mcp/test mcp/*.md server/app server/lib server/scripts server/*.md data/profile.schema.json data/profiles 2>/dev/null; then
+if grep -rlP "[\x{2013}\x{2014}\x{2212}]" mcp/src mcp/test mcp/*.md server/app server/lib server/scripts server/test server/*.md data/profile.schema.json data/profiles 2>/dev/null; then
   echo "  DASH FOUND ^^^"; fail=1
 else
   echo "  clean"

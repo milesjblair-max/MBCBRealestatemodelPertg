@@ -219,6 +219,22 @@ await page.waitForTimeout(350);
 const scrollY = await page.evaluate(() => window.scrollY);
 ok(scrollY < 5, 'page opens at the top even with a #listings hash (scrollY=' + scrollY + ')');
 
+// ---- deep-link hydration: query params pre-set the view (the MCP hand-off) ----
+await page.goto('about:blank');
+await page.goto(url + '?prior=85&tab=modelling&bear=10&base=20&bull=70');
+await page.waitForTimeout(350);
+const hy = await page.evaluate(() => ({
+  prior: document.getElementById('priorSlider').value,
+  bear: document.getElementById('bearW').textContent,
+  base: document.getElementById('baseW').textContent,
+  bull: document.getElementById('bullW').textContent,
+  modellingActive: document.querySelector('.tab[data-target="modelling"]').classList.contains('active'),
+}));
+ok(hy.prior === '85', 'deep-link ?prior=85 sets the proximity-vs-schools slider (' + hy.prior + ')');
+ok(hy.modellingActive, 'deep-link ?tab=modelling opens the modelling tab');
+ok(hy.bear === '10' && hy.base === '20' && hy.bull === '70',
+  'deep-link weights hydrate the scenario sliders (' + hy.bear + '/' + hy.base + '/' + hy.bull + ')');
+
 // ---- no console errors accumulated through all interactions ----
 ok(consoleErrors.length === 0, 'no console errors after interactions: ' + JSON.stringify(consoleErrors));
 

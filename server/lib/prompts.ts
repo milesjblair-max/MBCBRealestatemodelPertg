@@ -11,6 +11,7 @@
 
 import { z } from "zod";
 import { SUBURBS } from "@/lib/engine/data";
+import { toolUrl, priorFromPriority } from "@/lib/links";
 
 const ANCHORS = SUBURBS.map((s) => s.name).join(", ");
 
@@ -76,7 +77,9 @@ export function registerPrompts(server: any): void {
         .optional()
         .describe("Years until you want to be living in the home, e.g. 3."),
     },
-    (a: Record<string, string | undefined>) => ({
+    (a: Record<string, string | undefined>) => {
+      const link = toolUrl({ tab: "modelling", prior: priorFromPriority(a.priority) });
+      return {
       messages: [
         {
           role: "user",
@@ -101,16 +104,54 @@ export function registerPrompts(server: any): void {
               `- filters.max_distance_km: ${a.max_distance_km && a.max_distance_km.trim() !== "" ? a.max_distance_km : "none (do not cap distance)"}`,
               `- horizon_years: ${a.horizon_years ?? "ASK if buy-timing is wanted"}`,
               "",
-              "THEN present, concisely (no rambling):",
-              "1. One line confirming this is the WA Como model and the resolved budget band. If the band used borrowed funds (a credit facility or released equity), note the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
-              "2. The buy-timing posture (act-now / balanced / patient-opportunistic) with its one-line reason.",
-              "3. A ranked suburb table: suburb, km from anchor, score, in-budget (yes/no).",
-              "4. At most one honest caveat (e.g. WA school catchments are drawn street by street, so 'in Shelley' does not guarantee the Rossmoyne intake; or the anchor itself may be over budget).",
+              "THEN present it as a clean, scannable dashboard in this exact order (use Markdown; no rambling):",
+              "1. BUDGET: one line confirming this is the WA Como model and the resolved band (floor to ceiling). If borrowed funds were used (a credit facility or released equity), add the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
+              "2. BUYING WINDOW: the buy-timing posture (act-now / balanced / patient-opportunistic) as a bold heading, with its one-line reason. If patient, name the 2027 soft-patch window.",
+              "3. THE 3 SCENARIOS: call the forecast tool and render a small Markdown table with columns Scenario | End-27 (buy window) | Mid-29, rows Bear / Base / Bull, plus an Expected row. Bold the Expected Mid-29 figure.",
+              "4. WHERE TO BUY: render the ranking as a heat table: one row per suburb with columns Suburb | km | Fit, and append a bar made of block characters to the Fit cell so it reads visually, e.g. a score of 82 -> `8.2 ████████░░`. Mark over-budget suburbs.",
+              `5. FULL VISUAL VIEW: end with this exact line so the user can open the interactive fan chart, heat map and tiles: \"Open the full visual view: ${link}\".`,
+              "6. NEXT STEP: tell the user to run the /see_listings prompt to see matching properties as photo cards.",
+              "7. At most one honest caveat (e.g. WA school catchments are drawn street by street, so 'in Shelley' does not guarantee the Rossmoyne intake; or the anchor itself may be over budget).",
             ].join("\n"),
           },
         },
       ],
-    }),
+      };
+    },
+  );
+
+  // ---- 1b. The listings view: photo cards (bargain / meets / best fit) ----
+  server.prompt(
+    "see_listings",
+    "Show current WA listings as photo cards, grouped into bargains, ones that meet your criteria, and best fit. Run this after /find_a_home.",
+    {
+      live: z
+        .string()
+        .optional()
+        .describe("Enter yes to pull fresh listings from RapidAPI (needs RAPIDAPI_KEY); otherwise the latest saved feed is used."),
+    },
+    (a: Record<string, string | undefined>) => {
+      const wantLive = (a.live ?? "").toLowerCase().startsWith("y");
+      const link = toolUrl({ tab: "listings" });
+      return {
+        messages: [
+          {
+            role: "user",
+            content: {
+              type: "text",
+              text: [
+                SCOPE_LINE,
+                "TASK: Use the buyer profile already established earlier in this conversation (anchor, budget, filters). If none exists yet, ask the user to run /find_a_home first and stop.",
+                `Call match_listings with that profile${wantLive ? " and live=true" : ""}. Then present the results as PHOTO CARDS using Markdown, grouped under three headings in this order: \"Bargains\", \"Meets your criteria\", \"Best fit\".`,
+                "For each listing render a card: the photo as a Markdown image on its own line (![home](IMAGE_URL)) only if image is present (never invent or show a broken image), then a bold line with the address, then a line with price, beds, baths, land and the fit score, then the link as a Markdown link labelled 'View listing'. Skip the photo line entirely when image is null.",
+                "Keep each card tight. If there are no matches, say so and suggest widening max_distance_km or budget.",
+                `End with: \"Open the full listings view with the tiles and heat map: ${link}\".`,
+              ].join("\n"),
+            },
+          },
+        ],
+      };
+    },
   );
 
   // ---- 2. Price + fit on a specific listing -----------------------------

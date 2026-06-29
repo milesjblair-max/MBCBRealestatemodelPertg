@@ -16,7 +16,7 @@
 // present (an isolated upload of just server/), it no-ops and the committed
 // copies are used.
 
-import { cpSync, existsSync, mkdirSync, rmSync, readdirSync } from "node:fs";
+import { cpSync, copyFileSync, existsSync, mkdirSync, rmSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -28,6 +28,10 @@ const engineSrc = join(repoRoot, "mcp", "src");
 const dataSrc = join(repoRoot, "data");
 const engineDst = join(serverRoot, "lib", "engine");
 const dataDst = join(serverRoot, "data");
+// The interactive HTML tool, published into the app's public/ so the deep-link
+// (built in lib/links.ts) can open the full visual experience at /tool.html.
+const htmlSrc = join(repoRoot, "index.html");
+const htmlDst = join(serverRoot, "public", "tool.html");
 
 if (!existsSync(engineSrc) || !existsSync(dataSrc)) {
   console.log("[sync] canonical mcp/src or data/ not found; using committed copies.");
@@ -44,4 +48,10 @@ function resync(src, dst, label) {
 
 resync(engineSrc, engineDst, "engine");
 resync(dataSrc, dataDst, "data");
+
+if (existsSync(htmlSrc)) {
+  mkdirSync(dirname(htmlDst), { recursive: true });
+  copyFileSync(htmlSrc, htmlDst);
+  console.log("[sync] html: index.html -> server/public/tool.html");
+}
 console.log("[sync] done. server/lib/engine and server/data are generated; edit mcp/src and data/ instead.");

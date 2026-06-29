@@ -1209,6 +1209,19 @@ const priorS=document.getElementById('priorSlider');
 function priorLabel(p){ if(p<=20)return'Como first'; if(p<40)return'Leaning Como'; if(p<=60)return'Balanced'; if(p<80)return'Leaning schools'; return'Schools first'; }
 priorS.oninput=e=>{ PRIOR=+e.target.value; document.getElementById('weightLabel').textContent=priorLabel(PRIOR); renderMapAndRanking(); renderProperties(); };
 
+/* Hydrate the view from URL query params, so an MCP deep-link can pre-set the
+   proximity-vs-schools slider, the scenario weights and the tab, and the user
+   lands on the right picture. Unknown or absent params just leave defaults. */
+let _qsTab=null;
+(function hydrateFromQuery(){
+  const q=new URLSearchParams(location.search);
+  const num=k=>{ const v=q.get(k); return v==null||v===''||isNaN(+v)?null:+v; };
+  const p=num('prior'); if(p!=null){ PRIOR=Math.max(0,Math.min(100,p)); priorS.value=PRIOR; }
+  const wb=num('bear'), wa=num('base'), wu=num('bull');
+  if(wb!=null||wa!=null||wu!=null){ const b=wb??W.bear, a=wa??W.base, u=wu??W.bull, s=b+a+u; if(s>0){ W={bear:b/s*100, base:a/s*100, bull:u/s*100}; } }
+  const t=q.get('tab'); if(t && ['listings','modelling','construction','criteria'].includes(t)) _qsTab=t;
+})();
+
 renderMacro();
 renderFan();
 syncWeightLabels();
@@ -1240,7 +1253,7 @@ initCollapsibles();
 // Select the tab from the hash, then strip the hash so the browser does not
 // jump to the section whose id matches it (e.g. #listings). Always open at top.
 if('scrollRestoration' in history) history.scrollRestoration='manual';
-const _initTab=(location.hash||'').replace('#','') || 'listings';
+const _initTab=(location.hash||'').replace('#','') || _qsTab || 'listings';
 if(location.hash){ try{ history.replaceState(null,'',location.pathname+location.search); }catch(_){ } }
 showTab(_initTab, false);
 window.scrollTo(0,0);

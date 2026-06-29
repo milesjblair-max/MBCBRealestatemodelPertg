@@ -336,6 +336,29 @@ web requests.
 > `mcp/src/types.ts`, `data/profile.schema.json`, `mcp/test/profile.test.ts`
 > (6 new checks).
 
+### UX: a hybrid visual experience (in-chat dashboard + deep-link to the tool)
+
+> **What changed** The guided flow now produces a scannable dashboard in chat
+> (budget, a bold buying-window posture, a 3-scenario table, and a suburb heat
+> table with block-bar scores) and ends with a deep-link that opens the full
+> interactive HTML tool pre-set to match. A new `see_listings` prompt renders
+> matching properties as photo cards grouped into bargains, meets-criteria and
+> best-fit. The HTML tool is published by the app at `/tool.html` and hydrates its
+> controls (proximity-vs-schools slider, scenario weights, tab) from URL query
+> params, so the deep-link lands you on the right picture.
+>
+> **What it means** You get the best of both: a clean answer inside Claude, plus
+> one click into the real fan chart, heat map and listing tiles you liked, with
+> the view already set up. Claude clients render markdown and images but not
+> interactive HTML, so the rich, clickable visuals stay in the tool and the chat
+> stays legible.
+>
+> **Where it lives** `server/lib/links.ts` (deep-link builder),
+> `server/lib/prompts.ts` (dashboard + `see_listings`),
+> `server/scripts/sync-engine.mjs` (publishes `/tool.html`), `web/index.html`
+> (query-param hydration), `server/test/links.test.ts` and `tests/regression.mjs`
+> (deep-link + hydration regression checks).
+
 ## Glossary
 
 - **Engine vs server.** The *engine* is the maths as reusable functions
