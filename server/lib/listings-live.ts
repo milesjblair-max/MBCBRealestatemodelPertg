@@ -165,7 +165,10 @@ export async function searchListingsLive(opts: { suburb?: string; cap?: number }
     listings: loadListings(),
     count: loadListings().length,
   });
-  if (!key) return sample();
+  if (!key) {
+    console.warn("[listings] RAPIDAPI_KEY not set on this deployment; serving committed sample");
+    return sample();
+  }
 
   const inBudget = SUBURBS.filter((s) => s.band);
   const targets = opts.suburb
@@ -174,15 +177,22 @@ export async function searchListingsLive(opts: { suburb?: string; cap?: number }
   if (targets.length === 0) return { source: "sample", note: `Unknown or out-of-scope suburb '${opts.suburb}'.`, listings: [], count: 0 };
 
   const listings: Listing[] = [];
+  let lastError = "";
   for (const s of targets) {
     try {
       const payload = await searchSuburb(key, s.name, s.pc);
       listings.push(...normalise(flatten(payload), s.name, s.pc, s.mlo));
-    } catch {
+    } catch (e) {
       // skip this suburb; keep whatever else we gathered
+      lastError = (e as Error).message;
+      console.warn(`[listings] live fetch failed for ${s.name}: ${lastError}`);
     }
   }
-  if (listings.length === 0) return sample();
+  if (listings.length === 0) {
+    console.warn(`[listings] key present but 0 live listings from ${targets.length} suburb(s) (last error: ${lastError || "none, empty result"}); serving sample`);
+    return sample();
+  }
+  console.log(`[listings] live OK: ${listings.length} listings from ${targets.length} suburb(s) via RapidAPI`);
 
   listings.sort((a, b) => (a.price ?? 9e9) - (b.price ?? 9e9));
   const capped = listings.slice(0, TOTAL_CAP);
@@ -199,10 +209,16 @@ export async function searchListingsLive(opts: { suburb?: string; cap?: number }
  *  call fails, so callers degrade gracefully rather than throw. */
 export async function fetchSuburbListings(suburb: string, pc: string): Promise<Listing[]> {
   const key = process.env.RAPIDAPI_KEY;
-  if (!key) return [];
+  if (!key) {
+    console.warn(`[listings] RAPIDAPI_KEY not set; no live prices for ${suburb}`);
+    return [];
+  }
   try {
-    return normalise(flatten(await searchSuburb(key, suburb, pc)), suburb, pc, undefined);
-  } catch {
+    const out = normalise(flatten(await searchSuburb(key, suburb, pc)), suburb, pc, undefined);
+    console.log(`[listings] ${suburb}: ${out.length} live listing(s) via RapidAPI`);
+    return out;
+  } catch (e) {
+    console.warn(`[listings] live fetch failed for ${suburb}: ${(e as Error).message}`);
     return [];
   }
 }
