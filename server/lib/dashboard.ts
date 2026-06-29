@@ -169,6 +169,7 @@ export function buildDashboardHtml(profile: BuyerProfile): DashboardResult {
   </div>
 
   <h2>Suburb heat table</h2>
+  <p class="lede" style="margin-bottom:10px">Ranks the model's curated set of ${ranking.length} WA suburbs - a middle-ring cluster, not all of Perth. A genuinely better-fit suburb outside this set (Morley, Yokine, Inglewood, further out for land) will not appear here.</p>
   <table><thead><tr><th>Suburb</th><th>km</th><th>Fit</th><th>Budget</th><th>${ring != null ? `${ring}km ring` : "ring"}</th></tr></thead><tbody>${rows}</tbody></table>
 
   <footer>Built from <b>como-home-model</b>: resolve_profile + rank_suburbs_for_profile + forecast (30/50/20 baseline). Every figure is engine output for this profile. General information only, not financial advice.</footer>

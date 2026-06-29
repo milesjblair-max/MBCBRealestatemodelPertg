@@ -6,7 +6,7 @@ const TOOLS: { name: string; what: string }[] = [
   { name: "assess_property", what: "Estimate plus a buyer-fit read with pros and cons." },
   { name: "forecast", what: "Bear/base/bull scenario fan to Mid-29 + headline metrics." },
   { name: "score_suburb", what: "Score one suburb against the original Como criteria." },
-  { name: "rank_suburbs", what: "Rank all suburbs against the original Como criteria." },
+  { name: "rank_suburbs", what: "Rank the model's curated WA suburb set (not all of Perth) against the original Como criteria." },
   { name: "list_suburbs", what: "The suburbs the engine knows, with medians and in-band flag." },
   { name: "onboarding_questions", what: "The questions to ask a new buyer before resolving a profile." },
   { name: "resolve_profile", what: "Profile -> budget band, buy-timing posture, normalised weights." },

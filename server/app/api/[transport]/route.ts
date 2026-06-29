@@ -114,7 +114,7 @@ const handler = createMcpHandler(
 
     server.tool(
       "rank_suburbs",
-      "Rank every suburb 0-100 against the original Como buyer's fixed criteria. Use rank_suburbs_for_profile for a custom buyer.",
+      "Rank the suburbs in the model's CURATED WA dataset (a fixed middle-ring set, NOT all of Perth) 0-100 against the original Como buyer's fixed criteria. Use rank_suburbs_for_profile for a custom buyer.",
       { prior: z.number().min(0).max(100).optional().describe("Proximity-vs-schools slider, 0-100. Default 50.") },
       async ({ prior }) => json(rank(prior ?? 50)),
     );
@@ -152,13 +152,17 @@ const handler = createMcpHandler(
           what_it_can_do: [
             "Estimate a specific house's price and fit (estimate_price, assess_property)",
             "Resolve your budget, affordability gap to your anchor, and buy-timing (resolve_profile)",
-            "Rank every suburb for you and count which are viable (rank_suburbs_for_profile)",
+            "Rank the model's curated WA suburb set for you and count which are viable (rank_suburbs_for_profile)",
             "Match current listings to your filters (match_listings, search_listings)",
             "Forecast the market to mid-2029 across bear/base/bull (forecast)",
             "Open a full visual dashboard for your profile (every tool returns dashboardUrl)",
           ],
           prompts: ["find_a_home", "see_listings", "estimate_a_listing", "about_this_tool"],
           suburbs: SUBURBS.map((s) => s.name),
+          coverage:
+            `${SUBURBS.length} curated WA suburbs - a middle-ring cluster, NOT all of Perth. Suburbs outside this list ` +
+            `(for example Morley, Yokine, Inglewood, Noranda, or anything further out for more land) are not scored, ` +
+            `so any 'viable' count is of the suburbs the model knows, not of Perth. Say this plainly; do not imply full coverage.`,
           example_dashboard: dashboardUrl({
             region: "WA",
             anchor: "Como",
