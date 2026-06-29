@@ -24,7 +24,8 @@ import { nearbyWaSuburbs } from "@/lib/engine/baselayer";
 import type { BuyerProfile } from "@/lib/engine/types";
 
 import { ProfileSchema, CONDITIONS } from "@/lib/schema";
-import { searchListingsLive } from "@/lib/listings-live";
+import { searchListingsLive, fetchSuburbListings } from "@/lib/listings-live";
+import { recommendAreas } from "@/lib/area-recommend";
 import { checkBearer } from "@/lib/auth";
 import { registerPrompts } from "@/lib/prompts";
 import { toolUrl, dashboardUrl } from "@/lib/links";
@@ -134,6 +135,25 @@ const handler = createMcpHandler(
     );
 
     server.tool(
+      "recommend_areas",
+      "THE anchor-anywhere recommender: give any WA anchor + this buyer's profile and get fit-ranked nearby suburbs using REAL current prices from live listings, scored by the buyer's criteria (proximity + land + budget), plus the budget band and buy-timing. Works statewide (Mandurah, Albany, Perth metro). Schools/growth/family are not yet scored for arbitrary suburbs - it says so. Needs RAPIDAPI_KEY for live prices; without it, areas are located and distance-scored but not price-scored.",
+      {
+        profile: ProfileSchema,
+        anchor: z.string().optional().describe("WA suburb to centre on; defaults to the profile's anchor."),
+        radius_km: z.number().positive().optional().describe("Max distance from the anchor in km. Default 15."),
+        limit: z.number().int().min(1).max(30).optional().describe("How many nearby suburbs to score. Default 12."),
+      },
+      async ({ profile, anchor, radius_km, limit }) => {
+        try {
+          const p = profile as BuyerProfile;
+          return json(await recommendAreas(p, anchor ?? p.anchor, { radiusKm: radius_km, limit }, fetchSuburbListings));
+        } catch (e) {
+          return json({ error: (e as Error).message });
+        }
+      },
+    );
+
+    server.tool(
       "onboarding_questions",
       "Return the onboarding question set the MCP asks a new buyer (region, anchor, age, income, finances, life stage, criteria, filters). Ask these, then call resolve_profile.",
       {},
@@ -153,7 +173,8 @@ const handler = createMcpHandler(
           start_here:
             "Give your anchor suburb + income + deposit + what matters most (schools / proximity / land). I will resolve your profile and return a dashboard link. No commands to memorise.",
           what_it_can_do: [
-            "Anchor ANYWHERE in WA and find the nearest real suburbs (nearby_suburbs) - ~1800 suburbs, e.g. Mandurah returns Halls Head, Erskine, Greenfields",
+            "Anchor ANYWHERE in WA and fit-rank nearby suburbs by YOUR criteria with real live prices (recommend_areas) - statewide, e.g. Mandurah, Albany",
+            "Find the nearest real suburbs to any WA anchor (nearby_suburbs) - ~1800 suburbs",
             "Estimate a specific house's price and fit (estimate_price, assess_property)",
             "Resolve your budget, affordability gap to your anchor, and buy-timing (resolve_profile)",
             "Rank the model's curated WA suburb set for you and count which are viable (rank_suburbs_for_profile)",
