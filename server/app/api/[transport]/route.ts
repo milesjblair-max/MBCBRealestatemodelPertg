@@ -27,6 +27,7 @@ import { ProfileSchema, CONDITIONS } from "@/lib/schema";
 import { searchListingsLive } from "@/lib/listings-live";
 import { checkBearer } from "@/lib/auth";
 import { registerPrompts } from "@/lib/prompts";
+import { toolUrl, priorFromWeights } from "@/lib/links";
 
 // The live-listings tool calls an external API and reads env vars, so the route
 // must run on the Node.js runtime, not the Edge runtime.
@@ -143,7 +144,9 @@ const handler = createMcpHandler(
       { profile: ProfileSchema },
       async ({ profile }) => {
         try {
-          return json(resolveProfile(profile as BuyerProfile));
+          const rp = resolveProfile(profile as BuyerProfile);
+          const fullViewUrl = toolUrl({ tab: "modelling", prior: priorFromWeights(rp.weights.school, rp.weights.prox) });
+          return json({ ...rp, fullViewUrl });
         } catch (e) {
           return json({ error: (e as Error).message });
         }
@@ -161,6 +164,7 @@ const handler = createMcpHandler(
           const ring = rp.filters.max_distance_km;
           const inRing = (s: { km: number }) => ring == null || s.km <= ring;
           const viable = ranking.filter((s) => s.inBudget && inRing(s));
+          const fullViewUrl = toolUrl({ tab: "modelling", prior: priorFromWeights(rp.weights.school, rp.weights.prox) });
           return json({
             budget: rp.budget,
             timing: rp.timing,
@@ -173,6 +177,7 @@ const handler = createMcpHandler(
               viableSuburbs: viable.map((s) => s.name),
             },
             ranking,
+            fullViewUrl,
           });
         } catch (e) {
           return json({ error: (e as Error).message });
@@ -191,7 +196,7 @@ const handler = createMcpHandler(
         try {
           const rp = resolveProfile(profile as BuyerProfile);
           const listings = live ? (await searchListingsLive({ cap: 6 })).listings : loadListings();
-          return json({ budget: rp.budget, matches: matchListings(rp, listings) });
+          return json({ budget: rp.budget, matches: matchListings(rp, listings), listingsViewUrl: toolUrl({ tab: "listings" }) });
         } catch (e) {
           return json({ error: (e as Error).message });
         }
@@ -225,7 +230,9 @@ const handler = createMcpHandler(
       "Rendering: give a concise Markdown summary first (works everywhere), then, when " +
       "supported, a self-contained HTML artifact dashboard built only from the tools' " +
       "numbers. Do NOT use the separate 'visualize' MCP-app tool to draw charts (it is " +
-      "desktop-bound and times out on mobile); a native HTML artifact renders client-side.",
+      "desktop-bound and times out on mobile); a native HTML artifact renders client-side. " +
+      "When a tool result includes fullViewUrl or listingsViewUrl, end your reply with it " +
+      "as 'Open the full visual view: <url>' so the user can reach the interactive tool.",
   },
   {
     basePath: "/api",

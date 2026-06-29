@@ -22,6 +22,14 @@ export interface ToolViewParams {
   weights?: { bear?: number; base?: number; bull?: number }; // scenario weights
 }
 
+/** Derive the proximity-vs-schools slider position (0..100) from resolved
+ *  weights, so a deep-link built from a tool result reflects the buyer. */
+export function priorFromWeights(school: number, prox: number): number {
+  const sum = school + prox;
+  if (sum <= 0) return 50;
+  return Math.round((school / sum) * 100);
+}
+
 /** Map a buyer's stated priority to the HTML's proximity-vs-schools slider. */
 export function priorFromPriority(priority?: string): number | undefined {
   switch ((priority ?? "").toLowerCase()) {
