@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "test": "tsx test/links.test.ts"
+    "test": "tsx test/links.test.ts && tsx test/dashboard.test.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.26.0",

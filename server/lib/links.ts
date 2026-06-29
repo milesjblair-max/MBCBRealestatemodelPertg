@@ -55,3 +55,12 @@ export function toolUrl(p: ToolViewParams = {}): string {
   const qs = q.toString();
   return `${baseUrl()}/tool.html${qs ? `?${qs}` : ""}`;
 }
+
+/** A link to the server-rendered dashboard for a specific profile. The profile
+ *  is carried losslessly as a base64url JSON blob, so the page can re-run the
+ *  engine and show exactly this buyer's budget, affordability, forecast and
+ *  ranking - the same numbers the tools returned. */
+export function dashboardUrl(profile: unknown): string {
+  const p = Buffer.from(JSON.stringify(profile)).toString("base64url");
+  return `${baseUrl()}/dashboard?p=${p}`;
+}

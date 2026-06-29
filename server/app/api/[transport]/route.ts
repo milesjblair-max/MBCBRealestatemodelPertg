@@ -27,7 +27,7 @@ import { ProfileSchema, CONDITIONS } from "@/lib/schema";
 import { searchListingsLive } from "@/lib/listings-live";
 import { checkBearer } from "@/lib/auth";
 import { registerPrompts } from "@/lib/prompts";
-import { toolUrl, priorFromWeights } from "@/lib/links";
+import { toolUrl, dashboardUrl } from "@/lib/links";
 
 // The live-listings tool calls an external API and reads env vars, so the route
 // must run on the Node.js runtime, not the Edge runtime.
@@ -137,6 +137,41 @@ const handler = createMcpHandler(
       async () => json(ONBOARDING_QUESTIONS),
     );
 
+    server.tool(
+      "capabilities",
+      "What this connector is, what it can do, and how to use it. Call this first (or whenever the user asks what this does) and present it before anything else.",
+      {},
+      async () =>
+        json({
+          name: "Como home model",
+          scope: "Western Australia (Perth) only",
+          what:
+            "A house-price and suburb-fit engine for a WA buyer. Tell it where you want to live, your income and cash, and what matters, and it works out a realistic budget, whether you can afford your anchor suburb, a buy-timing call, a ranked shortlist of suburbs, matching listings, and a market forecast - with a one-click visual dashboard.",
+          start_here:
+            "Give your anchor suburb + income + deposit + what matters most (schools / proximity / land). I will resolve your profile and return a dashboard link. No commands to memorise.",
+          what_it_can_do: [
+            "Estimate a specific house's price and fit (estimate_price, assess_property)",
+            "Resolve your budget, affordability gap to your anchor, and buy-timing (resolve_profile)",
+            "Rank every suburb for you and count which are viable (rank_suburbs_for_profile)",
+            "Match current listings to your filters (match_listings, search_listings)",
+            "Forecast the market to mid-2029 across bear/base/bull (forecast)",
+            "Open a full visual dashboard for your profile (every tool returns dashboardUrl)",
+          ],
+          prompts: ["find_a_home", "see_listings", "estimate_a_listing", "about_this_tool"],
+          suburbs: SUBURBS.map((s) => s.name),
+          example_dashboard: dashboardUrl({
+            region: "WA",
+            anchor: "Como",
+            income: 180000,
+            finances: { deposit: 250000 },
+            life_stage: "young_family",
+            criteria: { schools: 5, proximity: 2 },
+            filters: { max_distance_km: 10 },
+          }),
+          not_advice: "General information only, not financial advice.",
+        }),
+    );
+
     // ---- Dynamic, profile-driven layer (multi-user) ------------------------
     server.tool(
       "resolve_profile",
@@ -145,8 +180,7 @@ const handler = createMcpHandler(
       async ({ profile }) => {
         try {
           const rp = resolveProfile(profile as BuyerProfile);
-          const fullViewUrl = toolUrl({ tab: "modelling", prior: priorFromWeights(rp.weights.school, rp.weights.prox) });
-          return json({ ...rp, fullViewUrl });
+          return json({ ...rp, dashboardUrl: dashboardUrl(profile) });
         } catch (e) {
           return json({ error: (e as Error).message });
         }
@@ -164,7 +198,6 @@ const handler = createMcpHandler(
           const ring = rp.filters.max_distance_km;
           const inRing = (s: { km: number }) => ring == null || s.km <= ring;
           const viable = ranking.filter((s) => s.inBudget && inRing(s));
-          const fullViewUrl = toolUrl({ tab: "modelling", prior: priorFromWeights(rp.weights.school, rp.weights.prox) });
           return json({
             budget: rp.budget,
             timing: rp.timing,
@@ -177,7 +210,7 @@ const handler = createMcpHandler(
               viableSuburbs: viable.map((s) => s.name),
             },
             ranking,
-            fullViewUrl,
+            dashboardUrl: dashboardUrl(profile),
           });
         } catch (e) {
           return json({ error: (e as Error).message });
@@ -222,7 +255,10 @@ const handler = createMcpHandler(
     capabilities: { tools: {}, prompts: {} },
     instructions:
       "The Como home model: a WESTERN AUSTRALIA (Perth) ONLY house-price and " +
-      "suburb-fit engine. Prefer the guided prompts: /find_a_home (budget, timing " +
+      "suburb-fit engine. When the user first engages, asks what this does, or seems " +
+      "unsure what to type, call the `capabilities` tool and present its menu BEFORE " +
+      "doing anything else - do not make the user guess the commands. " +
+      "Prefer the guided prompts: /find_a_home (budget, timing " +
       "and a suburb ranking), /estimate_a_listing (price + fit for one house), and " +
       "/about_this_tool (orientation). Never invent a financial figure the user did " +
       "not give; if one is missing, ask. If a suburb or state outside the dataset is " +
@@ -231,8 +267,9 @@ const handler = createMcpHandler(
       "supported, a self-contained HTML artifact dashboard built only from the tools' " +
       "numbers. Do NOT use the separate 'visualize' MCP-app tool to draw charts (it is " +
       "desktop-bound and times out on mobile); a native HTML artifact renders client-side. " +
-      "When a tool result includes fullViewUrl or listingsViewUrl, end your reply with it " +
-      "as 'Open the full visual view: <url>' so the user can reach the interactive tool.",
+      "When a tool result includes dashboardUrl or listingsViewUrl, end your reply with it " +
+      "as 'Open your dashboard: <url>' - that is a real server-rendered page, the most " +
+      "reliable way for the user to see the result.",
   },
   {
     basePath: "/api",
