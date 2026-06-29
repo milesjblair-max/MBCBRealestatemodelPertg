@@ -26,6 +26,13 @@ const NO_GUESS =
   "user one short question and wait. A guessed budget silently inverts the whole " +
   "ranking, so it is better to ask than to estimate.";
 
+const RENDER_RULE =
+  "RENDERING: do NOT use the visualize tool, artifacts, canvas, or any 'MCP app' " +
+  "to draw charts. Those run on the desktop and time out (often after minutes) on " +
+  "mobile or cross-device. Render EVERYTHING as plain Markdown tables and text in " +
+  "the chat. The interactive fan chart, heat map and tiles are reached only via " +
+  "the deep-link, which works everywhere including on a phone.";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function registerPrompts(server: any): void {
   // ---- 1. The main guided flow ------------------------------------------
@@ -88,6 +95,7 @@ export function registerPrompts(server: any): void {
             text: [
               SCOPE_LINE,
               NO_GUESS,
+              RENDER_RULE,
               "",
               `TASK: The user wants a home near ${a.anchor ?? "(ask which suburb)"}. Build a BuyerProfile and call the tools resolve_profile and rank_suburbs_for_profile (and match_listings if they want listings). Map the inputs:`,
               `- region: "WA"`,
@@ -141,6 +149,7 @@ export function registerPrompts(server: any): void {
               type: "text",
               text: [
                 SCOPE_LINE,
+                RENDER_RULE,
                 "TASK: Use the buyer profile already established earlier in this conversation (anchor, budget, filters). If none exists yet, ask the user to run /find_a_home first and stop.",
                 `Call match_listings with that profile${wantLive ? " and live=true" : ""}. Then present the results as PHOTO CARDS using Markdown, grouped under three headings in this order: \"Bargains\", \"Meets your criteria\", \"Best fit\".`,
                 "For each listing render a card: the photo as a Markdown image on its own line (![home](IMAGE_URL)) only if image is present (never invent or show a broken image), then a bold line with the address, then a line with price, beds, baths, land and the fit score, then the link as a Markdown link labelled 'View listing'. Skip the photo line entirely when image is null.",
@@ -176,6 +185,7 @@ export function registerPrompts(server: any): void {
             type: "text",
             text: [
               SCOPE_LINE,
+              RENDER_RULE,
               `TASK: Call estimate_price (and assess_property) for a house in ${a.suburb ?? "ASK"} with land=${a.land ?? "unknown"}, beds=${a.beds ?? "unknown"}, baths=${a.baths ?? "unknown"}, condition=${a.condition ?? "unknown"}.`,
               "Present the likely price, the low-high range, the typical advertised guide floor, the confidence level, and the buyer-fit pros and cons. Keep it tight. Do not invent details the user did not give.",
             ].join("\n"),
