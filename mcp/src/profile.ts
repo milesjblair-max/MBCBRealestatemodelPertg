@@ -57,11 +57,21 @@ export function resolveProfile(p: BuyerProfile): ResolvedProfile {
   const budget = budgetBand(p);
   const timing = buyTiming(p, budget);
 
+  // Can they afford a house at their own anchor? anchor.mlo is the median-low,
+  // i.e. the typical entry-level house price for the suburb (in $000s).
+  const anchorEntryPrice = anchor.mlo * 1000;
+  const affordability = {
+    anchorEntryPrice,
+    reachable: budget.ceiling >= anchorEntryPrice,
+    gapToAnchor: anchorEntryPrice - budget.ceiling,
+  };
+
   return {
     anchor,
     weights,
     budget,
     timing,
+    affordability,
     filters: {
       min_beds: p.filters?.min_beds ?? 0,
       min_land: p.filters?.min_land ?? 0,

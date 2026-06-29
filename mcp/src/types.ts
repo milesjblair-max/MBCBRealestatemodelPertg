@@ -102,11 +102,20 @@ export interface BuyTiming {
   rationale: string[];
 }
 
+/** Can this buyer afford a house at their own anchor? The single most important
+ *  read for an anchored buyer, computed from the data instead of guessed. */
+export interface AnchorAffordability {
+  anchorEntryPrice: number; // $ - typical entry (median-low) house price at the anchor
+  reachable: boolean; // ceiling >= anchorEntryPrice
+  gapToAnchor: number; // $ - anchorEntryPrice - ceiling; > 0 means priced out by this much
+}
+
 export interface ResolvedProfile {
   anchor: Suburb;
   weights: ScoringWeights;
   budget: BudgetBand;
   timing: BuyTiming;
+  affordability: AnchorAffordability;
   filters: { min_beds: number; min_land: number; max_distance_km: number | null };
   lifeStage: LifeStage;
 }

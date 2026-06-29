@@ -119,6 +119,7 @@ export function registerPrompts(server: any): void {
               `- horizon_years: ${a.horizon_years ?? "ASK if buy-timing is wanted"}`,
               "",
               "THEN present it as a dashboard with these sections in this order (per the RENDERING rule: a concise Markdown summary first, then a self-contained HTML artifact dashboard using the same numbers). Sections:",
+              "0. AFFORDABILITY HEADLINE: use resolve_profile.affordability VERBATIM - whether the anchor is reachable, its entry price (anchorEntryPrice), and the gapToAnchor in dollars. Do NOT estimate the gap or the cheapest house yourself; if reachable is false, say plainly they are priced out of the anchor by gapToAnchor. Use rank_suburbs_for_profile.summary.viableSuburbs for any 'suburbs meeting both rules' count - never guess it.",
               "1. BUDGET: one line confirming this is the WA Como model and the resolved band (floor to ceiling). If borrowed funds were used (a credit facility or released equity), add the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
               "2. BUYING WINDOW: the buy-timing posture (act-now / balanced / patient-opportunistic) as a bold heading, with its one-line reason. If patient, name the 2027 soft-patch window.",
               "3. THE 3 SCENARIOS: call the forecast tool and render a small Markdown table with columns Scenario | End-27 (buy window) | Mid-29, rows Bear / Base / Bull, plus an Expected row. Bold the Expected Mid-29 figure.",

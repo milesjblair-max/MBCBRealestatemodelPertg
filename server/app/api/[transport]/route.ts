@@ -157,10 +157,22 @@ const handler = createMcpHandler(
       async ({ profile }) => {
         try {
           const rp = resolveProfile(profile as BuyerProfile);
+          const ranking = rankSuburbsForProfile(rp);
+          const ring = rp.filters.max_distance_km;
+          const inRing = (s: { km: number }) => ring == null || s.km <= ring;
+          const viable = ranking.filter((s) => s.inBudget && inRing(s));
           return json({
             budget: rp.budget,
             timing: rp.timing,
-            ranking: rankSuburbsForProfile(rp),
+            affordability: rp.affordability,
+            summary: {
+              total: ranking.length,
+              inBudget: ranking.filter((s) => s.inBudget).length,
+              withinRing: ring == null ? null : ranking.filter(inRing).length,
+              viable: viable.length,
+              viableSuburbs: viable.map((s) => s.name),
+            },
+            ranking,
           });
         } catch (e) {
           return json({ error: (e as Error).message });

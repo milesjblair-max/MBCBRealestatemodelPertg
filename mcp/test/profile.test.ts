@@ -15,6 +15,7 @@ import { resolveProfile } from "../src/profile.js";
 import { budgetBand, borrowingCapacity } from "../src/finance.js";
 import { rankSuburbsForProfile } from "../src/recommend.js";
 import { profileFromAnswers } from "../src/onboarding.js";
+import { SUBURBS } from "../src/data.js";
 import type { BuyerProfile } from "../src/types.js";
 
 let pass = 0;
@@ -88,6 +89,19 @@ const fromProperty = budgetBand({ ...baseWA, income: 240000, finances: { propert
 const fromDirect = budgetBand({ ...baseWA, income: 240000, finances: { equity_release: 260000, equity_rate_pct: 6 } });
 ok("usable equity = 80% of value minus mortgage", fromProperty.borrowedFunds === 260000, `${fromProperty.borrowedFunds}`);
 ok("property-derived equity matches the direct figure", fromProperty.ceiling === fromDirect.ceiling, `${fromProperty.ceiling} == ${fromDirect.ceiling}`);
+
+// ---- 2c. Anchor affordability is computed, not guessed ---------------------
+// A modest budget cannot reach a Como house; the gap is a real engine number.
+const comoModest = resolveProfile({ region: "WA", anchor: "Como", income: 180000, life_stage: "young_family", finances: { deposit: 250000 } });
+const comoMlo = SUBURBS.find((s) => s.name === "Como")!.mlo;
+ok("anchor entry price is the suburb median-low in dollars", comoModest.affordability.anchorEntryPrice === comoMlo * 1000, `${comoModest.affordability.anchorEntryPrice}`);
+ok("a modest budget is not reachable at Como", comoModest.affordability.reachable === false);
+ok("the gap to the anchor is positive and exact", comoModest.affordability.gapToAnchor === comoMlo * 1000 - comoModest.budget.ceiling, `${comoModest.affordability.gapToAnchor}`);
+
+// A cheaper anchor with a strong budget IS reachable, gap non-positive.
+const bentleyRich = resolveProfile({ region: "WA", anchor: "Bentley", income: 240000, life_stage: "young_family", finances: { deposit: 200000, cash_buffer: 600000, credit_line: 800000, credit_rate_pct: 0 } });
+ok("a strong budget reaches a cheaper anchor", bentleyRich.affordability.reachable === true);
+ok("a reachable anchor has a non-positive gap", bentleyRich.affordability.gapToAnchor <= 0, `${bentleyRich.affordability.gapToAnchor}`);
 
 // ---- 3. The two-buyer timing contrast (the core of the brief) --------------
 // "someone who has a small deposit and available cash should not buy in the
