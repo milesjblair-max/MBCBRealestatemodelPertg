@@ -159,15 +159,24 @@ export interface LiveResult {
  *  committed sample when no RAPIDAPI_KEY is configured or a call fails. */
 export async function searchListingsLive(opts: { suburb?: string; cap?: number } = {}): Promise<LiveResult> {
   const key = process.env.RAPIDAPI_KEY;
-  const sample = (): LiveResult => ({
-    source: "sample",
-    note: "No RAPIDAPI_KEY configured (or live fetch unavailable); returning the committed sample. Set RAPIDAPI_KEY in Vercel for live data.",
-    listings: loadListings(),
-    count: loadListings().length,
-  });
+  // Sample fallback. When a suburb was asked for, RESPECT it: filter the sample
+  // to that suburb (often empty) rather than dumping every committed listing,
+  // which would misleadingly look like a sweep of unrelated suburbs.
+  const sample = (reason: string): LiveResult => {
+    const all = loadListings();
+    const scoped = opts.suburb
+      ? all.filter((L) => (L.suburb ?? "").toLowerCase() === opts.suburb!.toLowerCase())
+      : all;
+    const note = opts.suburb
+      ? scoped.length
+        ? `No live data for '${opts.suburb}' (${reason}); showing committed sample listings for it.`
+        : `No live listings for '${opts.suburb}' right now (${reason}), and none in the committed sample. This is not a sweep of other suburbs.`
+      : `No live data (${reason}); returning the committed sample. Set RAPIDAPI_KEY in Vercel for live data.`;
+    return { source: "sample", note, listings: scoped, count: scoped.length };
+  };
   if (!key) {
     console.warn("[listings] RAPIDAPI_KEY not set on this deployment; serving committed sample");
-    return sample();
+    return sample("no RAPIDAPI_KEY on this deployment");
   }
 
   const inBudget = SUBURBS.filter((s) => s.band);
@@ -181,7 +190,13 @@ export async function searchListingsLive(opts: { suburb?: string; cap?: number }
   for (const s of targets) {
     try {
       const payload = await searchSuburb(key, s.name, s.pc);
-      listings.push(...normalise(flatten(payload), s.name, s.pc, s.mlo));
+      const raw = flatten(payload);
+      const norm = normalise(raw, s.name, s.pc, s.mlo);
+      // Diagnostic: raw rows from the API vs rows we kept after normalise. If
+      // raw>0 but norm=0 the response SHAPE changed (parser miss); raw=0 means
+      // the API genuinely returned nothing for these query params.
+      console.log(`[listings] ${s.name}: api-rows=${raw.length} kept=${norm.length} payload-keys=[${Object.keys(payload).join(",")}]`);
+      listings.push(...norm);
     } catch (e) {
       // skip this suburb; keep whatever else we gathered
       lastError = (e as Error).message;
@@ -190,7 +205,7 @@ export async function searchListingsLive(opts: { suburb?: string; cap?: number }
   }
   if (listings.length === 0) {
     console.warn(`[listings] key present but 0 live listings from ${targets.length} suburb(s) (last error: ${lastError || "none, empty result"}); serving sample`);
-    return sample();
+    return sample(lastError ? `live fetch error: ${lastError}` : "the live feed returned no matching houses");
   }
   console.log(`[listings] live OK: ${listings.length} listings from ${targets.length} suburb(s) via RapidAPI`);
 
@@ -214,8 +229,10 @@ export async function fetchSuburbListings(suburb: string, pc: string): Promise<L
     return [];
   }
   try {
-    const out = normalise(flatten(await searchSuburb(key, suburb, pc)), suburb, pc, undefined);
-    console.log(`[listings] ${suburb}: ${out.length} live listing(s) via RapidAPI`);
+    const payload = await searchSuburb(key, suburb, pc);
+    const raw = flatten(payload);
+    const out = normalise(raw, suburb, pc, undefined);
+    console.log(`[listings] ${suburb}: api-rows=${raw.length} kept=${out.length} payload-keys=[${Object.keys(payload).join(",")}]`);
     return out;
   } catch (e) {
     console.warn(`[listings] live fetch failed for ${suburb}: ${(e as Error).message}`);
