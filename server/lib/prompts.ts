@@ -27,11 +27,17 @@ const NO_GUESS =
   "ranking, so it is better to ask than to estimate.";
 
 const RENDER_RULE =
-  "RENDERING: do NOT use the visualize tool, artifacts, canvas, or any 'MCP app' " +
-  "to draw charts. Those run on the desktop and time out (often after minutes) on " +
-  "mobile or cross-device. Render EVERYTHING as plain Markdown tables and text in " +
-  "the chat. The interactive fan chart, heat map and tiles are reached only via " +
-  "the deep-link, which works everywhere including on a phone.";
+  "RENDERING: First give a concise plain-Markdown summary (tables + text) - this " +
+  "works on every client, including mobile. THEN, when the client supports it, build " +
+  "a single SELF-CONTAINED HTML ARTIFACT dashboard from the tool's numbers: a header " +
+  "with the resolved-profile chips, the budget and the affordability gap (ceiling vs " +
+  "the cheapest house at the anchor), the three-scenario forecast as a chart with the " +
+  "buyer's ceiling line drawn across it, and the suburb heat table (sortable/filterable). " +
+  "Inline CSS; Chart.js from a CDN is fine. Use ONLY figures returned by the tools - " +
+  "never invent or round up to flatter. Do NOT use the separate 'visualize' MCP-app / " +
+  "Claude Desktop app tool to draw charts: it is desktop-bound and times out on mobile. " +
+  "A native HTML artifact renders client-side and is what you want. Also offer the " +
+  "deep-link for the original interactive tool.";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function registerPrompts(server: any): void {
@@ -112,7 +118,7 @@ export function registerPrompts(server: any): void {
               `- filters.max_distance_km: ${a.max_distance_km && a.max_distance_km.trim() !== "" ? a.max_distance_km : "none (do not cap distance)"}`,
               `- horizon_years: ${a.horizon_years ?? "ASK if buy-timing is wanted"}`,
               "",
-              "THEN present it as a clean, scannable dashboard in this exact order (use Markdown; no rambling):",
+              "THEN present it as a dashboard with these sections in this order (per the RENDERING rule: a concise Markdown summary first, then a self-contained HTML artifact dashboard using the same numbers). Sections:",
               "1. BUDGET: one line confirming this is the WA Como model and the resolved band (floor to ceiling). If borrowed funds were used (a credit facility or released equity), add the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
               "2. BUYING WINDOW: the buy-timing posture (act-now / balanced / patient-opportunistic) as a bold heading, with its one-line reason. If patient, name the 2027 soft-patch window.",
               "3. THE 3 SCENARIOS: call the forecast tool and render a small Markdown table with columns Scenario | End-27 (buy window) | Mid-29, rows Bear / Base / Bull, plus an Expected row. Bold the Expected Mid-29 figure.",

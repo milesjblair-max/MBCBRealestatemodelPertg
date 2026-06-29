@@ -210,9 +210,10 @@ const handler = createMcpHandler(
       "/about_this_tool (orientation). Never invent a financial figure the user did " +
       "not give; if one is missing, ask. If a suburb or state outside the dataset is " +
       "requested, say it is out of scope. estimate_price and forecast are buyer-agnostic. " +
-      "Render results as plain Markdown tables and text; do NOT use the visualize tool, " +
-      "artifacts or any canvas/'MCP app' to draw charts (they time out on mobile and " +
-      "cross-device). The interactive visuals are reached via the deep-link instead.",
+      "Rendering: give a concise Markdown summary first (works everywhere), then, when " +
+      "supported, a self-contained HTML artifact dashboard built only from the tools' " +
+      "numbers. Do NOT use the separate 'visualize' MCP-app tool to draw charts (it is " +
+      "desktop-bound and times out on mobile); a native HTML artifact renders client-side.",
   },
   {
     basePath: "/api",
