@@ -17,8 +17,8 @@ import type {
 const PRESETS: Record<LifeStage, Required<CriteriaInput>> = {
   young_single: { growth: 4, schools: 0, family: 1, land: 1, proximity: 5, amenity: 5, project: 1 },
   young_couple: { growth: 4, schools: 1, family: 2, land: 2, proximity: 4, amenity: 4, project: 2 },
-  young_family: { growth: 4, schools: 5, family: 5, land: 4, proximity: 3, amenity: 2, project: 2 },
-  established_family: { growth: 3, schools: 5, family: 4, land: 4, proximity: 2, amenity: 3, project: 2 },
+  young_family: { growth: 4, schools: 5, family: 5, land: 4, proximity: 4, amenity: 2, project: 2 },
+  established_family: { growth: 3, schools: 5, family: 4, land: 4, proximity: 3, amenity: 3, project: 2 },
   downsizer: { growth: 3, schools: 0, family: 1, land: 1, proximity: 4, amenity: 5, project: 1 },
 };
 

@@ -48,7 +48,7 @@ if [ -d server ]; then
   node server/scripts/sync-engine.mjs >/dev/null 2>&1
   # listings.json is a volatile daily-refreshed fallback, so exclude it; the
   # live tool fetches fresh anyway. Everything else must match exactly.
-  drift="$(git status --porcelain -- server/lib server/data | grep -v 'server/data/listings.json')"
+  drift="$(git status --porcelain -- server/lib/engine server/data | grep -v 'server/data/listings.json')"
   if [ -z "$drift" ]; then
     echo "  server/lib/engine and server/data match mcp/src and data/"
   else

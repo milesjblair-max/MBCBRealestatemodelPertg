@@ -26,6 +26,7 @@ import type { BuyerProfile } from "@/lib/engine/types";
 import { ProfileSchema, CONDITIONS } from "@/lib/schema";
 import { searchListingsLive } from "@/lib/listings-live";
 import { checkBearer } from "@/lib/auth";
+import { registerPrompts } from "@/lib/prompts";
 
 // The live-listings tool calls an external API and reads env vars, so the route
 // must run on the Node.js runtime, not the Edge runtime.
@@ -37,8 +38,14 @@ import { checkBearer } from "@/lib/auth";
 export const runtime = "nodejs";
 export const maxDuration = 300;
 
+// Every tool result is prefixed with this so the user always knows the real
+// (Western-Australia-scoped) tool produced the answer, not the model guessing.
+const SCOPE = "Como home model - Western Australia (Perth) only.";
 const json = (data: unknown) => ({
-  content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }],
+  content: [
+    { type: "text" as const, text: SCOPE },
+    { type: "text" as const, text: JSON.stringify(data, null, 2) },
+  ],
 });
 
 const handler = createMcpHandler(
@@ -189,14 +196,20 @@ const handler = createMcpHandler(
       },
       async ({ suburb, cap }) => json(await searchListingsLive({ suburb, cap })),
     );
+
+    // Guided prompts (the "/" menu): the scoped, form-driven front door.
+    registerPrompts(server);
   },
   {
-    serverInfo: { name: "como-home-model", version: "0.2.0" },
-    capabilities: { tools: {} },
+    serverInfo: { name: "como-home-model", version: "0.3.0" },
+    capabilities: { tools: {}, prompts: {} },
     instructions:
-      "The Como home model: a WA (Perth) house-price and suburb-fit engine. " +
-      "For a new buyer, call onboarding_questions, gather answers, then resolve_profile / " +
-      "rank_suburbs_for_profile / match_listings. estimate_price and forecast are buyer-agnostic.",
+      "The Como home model: a WESTERN AUSTRALIA (Perth) ONLY house-price and " +
+      "suburb-fit engine. Prefer the guided prompts: /find_a_home (budget, timing " +
+      "and a suburb ranking), /estimate_a_listing (price + fit for one house), and " +
+      "/about_this_tool (orientation). Never invent a financial figure the user did " +
+      "not give; if one is missing, ask. If a suburb or state outside the dataset is " +
+      "requested, say it is out of scope. estimate_price and forecast are buyer-agnostic.",
   },
   {
     basePath: "/api",
