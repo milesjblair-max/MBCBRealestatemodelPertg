@@ -1,4 +1,4 @@
-# Como MCP engine (Phase 1)
+# WA Home Model - MCP engine (Phase 1)
 
 The Como model logic, extracted from the HTML tool into a **typed TypeScript
 library** with a **cross-language parity test** against the Python reference.

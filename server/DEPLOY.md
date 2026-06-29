@@ -51,7 +51,7 @@ You should get the 11 tools back. (Drop the Authorization header if you left
 ```json
 {
   "mcpServers": {
-    "como-home-model": {
+    "wa-home-model": {
       "url": "https://<your-project>.vercel.app/api/mcp",
       "headers": { "Authorization": "Bearer <MCP_BEARER_TOKEN>" }
     }

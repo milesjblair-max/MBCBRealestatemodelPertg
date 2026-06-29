@@ -31,7 +31,7 @@ const comoModest: BuyerProfile = {
 const r = buildDashboardHtml(comoModest);
 ok("renders with 200", r.status === 200, `${r.status}`);
 ok("is a full HTML document", r.html.startsWith("<!doctype html>"));
-ok("is branded as the engine", r.html.includes("como-home-model"));
+ok("is branded as the engine", r.html.includes("wa-home-model"));
 ok("states WA scope", r.html.includes("Western Australia"));
 ok("shows the affordability headline (priced out of Como)", r.html.includes("Priced out of Como"), "anchor unreachable on this budget");
 ok("draws an inline SVG chart", r.html.includes("<svg") && r.html.includes("<polyline"));

@@ -40,6 +40,15 @@ function toWeights(c: Required<CriteriaInput>): ScoringWeights {
   return w;
 }
 
+/** The normalised scoring weights for a profile (criteria merged over the
+ *  life-stage preset). Exposed so the WA-wide area recommender can score any
+ *  suburb by the user's priorities without re-deriving the preset logic. */
+export function resolveWeights(p: BuyerProfile): ScoringWeights {
+  const lifeStage: LifeStage = p.life_stage ?? "young_family";
+  const merged: Required<CriteriaInput> = { ...PRESETS[lifeStage], ...(p.criteria ?? {}) };
+  return toWeights(merged);
+}
+
 export function resolveProfile(p: BuyerProfile): ResolvedProfile {
   if (p.region !== "WA") {
     throw new Error("Only WA (Perth) is supported for now.");

@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <main style={{ maxWidth: 820, margin: "0 auto", padding: "48px 22px 80px" }}>
       <p style={{ color: "#3aa6a0", fontWeight: 600, letterSpacing: ".04em", margin: 0 }}>MODEL CONTEXT PROTOCOL SERVER</p>
-      <h1 style={{ fontSize: 30, margin: "8px 0 6px" }}>Como home model - Phase 2</h1>
+      <h1 style={{ fontSize: 30, margin: "8px 0 6px" }}>WA Home Model - Phase 2</h1>
       <p style={{ color: "#9fb0ad", marginTop: 0 }}>
         The WA (Perth) house-price and suburb-fit engine from Phase 1, exposed as MCP tools over Streamable HTTP. The
         engine is parity-tested to the dollar against the Python reference; this server is the typed contract around it.
@@ -53,7 +53,7 @@ export default function Home() {
       <pre style={{ ...card, overflowX: "auto", fontSize: 13 }}>
         {`{
   "mcpServers": {
-    "como-home-model": {
+    "wa-home-model": {
       "url": "https://<this-deployment>/api/mcp",
       "headers": { "Authorization": "Bearer <token>" }
     }

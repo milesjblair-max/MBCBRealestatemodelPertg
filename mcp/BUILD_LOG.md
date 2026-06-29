@@ -243,6 +243,37 @@ ceiling, Shelley #1) and the WA guard (`anchor: "Sydney"` -> a clean error).
 
 ---
 
+## What the buyer's review taught (the most useful part)
+
+The engine was parity-tested to the dollar, the dashboard had 14 assertions, the
+gate was green - and the buyer still found eight real defects in review. None were
+"wrong number" bugs (the tests caught those). They were a different class:
+
+- **Honesty-of-claims:** the tool said it ranked "every suburb" when it knew 14;
+  it improvised an affordability gap the engine never computed. Tests assert
+  outputs are *correct*, not that the *words around them* are true.
+- **API ergonomics:** a legacy `rank_suburbs` sat next to `rank_suburbs_for_profile`
+  and silently returned a stale answer. No assertion catches "easy to misuse".
+- **Stated constraints:** I twice claimed data "wasn't free" without checking;
+  the buyer pushed back and the data existed (Landgate, ABS, REIWA).
+
+The fixes that generalise: add a **lint for overclaims** (fail the build if a tool
+description says "every"/"all" when coverage is partial); **collapse overlapping
+tools** to one correct path; make the model **quote engine fields verbatim**
+rather than fill gaps; and **research before asserting a constraint**. Full record
+in the root `CHANGELOG.md` ("Defects caught in review").
+
+Interview line: *"My golden tests proved the numbers; code review proved the
+claims and the ergonomics. I now lint for overclaims and design tools so the
+wrong one can't be called."*
+
+## Rename and the multi-user pivot
+
+"Como home model" became **WA Home Model** (`wa-home-model`, v0.4.0): the product
+is anchor-anywhere across WA, and **M1** added a 1804-suburb base layer (public
+-domain coordinates) so any WA anchor resolves. The original Como buyer is now
+just one profile the dynamic engine can take.
+
 ## How to talk about this (interview cheat-sheet)
 
 - "MCP exposes app logic as **typed tools** an AI client calls over a standard

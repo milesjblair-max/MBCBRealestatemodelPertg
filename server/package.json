@@ -1,5 +1,5 @@
 {
-  "name": "como-mcp-server",
+  "name": "wa-home-model-server",
   "version": "0.1.0",
   "private": true,
   "description": "Phase 2: the Como model engine exposed as a Model Context Protocol server over Streamable HTTP, deployable to Vercel. One MCP tool per engine function.",

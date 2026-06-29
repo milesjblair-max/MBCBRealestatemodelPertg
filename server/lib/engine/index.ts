@@ -1,4 +1,4 @@
-// The Como engine: model logic decoupled from any UI or transport.
+// The WA Home Model engine: model logic decoupled from any UI or transport.
 // Phase 2 (the MCP server) imports these and exposes each as a tool.
 
 // Price estimator (unchanged, buyer-agnostic)
@@ -10,7 +10,7 @@ export { scoreSuburb, scoreSuburbObj, rank } from "./scoring.js";
 export { buildTimeline, metrics, BASELINE_WEIGHTS } from "./scenario.js";
 
 // Dynamic, profile-driven layer (multi-user)
-export { resolveProfile } from "./profile.js";
+export { resolveProfile, resolveWeights } from "./profile.js";
 export { borrowingCapacity, budgetBand, buyTiming } from "./finance.js";
 export { rankSuburbsForProfile, scoreSuburbForProfile, matchListings } from "./recommend.js";
 export { ONBOARDING_QUESTIONS, profileFromAnswers } from "./onboarding.js";
@@ -51,7 +51,7 @@ function showProfile(label: string, file: string): void {
 }
 
 if (isMain()) {
-  console.log("== Como engine: same market, two different buyers ==");
+  console.log("== WA Home Model engine: same market, two different buyers ==");
   showProfile("Cash-rich family, 0% facility", "como-family-patient.json");
   showProfile("First-home buyer, small deposit, renting", "first-home-small-deposit.json");
   console.log("\nNote how budget, buy-timing and the suburb ranking all shift with the profile.");

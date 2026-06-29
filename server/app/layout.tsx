@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
 export const metadata = {
-  title: "Como home model - MCP server",
-  description: "The Como WA house-price and suburb-fit engine, exposed as a Model Context Protocol server.",
+  title: "WA Home Model - MCP server",
+  description: "The WA house-price and suburb-fit engine, exposed as a Model Context Protocol server.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

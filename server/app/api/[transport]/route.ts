@@ -41,7 +41,7 @@ export const maxDuration = 300;
 
 // Every tool result is prefixed with this so the user always knows the real
 // (Western-Australia-scoped) tool produced the answer, not the model guessing.
-const SCOPE = "Como home model - Western Australia (Perth) only.";
+const SCOPE = "WA Home Model - Western Australia (Perth) only.";
 const json = (data: unknown) => ({
   content: [
     { type: "text" as const, text: SCOPE },
@@ -146,7 +146,7 @@ const handler = createMcpHandler(
       {},
       async () =>
         json({
-          name: "Como home model",
+          name: "WA Home Model",
           scope: "Western Australia (Perth) only",
           what:
             "A house-price and suburb-fit engine for a WA buyer. Tell it where you want to live, your income and cash, and what matters, and it works out a realistic budget, whether you can afford your anchor suburb, a buy-timing call, a ranked shortlist of suburbs, matching listings, and a market forecast - with a one-click visual dashboard.",
@@ -260,10 +260,10 @@ const handler = createMcpHandler(
     registerPrompts(server);
   },
   {
-    serverInfo: { name: "como-home-model", version: "0.3.0" },
+    serverInfo: { name: "wa-home-model", version: "0.4.0" },
     capabilities: { tools: {}, prompts: {} },
     instructions:
-      "The Como home model: a WESTERN AUSTRALIA (Perth) ONLY house-price and " +
+      "The WA Home Model: a WESTERN AUSTRALIA (Perth) ONLY house-price and " +
       "suburb-fit engine. When the user first engages, asks what this does, or seems " +
       "unsure what to type, call the `capabilities` tool and present its menu BEFORE " +
       "doing anything else - do not make the user guess the commands. " +

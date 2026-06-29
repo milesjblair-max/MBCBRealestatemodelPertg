@@ -359,6 +359,68 @@ web requests.
 > (query-param hydration), `server/test/links.test.ts` and `tests/regression.mjs`
 > (deep-link + hydration regression checks).
 
+### Naming: "Como home model" -> "WA Home Model" (`wa-home-model`)
+
+> **What changed** The product identity was renamed from "Como home model" /
+> `como-home-model` to **WA Home Model** / **`wa-home-model`** across the server
+> identity, tool output, prompts, dashboard, landing page and docs. The *suburb*
+> Como is untouched (it is still a real anchor in the data); only the product name
+> changed. Server version bumped to 0.4.0.
+>
+> **What it means** The tool is a dynamic, anchor-anywhere WA model, not a
+> Como-specific one, and the name now says so. **Action for you:** update the
+> connector key in `claude_desktop_config.json` from `"como-home-model"` to
+> `"wa-home-model"` (one line), then restart Claude.
+>
+> **Where it lives** `server/app/api/[transport]/route.ts` (serverInfo, scope
+> line, capabilities), `server/lib/*`, `server/app/*`, `mcp/src/*`, all READMEs.
+
+### M1: WA-wide base layer - anchor anywhere
+
+> **What changed** The model knew only 14 curated suburbs, so any anchor outside
+> them (Mandurah, Albany) was impossible. M1 adds a 1804-suburb WA base layer with
+> real per-suburb coordinates from the public-domain `australianpostcodes` dataset
+> (plus ABS SA2 names), a `nearbyWaSuburbs` function, and a `nearby_suburbs` tool.
+>
+> **What it means** You can now anchor anywhere in WA and get the real nearest
+> suburbs ("Mandurah" -> Halls Head, Erskine, Greenfields). This is geographic
+> coverage; per-suburb pricing and fit-scoring is M2 (live listings) and M3
+> (schools/demographics/growth).
+>
+> **Where it lives** `scripts/build_wa_base_layer.py`, `data/wa_suburbs.json`,
+> `mcp/src/baselayer.ts`, `mcp/test/baselayer.test.ts` (18 checks).
+
+### Correction: free data is more available than I first claimed
+
+> Twice I said suburb medians / schools / growth / family data were not freely
+> available. That was wrong, and the record should say so:
+> - **Medians: free.** Landgate (WA gov) publishes median house prices; REIWA and
+>   CoreLogic's propertyvalue.com.au publish per-suburb medians. (Access is via web
+>   pages that bot-block, or government open data, not a clean free API.)
+> - **Family / demographics: free, statewide.** ABS Census DataPacks/GeoPackages
+>   give household and family composition down to suburb (SAL) and SA2.
+> - **Growth: free.** Derivable from Landgate's annual median movements.
+> - **Schools: partial.** School locations + ACARA performance are free; precise
+>   *catchment polygons* are only PDF maps (no open shapefile yet).
+> So M3 (schools/demographics/growth) is genuinely buildable on free data.
+
+## Defects caught in review (and how)
+
+Recorded deliberately. These were found by the buyer in review, not by the test
+suite - because the tests verified that numbers were *correct*, not that *claims*
+were honest or that the *tool design* was hard to misuse. That is the lesson.
+
+| # | Defect | How it was caught | Root cause | Fix |
+|---|---|---|---|---|
+| 1 | Claimed it ranked "every suburb" when it knew only 14 | You named the curated 14 and noted a best-fit suburb outside them could never surface | Marketing wording never checked against the data; tests assert numbers, not claims | Honest coverage wording + `capabilities.coverage` note + **M1 WA-wide base layer** + an overclaim lint in the gate |
+| 2 | Stale-answer footgun: legacy `rank_suburbs`/`score_suburb` scored the fixed Como profile next to the dynamic tool | You noted the bare tools give a stale answer after re-anchoring | Two overlapping tools with similar names | Removed the legacy tools; one ranking path (`rank_suburbs_for_profile`) |
+| 3 | The dashboard improvised the affordability gap ("~$163k", real ~$643k) | You compared the headline to reality | The model filled a figure the engine did not return | Engine now returns `affordability` (entry price, reachable, gap); prompt uses it verbatim |
+| 4 | Wholesale ban on artifacts would have suppressed the good HTML dashboard | You sent the dashboard the model had built and asked why it wasn't the default | I conflated the flaky desktop `visualize` MCP-app with native client Artifacts | Narrowed the rule to the `visualize` app only; steer to native artifacts; added a server-rendered `/dashboard` |
+| 5 | 4-minute "Failed to load the MCP app" timeout on mobile | Your screenshot | The model was reaching for the desktop-bound `visualize` tool | Avoid `visualize`; markdown + the tested `/dashboard` page |
+| 6 | "No free sourced medians" | You challenged it directly | I asserted from memory | Researched: Landgate / REIWA / CoreLogic publish them free; corrected |
+| 7 | "Schools/growth/family not free per suburb" | You challenged it again | Same | Researched: ABS (family), Landgate (growth) free statewide; schools partial; corrected |
+| 8 | "How did this pass testing?" | You asked | Tests checked correctness, not honesty-of-claims or API ergonomics | Added the overclaim lint; removed the footgun; logged the gap |
+
 ## Glossary
 
 - **Engine vs server.** The *engine* is the maths as reusable functions

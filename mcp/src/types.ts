@@ -1,4 +1,4 @@
-// Shared types for the Como engine. These mirror the shapes in data/*.json.
+// Shared types for the WA Home Model engine. These mirror the shapes in data/*.json.
 
 export type River = "S" | "N";
 export type Condition = "original" | "dated" | "good" | "renovated" | "new";

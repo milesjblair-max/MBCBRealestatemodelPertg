@@ -61,7 +61,7 @@ export function buildDashboardHtml(profile: BuyerProfile): DashboardResult {
     const msg = (e as Error).message;
     return {
       status: 400,
-      html: `<!doctype html><meta charset="utf-8"><title>Out of scope</title><body style="font-family:system-ui;background:#0f1413;color:#e7efee;padding:40px"><h1>Como home model - WA only</h1><p>${esc(msg)}</p></body>`,
+      html: `<!doctype html><meta charset="utf-8"><title>Out of scope</title><body style="font-family:system-ui;background:#0f1413;color:#e7efee;padding:40px"><h1>WA Home Model - WA only</h1><p>${esc(msg)}</p></body>`,
     };
   }
 
@@ -101,7 +101,7 @@ export function buildDashboardHtml(profile: BuyerProfile): DashboardResult {
 
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Como home model - ${esc(anchor)} dashboard</title>
+<title>WA Home Model - ${esc(anchor)} dashboard</title>
 <style>
   :root{--paper:#F7F6F2;--card:#fff;--ink:#1A1815;--ink2:#57544D;--ink3:#8A867C;--line:#E4E2DA;--teal:#0F7A5F;--clay:#BC4B12;}
   *{box-sizing:border-box}
@@ -144,7 +144,7 @@ export function buildDashboardHtml(profile: BuyerProfile): DashboardResult {
   @media(max-width:560px){h1{font-size:22px}.wrap{padding:22px 14px 44px}}
 </style></head>
 <body><div class="wrap">
-  <p class="eyebrow">Como home model &middot; Western Australia &middot; resolved profile</p>
+  <p class="eyebrow">WA Home Model &middot; Western Australia &middot; resolved profile</p>
   <h1>${a.reachable ? `${esc(anchor)} is within reach.` : `Priced out of ${esc(anchor)} by ${money(a.gapToAnchor)}.`}</h1>
   <p class="lede">${a.reachable
     ? `Your ceiling of ${money(rp.budget.ceiling)} clears a typical ${esc(anchor)} house (entry ~${money(a.anchorEntryPrice)}).`
@@ -172,7 +172,7 @@ export function buildDashboardHtml(profile: BuyerProfile): DashboardResult {
   <p class="lede" style="margin-bottom:10px">Ranks the model's curated set of ${ranking.length} WA suburbs - a middle-ring cluster, not all of Perth. A genuinely better-fit suburb outside this set (Morley, Yokine, Inglewood, further out for land) will not appear here.</p>
   <table><thead><tr><th>Suburb</th><th>km</th><th>Fit</th><th>Budget</th><th>${ring != null ? `${ring}km ring` : "ring"}</th></tr></thead><tbody>${rows}</tbody></table>
 
-  <footer>Built from <b>como-home-model</b>: resolve_profile + rank_suburbs_for_profile + forecast (30/50/20 baseline). Every figure is engine output for this profile. General information only, not financial advice.</footer>
+  <footer>Built from <b>wa-home-model</b>: resolve_profile + rank_suburbs_for_profile + forecast (30/50/20 baseline). Every figure is engine output for this profile. General information only, not financial advice.</footer>
 </div></body></html>`;
 
   return { html, status: 200 };

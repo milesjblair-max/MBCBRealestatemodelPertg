@@ -193,3 +193,16 @@ export async function searchListingsLive(opts: { suburb?: string; cap?: number }
     listings: capped,
   };
 }
+
+/** Live listings for ANY WA suburb (not limited to the curated set) - the M2
+ *  per-suburb pricing primitive. Returns [] when no RAPIDAPI_KEY is set or the
+ *  call fails, so callers degrade gracefully rather than throw. */
+export async function fetchSuburbListings(suburb: string, pc: string): Promise<Listing[]> {
+  const key = process.env.RAPIDAPI_KEY;
+  if (!key) return [];
+  try {
+    return normalise(flatten(await searchSuburb(key, suburb, pc)), suburb, pc, undefined);
+  } catch {
+    return [];
+  }
+}

@@ -1,4 +1,4 @@
-# Como home model - MCP server (Phase 2)
+# WA Home Model - MCP server (Phase 2)
 
 The Phase 1 engine, exposed as a **Model Context Protocol** server over
 **Streamable HTTP**, deployable to **Vercel**. One MCP tool per engine function.

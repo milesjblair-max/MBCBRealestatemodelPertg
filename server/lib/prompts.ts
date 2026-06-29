@@ -16,7 +16,7 @@ import { toolUrl, priorFromPriority } from "@/lib/links";
 const ANCHORS = SUBURBS.map((s) => s.name).join(", ");
 
 const SCOPE_LINE =
-  "SCOPE: This is the Como home model and it covers WESTERN AUSTRALIA (Perth) ONLY. " +
+  "SCOPE: This is the WA Home Model and it covers WESTERN AUSTRALIA (Perth) ONLY. " +
   "If the user names a suburb or state outside this list, say so plainly and stop. " +
   `Valid suburbs: ${ANCHORS}.`;
 
@@ -120,7 +120,7 @@ export function registerPrompts(server: any): void {
               "",
               "THEN present it as a dashboard with these sections in this order (per the RENDERING rule: a concise Markdown summary first, then a self-contained HTML artifact dashboard using the same numbers). Sections:",
               "0. AFFORDABILITY HEADLINE: use resolve_profile.affordability VERBATIM - whether the anchor is reachable, its entry price (anchorEntryPrice), and the gapToAnchor in dollars. Do NOT estimate the gap or the cheapest house yourself; if reachable is false, say plainly they are priced out of the anchor by gapToAnchor. Use rank_suburbs_for_profile.summary.viableSuburbs for any 'suburbs meeting both rules' count - never guess it.",
-              "1. BUDGET: one line confirming this is the WA Como model and the resolved band (floor to ceiling). If borrowed funds were used (a credit facility or released equity), add the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
+              "1. BUDGET: one line confirming this is the WA Home Model and the resolved band (floor to ceiling). If borrowed funds were used (a credit facility or released equity), add the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
               "2. BUYING WINDOW: the buy-timing posture (act-now / balanced / patient-opportunistic) as a bold heading, with its one-line reason. If patient, name the 2027 soft-patch window.",
               "3. THE 3 SCENARIOS: call the forecast tool and render a small Markdown table with columns Scenario | End-27 (buy window) | Mid-29, rows Bear / Base / Bull, plus an Expected row. Bold the Expected Mid-29 figure.",
               "4. WHERE TO BUY: render the ranking as a heat table: one row per suburb with columns Suburb | km | Fit, and append a bar made of block characters to the Fit cell so it reads visually, e.g. a score of 82 -> `8.2 ████████░░`. Mark over-budget suburbs.",
@@ -215,7 +215,7 @@ export function registerPrompts(server: any): void {
             type: "text",
             text: [
               SCOPE_LINE,
-              "TASK: Briefly explain to the user, in plain English: (a) this is the Como home model for Western Australia (Perth) only; (b) it can estimate a house price, score and rank suburbs for their situation, forecast the market, and match listings; (c) the best way to start is the /find_a_home prompt, or estimate_a_listing for a specific property. Call list_suburbs to show the suburbs it covers with their median ranges. Keep it short and concrete.",
+              "TASK: Briefly explain to the user, in plain English: (a) this is the WA Home Model for Western Australia (Perth) only; (b) it can estimate a house price, score and rank suburbs for their situation, forecast the market, and match listings; (c) the best way to start is the /find_a_home prompt, or estimate_a_listing for a specific property. Call list_suburbs to show the suburbs it covers with their median ranges. Keep it short and concrete.",
             ].join("\n"),
           },
         },
