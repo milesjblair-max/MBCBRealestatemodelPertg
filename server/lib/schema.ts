@@ -35,8 +35,12 @@ export const FinancesSchema = z
     credit_rate_pct: z.number().nonnegative().optional().describe("Interest rate on that facility (%); 0 if interest-free."),
     currently_renting: z.boolean().optional(),
     monthly_commitments: z.number().nonnegative().optional().describe("Existing monthly loan repayments (AUD)."),
+    equity_release: z.number().nonnegative().optional().describe("Equity to release from a property you already own (AUD). Borrowed money: helps cover the price but carries servicing, unlike cash."),
+    equity_rate_pct: z.number().nonnegative().optional().describe("Interest rate on the released equity (defaults to a standard mortgage rate)."),
+    property_value: z.number().nonnegative().optional().describe("Value of a property you already own (AUD); used with property_mortgage to compute usable equity at 80% LVR."),
+    property_mortgage: z.number().nonnegative().optional().describe("Outstanding mortgage on that property (AUD)."),
   })
-  .describe("The buyer's cash position. Drives the budget band and the buy-timing posture.");
+  .describe("The buyer's cash position. Cash (deposit + buffer) is servicing-free; a credit facility or released equity is borrowed and carries servicing. Drives the budget band and buy-timing.");
 
 export const ProfileSchema = z
   .object({

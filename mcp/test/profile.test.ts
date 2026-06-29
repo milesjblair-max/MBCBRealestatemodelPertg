@@ -72,6 +72,23 @@ const moreFunds = budgetBand({ ...baseWA, finances: { deposit: 400000 } });
 const lessFunds = budgetBand({ ...baseWA, finances: { deposit: 100000 } });
 ok("more own funds lifts the ceiling", moreFunds.ceiling > lessFunds.ceiling, `${lessFunds.ceiling} -> ${moreFunds.ceiling}`);
 
+// ---- 2b. Equity is borrowed money, not cash --------------------------------
+// Same income; 200k as genuine cash vs 200k released equity. Equity carries
+// servicing, so it must NOT buy as much as cash. At 0% it behaves like cash.
+const asCash = budgetBand({ ...baseWA, income: 240000, finances: { deposit: 200000 } });
+const asEquity6 = budgetBand({ ...baseWA, income: 240000, finances: { equity_release: 200000, equity_rate_pct: 6 } });
+const asEquity0 = budgetBand({ ...baseWA, income: 240000, finances: { equity_release: 200000, equity_rate_pct: 0 } });
+ok("released equity at a real rate buys less than the same cash", asEquity6.ceiling < asCash.ceiling, `${asEquity6.ceiling} < ${asCash.ceiling}`);
+ok("interest-free equity behaves like cash", asEquity0.ceiling === asCash.ceiling, `${asEquity0.ceiling} == ${asCash.ceiling}`);
+ok("equity carries a monthly servicing cost, cash does not", asEquity6.monthlyServicing > 0 && asCash.monthlyServicing === 0, `${asEquity6.monthlyServicing} / ${asCash.monthlyServicing}`);
+ok("budget reports the cash vs borrowed split", asEquity6.cash === 0 && asEquity6.borrowedFunds === 200000, `cash=${asEquity6.cash} borrowed=${asEquity6.borrowedFunds}`);
+
+// Usable equity computed from a property's value and mortgage (80% LVR).
+const fromProperty = budgetBand({ ...baseWA, income: 240000, finances: { property_value: 700000, property_mortgage: 300000, equity_rate_pct: 6 } });
+const fromDirect = budgetBand({ ...baseWA, income: 240000, finances: { equity_release: 260000, equity_rate_pct: 6 } });
+ok("usable equity = 80% of value minus mortgage", fromProperty.borrowedFunds === 260000, `${fromProperty.borrowedFunds}`);
+ok("property-derived equity matches the direct figure", fromProperty.ceiling === fromDirect.ceiling, `${fromProperty.ceiling} == ${fromDirect.ceiling}`);
+
 // ---- 3. The two-buyer timing contrast (the core of the brief) --------------
 // "someone who has a small deposit and available cash should not buy in the
 //  same period as someone with large cash and a 0% line of credit."

@@ -47,6 +47,16 @@ export function registerPrompts(server: any): void {
         .string()
         .optional()
         .describe("Interest rate on that facility as a percent. Enter 0 if it is interest-free."),
+      equity_release: z
+        .string()
+        .optional()
+        .describe(
+          "Equity you would release from a property you ALREADY own, in AUD. This is borrowed money: it helps cover the price but carries servicing (unlike cash), so it does not stretch your budget as far as the same amount in cash.",
+        ),
+      equity_rate_pct: z
+        .string()
+        .optional()
+        .describe("Interest rate on that released equity, as a percent. Leave blank for a standard mortgage rate."),
       currently_renting: z
         .string()
         .optional()
@@ -83,6 +93,8 @@ export function registerPrompts(server: any): void {
               `- finances.deposit: ${a.deposit ?? "ASK"}`,
               `- finances.credit_line: ${a.credit_line ?? "ASK the user (do NOT guess)"}`,
               `- finances.credit_rate_pct: ${a.credit_rate_pct ?? "ASK (0 if interest-free)"}`,
+              `- finances.equity_release: ${a.equity_release && a.equity_release.trim() !== "" ? a.equity_release : "none (only if they own a property and would borrow against it)"}`,
+              `- finances.equity_rate_pct: ${a.equity_rate_pct && a.equity_rate_pct.trim() !== "" ? a.equity_rate_pct : "default mortgage rate"}`,
               `- finances.currently_renting: ${a.currently_renting ?? "ASK"}`,
               `- life_stage: infer (e.g. young_family) only from what the user said`,
               `- criteria from priority="${a.priority ?? "balanced"}": schools -> schools 5, proximity 2; proximity -> proximity 5, schools 3; land -> land 5; balanced -> omit and use the life-stage defaults`,
@@ -90,7 +102,7 @@ export function registerPrompts(server: any): void {
               `- horizon_years: ${a.horizon_years ?? "ASK if buy-timing is wanted"}`,
               "",
               "THEN present, concisely (no rambling):",
-              "1. One line confirming this is the WA Como model and the resolved budget band.",
+              "1. One line confirming this is the WA Como model and the resolved budget band. If the band used borrowed funds (a credit facility or released equity), note the budget.cash vs budget.borrowedFunds split and that borrowed money was serviced, not counted as free cash.",
               "2. The buy-timing posture (act-now / balanced / patient-opportunistic) with its one-line reason.",
               "3. A ranked suburb table: suburb, km from anchor, score, in-budget (yes/no).",
               "4. At most one honest caveat (e.g. WA school catchments are drawn street by street, so 'in Shelley' does not guarantee the Rossmoyne intake; or the anchor itself may be over budget).",

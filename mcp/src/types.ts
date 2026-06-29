@@ -55,6 +55,13 @@ export interface Finances {
   credit_rate_pct?: number;
   currently_renting?: boolean;
   monthly_commitments?: number;
+  // Equity in a property you already own. This is BORROWED money: it helps cover
+  // the price but carries a servicing cost (unlike cash). Give the amount to
+  // release directly, or the property's value and mortgage to compute it.
+  equity_release?: number;
+  equity_rate_pct?: number;
+  property_value?: number;
+  property_mortgage?: number;
 }
 
 export interface BuyerProfile {
@@ -84,6 +91,9 @@ export interface BudgetBand {
   floor: number;
   ceiling: number;
   borrowingCapacity: number;
+  cash: number; // servicing-free funds (deposit + buffer)
+  borrowedFunds: number; // credit line + released equity (carry servicing)
+  monthlyServicing: number; // monthly carrying cost of the borrowed funds
 }
 
 export interface BuyTiming {

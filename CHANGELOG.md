@@ -299,6 +299,43 @@ web requests.
 
 ---
 
+## Post-launch refinements
+
+### Usability: guided prompts and visible scope
+
+> **What changed** Added MCP **prompts** (`/find_a_home`, `/estimate_a_listing`,
+> `/about_this_tool`) that the client shows as labelled fill-in forms; every tool
+> result is prefixed "Como home model - Western Australia (Perth) only"; the
+> guided flow refuses to invent financial figures and asks instead.
+>
+> **What it means** The server stopped being an open chat where you had to know
+> what to type. You pick a prompt from the "/" menu, fill the fields, and it runs
+> the engine correctly within the WA-only scope.
+>
+> **Where it lives** `server/lib/prompts.ts`, `server/app/api/[transport]/route.ts`.
+
+### Correctness: equity is borrowed money, not cash
+
+> **What changed** The budget model now separates genuine **cash** (deposit +
+> buffer, servicing-free) from **borrowed funds** (a credit facility, or equity
+> released from a property you already own). Borrowed funds still help cover the
+> price, but they carry a monthly carrying cost at their rate that reduces how
+> much you can safely borrow for the new home. Interest-free money carries no
+> cost, so it still behaves like cash. You can give the equity amount directly, or
+> a property's value and mortgage and the model computes usable equity at 80% LVR.
+> The budget result now reports the cash vs borrowed split and the monthly
+> servicing.
+>
+> **What it means** The old model treated a credit line or released equity as if
+> it were cash, which overstated the safe budget for anyone whose facility was not
+> interest-free. Now a dollar of borrowed equity at, say, 6% buys less house than a
+> dollar of cash, which is the truth. (An interest-free family facility is
+> unchanged.)
+>
+> **Where it lives** `mcp/src/finance.ts` (`budgetBand`, `carryingCost`),
+> `mcp/src/types.ts`, `data/profile.schema.json`, `mcp/test/profile.test.ts`
+> (6 new checks).
+
 ## Glossary
 
 - **Engine vs server.** The *engine* is the maths as reusable functions

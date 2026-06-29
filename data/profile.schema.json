@@ -30,7 +30,11 @@
         "credit_line": { "type": "number", "minimum": 0, "description": "Available line of credit / family facility (AUD)." },
         "credit_rate_pct": { "type": "number", "minimum": 0, "description": "Interest rate on that facility (e.g. 0 for an interest-free family loan)." },
         "currently_renting": { "type": "boolean", "description": "True if paying rent now (rent is a holding cost that makes waiting expensive)." },
-        "monthly_commitments": { "type": "number", "minimum": 0, "description": "Existing monthly debt repayments (AUD), reduces borrowing power." }
+        "monthly_commitments": { "type": "number", "minimum": 0, "description": "Existing monthly debt repayments (AUD), reduces borrowing power." },
+        "equity_release": { "type": "number", "minimum": 0, "description": "Equity you would release from a property you already own (AUD). Treated as borrowed money: it helps cover the price but carries servicing, unlike cash." },
+        "equity_rate_pct": { "type": "number", "minimum": 0, "description": "Interest rate on the released equity (defaults to a standard mortgage rate)." },
+        "property_value": { "type": "number", "minimum": 0, "description": "Value of a property you already own (AUD). Used with property_mortgage to compute usable equity at 80% LVR if equity_release is not given directly." },
+        "property_mortgage": { "type": "number", "minimum": 0, "description": "Outstanding mortgage on that property (AUD)." }
       }
     },
     "life_stage": {
