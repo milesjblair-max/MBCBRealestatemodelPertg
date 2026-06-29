@@ -161,6 +161,26 @@ const handler = createMcpHandler(
     );
 
     server.tool(
+      "new_profile",
+      "Cold-start / reset. Call this when the user wants to start over, test as a brand-new user, or build a fresh profile. It instructs you to DISCARD every profile detail mentioned earlier in this conversation and re-onboard from zero, and returns the onboarding questions. (The server is stateless and stores nothing; the only carried-over state is this conversation, so this clears it for the purposes of the next profile.)",
+      {},
+      async () =>
+        json({
+          reset: true,
+          instruction:
+            "TREAT THE USER AS BRAND NEW. Discard and do NOT reuse any anchor, " +
+            "income, deposit, budget, life stage, criteria, filters or suburb " +
+            "preferences stated earlier in this conversation. Do not infer them " +
+            "from prior turns. Do not open any earlier dashboard link (its URL " +
+            "encodes the old profile). Start fresh: ask the onboarding questions " +
+            "below, collect new answers, then call resolve_profile (or " +
+            "recommend_areas for an off-metro anchor) with ONLY the new inputs.",
+          onboarding_questions: ONBOARDING_QUESTIONS,
+          note: "The MCP server holds no saved profile; this resets the conversational context only. For a guaranteed cold start, a brand-new chat also works.",
+        }),
+    );
+
+    server.tool(
       "capabilities",
       "What this connector is, what it can do, and how to use it. Call this first (or whenever the user asks what this does) and present it before anything else.",
       {},
@@ -188,6 +208,7 @@ const handler = createMcpHandler(
             "Match current listings to your filters (match_listings, search_listings)",
             "Forecast the market to mid-2029 across bear/base/bull (forecast)",
             "Open a full visual dashboard for your profile (every tool returns dashboardUrl)",
+            "Start over / test as a brand-new user (new_profile) - discards any profile from earlier in the chat and re-onboards from zero",
           ],
           prompts: ["find_a_home", "see_listings", "estimate_a_listing", "about_this_tool"],
           suburbs: SUBURBS.map((s) => s.name),
