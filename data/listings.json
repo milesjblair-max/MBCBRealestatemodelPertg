@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-06-29",
+    "generated": "2026-06-30",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -14,10 +14,28 @@
   },
   "listings": [
     {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": 735000,
+      "priceText": "From $735,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": null,
+      "address": "1/4 Sandhurst Road",
+      "image": "https://i3.au.reastatic.net/640x480/5991eb467e9bbaa6f22c231ac0a70534c445624327b8addd853c35b485e9598c/image.png",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151630672",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $735,000 - priced below the ~$970k suburb median; potential bargain.",
+      "new": true
+    },
+    {
       "suburb": "Parkwood",
       "pc": "6147",
-      "price": 800000,
-      "priceText": "Offers in the $800,000's",
+      "price": 799000,
+      "priceText": "Offers Over $799,000",
       "beds": 3,
       "baths": 1,
       "cars": 2,
@@ -28,7 +46,7 @@
       "direct": true,
       "bargain": true,
       "meets": false,
-      "reason": "3-bed, $800,000 - priced below the ~$920k suburb median; potential bargain.",
+      "reason": "3-bed, $799,000 - priced below the ~$920k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -155,7 +173,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, $926,115 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -305,18 +323,18 @@
       "suburb": "Dianella",
       "pc": "6059",
       "price": 1000000,
-      "priceText": "From $1M",
+      "priceText": "Offers From $1m",
       "beds": 3,
       "baths": 1,
-      "cars": 1,
-      "land": null,
-      "address": "444B Crawford Road",
-      "image": "https://i3.au.reastatic.net/640x480/77fb59943a315e5d364e3292a38ad9b5be076b880807d2857291ff444d663a94/image.jpg",
-      "url": "https://www.realestate.com.au/property-duplex+semi-detached-wa-dianella-151260500",
+      "cars": 2,
+      "land": 726,
+      "address": "16 Phillips Street",
+      "image": "https://i3.au.reastatic.net/640x480/00c3d3af3502160d97394fba0b55ecb0369b3d14acd30c7207e5f0dab9295323/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151598364",
       "direct": true,
       "bargain": false,
-      "meets": false,
-      "reason": "3-bed, $1,000,000 - meets beds/land/budget criteria.",
+      "meets": true,
+      "reason": "3-bed, 726sqm, $1,000,000 - meets beds/land/budget criteria.",
       "new": true
     },
     {
@@ -335,24 +353,6 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 734sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": 1100000,
-      "priceText": "From $1.1M",
-      "beds": 3,
-      "baths": 1,
-      "cars": 4,
-      "land": 739,
-      "address": "121 Woodrow Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/f9ad9f8a2eb5898ecad94b029f8561fa45d522846b19198bb5a894b88f295617/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151138468",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
