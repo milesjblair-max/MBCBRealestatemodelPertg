@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-01",
+    "generated": "2026-07-02",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -83,7 +83,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $895,000 - priced below the ~$930k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
@@ -131,13 +131,31 @@
       "cars": 2,
       "land": 524,
       "address": "19A Merian Close",
-      "image": "https://i3.au.reastatic.net/640x480/f949e3fdf3fa852529dea8d96b3ffb4507bee8bdb87f467092ed6088d1aecfa4/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/ffda21eb09ba4b57357d63239d2c6fe6d99d24dff20ca5fab837f0b11fe4063c/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151544056",
       "direct": true,
       "bargain": false,
       "meets": true,
       "reason": "4-bed, 524sqm, $899,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 900000,
+      "priceText": "Low to Mid $900,000's",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": null,
+      "address": "60 Willeri Drive",
+      "image": "https://i3.au.reastatic.net/640x480/1acb6de186b4a9cd0e6e5d03cbce71bc57e71c752bfaa6eabfdb7efba1a61127/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151668940",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, $900,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Bentley",
@@ -245,7 +263,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, $965,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
@@ -302,6 +320,24 @@
       "new": false
     },
     {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 1000000,
+      "priceText": "Offers Over $1,000,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 688,
+      "address": "7 Waverley Way",
+      "image": "https://i3.au.reastatic.net/640x480/9026565b0a3aaeef67a36b1fc16c506b9de6db82882f157ed74100ff3e125a67/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151663544",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 688sqm, $1,000,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
       "suburb": "Dianella",
       "pc": "6059",
       "price": 1000000,
@@ -338,24 +374,6 @@
       "new": false
     },
     {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": 1100000,
-      "priceText": "From $1.1M",
-      "beds": 3,
-      "baths": 1,
-      "cars": 4,
-      "land": 739,
-      "address": "121 Woodrow Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/f9ad9f8a2eb5898ecad94b029f8561fa45d522846b19198bb5a894b88f295617/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151138468",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
       "suburb": "Bayswater",
       "pc": "6053",
       "price": 1100000,
@@ -371,7 +389,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, $1,100,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Wilson",
@@ -431,6 +449,24 @@
       "suburb": "Dianella",
       "pc": "6059",
       "price": null,
+      "priceText": "All Offers Considered. Contact Agent!",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": null,
+      "address": "25 Lantana Crescent",
+      "image": "https://i3.au.reastatic.net/640x480/558f3fb3bf7f8f4d8d8e5fdd4931dc1ae89ed6b6fe08820ab697abe0d6b459f7/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151666900",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": null,
       "priceText": "FOR SALE - INSPECTION BY APPOINTMENT ONLY",
       "beds": 3,
       "baths": 1,
@@ -461,24 +497,6 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 720sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": null,
-      "priceText": "Contact Agent",
-      "beds": 3,
-      "baths": 1,
-      "cars": 4,
-      "land": 478,
-      "address": "361 Guildford Road",
-      "image": "https://i3.au.reastatic.net/640x480/b2658ec8c039ece59e90009a6c448a2368efd1770e9f278d6698ebe49b83e386/image.png",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151315332",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 478sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
