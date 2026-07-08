@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-07",
+    "generated": "2026-07-08",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -47,7 +47,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $700,000 - priced below the ~$920k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -101,7 +101,7 @@
       "bargain": true,
       "meets": true,
       "reason": "3-bed, 851sqm, $900,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -119,24 +119,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, $799,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bentley",
-      "pc": "6102",
-      "price": 899000,
-      "priceText": "From $899,000!",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": 524,
-      "address": "19A Merian Close",
-      "image": "https://i3.au.reastatic.net/640x480/ffda21eb09ba4b57357d63239d2c6fe6d99d24dff20ca5fab837f0b11fe4063c/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bentley-151544056",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "4-bed, 524sqm, $899,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -214,6 +196,24 @@
     {
       "suburb": "Wilson",
       "pc": "6107",
+      "price": 939990,
+      "priceText": "$939,990",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "Address available  on request",
+      "image": "https://i3.au.reastatic.net/640x480/08485174ed9fc87b71621d9e249674c0f5ccdddcb26bba0e1f3d37eae0bfcda3/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-wilson-151710560",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "4-bed, $939,990 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Wilson",
+      "pc": "6107",
       "price": 943435,
       "priceText": "$943,435",
       "beds": 4,
@@ -284,6 +284,24 @@
       "new": false
     },
     {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 979000,
+      "priceText": "From $979,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "15C Drynan Street",
+      "image": "https://i3.au.reastatic.net/640x480/6ef21f9671677d85cd007d0d6e690585473cdff8024967b088e326441f04c229/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151423508",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, $979,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
       "suburb": "Parkwood",
       "pc": "6147",
       "price": 999000,
@@ -317,24 +335,6 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 734sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 999000,
-      "priceText": "Offers from $999,000",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "2/14 Hudson Street",
-      "image": "https://i3.au.reastatic.net/640x480/d6b4d500d6f93d5f10aae5db96ddff90799d02a825f00177c9d32a5f70e93bb1/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151333008",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, $999,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -376,6 +376,24 @@
     {
       "suburb": "Bayswater",
       "pc": "6053",
+      "price": 1000000,
+      "priceText": "Offers from $1,000,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": 471,
+      "address": "8 Constance street",
+      "image": "https://i3.au.reastatic.net/640x480/8aac1641cfe67224c1f9be5ebc0b8f2412cea812876e0a7a91acffaa4dafb595/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151711660",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 471sqm, $1,000,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
       "price": 1080000,
       "priceText": "Offers from $1,080,000",
       "beds": 4,
@@ -407,24 +425,6 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Wilson",
-      "pc": "6107",
-      "price": null,
-      "priceText": "Awaiting Price Guide",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": 880,
-      "address": "17 Leach Highway",
-      "image": "https://i3.au.reastatic.net/640x480/2b309214d910f91b7d924cedd31e8844a46be20fb77df2f04d35ec4db0510a68/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-150972712",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 880sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -551,24 +551,6 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": null,
-      "priceText": "End Date Sale",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "440 Guildford Road",
-      "image": "https://i3.au.reastatic.net/640x480/f74878216723692a3670f89adbdbe105cafa6fc746b9c81ee0e740a8c8e0a1b7/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-150653348",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed - meets beds/land/budget criteria.",
       "new": false
     }
   ]
