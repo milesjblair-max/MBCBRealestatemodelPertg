@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-10",
+    "generated": "2026-07-11",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -61,24 +61,6 @@
       "address": "38 Periwinkle Way",
       "image": "https://i3.au.reastatic.net/640x480/eccb606d9b1abaadcb50e83a6b2dbc5912cf86765848edbb928be3f5687a28bd/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-parkwood-151728772",
-      "direct": true,
-      "bargain": true,
-      "meets": false,
-      "reason": "3-bed, $799,000 - priced below the ~$920k suburb median; potential bargain.",
-      "new": false
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 799000,
-      "priceText": "Offers Over $799,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": null,
-      "address": "13 Cosmelia Way",
-      "image": "https://i3.au.reastatic.net/640x480/e297c16aa00580ab265611d01ba3a45b64073361184669484c1dc0bd221b2ec0/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151186220",
       "direct": true,
       "bargain": true,
       "meets": false,
@@ -444,6 +426,24 @@
       "meets": false,
       "reason": "4-bed - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": null,
+      "priceText": "OFFERS INVITED",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "land": 690,
+      "address": "66 Willeri Drive",
+      "image": "https://i3.au.reastatic.net/640x480/217900366136022e6ca0672332b8c8285827b6acdfeaf1a43ed7db4b553b5b39/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151318792",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "4-bed, 690sqm - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "St James",
