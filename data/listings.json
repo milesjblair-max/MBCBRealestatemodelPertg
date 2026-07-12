@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-11",
+    "generated": "2026-07-12",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -48,6 +48,24 @@
       "meets": false,
       "reason": "3-bed, $700,000 - priced below the ~$920k suburb median; potential bargain.",
       "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 799000,
+      "priceText": "Offers Over $799,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": null,
+      "address": "13 Cosmelia Way",
+      "image": "https://i3.au.reastatic.net/640x480/e297c16aa00580ab265611d01ba3a45b64073361184669484c1dc0bd221b2ec0/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151186220",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $799,000 - priced below the ~$920k suburb median; potential bargain.",
+      "new": true
     },
     {
       "suburb": "Parkwood",
@@ -101,24 +119,6 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $849,000 - priced below the ~$1020k suburb median; potential bargain.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 900000,
-      "priceText": "Offers From $900,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 3,
-      "land": 851,
-      "address": "123 Beechboro Road",
-      "image": "https://i3.au.reastatic.net/640x480/9dc7c340ba3e0e4c4a46c162514282e08d82afcc3d9fda3e8cb94346ca778bed/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-150530804",
-      "direct": true,
-      "bargain": true,
-      "meets": true,
-      "reason": "3-bed, 851sqm, $900,000 - priced below the ~$980k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -230,24 +230,6 @@
       "new": false
     },
     {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 949000,
-      "priceText": "NEW PRICE!! From $949,000",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": 703,
-      "address": "59 Meadowbrook Drive",
-      "image": "https://i3.au.reastatic.net/640x480/583f7274ba2e2954f55fe6ebf5c1a773057462c12c12677dc79a88e84e925b8a/image.png",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151377232",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 703sqm, $949,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "St James",
       "pc": "6102",
       "price": 950000,
@@ -318,6 +300,24 @@
       "meets": true,
       "reason": "3-bed, 690sqm, $999,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 999000,
+      "priceText": "Offers from $999,000",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "2/14 Hudson Street",
+      "image": "https://i3.au.reastatic.net/640x480/d6b4d500d6f93d5f10aae5db96ddff90799d02a825f00177c9d32a5f70e93bb1/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151333008",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "4-bed, $999,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Wilson",
@@ -410,24 +410,6 @@
       "new": false
     },
     {
-      "suburb": "Wilson",
-      "pc": "6107",
-      "price": null,
-      "priceText": "Awaiting Price Guide",
-      "beds": 4,
-      "baths": 2,
-      "cars": 4,
-      "land": null,
-      "address": "Lot 37 Bywater Way",
-      "image": "https://i3.au.reastatic.net/640x480/331540e25f20503646e90e8ffbd42625c31a144d025afad19f74046f2fab8b12/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-151647216",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Parkwood",
       "pc": "6147",
       "price": null,
@@ -443,7 +425,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 690sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "St James",
