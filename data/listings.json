@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-13",
+    "generated": "2026-07-14",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -389,7 +389,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 452sqm, $1,080,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -425,7 +425,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, $1,100,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -497,7 +497,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
