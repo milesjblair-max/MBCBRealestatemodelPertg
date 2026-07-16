@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-15",
+    "generated": "2026-07-16",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -155,7 +155,7 @@
       "bargain": true,
       "meets": true,
       "reason": "4-bed, 532sqm, $900,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -191,7 +191,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, $894,663 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -230,42 +230,6 @@
       "new": false
     },
     {
-      "suburb": "Bentley",
-      "pc": "6102",
-      "price": 940000,
-      "priceText": "$940,000",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "Address available on request",
-      "image": "https://i3.au.reastatic.net/640x480/baf8c8711fde2413a935586df92501d5f8e9ab5c44461bffb2dde3b73a46b951/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bentley-151598836",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, $940,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Wilson",
-      "pc": "6107",
-      "price": 943435,
-      "priceText": "$943,435",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "Address available on request",
-      "image": "https://i3.au.reastatic.net/640x480/7cab0393e35feb50df1f2abab01ab13651bafd6df9b77de52bc078afef769012/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-151681728",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, $943,435 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "St James",
       "pc": "6102",
       "price": 950000,
@@ -282,6 +246,24 @@
       "meets": false,
       "reason": "4-bed, 457sqm, $950,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 990000,
+      "priceText": "$990,000",
+      "beds": 4,
+      "baths": 2,
+      "cars": 8,
+      "land": 825,
+      "address": "144 Broadway",
+      "image": "https://i3.au.reastatic.net/640x480/5a6651da9ecf63945ae40e0b7cf1d102fa54a07dfa8e728368c9ced6bfa6b13e/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151789756",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "4-bed, 825sqm, $990,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Parkwood",
@@ -392,22 +374,22 @@
       "new": false
     },
     {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 1100000,
-      "priceText": "From $1,100,000",
+      "suburb": "Wilson",
+      "pc": "6107",
+      "price": null,
+      "priceText": "Online Offers",
       "beds": 4,
       "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "44B Wyatt Road",
-      "image": "https://i3.au.reastatic.net/640x480/ccc18aafd9d1975bc4c1463486674d25661493ff389c1b7a0c507f65fd65c2b9/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151586400",
+      "cars": 4,
+      "land": 461,
+      "address": "4A Waldon Street",
+      "image": "https://i3.au.reastatic.net/640x480/1039b481fa2e2fb141321fb546203a7407229763cde893f6ca176e15971ca16e/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-wilson-151784612",
       "direct": true,
       "bargain": false,
       "meets": false,
-      "reason": "4-bed, $1,100,000 - meets beds/land/budget criteria.",
-      "new": false
+      "reason": "4-bed, 461sqm - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Parkwood",
@@ -479,7 +461,7 @@
       "bargain": false,
       "meets": false,
       "reason": "6-bed, 563sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -533,7 +515,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 842sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     }
   ]
 }
