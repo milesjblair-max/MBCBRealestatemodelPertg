@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-20",
+    "generated": "2026-07-21",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -13,24 +13,6 @@
     }
   },
   "listings": [
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 700000,
-      "priceText": "Offers High $700,000's",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": null,
-      "address": "88D Ropele Drive",
-      "image": "https://i3.au.reastatic.net/640x480/5f93a71f2c03b2a7c6dd81e9b15eeb28ebd07ce1acd1d5f4cad4db56212c5d3a/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151696120",
-      "direct": true,
-      "bargain": true,
-      "meets": false,
-      "reason": "3-bed, $700,000 - priced below the ~$920k suburb median; potential bargain.",
-      "new": false
-    },
     {
       "suburb": "Parkwood",
       "pc": "6147",
@@ -281,7 +263,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, $950,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -335,6 +317,24 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 483sqm, $999,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 999000,
+      "priceText": "$999,000 ONO",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": 690,
+      "address": "36 Ropele Drive",
+      "image": "https://i3.au.reastatic.net/640x480/5992a0af1476ba56533c0eefcff171b771496dad7fffd70494eecaff1512a8b8/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151687672",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 690sqm, $999,000 - meets beds/land/budget criteria.",
       "new": true
     },
     {
@@ -426,6 +426,24 @@
       "meets": false,
       "reason": "4-bed, 452sqm, $1,080,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": 1100000,
+      "priceText": "From $1.1M",
+      "beds": 3,
+      "baths": 1,
+      "cars": 4,
+      "land": 739,
+      "address": "121 Woodrow Avenue",
+      "image": "https://i3.au.reastatic.net/640x480/f9ad9f8a2eb5898ecad94b029f8561fa45d522846b19198bb5a894b88f295617/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151138468",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Parkwood",
@@ -521,7 +539,7 @@
       "suburb": "Dianella",
       "pc": "6059",
       "price": null,
-      "priceText": "AUCTION THIS SATURDAY AT 2:00PM",
+      "priceText": "OFFERS",
       "beds": 4,
       "baths": 2,
       "cars": 2,
@@ -533,24 +551,6 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 720sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": null,
-      "priceText": "Offers Early to Mid 1 Million",
-      "beds": 6,
-      "baths": 2,
-      "cars": 2,
-      "land": 563,
-      "address": "65 Booker Street",
-      "image": "https://i3.au.reastatic.net/640x480/3cf5e4db8b0838a148aadb0e9afd625cd75f1e8de184b6d2ca5e8ca2afe64223/image.png",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151770700",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "6-bed, 563sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
