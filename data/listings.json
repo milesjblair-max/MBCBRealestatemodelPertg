@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-21",
+    "generated": "2026-07-22",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -13,6 +13,24 @@
     }
   },
   "listings": [
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 700000,
+      "priceText": "Offers High $700,000's",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": null,
+      "address": "88D Ropele Drive",
+      "image": "https://i3.au.reastatic.net/640x480/5f93a71f2c03b2a7c6dd81e9b15eeb28ebd07ce1acd1d5f4cad4db56212c5d3a/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151696120",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $700,000 - priced below the ~$920k suburb median; potential bargain.",
+      "new": true
+    },
     {
       "suburb": "Parkwood",
       "pc": "6147",
@@ -32,22 +50,22 @@
       "new": false
     },
     {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 799000,
-      "priceText": "From $799,000",
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": 800000,
+      "priceText": "Offers From Mid To High $800K's",
       "beds": 3,
       "baths": 1,
-      "cars": 4,
+      "cars": 3,
       "land": null,
-      "address": "38 Periwinkle Way",
-      "image": "https://i3.au.reastatic.net/640x480/eccb606d9b1abaadcb50e83a6b2dbc5912cf86765848edbb928be3f5687a28bd/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151728772",
+      "address": "1/19 Boulton Street",
+      "image": "https://i3.au.reastatic.net/640x480/a309d03999887d2309d9f75ba8424a79b031bd5e1d206982dad7a65237e0317f/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151844820",
       "direct": true,
       "bargain": true,
       "meets": false,
-      "reason": "3-bed, $799,000 - priced below the ~$920k suburb median; potential bargain.",
-      "new": false
+      "reason": "3-bed, $800,000 - priced below the ~$970k suburb median; potential bargain.",
+      "new": true
     },
     {
       "suburb": "Wilson",
@@ -107,6 +125,42 @@
       "suburb": "Bayswater",
       "pc": "6053",
       "price": 900000,
+      "priceText": "Offers From $900,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 3,
+      "land": 851,
+      "address": "123 Beechboro Road",
+      "image": "https://i3.au.reastatic.net/640x480/9dc7c340ba3e0e4c4a46c162514282e08d82afcc3d9fda3e8cb94346ca778bed/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-150530804",
+      "direct": true,
+      "bargain": true,
+      "meets": true,
+      "reason": "3-bed, 851sqm, $900,000 - priced below the ~$980k suburb median; potential bargain.",
+      "new": true
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 900000,
+      "priceText": "Suit Buyers Mid $900,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": 842,
+      "address": "3 Rundal Street",
+      "image": "https://i3.au.reastatic.net/640x480/98420ab46c650621d5c24d5f7287ffe41ad52b9cf02835b6e21e869d18687c56/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151778188",
+      "direct": true,
+      "bargain": true,
+      "meets": true,
+      "reason": "3-bed, 842sqm, $900,000 - priced below the ~$980k suburb median; potential bargain.",
+      "new": false
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 900000,
       "priceText": "Offers Low $900k",
       "beds": 4,
       "baths": 1,
@@ -124,8 +178,8 @@
     {
       "suburb": "Bentley",
       "pc": "6102",
-      "price": 799000,
-      "priceText": "From $799,000",
+      "price": 779000,
+      "priceText": "From $779,000",
       "beds": 3,
       "baths": 2,
       "cars": 2,
@@ -136,7 +190,25 @@
       "direct": true,
       "bargain": false,
       "meets": false,
-      "reason": "3-bed, $799,000 - meets beds/land/budget criteria.",
+      "reason": "3-bed, $779,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "Bentley",
+      "pc": "6102",
+      "price": 879000,
+      "priceText": "A Rare Opportunity - Offers From $879,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 3,
+      "land": 474,
+      "address": "16 Whitby Court",
+      "image": "https://i3.au.reastatic.net/640x480/b26eaebc077c692e916a8be32ae3dbd21eb6818da4b70e518e33f8f21c11d0e3/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bentley-151691860",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 474sqm, $879,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -323,7 +395,7 @@
       "suburb": "Parkwood",
       "pc": "6147",
       "price": 999000,
-      "priceText": "$999,000 ONO",
+      "priceText": "$999,000",
       "beds": 3,
       "baths": 1,
       "cars": 1,
@@ -335,7 +407,7 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 690sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
@@ -353,24 +425,6 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 734sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 999000,
-      "priceText": "Offers from $999,000",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "2/14 Hudson Street",
-      "image": "https://i3.au.reastatic.net/640x480/d6b4d500d6f93d5f10aae5db96ddff90799d02a825f00177c9d32a5f70e93bb1/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151333008",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, $999,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -443,7 +497,7 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -482,24 +536,6 @@
       "new": false
     },
     {
-      "suburb": "Bentley",
-      "pc": "6102",
-      "price": null,
-      "priceText": "Contact Agent",
-      "beds": 3,
-      "baths": 1,
-      "cars": 3,
-      "land": 474,
-      "address": "16 Whitby Court",
-      "image": "https://i3.au.reastatic.net/640x480/7a83d16c580c722e36d0b649401f5fcb4c775c24c95ce88eb346401a2895a945/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bentley-151691860",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 474sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Dianella",
       "pc": "6059",
       "price": null,
@@ -533,42 +569,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": null,
-      "priceText": "OFFERS",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": 720,
-      "address": "20 Gardenia Terrace",
-      "image": "https://i3.au.reastatic.net/640x480/e970ee1cfadaa5c3e76399ff9ee1fa9310dcbc2f6dd6c3e1422553988be8b3d0/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151585340",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, 720sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": null,
-      "priceText": "CONTACT DEAN",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": 842,
-      "address": "3 Rundal Street",
-      "image": "https://i3.au.reastatic.net/640x480/98420ab46c650621d5c24d5f7287ffe41ad52b9cf02835b6e21e869d18687c56/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151778188",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 842sqm - meets beds/land/budget criteria.",
       "new": false
     }
   ]
