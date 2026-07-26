@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-25",
+    "generated": "2026-07-26",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -47,7 +47,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $799,000 - priced below the ~$920k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -245,7 +245,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, $943,435 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -371,7 +371,7 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 696sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -389,7 +389,7 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 790sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Riverton",
@@ -443,7 +443,7 @@
       "bargain": false,
       "meets": true,
       "reason": "4-bed, 710sqm, $1,050,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
@@ -497,7 +497,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 880sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "St James",
@@ -533,7 +533,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 720sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -569,7 +569,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 722sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
@@ -587,7 +587,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 524sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     }
   ]
 }
