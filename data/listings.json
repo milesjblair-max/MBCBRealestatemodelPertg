@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-26",
+    "generated": "2026-07-27",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -35,6 +35,24 @@
       "suburb": "Parkwood",
       "pc": "6147",
       "price": 799000,
+      "priceText": "Offers Over $799,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": null,
+      "address": "13 Cosmelia Way",
+      "image": "https://i3.au.reastatic.net/640x480/e297c16aa00580ab265611d01ba3a45b64073361184669484c1dc0bd221b2ec0/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151186220",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $799,000 - priced below the ~$920k suburb median; potential bargain.",
+      "new": true
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 799000,
       "priceText": "From $799,000",
       "beds": 3,
       "baths": 1,
@@ -59,7 +77,7 @@
       "cars": 3,
       "land": null,
       "address": "1/19 Boulton Street",
-      "image": "https://i3.au.reastatic.net/640x480/a309d03999887d2309d9f75ba8424a79b031bd5e1d206982dad7a65237e0317f/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/a960e0004a4085d01e3526f641192369d21fa73af4589bde69a51ea0af3d5366/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-dianella-151844820",
       "direct": true,
       "bargain": true,
@@ -353,24 +371,6 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 690sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 999000,
-      "priceText": "From $999,000",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": 696,
-      "address": "401 High Road",
-      "image": "https://i3.au.reastatic.net/640x480/f54769f66f7c3d7deb54425958daebb8e9e77e34a3858cd5649e27987cac0e2a/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151778536",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 696sqm, $999,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
