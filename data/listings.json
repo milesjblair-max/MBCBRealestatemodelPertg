@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-07-30",
+    "generated": "2026-07-31",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -29,7 +29,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $699,000 - priced below the ~$930k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -83,7 +83,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, 487sqm, $749,000 - priced below the ~$930k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -119,7 +119,7 @@
       "bargain": true,
       "meets": true,
       "reason": "4-bed, 532sqm, $800,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Riverton",
@@ -221,25 +221,25 @@
       "cars": 2,
       "land": 470,
       "address": "2A York Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/95814cffad299511bc1f42a38009228915f032dba80dbaeb99e57218d167be96/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/1cb43aada98b0e37ee0fb0e76d93d6180b6a62efcb2fe673e3e5371e7f2c527a/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151913756",
       "direct": true,
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 470sqm, $850,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
       "pc": "6102",
       "price": 879000,
-      "priceText": "A Rare Opportunity - Offers From $879,000",
+      "priceText": "Offers Invited From $879,000",
       "beds": 3,
       "baths": 1,
       "cars": 3,
       "land": 474,
       "address": "16 Whitby Court",
-      "image": "https://i3.au.reastatic.net/640x480/7a83d16c580c722e36d0b649401f5fcb4c775c24c95ce88eb346401a2895a945/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/7a49e3b2350ae62465f372410713143bad099c0bb54f995520afb250f9cc64b6/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151691860",
       "direct": true,
       "bargain": false,
@@ -302,6 +302,24 @@
       "new": false
     },
     {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 990000,
+      "priceText": "$990,000 (ONO)",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": 690,
+      "address": "36 Ropele Drive",
+      "image": "https://i3.au.reastatic.net/640x480/5992a0af1476ba56533c0eefcff171b771496dad7fffd70494eecaff1512a8b8/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151687672",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 690sqm, $990,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
       "suburb": "Wilson",
       "pc": "6107",
       "price": 999000,
@@ -335,24 +353,6 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 696sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 999000,
-      "priceText": "$999,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": 690,
-      "address": "36 Ropele Drive",
-      "image": "https://i3.au.reastatic.net/640x480/5992a0af1476ba56533c0eefcff171b771496dad7fffd70494eecaff1512a8b8/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151687672",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 690sqm, $999,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -392,42 +392,6 @@
       "new": false
     },
     {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 1000000,
-      "priceText": "Offers from $1,000,000",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": 471,
-      "address": "8 Constance street",
-      "image": "https://i3.au.reastatic.net/640x480/8aac1641cfe67224c1f9be5ebc0b8f2412cea812876e0a7a91acffaa4dafb595/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151711660",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 471sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": 1100000,
-      "priceText": "From $1.1M",
-      "beds": 3,
-      "baths": 1,
-      "cars": 4,
-      "land": 739,
-      "address": "121 Woodrow Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/f9ad9f8a2eb5898ecad94b029f8561fa45d522846b19198bb5a894b88f295617/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151138468",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Wilson",
       "pc": "6107",
       "price": null,
@@ -452,7 +416,7 @@
       "priceText": "Expressions of Interest",
       "beds": 3,
       "baths": 1,
-      "cars": 1,
+      "cars": 2,
       "land": 700,
       "address": "13 Meadowbrook Drive",
       "image": "https://i3.au.reastatic.net/640x480/55e112f5508e19f9d0254d68412bf765169cf0ccd688e58535bd6cdf657e6662/image.jpg",
@@ -461,7 +425,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 700sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -503,6 +467,24 @@
       "suburb": "Dianella",
       "pc": "6059",
       "price": null,
+      "priceText": "Offers - Contact Agent",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": 538,
+      "address": "23 Noble Court",
+      "image": "https://i3.au.reastatic.net/640x480/c185464d0f728fd78144677916c94b2bc6fff9083dafc3b411eba57b9a579568/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151929968",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 538sqm - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": null,
       "priceText": "Offers Early to Mid 1 Million",
       "beds": 6,
       "baths": 2,
@@ -515,7 +497,7 @@
       "bargain": false,
       "meets": false,
       "reason": "6-bed, 563sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
