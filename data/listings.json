@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-01",
+    "generated": "2026-08-02",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -311,7 +311,7 @@
       "cars": 1,
       "land": 483,
       "address": "4/85-87 Leach Highway",
-      "image": "https://i3.au.reastatic.net/640x480/3abaefdfa63f7333dffb120e36d9555793c64797118e937acdad3864f07528a3/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/5fcdecda0e62d43019eb426f08bb595020118b2302ce73d158a22d11bfb3669c/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-wilson-151810756",
       "direct": true,
       "bargain": false,
@@ -461,7 +461,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
