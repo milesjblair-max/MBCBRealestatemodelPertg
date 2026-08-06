@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-05",
+    "generated": "2026-08-06",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -32,6 +32,24 @@
       "new": false
     },
     {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 700000,
+      "priceText": "Offers in the $700,000's",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": null,
+      "address": "88D Ropele Drive",
+      "image": "https://i3.au.reastatic.net/640x480/5f93a71f2c03b2a7c6dd81e9b15eeb28ebd07ce1acd1d5f4cad4db56212c5d3a/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151696120",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $700,000 - priced below the ~$920k suburb median; potential bargain.",
+      "new": true
+    },
+    {
       "suburb": "Wilson",
       "pc": "6107",
       "price": 749000,
@@ -48,6 +66,24 @@
       "meets": false,
       "reason": "3-bed, 487sqm, $749,000 - priced below the ~$930k suburb median; potential bargain.",
       "new": false
+    },
+    {
+      "suburb": "St James",
+      "pc": "6102",
+      "price": 765000,
+      "priceText": "$765,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "Address available on request",
+      "image": "https://i3.au.reastatic.net/640x480/243dbe36b59a3f9e69707a27806e63af63082d355d8c5ff355279f16c98a2d2c/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-st+james-151971732",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $765,000 - priced below the ~$855k suburb median; potential bargain.",
+      "new": true
     },
     {
       "suburb": "Dianella",
@@ -86,6 +122,24 @@
       "new": false
     },
     {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": 839000,
+      "priceText": "Offers Above $839k",
+      "beds": 3,
+      "baths": 1,
+      "cars": 3,
+      "land": null,
+      "address": "1/19 Boulton Street",
+      "image": "https://i3.au.reastatic.net/640x480/a960e0004a4085d01e3526f641192369d21fa73af4589bde69a51ea0af3d5366/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151844820",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $839,000 - priced below the ~$970k suburb median; potential bargain.",
+      "new": true
+    },
+    {
       "suburb": "Riverton",
       "pc": "6148",
       "price": 849000,
@@ -122,6 +176,24 @@
       "new": false
     },
     {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 865000,
+      "priceText": "Offers From $865,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 3,
+      "land": 851,
+      "address": "123 Beechboro Road",
+      "image": "https://i3.au.reastatic.net/640x480/9dc7c340ba3e0e4c4a46c162514282e08d82afcc3d9fda3e8cb94346ca778bed/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-150530804",
+      "direct": true,
+      "bargain": true,
+      "meets": true,
+      "reason": "3-bed, 851sqm, $865,000 - priced below the ~$980k suburb median; potential bargain.",
+      "new": true
+    },
+    {
       "suburb": "Dianella",
       "pc": "6059",
       "price": 900000,
@@ -138,6 +210,24 @@
       "meets": false,
       "reason": "3-bed, $900,000 - priced below the ~$970k suburb median; potential bargain.",
       "new": false
+    },
+    {
+      "suburb": "Bentley",
+      "pc": "6102",
+      "price": 779000,
+      "priceText": "From $779,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "3A Duke Street",
+      "image": "https://i3.au.reastatic.net/640x480/49e5c36598197340ed63cd55b15329ddf1672d31327ac89779bd299e93d896a0/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bentley-151578372",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, $779,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Bentley",
@@ -194,6 +284,24 @@
       "new": false
     },
     {
+      "suburb": "Wilson",
+      "pc": "6107",
+      "price": 930000,
+      "priceText": "Final Bid $930,000",
+      "beds": 5,
+      "baths": 2,
+      "cars": 4,
+      "land": 461,
+      "address": "4A Waldon Street",
+      "image": "https://i3.au.reastatic.net/640x480/1039b481fa2e2fb141321fb546203a7407229763cde893f6ca176e15971ca16e/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-wilson-151784612",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "5-bed, 461sqm, $930,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
       "suburb": "St James",
       "pc": "6102",
       "price": 950000,
@@ -215,7 +323,7 @@
       "suburb": "Dianella",
       "pc": "6059",
       "price": 950000,
-      "priceText": "From $950K",
+      "priceText": "From $950,000",
       "beds": 3,
       "baths": 1,
       "cars": 1,
@@ -320,6 +428,24 @@
       "new": false
     },
     {
+      "suburb": "Shelley",
+      "pc": "6148",
+      "price": 1050000,
+      "priceText": "Offers Over $1,050,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "7/63 Corbel Street",
+      "image": "https://i3.au.reastatic.net/640x480/80e3ef7f2ef2a8c02d3a3e1c958630aac930afe8fe55e1540e4004fbb2e761f8/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-shelley-151979712",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, $1,050,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
       "suburb": "Bayswater",
       "pc": "6053",
       "price": 1080000,
@@ -335,7 +461,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 452sqm, $1,080,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -353,7 +479,7 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 739sqm, $1,100,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Wilson",
@@ -371,24 +497,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 880sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Wilson",
-      "pc": "6107",
-      "price": null,
-      "priceText": "Awaiting Price Guide",
-      "beds": 5,
-      "baths": 2,
-      "cars": 4,
-      "land": 461,
-      "address": "4A Waldon Street",
-      "image": "https://i3.au.reastatic.net/640x480/1039b481fa2e2fb141321fb546203a7407229763cde893f6ca176e15971ca16e/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-151784612",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "5-bed, 461sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -446,24 +554,6 @@
       "new": false
     },
     {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": null,
-      "priceText": "Offers Invited",
-      "beds": 3,
-      "baths": 1,
-      "cars": 4,
-      "land": null,
-      "address": "38 Periwinkle Way",
-      "image": "https://i3.au.reastatic.net/640x480/6b53a3be51ddbbd691479c1d739a5f26f3c55f0e61f084448ae991ef0758b073/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151728772",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "St James",
       "pc": "6102",
       "price": null,
@@ -479,7 +569,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 776sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "St James",
@@ -536,24 +626,6 @@
       "new": false
     },
     {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": null,
-      "priceText": "All Offers present by 17 August",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": null,
-      "address": "25 Lantana Crescent",
-      "image": "https://i3.au.reastatic.net/640x480/558f3fb3bf7f8f4d8d8e5fdd4931dc1ae89ed6b6fe08820ab697abe0d6b459f7/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151666900",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Bayswater",
       "pc": "6053",
       "price": null,
@@ -587,7 +659,7 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, 559sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
