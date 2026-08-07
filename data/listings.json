@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-06",
+    "generated": "2026-08-07",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -47,7 +47,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $700,000 - priced below the ~$920k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Wilson",
@@ -83,7 +83,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $765,000 - priced below the ~$855k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -137,7 +137,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $839,000 - priced below the ~$970k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Riverton",
@@ -191,6 +191,24 @@
       "bargain": true,
       "meets": true,
       "reason": "3-bed, 851sqm, $865,000 - priced below the ~$980k suburb median; potential bargain.",
+      "new": false
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 899000,
+      "priceText": "From $899,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 450,
+      "address": "351 Guildford Road",
+      "image": "https://i3.au.reastatic.net/640x480/294e55048f18e4fa1d69cb91008a61c15111dd6199e7fa3ce134487a0be8f381/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151856916",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, 450sqm, $899,000 - priced below the ~$980k suburb median; potential bargain.",
       "new": true
     },
     {
@@ -227,7 +245,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, $779,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -263,24 +281,6 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed, $893,944 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bentley",
-      "pc": "6102",
-      "price": 925945,
-      "priceText": "$925,945",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "Address available on request",
-      "image": "https://i3.au.reastatic.net/640x480/7cab0393e35feb50df1f2abab01ab13651bafd6df9b77de52bc078afef769012/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bentley-151681228",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, $925,945 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -395,6 +395,24 @@
       "suburb": "Bentley",
       "pc": "6102",
       "price": 1000000,
+      "priceText": "\"OFFERS - Over $1 Million\"",
+      "beds": 4,
+      "baths": 1,
+      "cars": 4,
+      "land": 692,
+      "address": "4 Ashburton Street",
+      "image": "https://i3.au.reastatic.net/640x480/d1b19d010d78bd4c5bf20907fe83a67d608caf78f37d22312beb64abe400adaa/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bentley-151992468",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "4-bed, 692sqm, $1,000,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Bentley",
+      "pc": "6102",
+      "price": 1000000,
       "priceText": "\"From $1,000,000\"",
       "beds": 3,
       "baths": 1,
@@ -428,6 +446,24 @@
       "new": false
     },
     {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 1000000,
+      "priceText": "Offers from $1,000,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": 471,
+      "address": "8 Constance street",
+      "image": "https://i3.au.reastatic.net/640x480/8aac1641cfe67224c1f9be5ebc0b8f2412cea812876e0a7a91acffaa4dafb595/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151711660",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 471sqm, $1,000,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
       "suburb": "Shelley",
       "pc": "6148",
       "price": 1050000,
@@ -443,7 +479,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, $1,050,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
@@ -608,24 +644,6 @@
       "new": false
     },
     {
-      "suburb": "Bentley",
-      "pc": "6102",
-      "price": null,
-      "priceText": "Contact Agent",
-      "beds": 3,
-      "baths": 1,
-      "cars": 3,
-      "land": 474,
-      "address": "16 Whitby Court",
-      "image": "https://i3.au.reastatic.net/640x480/7a49e3b2350ae62465f372410713143bad099c0bb54f995520afb250f9cc64b6/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bentley-151691860",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 474sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Bayswater",
       "pc": "6053",
       "price": null,
@@ -641,42 +659,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 524sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": null,
-      "priceText": "For Sale | Offers",
-      "beds": 4,
-      "baths": 1,
-      "cars": 4,
-      "land": 559,
-      "address": "12 Frinton Street",
-      "image": "https://i3.au.reastatic.net/640x480/1574732c677c2c17b70d2bfdbd2f68b45d5b90c9a7a420d50451575cda290003/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151905780",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, 559sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": null,
-      "priceText": "Offers - Contact Agent",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 766,
-      "address": "10 Adelphi Street",
-      "image": "https://i3.au.reastatic.net/640x480/c6ebc9e8c21140a11aa0e290c3d6fae78f14c0c9649163fd642301e6a2e0fe3d/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151736928",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 766sqm - meets beds/land/budget criteria.",
       "new": false
     }
   ]
