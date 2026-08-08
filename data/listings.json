@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-07",
+    "generated": "2026-08-08",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -104,24 +104,6 @@
       "new": false
     },
     {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 800000,
-      "priceText": "Offers High $800k",
-      "beds": 4,
-      "baths": 1,
-      "cars": 0,
-      "land": 532,
-      "address": "11 Constance Street",
-      "image": "https://i3.au.reastatic.net/640x480/52b7badf8144846dda97d52afe7275721f830f838e4ffa9d95f9022821244810/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151771412",
-      "direct": true,
-      "bargain": true,
-      "meets": true,
-      "reason": "4-bed, 532sqm, $800,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": false
-    },
-    {
       "suburb": "Dianella",
       "pc": "6059",
       "price": 839000,
@@ -209,7 +191,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, 450sqm, $899,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Dianella",
@@ -395,24 +377,6 @@
       "suburb": "Bentley",
       "pc": "6102",
       "price": 1000000,
-      "priceText": "\"OFFERS - Over $1 Million\"",
-      "beds": 4,
-      "baths": 1,
-      "cars": 4,
-      "land": 692,
-      "address": "4 Ashburton Street",
-      "image": "https://i3.au.reastatic.net/640x480/d1b19d010d78bd4c5bf20907fe83a67d608caf78f37d22312beb64abe400adaa/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bentley-151992468",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "4-bed, 692sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
-      "suburb": "Bentley",
-      "pc": "6102",
-      "price": 1000000,
       "priceText": "\"From $1,000,000\"",
       "beds": 3,
       "baths": 1,
@@ -425,6 +389,24 @@
       "bargain": false,
       "meets": true,
       "reason": "3-bed, 790sqm, $1,000,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "Bentley",
+      "pc": "6102",
+      "price": 1000000,
+      "priceText": "\"OFFERS - Over $1 Million\"",
+      "beds": 4,
+      "baths": 1,
+      "cars": 4,
+      "land": 692,
+      "address": "4 Ashburton Street",
+      "image": "https://i3.au.reastatic.net/640x480/d1b19d010d78bd4c5bf20907fe83a67d608caf78f37d22312beb64abe400adaa/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bentley-151992468",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "4-bed, 692sqm, $1,000,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -461,7 +443,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 471sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Shelley",
@@ -539,6 +521,24 @@
       "suburb": "Parkwood",
       "pc": "6147",
       "price": null,
+      "priceText": "Offers Invited",
+      "beds": 3,
+      "baths": 1,
+      "cars": 4,
+      "land": null,
+      "address": "38 Periwinkle Way",
+      "image": "https://i3.au.reastatic.net/640x480/6b53a3be51ddbbd691479c1d739a5f26f3c55f0e61f084448ae991ef0758b073/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151728772",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": null,
       "priceText": "Offers from the High $900's",
       "beds": 3,
       "baths": 1,
@@ -569,24 +569,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 700sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": null,
-      "priceText": "Offers Invited",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": null,
-      "address": "13 Cosmelia Way",
-      "image": "https://i3.au.reastatic.net/640x480/4ddadb9eadcd3c0d408fa2b1b0f4f6ee0c9711cd8caed7a6ac38e61c1a11736a/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151186220",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -642,6 +624,24 @@
       "meets": false,
       "reason": "3-bed, 765sqm - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": null,
+      "priceText": "Expressions of Interest",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 865,
+      "address": "216 Beechboro Road North",
+      "image": "https://i3.au.reastatic.net/640x480/c035af99f98714268222dc1920f35bf0656b684ef525793970150b71d217d935/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151860448",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 865sqm - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Bayswater",
