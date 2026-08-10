@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-09",
+    "generated": "2026-08-10",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -88,6 +88,24 @@
     {
       "suburb": "Dianella",
       "pc": "6059",
+      "price": 799000,
+      "priceText": "Offers From $799,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 3,
+      "land": null,
+      "address": "1/19 Boulton Street",
+      "image": "https://i3.au.reastatic.net/640x480/82c9ae12471dbaa8771bebac3ff6bd1204e48197a1d01be6b1a12261a5e4948a/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151844820",
+      "direct": true,
+      "bargain": true,
+      "meets": false,
+      "reason": "3-bed, $799,000 - priced below the ~$970k suburb median; potential bargain.",
+      "new": false
+    },
+    {
+      "suburb": "Dianella",
+      "pc": "6059",
       "price": 800000,
       "priceText": "From $800,000",
       "beds": 3,
@@ -101,24 +119,6 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $800,000 - priced below the ~$970k suburb median; potential bargain.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": 839000,
-      "priceText": "Offers Above $839k",
-      "beds": 3,
-      "baths": 1,
-      "cars": 3,
-      "land": null,
-      "address": "1/19 Boulton Street",
-      "image": "https://i3.au.reastatic.net/640x480/a960e0004a4085d01e3526f641192369d21fa73af4589bde69a51ea0af3d5366/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151844820",
-      "direct": true,
-      "bargain": true,
-      "meets": false,
-      "reason": "3-bed, $839,000 - priced below the ~$970k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -374,6 +374,24 @@
       "new": false
     },
     {
+      "suburb": "Riverton",
+      "pc": "6148",
+      "price": 999000,
+      "priceText": "$999,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": null,
+      "address": "10 Kalangedy Drive",
+      "image": "https://i3.au.reastatic.net/640x480/9bdac30a2617a65d8baa51a73ca62c822aa6289799adf340b8e75470062a6263/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-riverton-151722492",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, $999,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
       "suburb": "Bentley",
       "pc": "6102",
       "price": 1000000,
@@ -407,24 +425,6 @@
       "bargain": false,
       "meets": true,
       "reason": "4-bed, 692sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Riverton",
-      "pc": "6148",
-      "price": 1000000,
-      "priceText": "Offers Over $1,000,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": null,
-      "address": "10 Kalangedy Drive",
-      "image": "https://i3.au.reastatic.net/640x480/9bdac30a2617a65d8baa51a73ca62c822aa6289799adf340b8e75470062a6263/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-riverton-151722492",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, $1,000,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -593,24 +593,6 @@
       "suburb": "St James",
       "pc": "6102",
       "price": null,
-      "priceText": "OFFERS",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 801,
-      "address": "11 Reen Street",
-      "image": "https://i3.au.reastatic.net/640x480/4141be843b747354e6e725fbce0614138f15424d2b6fa5ba12d89c4a1f691aae/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-st+james-151130784",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 801sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "St James",
-      "pc": "6102",
-      "price": null,
       "priceText": "NEW TO MARKET",
       "beds": 3,
       "baths": 1,
@@ -641,7 +623,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 766sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
