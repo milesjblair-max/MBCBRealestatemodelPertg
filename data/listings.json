@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-11",
+    "generated": "2026-08-12",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -20,15 +20,15 @@
       "priceText": "From $699,000",
       "beds": 3,
       "baths": 1,
-      "cars": 1,
-      "land": null,
-      "address": "2/94-96 Wendouree Road",
-      "image": "https://i3.au.reastatic.net/640x480/f03d58f418ba05cf70b4c5636255cdfc76366d917dc169cd1d4a8ff54d207835/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-151906528",
+      "cars": 2,
+      "land": 487,
+      "address": "5/50-52 Leach Highway",
+      "image": "https://i3.au.reastatic.net/640x480/cc38f3f5d0ee458fdd43e77c7dc9bdea28e3decfe4a1355529f12c4c4ecabfb1/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-wilson-151918296",
       "direct": true,
       "bargain": true,
       "meets": false,
-      "reason": "3-bed, $699,000 - priced below the ~$930k suburb median; potential bargain.",
+      "reason": "3-bed, 487sqm, $699,000 - priced below the ~$930k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -65,24 +65,6 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $707,000 - priced below the ~$780k suburb median; potential bargain.",
-      "new": true
-    },
-    {
-      "suburb": "Wilson",
-      "pc": "6107",
-      "price": 749000,
-      "priceText": "From $749,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 487,
-      "address": "5/50-52 Leach Highway",
-      "image": "https://i3.au.reastatic.net/640x480/cc38f3f5d0ee458fdd43e77c7dc9bdea28e3decfe4a1355529f12c4c4ecabfb1/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-151918296",
-      "direct": true,
-      "bargain": true,
-      "meets": false,
-      "reason": "3-bed, 487sqm, $749,000 - priced below the ~$930k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -119,24 +101,6 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $799,000 - priced below the ~$970k suburb median; potential bargain.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": 800000,
-      "priceText": "From $800,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": null,
-      "address": "459A Light Street",
-      "image": "https://i3.au.reastatic.net/640x480/75a89a312bf12297a8e2d61963aadfbac0dd88d1669c169f6eeadddc56a951aa/image.jpg",
-      "url": "https://www.realestate.com.au/property-duplex+semi-detached-wa-dianella-151934924",
-      "direct": true,
-      "bargain": true,
-      "meets": false,
-      "reason": "3-bed, $800,000 - priced below the ~$970k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -257,7 +221,7 @@
       "cars": 2,
       "land": 470,
       "address": "2A York Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/1cb43aada98b0e37ee0fb0e76d93d6180b6a62efcb2fe673e3e5371e7f2c527a/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/e89b5e9d23483cd7551d36c6cb30b8651b482f0c02a90792afc9e6fb3896c2a9/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-bentley-151913756",
       "direct": true,
       "bargain": false,
@@ -281,24 +245,6 @@
       "bargain": false,
       "meets": false,
       "reason": "5-bed, 461sqm, $930,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "St James",
-      "pc": "6102",
-      "price": 950000,
-      "priceText": "Offers from $950,000",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": 457,
-      "address": "9A Boundary Road",
-      "image": "https://i3.au.reastatic.net/640x480/dd91e03b6d1b0c3721cfe6b3da552f6649a6d99189b7346ebd919f0c48e8a2ea/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-st+james-151325012",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "4-bed, 457sqm, $950,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -354,6 +300,24 @@
       "meets": true,
       "reason": "3-bed, 710sqm, $999,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 999000,
+      "priceText": "From $999,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": 696,
+      "address": "401 High Road",
+      "image": "https://i3.au.reastatic.net/640x480/369f5f7cb8316c1eec3ab2e8050b550bc7290c35ea99dc85ae7512bc2e153f1c/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151778536",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 696sqm, $999,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Riverton",
@@ -497,7 +461,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 910sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Wilson",
@@ -533,25 +497,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 688sqm - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": null,
-      "priceText": "Offers Invited",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": null,
-      "address": "13 Cosmelia Way",
-      "image": "https://i3.au.reastatic.net/640x480/4ddadb9eadcd3c0d408fa2b1b0f4f6ee0c9711cd8caed7a6ac38e61c1a11736a/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151186220",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -588,6 +534,24 @@
       "meets": false,
       "reason": "3-bed, 700sqm - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "St James",
+      "pc": "6102",
+      "price": null,
+      "priceText": "EXPRESSIONS OF INTEREST",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "3/25 Norman Street",
+      "image": "https://i3.au.reastatic.net/640x480/7143ff64bdb8db9b0573f1b3f8613af094bd8cc5f0f47acc887d0f233dbff3e2/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-st+james-152025680",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "St James",
@@ -641,6 +605,24 @@
       "bargain": false,
       "meets": false,
       "reason": "4-bed - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": null,
+      "priceText": "Awaiting Price Guide",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": null,
+      "address": "1/80 Homer Street",
+      "image": "https://i3.au.reastatic.net/640x480/2e219f8bed37a166835b01801acfc5787f6c193180bb188754395c299406c8e2/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-151893300",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed - meets beds/land/budget criteria.",
       "new": true
     },
     {
