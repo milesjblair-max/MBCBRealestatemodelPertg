@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-14",
+    "generated": "2026-08-15",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -47,7 +47,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $699,000 - priced below the ~$930k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -119,7 +119,7 @@
       "bargain": true,
       "meets": true,
       "reason": "4-bed, 532sqm, $800,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Riverton",
@@ -196,6 +196,24 @@
     {
       "suburb": "Wilson",
       "pc": "6107",
+      "price": 930000,
+      "priceText": "Final Bid $930,000",
+      "beds": 5,
+      "baths": 2,
+      "cars": 4,
+      "land": 461,
+      "address": "4A Waldon Street",
+      "image": "https://i3.au.reastatic.net/640x480/1039b481fa2e2fb141321fb546203a7407229763cde893f6ca176e15971ca16e/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-wilson-151784612",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "5-bed, 461sqm, $930,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Wilson",
+      "pc": "6107",
       "price": 999000,
       "priceText": "Offers Over $999,000",
       "beds": 4,
@@ -210,6 +228,24 @@
       "meets": false,
       "reason": "4-bed, 483sqm, $999,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 999000,
+      "priceText": "From $999,000",
+      "beds": 3,
+      "baths": 2,
+      "cars": 2,
+      "land": 696,
+      "address": "401 High Road",
+      "image": "https://i3.au.reastatic.net/640x480/369f5f7cb8316c1eec3ab2e8050b550bc7290c35ea99dc85ae7512bc2e153f1c/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151778536",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 696sqm, $999,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Parkwood",
@@ -263,7 +299,7 @@
       "bargain": false,
       "meets": true,
       "reason": "7-bed, 700sqm, $999,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
@@ -299,24 +335,6 @@
       "bargain": false,
       "meets": true,
       "reason": "4-bed, 692sqm, $1,000,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 1000000,
-      "priceText": "Offers from $1,000,000",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": 471,
-      "address": "8 Constance street",
-      "image": "https://i3.au.reastatic.net/640x480/8aac1641cfe67224c1f9be5ebc0b8f2412cea812876e0a7a91acffaa4dafb595/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151711660",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 471sqm, $1,000,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -425,7 +443,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 700sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Parkwood",
@@ -461,24 +479,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": null,
-      "priceText": "Offers from the High $900's",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 700,
-      "address": "87 Lyndale Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/cf4e77d7d5fefa20e8f106c8d98aea53945d9768649c102ea5b303b6bb2f588c/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151954212",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 700sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -551,7 +551,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 474sqm - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bentley",
