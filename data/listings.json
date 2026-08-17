@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-16",
+    "generated": "2026-08-17",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -212,6 +212,24 @@
       "new": false
     },
     {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 979000,
+      "priceText": "Best offer over $979,000",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "14A Beechboro Rd South",
+      "image": "https://i3.au.reastatic.net/640x480/173376617ff087b90a8b291c7819ac59f31ee453db9df9eaaacd9c86fa9ab0e5/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151901360",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "4-bed, $979,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
       "suburb": "Parkwood",
       "pc": "6147",
       "price": 999000,
@@ -239,7 +257,7 @@
       "cars": 2,
       "land": 710,
       "address": "82 Kimberley Way",
-      "image": "https://i3.au.reastatic.net/640x480/f2873c11e97b0ffb899aa3faba3cbf8b0fdd9d97d393bb260057ddd756201bcf/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/c582e3b619a14c0d6816e9902a17bc4265af379fd41797ada3a3e113bb7f3275/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-parkwood-151956408",
       "direct": true,
       "bargain": false,
@@ -335,7 +353,7 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, $1,000,000 - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Shelley",
@@ -356,24 +374,6 @@
       "new": false
     },
     {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 1099000,
-      "priceText": "From $1,099,000",
-      "beds": 4,
-      "baths": 1,
-      "cars": 4,
-      "land": 559,
-      "address": "12 Frinton Street",
-      "image": "https://i3.au.reastatic.net/640x480/1574732c677c2c17b70d2bfdbd2f68b45d5b90c9a7a420d50451575cda290003/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151905780",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "4-bed, 559sqm, $1,099,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Wilson",
       "pc": "6107",
       "price": null,
@@ -389,24 +389,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 910sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "Wilson",
-      "pc": "6107",
-      "price": null,
-      "priceText": "OFFERS",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": 880,
-      "address": "17 Leach Highway",
-      "image": "https://i3.au.reastatic.net/640x480/8af2be5a419ee41d7cde96b8cafb4565a9ed1c2ac5198766f3b08f1665f66f82/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-150972712",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 880sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -569,24 +551,42 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Bayswater",
       "pc": "6053",
       "price": null,
       "priceText": "Contact Agent",
-      "beds": 4,
+      "beds": 3,
       "baths": 2,
       "cars": 2,
       "land": null,
-      "address": "14A Beechboro Rd South",
-      "image": "https://i3.au.reastatic.net/640x480/173376617ff087b90a8b291c7819ac59f31ee453db9df9eaaacd9c86fa9ab0e5/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151901360",
+      "address": "173 Whatley Crescent",
+      "image": "https://i3.au.reastatic.net/640x480/b144946ab0751aa1a5f28b28ae6a2776db8fbe905833e562ca4ac8135ffed6a5/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-152062440",
       "direct": true,
       "bargain": false,
       "meets": false,
-      "reason": "4-bed - meets beds/land/budget criteria.",
+      "reason": "3-bed - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": null,
+      "priceText": "FINAL NOTICE",
+      "beds": 4,
+      "baths": 1,
+      "cars": 4,
+      "land": 559,
+      "address": "12 Frinton Street",
+      "image": "https://i3.au.reastatic.net/640x480/1574732c677c2c17b70d2bfdbd2f68b45d5b90c9a7a420d50451575cda290003/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151905780",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "4-bed, 559sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
