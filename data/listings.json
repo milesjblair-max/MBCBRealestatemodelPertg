@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-23",
+    "generated": "2026-08-24",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -65,7 +65,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $765,000 - priced below the ~$855k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "St James",
@@ -209,6 +209,42 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 470sqm, $800,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "St James",
+      "pc": "6102",
+      "price": 850000,
+      "priceText": "FROM $850 K +",
+      "beds": 3,
+      "baths": 1,
+      "cars": 3,
+      "land": 765,
+      "address": "45 Coolgardie Street",
+      "image": "https://i3.au.reastatic.net/640x480/fa8092d370a6a2df37cc08ecfbd6bdedd839e6bfbb57966b7c537de5e9bcfc11/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-st+james-151957108",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 765sqm, $850,000 - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 899000,
+      "priceText": "Offers over $899,000!",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 700,
+      "address": "87 Lyndale Avenue",
+      "image": "https://i3.au.reastatic.net/640x480/657773d59ec3bf78a647fc29d27c04319d6d46a36c3c49b85e6055850270ae41/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151954212",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 700sqm, $899,000 - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -497,24 +533,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": null,
-      "priceText": "Offers in the Mid $900's",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 700,
-      "address": "87 Lyndale Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/657773d59ec3bf78a647fc29d27c04319d6d46a36c3c49b85e6055850270ae41/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151954212",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 700sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -533,24 +551,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 776sqm - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
-      "suburb": "St James",
-      "pc": "6102",
-      "price": null,
-      "priceText": "NEW TO MARKET",
-      "beds": 3,
-      "baths": 1,
-      "cars": 3,
-      "land": 765,
-      "address": "45 Coolgardie Street",
-      "image": "https://i3.au.reastatic.net/640x480/aa7ddd5b6b68377be6447bab3dac8498485acf176dd6c21bcacfe7f9d1d76984/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-st+james-151957108",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed, 765sqm - meets beds/land/budget criteria.",
       "new": false
     },
     {
@@ -599,7 +599,7 @@
       "cars": 2,
       "land": null,
       "address": "8A Deverell Way",
-      "image": "https://i3.au.reastatic.net/640x480/670f0601555539d53ac14525d4db2f4096084c19a9360e9ab02f88f7929e7b6e/image.jpg",
+      "image": "https://i3.au.reastatic.net/640x480/dba866c4497c8206bf62e4a288d7839261859cfd2281e31b4b3007a9efda5178/image.jpg",
       "url": "https://www.realestate.com.au/property-house-wa-bentley-152017628",
       "direct": true,
       "bargain": false,
@@ -683,6 +683,24 @@
       "suburb": "Bayswater",
       "pc": "6053",
       "price": null,
+      "priceText": "Offers - Contact Agent",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 766,
+      "address": "10 Adelphi Street",
+      "image": "https://i3.au.reastatic.net/640x480/c6ebc9e8c21140a11aa0e290c3d6fae78f14c0c9649163fd642301e6a2e0fe3d/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151736928",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 766sqm - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": null,
       "priceText": "Expressions of Interest",
       "beds": 3,
       "baths": 1,
@@ -695,24 +713,6 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed, 865sqm - meets beds/land/budget criteria.",
-      "new": true
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": null,
-      "priceText": "$1,070.000",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "173 Whatley Crescent",
-      "image": "https://i3.au.reastatic.net/640x480/2555de358fdd1614b5b47a8668c3e44a8bfa1d4217795e8bef37c7b1f23f3cc6/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-152062440",
-      "direct": true,
-      "bargain": false,
-      "meets": false,
-      "reason": "3-bed - meets beds/land/budget criteria.",
       "new": false
     }
   ]
