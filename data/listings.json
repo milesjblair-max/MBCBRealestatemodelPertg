@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-08-27",
+    "generated": "2026-08-28",
     "source": "realty-in-au",
     "note": "Live houses with photos from the Realty in AU API (RapidAPI) matching the brief (3+ beds, <=$1.1M, in-budget suburbs). Bargains = below the suburb median. Refreshed daily.",
     "criteria": {
@@ -16,20 +16,20 @@
     {
       "suburb": "Wilson",
       "pc": "6107",
-      "price": 699000,
-      "priceText": "From $699,000",
+      "price": 649000,
+      "priceText": "NEW PRICE!! From $649,000",
       "beds": 3,
       "baths": 1,
-      "cars": 2,
-      "land": 487,
-      "address": "5/50-52 Leach Highway",
-      "image": "https://i3.au.reastatic.net/640x480/cc38f3f5d0ee458fdd43e77c7dc9bdea28e3decfe4a1355529f12c4c4ecabfb1/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-wilson-151918296",
+      "cars": 1,
+      "land": null,
+      "address": "2/94-96 Wendouree Road",
+      "image": "https://i3.au.reastatic.net/640x480/f03d58f418ba05cf70b4c5636255cdfc76366d917dc169cd1d4a8ff54d207835/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-wilson-151906528",
       "direct": true,
       "bargain": true,
       "meets": false,
-      "reason": "3-bed, 487sqm, $699,000 - priced below the ~$930k suburb median; potential bargain.",
-      "new": false
+      "reason": "3-bed, $649,000 - priced below the ~$930k suburb median; potential bargain.",
+      "new": true
     },
     {
       "suburb": "Dianella",
@@ -158,24 +158,6 @@
       "new": false
     },
     {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 799000,
-      "priceText": "Offers From $799,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 3,
-      "land": 524,
-      "address": "94 Garratt Road",
-      "image": "https://i3.au.reastatic.net/640x480/9aaa8a23414b24d8fa954b89e9bb7c3c12b33fb2675df1550430ca2e874c8cb8/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151812744",
-      "direct": true,
-      "bargain": true,
-      "meets": true,
-      "reason": "3-bed, 524sqm, $799,000 - priced below the ~$980k suburb median; potential bargain.",
-      "new": false
-    },
-    {
       "suburb": "Dianella",
       "pc": "6059",
       "price": 889000,
@@ -191,7 +173,7 @@
       "bargain": true,
       "meets": false,
       "reason": "3-bed, $889,000 - priced below the ~$970k suburb median; potential bargain.",
-      "new": true
+      "new": false
     },
     {
       "suburb": "Wilson",
@@ -209,24 +191,6 @@
       "bargain": true,
       "meets": false,
       "reason": "4-bed, 483sqm, $900,000 - priced below the ~$930k suburb median; potential bargain.",
-      "new": false
-    },
-    {
-      "suburb": "Dianella",
-      "pc": "6059",
-      "price": 900000,
-      "priceText": "From $900,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": null,
-      "address": "44B Camden Street",
-      "image": "https://i3.au.reastatic.net/640x480/05ce405a8944e5b7680904aa5f36778eba0d49952109db2a6f316f9cf74156f1/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-dianella-151399392",
-      "direct": true,
-      "bargain": true,
-      "meets": false,
-      "reason": "3-bed, $900,000 - priced below the ~$970k suburb median; potential bargain.",
       "new": false
     },
     {
@@ -284,24 +248,6 @@
       "new": false
     },
     {
-      "suburb": "Parkwood",
-      "pc": "6147",
-      "price": 899000,
-      "priceText": "NEW PRICE!! From $899,000",
-      "beds": 3,
-      "baths": 2,
-      "cars": 2,
-      "land": 696,
-      "address": "401 High Road",
-      "image": "https://i3.au.reastatic.net/640x480/369f5f7cb8316c1eec3ab2e8050b550bc7290c35ea99dc85ae7512bc2e153f1c/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-parkwood-151778536",
-      "direct": true,
-      "bargain": false,
-      "meets": true,
-      "reason": "3-bed, 696sqm, $899,000 - meets beds/land/budget criteria.",
-      "new": false
-    },
-    {
       "suburb": "Wilson",
       "pc": "6107",
       "price": 930000,
@@ -336,6 +282,24 @@
       "meets": true,
       "reason": "3-bed, 710sqm, $949,000 - meets beds/land/budget criteria.",
       "new": false
+    },
+    {
+      "suburb": "Parkwood",
+      "pc": "6147",
+      "price": 979000,
+      "priceText": "From $979,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 704,
+      "address": "23 Cerberus Avenue",
+      "image": "https://i3.au.reastatic.net/640x480/e7eb9af2b280bbc252d0ef8f73213b297c4699dea69d2fb3d1259114f4888002/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-parkwood-152186176",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "3-bed, 704sqm, $979,000 - meets beds/land/budget criteria.",
+      "new": true
     },
     {
       "suburb": "Bayswater",
@@ -518,6 +482,24 @@
       "new": false
     },
     {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 1099000,
+      "priceText": "$1,099,000",
+      "beds": 4,
+      "baths": 1,
+      "cars": 4,
+      "land": 559,
+      "address": "12 Frinton Street",
+      "image": "https://i3.au.reastatic.net/640x480/1574732c677c2c17b70d2bfdbd2f68b45d5b90c9a7a420d50451575cda290003/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151905780",
+      "direct": true,
+      "bargain": false,
+      "meets": true,
+      "reason": "4-bed, 559sqm, $1,099,000 - meets beds/land/budget criteria.",
+      "new": true
+    },
+    {
       "suburb": "Wilson",
       "pc": "6107",
       "price": 1100000,
@@ -623,6 +605,24 @@
       "bargain": false,
       "meets": false,
       "reason": "3-bed - meets beds/land/budget criteria.",
+      "new": false
+    },
+    {
+      "suburb": "Dianella",
+      "pc": "6059",
+      "price": null,
+      "priceText": "All Offers By September 21 at 5pm",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": 809,
+      "address": "30 Collingwood Street",
+      "image": "https://i3.au.reastatic.net/640x480/8a5094e84a493825c935974111c574f0e77a7ba1dd13237bc0ddc2607a538104/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-dianella-152179348",
+      "direct": true,
+      "bargain": false,
+      "meets": false,
+      "reason": "3-bed, 809sqm - meets beds/land/budget criteria.",
       "new": true
     },
     {
