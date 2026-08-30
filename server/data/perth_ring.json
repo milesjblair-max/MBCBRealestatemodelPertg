@@ -1,0 +1,1734 @@
+{
+ "meta": {
+  "built_from": "data/wa_suburbs.json (public-domain postcode base layer)",
+  "anchor_cbd": {
+   "lat": -31.9523,
+   "lng": 115.8613,
+   "label": "Perth GPO"
+  },
+  "anchor_buyer": {
+   "lat": -32.00109,
+   "lng": 115.86172,
+   "label": "Como 6152"
+  },
+  "radius_km": 15,
+  "km_note": "kmCbd and kmComo are straight-line distances between suburb centre points. By road they are further; the curated km field in data/suburbs.json is a road-style figure and will not match.",
+  "sectors": {
+   "N": "bearing 300 to 30 degrees from the CBD",
+   "E": "bearing 30 to 130 degrees from the CBD",
+   "S": "bearing 130 to 215 degrees from the CBD",
+   "W": "bearing 215 to 300 degrees from the CBD"
+  },
+  "sector_note": "Bounds are rotated off true quadrants to match how Perth is actually described: the coastal strip north of the CBD reads north, the western suburbs run Nedlands to Fremantle, and across the river reads south.",
+  "note": "Geography only. No medians, scores or prices are set here; only the 14 suburbs in data/suburbs.json carry researched medians, and everything else is valued off live comparable listings at fetch time.",
+  "count": 143,
+  "by_sector": {
+   "E": 35,
+   "N": 41,
+   "S": 41,
+   "W": 26
+  },
+  "curated_in_ring": 14,
+  "dropped": [
+   {
+    "name": "Applecross North",
+    "why": "postal split of Applecross"
+   },
+   {
+    "name": "Bassendean Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Bennett Springs",
+    "why": "postal alias of Springs"
+   },
+   {
+    "name": "Bentley Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Bentley South",
+    "why": "postal split of Bentley"
+   },
+   {
+    "name": "Broadway Nedlands",
+    "why": "postal alias of Nedlands"
+   },
+   {
+    "name": "Canning Bridge Applecross",
+    "why": "postal alias of Applecross"
+   },
+   {
+    "name": "Canning Vale Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Carlisle North",
+    "why": "postal split of Carlisle"
+   },
+   {
+    "name": "Carlisle South",
+    "why": "postal split of Carlisle"
+   },
+   {
+    "name": "City Delivery Centre",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Claremont North",
+    "why": "postal split of Claremont"
+   },
+   {
+    "name": "Dog Swamp",
+    "why": "non-residential locality"
+   },
+   {
+    "name": "Floreat Forum",
+    "why": "postal split of Floreat"
+   },
+   {
+    "name": "Gwelup Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Herdsman",
+    "why": "non-residential locality"
+   },
+   {
+    "name": "Karrakatta",
+    "why": "non-residential locality"
+   },
+   {
+    "name": "Kings Park",
+    "why": "non-residential locality"
+   },
+   {
+    "name": "Malaga Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Nedlands Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Osborne Park Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Palmyra Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Perth Airport",
+    "why": "non-residential locality"
+   },
+   {
+    "name": "Perth Bc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Perth East St Georges Tce",
+    "why": "street-address postal entry"
+   },
+   {
+    "name": "Perth Gpo",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "South Perth Angelo St",
+    "why": "street-address postal entry"
+   },
+   {
+    "name": "Subiaco East",
+    "why": "postal split of Subiaco"
+   },
+   {
+    "name": "Welshpool Dc",
+    "why": "postal delivery area"
+   },
+   {
+    "name": "Willagee Central",
+    "why": "postal split of Willagee"
+   },
+   {
+    "name": "Yokine South",
+    "why": "postal split of Yokine"
+   }
+  ]
+ },
+ "suburbs": [
+  {
+   "name": "East Perth",
+   "pc": "6004",
+   "lat": -31.95401,
+   "lng": 115.87879,
+   "sa2": "East Perth",
+   "kmCbd": 1.7,
+   "kmComo": 5.5,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Burswood",
+   "pc": "6100",
+   "lat": -31.96331,
+   "lng": 115.89676,
+   "sa2": "Victoria Park - Lathlain - Burswood",
+   "kmCbd": 3.6,
+   "kmComo": 5.3,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Maylands",
+   "pc": "6051",
+   "lat": -31.93826,
+   "lng": 115.90245,
+   "sa2": "Maylands",
+   "kmCbd": 4.2,
+   "kmComo": 8.0,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Victoria Park",
+   "pc": "6100",
+   "lat": -31.97504,
+   "lng": 115.89772,
+   "sa2": "Victoria Park - Lathlain - Burswood",
+   "kmCbd": 4.3,
+   "kmComo": 4.5,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Lathlain",
+   "pc": "6100",
+   "lat": -31.9679,
+   "lng": 115.90811,
+   "sa2": "Victoria Park - Lathlain - Burswood",
+   "kmCbd": 4.7,
+   "kmComo": 5.7,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Rivervale",
+   "pc": "6103",
+   "lat": -31.96088,
+   "lng": 115.92019,
+   "sa2": "Rivervale",
+   "kmCbd": 5.6,
+   "kmComo": 7.1,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "East Victoria Park",
+   "pc": "6101",
+   "lat": -31.98466,
+   "lng": 115.90836,
+   "sa2": "Bentley - Wilson - St James",
+   "kmCbd": 5.7,
+   "kmComo": 4.8,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Carlisle",
+   "pc": "6101",
+   "lat": -31.97863,
+   "lng": 115.91711,
+   "sa2": "Bentley - Wilson - St James",
+   "kmCbd": 6.0,
+   "kmComo": 5.8,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Belmont",
+   "pc": "6104",
+   "lat": -31.95385,
+   "lng": 115.92611,
+   "sa2": "Belmont - Ascot - Redcliffe",
+   "kmCbd": 6.1,
+   "kmComo": 8.0,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Bayswater",
+   "pc": "6053",
+   "lat": -31.91648,
+   "lng": 115.91723,
+   "sa2": "Bayswater - Embleton - Bedford",
+   "kmCbd": 6.6,
+   "kmComo": 10.8,
+   "sector": "E",
+   "curated": true
+  },
+  {
+   "name": "Ascot",
+   "pc": "6104",
+   "lat": -31.93546,
+   "lng": 115.92973,
+   "sa2": "Belmont - Ascot - Redcliffe",
+   "kmCbd": 6.7,
+   "kmComo": 9.7,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Embleton",
+   "pc": "6062",
+   "lat": -31.90313,
+   "lng": 115.91049,
+   "sa2": "Noranda",
+   "kmCbd": 7.2,
+   "kmComo": 11.8,
+   "sector": "E",
+   "curated": true
+  },
+  {
+   "name": "Redcliffe",
+   "pc": "6104",
+   "lat": -31.93818,
+   "lng": 115.94355,
+   "sa2": "Belmont - Ascot - Redcliffe",
+   "kmCbd": 7.9,
+   "kmComo": 10.4,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Cloverdale",
+   "pc": "6105",
+   "lat": -31.96245,
+   "lng": 115.94473,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 8.0,
+   "kmComo": 8.9,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Ashfield",
+   "pc": "6054",
+   "lat": -31.91723,
+   "lng": 115.9366,
+   "sa2": "Lockridge - Kiara",
+   "kmCbd": 8.1,
+   "kmComo": 11.7,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Morley",
+   "pc": "6062",
+   "lat": -31.88896,
+   "lng": 115.91817,
+   "sa2": "Noranda",
+   "kmCbd": 8.9,
+   "kmComo": 13.6,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Bassendean",
+   "pc": "6054",
+   "lat": -31.90764,
+   "lng": 115.94259,
+   "sa2": "Lockridge - Kiara",
+   "kmCbd": 9.1,
+   "kmComo": 12.9,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Welshpool",
+   "pc": "6106",
+   "lat": -31.99151,
+   "lng": 115.94976,
+   "sa2": "Welshpool",
+   "kmCbd": 9.4,
+   "kmComo": 8.4,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Queens Park",
+   "pc": "6107",
+   "lat": -32.00424,
+   "lng": 115.9423,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 9.6,
+   "kmComo": 7.6,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Kewdale",
+   "pc": "6105",
+   "lat": -31.97973,
+   "lng": 115.95963,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 9.8,
+   "kmComo": 9.5,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Eden Hill",
+   "pc": "6054",
+   "lat": -31.89064,
+   "lng": 115.94218,
+   "sa2": "Lockridge - Kiara",
+   "kmCbd": 10.3,
+   "kmComo": 14.4,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Kiara",
+   "pc": "6054",
+   "lat": -31.88439,
+   "lng": 115.93809,
+   "sa2": "Lockridge - Kiara",
+   "kmCbd": 10.5,
+   "kmComo": 14.8,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "South Guildford",
+   "pc": "6055",
+   "lat": -31.91017,
+   "lng": 115.96687,
+   "sa2": "Perth Airport",
+   "kmCbd": 11.0,
+   "kmComo": 14.2,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "East Cannington",
+   "pc": "6107",
+   "lat": -32.00567,
+   "lng": 115.96332,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 11.3,
+   "kmComo": 9.6,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Lockridge",
+   "pc": "6054",
+   "lat": -31.88189,
+   "lng": 115.94983,
+   "sa2": "Lockridge - Kiara",
+   "kmCbd": 11.5,
+   "kmComo": 15.6,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Beechboro",
+   "pc": "6063",
+   "lat": -31.86802,
+   "lng": 115.93875,
+   "sa2": "Beechboro",
+   "kmCbd": 11.9,
+   "kmComo": 16.5,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Guildford",
+   "pc": "6055",
+   "lat": -31.89898,
+   "lng": 115.97181,
+   "sa2": "Perth Airport",
+   "kmCbd": 12.0,
+   "kmComo": 15.4,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Forrestfield",
+   "pc": "6058",
+   "lat": -31.98315,
+   "lng": 116.00001,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 13.5,
+   "kmComo": 13.2,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Caversham",
+   "pc": "6055",
+   "lat": -31.87573,
+   "lng": 115.97487,
+   "sa2": "Perth Airport",
+   "kmCbd": 13.7,
+   "kmComo": 17.6,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "High Wycombe",
+   "pc": "6057",
+   "lat": -31.93652,
+   "lng": 116.00631,
+   "sa2": "Kalamunda - Maida Vale - Gooseberry Hill",
+   "kmCbd": 13.8,
+   "kmComo": 15.4,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Wattle Grove",
+   "pc": "6107",
+   "lat": -32.00815,
+   "lng": 115.997,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 14.2,
+   "kmComo": 12.8,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Woodbridge",
+   "pc": "6056",
+   "lat": -31.89124,
+   "lng": 115.9929,
+   "sa2": "Kalamunda - Maida Vale - Gooseberry Hill",
+   "kmCbd": 14.2,
+   "kmComo": 17.4,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Kenwick",
+   "pc": "6107",
+   "lat": -32.03319,
+   "lng": 115.98216,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 14.5,
+   "kmComo": 11.9,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Dayton",
+   "pc": "6055",
+   "lat": -31.8556,
+   "lng": 115.969,
+   "sa2": "Perth Airport",
+   "kmCbd": 14.8,
+   "kmComo": 19.1,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Hazelmere",
+   "pc": "6055",
+   "lat": -31.91062,
+   "lng": 116.0098,
+   "sa2": "Perth Airport",
+   "kmCbd": 14.8,
+   "kmComo": 17.2,
+   "sector": "E",
+   "curated": false
+  },
+  {
+   "name": "Northbridge",
+   "pc": "6003",
+   "lat": -31.94363,
+   "lng": 115.85384,
+   "sa2": "Perth (West) - Northbridge",
+   "kmCbd": 1.2,
+   "kmComo": 6.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "West Perth",
+   "pc": "6005",
+   "lat": -31.94533,
+   "lng": 115.84743,
+   "sa2": "Perth (West) - Northbridge",
+   "kmCbd": 1.5,
+   "kmComo": 6.3,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Highgate",
+   "pc": "6003",
+   "lat": -31.93922,
+   "lng": 115.86916,
+   "sa2": "Perth (West) - Northbridge",
+   "kmCbd": 1.6,
+   "kmComo": 6.9,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Mount Lawley",
+   "pc": "6050",
+   "lat": -31.93206,
+   "lng": 115.87411,
+   "sa2": "Yokine - Coolbinia - Menora",
+   "kmCbd": 2.6,
+   "kmComo": 7.8,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "North Perth",
+   "pc": "6006",
+   "lat": -31.92735,
+   "lng": 115.85513,
+   "sa2": "North Perth",
+   "kmCbd": 2.8,
+   "kmComo": 8.2,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Leederville",
+   "pc": "6007",
+   "lat": -31.93196,
+   "lng": 115.84128,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 2.9,
+   "kmComo": 7.9,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Menora",
+   "pc": "6050",
+   "lat": -31.92316,
+   "lng": 115.86082,
+   "sa2": "Yokine - Coolbinia - Menora",
+   "kmCbd": 3.2,
+   "kmComo": 8.7,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Coolbinia",
+   "pc": "6050",
+   "lat": -31.91387,
+   "lng": 115.85439,
+   "sa2": "Yokine - Coolbinia - Menora",
+   "kmCbd": 4.3,
+   "kmComo": 9.7,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Mount Hawthorn",
+   "pc": "6016",
+   "lat": -31.91958,
+   "lng": 115.83558,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 4.4,
+   "kmComo": 9.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Inglewood",
+   "pc": "6052",
+   "lat": -31.91684,
+   "lng": 115.88512,
+   "sa2": "Bayswater - Embleton - Bedford",
+   "kmCbd": 4.5,
+   "kmComo": 9.6,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Bedford",
+   "pc": "6052",
+   "lat": -31.91562,
+   "lng": 115.88471,
+   "sa2": "Bayswater - Embleton - Bedford",
+   "kmCbd": 4.6,
+   "kmComo": 9.7,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Joondanna",
+   "pc": "6060",
+   "lat": -31.91089,
+   "lng": 115.84572,
+   "sa2": "Yokine - Coolbinia - Menora",
+   "kmCbd": 4.8,
+   "kmComo": 10.1,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Glendalough",
+   "pc": "6016",
+   "lat": -31.91923,
+   "lng": 115.82003,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 5.4,
+   "kmComo": 9.9,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Osborne Park",
+   "pc": "6017",
+   "lat": -31.91426,
+   "lng": 115.82307,
+   "sa2": "Tuart Hill - Joondanna",
+   "kmCbd": 5.6,
+   "kmComo": 10.3,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Yokine",
+   "pc": "6060",
+   "lat": -31.9015,
+   "lng": 115.84942,
+   "sa2": "Yokine - Coolbinia - Menora",
+   "kmCbd": 5.8,
+   "kmComo": 11.1,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Tuart Hill",
+   "pc": "6060",
+   "lat": -31.89657,
+   "lng": 115.83552,
+   "sa2": "Yokine - Coolbinia - Menora",
+   "kmCbd": 6.7,
+   "kmComo": 11.9,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Dianella",
+   "pc": "6059",
+   "lat": -31.88437,
+   "lng": 115.86992,
+   "sa2": "Dianella - South",
+   "kmCbd": 7.6,
+   "kmComo": 13.0,
+   "sector": "N",
+   "curated": true
+  },
+  {
+   "name": "Nollamara",
+   "pc": "6061",
+   "lat": -31.88057,
+   "lng": 115.84723,
+   "sa2": "Dianella - North",
+   "kmCbd": 8.1,
+   "kmComo": 13.5,
+   "sector": "N",
+   "curated": true
+  },
+  {
+   "name": "Woodlands",
+   "pc": "6018",
+   "lat": -31.90894,
+   "lng": 115.79259,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 8.1,
+   "kmComo": 12.1,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Stirling",
+   "pc": "6021",
+   "lat": -31.88645,
+   "lng": 115.80987,
+   "sa2": "Stirling - Osborne Park",
+   "kmCbd": 8.8,
+   "kmComo": 13.7,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Innaloo",
+   "pc": "6018",
+   "lat": -31.89429,
+   "lng": 115.79624,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 8.9,
+   "kmComo": 13.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Noranda",
+   "pc": "6062",
+   "lat": -31.87545,
+   "lng": 115.89647,
+   "sa2": "Noranda",
+   "kmCbd": 9.2,
+   "kmComo": 14.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Doubleview",
+   "pc": "6018",
+   "lat": -31.89991,
+   "lng": 115.78125,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 9.5,
+   "kmComo": 13.6,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Mirrabooka",
+   "pc": "6061",
+   "lat": -31.8662,
+   "lng": 115.86625,
+   "sa2": "Dianella - North",
+   "kmCbd": 9.6,
+   "kmComo": 15.0,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Westminster",
+   "pc": "6061",
+   "lat": -31.86643,
+   "lng": 115.84078,
+   "sa2": "Dianella - North",
+   "kmCbd": 9.7,
+   "kmComo": 15.1,
+   "sector": "N",
+   "curated": true
+  },
+  {
+   "name": "Scarborough",
+   "pc": "6019",
+   "lat": -31.89803,
+   "lng": 115.7716,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 10.4,
+   "kmComo": 14.3,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Malaga",
+   "pc": "6090",
+   "lat": -31.86259,
+   "lng": 115.89654,
+   "sa2": "Malaga",
+   "kmCbd": 10.5,
+   "kmComo": 15.7,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Balga",
+   "pc": "6061",
+   "lat": -31.85764,
+   "lng": 115.83579,
+   "sa2": "Dianella - North",
+   "kmCbd": 10.8,
+   "kmComo": 16.1,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Gwelup",
+   "pc": "6018",
+   "lat": -31.86925,
+   "lng": 115.79625,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 11.1,
+   "kmComo": 15.9,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Balcatta",
+   "pc": "6021",
+   "lat": -31.86018,
+   "lng": 115.81047,
+   "sa2": "Stirling - Osborne Park",
+   "kmCbd": 11.3,
+   "kmComo": 16.4,
+   "sector": "N",
+   "curated": true
+  },
+  {
+   "name": "Hamersley",
+   "pc": "6022",
+   "lat": -31.85148,
+   "lng": 115.81373,
+   "sa2": "Balcatta - Hamersley",
+   "kmCbd": 12.1,
+   "kmComo": 17.2,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Karrinyup",
+   "pc": "6018",
+   "lat": -31.8739,
+   "lng": 115.77081,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 12.2,
+   "kmComo": 16.5,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Koondoola",
+   "pc": "6064",
+   "lat": -31.84126,
+   "lng": 115.86282,
+   "sa2": "Marangaroo",
+   "kmCbd": 12.3,
+   "kmComo": 17.8,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Girrawheen",
+   "pc": "6064",
+   "lat": -31.84068,
+   "lng": 115.84032,
+   "sa2": "Marangaroo",
+   "kmCbd": 12.6,
+   "kmComo": 18.0,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Trigg",
+   "pc": "6029",
+   "lat": -31.87362,
+   "lng": 115.76048,
+   "sa2": "Trigg - North Beach - Watermans Bay",
+   "kmCbd": 12.9,
+   "kmComo": 17.1,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Warwick",
+   "pc": "6024",
+   "lat": -31.84213,
+   "lng": 115.8128,
+   "sa2": "Greenwood - Warwick",
+   "kmCbd": 13.1,
+   "kmComo": 18.3,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Ballajura",
+   "pc": "6066",
+   "lat": -31.83679,
+   "lng": 115.89358,
+   "sa2": "Ballajura",
+   "kmCbd": 13.2,
+   "kmComo": 18.5,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Carine",
+   "pc": "6020",
+   "lat": -31.85115,
+   "lng": 115.77765,
+   "sa2": "Trigg - North Beach - Watermans Bay",
+   "kmCbd": 13.7,
+   "kmComo": 18.5,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Alexander Heights",
+   "pc": "6064",
+   "lat": -31.8269,
+   "lng": 115.86713,
+   "sa2": "Marangaroo",
+   "kmCbd": 14.0,
+   "kmComo": 19.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "Marangaroo",
+   "pc": "6064",
+   "lat": -31.82781,
+   "lng": 115.84134,
+   "sa2": "Marangaroo",
+   "kmCbd": 14.0,
+   "kmComo": 19.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "North Beach",
+   "pc": "6020",
+   "lat": -31.86117,
+   "lng": 115.7582,
+   "sa2": "Trigg - North Beach - Watermans Bay",
+   "kmCbd": 14.0,
+   "kmComo": 18.4,
+   "sector": "N",
+   "curated": false
+  },
+  {
+   "name": "South Perth",
+   "pc": "6151",
+   "lat": -31.98095,
+   "lng": 115.86392,
+   "sa2": "South Perth - Kensington",
+   "kmCbd": 3.2,
+   "kmComo": 2.2,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Kensington",
+   "pc": "6151",
+   "lat": -31.98305,
+   "lng": 115.88296,
+   "sa2": "South Perth - Kensington",
+   "kmCbd": 4.0,
+   "kmComo": 2.8,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Como",
+   "pc": "6152",
+   "lat": -32.00109,
+   "lng": 115.86172,
+   "sa2": "Manning - Waterford",
+   "kmCbd": 5.4,
+   "kmComo": 0.0,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Bentley",
+   "pc": "6102",
+   "lat": -32.00411,
+   "lng": 115.8964,
+   "sa2": "Bentley - Wilson - St James",
+   "kmCbd": 6.6,
+   "kmComo": 3.3,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Karawara",
+   "pc": "6152",
+   "lat": -32.00953,
+   "lng": 115.88065,
+   "sa2": "Manning - Waterford",
+   "kmCbd": 6.6,
+   "kmComo": 2.0,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Manning",
+   "pc": "6152",
+   "lat": -32.01167,
+   "lng": 115.86886,
+   "sa2": "Manning - Waterford",
+   "kmCbd": 6.6,
+   "kmComo": 1.4,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Applecross",
+   "pc": "6153",
+   "lat": -32.01161,
+   "lng": 115.83873,
+   "sa2": "Booragoon",
+   "kmCbd": 6.9,
+   "kmComo": 2.5,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "St James",
+   "pc": "6102",
+   "lat": -31.99617,
+   "lng": 115.91436,
+   "sa2": "Bentley - Wilson - St James",
+   "kmCbd": 7.0,
+   "kmComo": 5.0,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Waterford",
+   "pc": "6152",
+   "lat": -32.01446,
+   "lng": 115.88966,
+   "sa2": "Manning - Waterford",
+   "kmCbd": 7.4,
+   "kmComo": 3.0,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Salter Point",
+   "pc": "6152",
+   "lat": -32.02114,
+   "lng": 115.86282,
+   "sa2": "Manning - Waterford",
+   "kmCbd": 7.7,
+   "kmComo": 2.2,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Ardross",
+   "pc": "6153",
+   "lat": -32.0221,
+   "lng": 115.83535,
+   "sa2": "Booragoon",
+   "kmCbd": 8.1,
+   "kmComo": 3.4,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Mount Pleasant",
+   "pc": "6153",
+   "lat": -32.0248,
+   "lng": 115.84849,
+   "sa2": "Booragoon",
+   "kmCbd": 8.2,
+   "kmComo": 2.9,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Shelley",
+   "pc": "6148",
+   "lat": -32.02785,
+   "lng": 115.88953,
+   "sa2": "Riverton - Shelley - Rossmoyne",
+   "kmCbd": 8.8,
+   "kmComo": 4.0,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Wilson",
+   "pc": "6107",
+   "lat": -32.0197,
+   "lng": 115.91161,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 8.9,
+   "kmComo": 5.1,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Booragoon",
+   "pc": "6154",
+   "lat": -32.0364,
+   "lng": 115.83797,
+   "sa2": "Melville",
+   "kmCbd": 9.6,
+   "kmComo": 4.5,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Riverton",
+   "pc": "6148",
+   "lat": -32.03383,
+   "lng": 115.89317,
+   "sa2": "Riverton - Shelley - Rossmoyne",
+   "kmCbd": 9.6,
+   "kmComo": 4.7,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Rossmoyne",
+   "pc": "6148",
+   "lat": -32.03864,
+   "lng": 115.86771,
+   "sa2": "Riverton - Shelley - Rossmoyne",
+   "kmCbd": 9.6,
+   "kmComo": 4.2,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Alfred Cove",
+   "pc": "6154",
+   "lat": -32.03186,
+   "lng": 115.81814,
+   "sa2": "Melville",
+   "kmCbd": 9.7,
+   "kmComo": 5.3,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Brentwood",
+   "pc": "6153",
+   "lat": -32.04276,
+   "lng": 115.84803,
+   "sa2": "Booragoon",
+   "kmCbd": 10.1,
+   "kmComo": 4.8,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Cannington",
+   "pc": "6107",
+   "lat": -32.01787,
+   "lng": 115.93467,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 10.1,
+   "kmComo": 7.1,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Ferndale",
+   "pc": "6148",
+   "lat": -32.03076,
+   "lng": 115.92535,
+   "sa2": "Riverton - Shelley - Rossmoyne",
+   "kmCbd": 10.6,
+   "kmComo": 6.8,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Myaree",
+   "pc": "6154",
+   "lat": -32.03998,
+   "lng": 115.81565,
+   "sa2": "Melville",
+   "kmCbd": 10.7,
+   "kmComo": 6.1,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Willetton",
+   "pc": "6155",
+   "lat": -32.04878,
+   "lng": 115.89215,
+   "sa2": "Canning Vale - East",
+   "kmCbd": 11.1,
+   "kmComo": 6.0,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Melville",
+   "pc": "6156",
+   "lat": -32.04146,
+   "lng": 115.80347,
+   "sa2": "Willagee",
+   "kmCbd": 11.3,
+   "kmComo": 7.1,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Winthrop",
+   "pc": "6150",
+   "lat": -32.05179,
+   "lng": 115.82972,
+   "sa2": "Winthrop",
+   "kmCbd": 11.5,
+   "kmComo": 6.4,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Bull Creek",
+   "pc": "6149",
+   "lat": -32.0566,
+   "lng": 115.86487,
+   "sa2": "Leeming",
+   "kmCbd": 11.6,
+   "kmComo": 6.2,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Parkwood",
+   "pc": "6147",
+   "lat": -32.04677,
+   "lng": 115.91268,
+   "sa2": "Beckenham - Kenwick - Langford",
+   "kmCbd": 11.6,
+   "kmComo": 7.0,
+   "sector": "S",
+   "curated": true
+  },
+  {
+   "name": "Beckenham",
+   "pc": "6107",
+   "lat": -32.0275,
+   "lng": 115.94935,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 11.8,
+   "kmComo": 8.8,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Lynwood",
+   "pc": "6147",
+   "lat": -32.04023,
+   "lng": 115.93206,
+   "sa2": "Beckenham - Kenwick - Langford",
+   "kmCbd": 11.8,
+   "kmComo": 7.9,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Bateman",
+   "pc": "6150",
+   "lat": -32.05958,
+   "lng": 115.84438,
+   "sa2": "Winthrop",
+   "kmCbd": 12.0,
+   "kmComo": 6.7,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Willagee",
+   "pc": "6156",
+   "lat": -32.05247,
+   "lng": 115.80226,
+   "sa2": "Willagee",
+   "kmCbd": 12.5,
+   "kmComo": 8.0,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Langford",
+   "pc": "6147",
+   "lat": -32.03979,
+   "lng": 115.94842,
+   "sa2": "Beckenham - Kenwick - Langford",
+   "kmCbd": 12.7,
+   "kmComo": 9.2,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Palmyra",
+   "pc": "6157",
+   "lat": -32.04584,
+   "lng": 115.78471,
+   "sa2": "Bicton - Palmyra",
+   "kmCbd": 12.7,
+   "kmComo": 8.8,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Murdoch",
+   "pc": "6150",
+   "lat": -32.0699,
+   "lng": 115.8426,
+   "sa2": "Winthrop",
+   "kmCbd": 13.2,
+   "kmComo": 7.9,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "O'Connor",
+   "pc": "6163",
+   "lat": -32.06024,
+   "lng": 115.7937,
+   "sa2": "Murdoch - Kardinya",
+   "kmCbd": 13.6,
+   "kmComo": 9.2,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Kardinya",
+   "pc": "6163",
+   "lat": -32.06871,
+   "lng": 115.81489,
+   "sa2": "Murdoch - Kardinya",
+   "kmCbd": 13.7,
+   "kmComo": 8.7,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Leeming",
+   "pc": "6149",
+   "lat": -32.07962,
+   "lng": 115.86566,
+   "sa2": "Leeming",
+   "kmCbd": 14.2,
+   "kmComo": 8.7,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Thornlie",
+   "pc": "6108",
+   "lat": -32.05704,
+   "lng": 115.95271,
+   "sa2": "Thornlie",
+   "kmCbd": 14.5,
+   "kmComo": 10.6,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "North Lake",
+   "pc": "6163",
+   "lat": -32.07897,
+   "lng": 115.82185,
+   "sa2": "Murdoch - Kardinya",
+   "kmCbd": 14.6,
+   "kmComo": 9.4,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Samson",
+   "pc": "6163",
+   "lat": -32.07227,
+   "lng": 115.79955,
+   "sa2": "Murdoch - Kardinya",
+   "kmCbd": 14.6,
+   "kmComo": 9.8,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Hilton",
+   "pc": "6163",
+   "lat": -32.0702,
+   "lng": 115.784,
+   "sa2": "Murdoch - Kardinya",
+   "kmCbd": 15.0,
+   "kmComo": 10.6,
+   "sector": "S",
+   "curated": false
+  },
+  {
+   "name": "Perth",
+   "pc": "6000",
+   "lat": -31.95257,
+   "lng": 115.86105,
+   "sa2": "Perth (West) - Northbridge",
+   "kmCbd": 0.0,
+   "kmComo": 5.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Subiaco",
+   "pc": "6008",
+   "lat": -31.94699,
+   "lng": 115.82855,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 3.1,
+   "kmComo": 6.8,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "West Leederville",
+   "pc": "6007",
+   "lat": -31.94069,
+   "lng": 115.83168,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 3.1,
+   "kmComo": 7.3,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Wembley",
+   "pc": "6014",
+   "lat": -31.9343,
+   "lng": 115.82,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 4.4,
+   "kmComo": 8.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Jolimont",
+   "pc": "6014",
+   "lat": -31.94763,
+   "lng": 115.81159,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 4.7,
+   "kmComo": 7.6,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Daglish",
+   "pc": "6008",
+   "lat": -31.95185,
+   "lng": 115.80973,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 4.9,
+   "kmComo": 7.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Shenton Park",
+   "pc": "6008",
+   "lat": -31.95881,
+   "lng": 115.80532,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 5.3,
+   "kmComo": 7.1,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Crawley",
+   "pc": "6009",
+   "lat": -31.98206,
+   "lng": 115.81077,
+   "sa2": "Nedlands - Dalkeith - Crawley",
+   "kmCbd": 5.8,
+   "kmComo": 5.3,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Nedlands",
+   "pc": "6009",
+   "lat": -31.97915,
+   "lng": 115.80373,
+   "sa2": "Nedlands - Dalkeith - Crawley",
+   "kmCbd": 6.2,
+   "kmComo": 6.0,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Floreat",
+   "pc": "6014",
+   "lat": -31.93443,
+   "lng": 115.79065,
+   "sa2": "Wembley - West Leederville - Glendalough",
+   "kmCbd": 7.0,
+   "kmComo": 10.0,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Mount Claremont",
+   "pc": "6010",
+   "lat": -31.96373,
+   "lng": 115.78376,
+   "sa2": "Swanbourne - Mount Claremont",
+   "kmCbd": 7.4,
+   "kmComo": 8.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Churchlands",
+   "pc": "6018",
+   "lat": -31.92155,
+   "lng": 115.78976,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 7.6,
+   "kmComo": 11.1,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Dalkeith",
+   "pc": "6009",
+   "lat": -31.99477,
+   "lng": 115.79881,
+   "sa2": "Nedlands - Dalkeith - Crawley",
+   "kmCbd": 7.6,
+   "kmComo": 6.0,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Claremont",
+   "pc": "6010",
+   "lat": -31.98425,
+   "lng": 115.778,
+   "sa2": "Swanbourne - Mount Claremont",
+   "kmCbd": 8.6,
+   "kmComo": 8.1,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Swanbourne",
+   "pc": "6010",
+   "lat": -31.97106,
+   "lng": 115.7668,
+   "sa2": "Swanbourne - Mount Claremont",
+   "kmCbd": 9.2,
+   "kmComo": 9.6,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "City Beach",
+   "pc": "6015",
+   "lat": -31.93931,
+   "lng": 115.76344,
+   "sa2": "City Beach",
+   "kmCbd": 9.3,
+   "kmComo": 11.5,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Wembley Downs",
+   "pc": "6019",
+   "lat": -31.91337,
+   "lng": 115.77275,
+   "sa2": "Wembley Downs - Churchlands - Woodlands",
+   "kmCbd": 9.4,
+   "kmComo": 12.9,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Attadale",
+   "pc": "6156",
+   "lat": -32.02486,
+   "lng": 115.79968,
+   "sa2": "Willagee",
+   "kmCbd": 9.9,
+   "kmComo": 6.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Cottesloe",
+   "pc": "6011",
+   "lat": -31.98965,
+   "lng": 115.76305,
+   "sa2": "Mosman Park - Peppermint Grove",
+   "kmCbd": 10.2,
+   "kmComo": 9.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Peppermint Grove",
+   "pc": "6011",
+   "lat": -31.99798,
+   "lng": 115.7677,
+   "sa2": "Mosman Park - Peppermint Grove",
+   "kmCbd": 10.2,
+   "kmComo": 8.9,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Bicton",
+   "pc": "6157",
+   "lat": -32.03006,
+   "lng": 115.7845,
+   "sa2": "Bicton - Palmyra",
+   "kmCbd": 11.3,
+   "kmComo": 8.0,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Mosman Park",
+   "pc": "6012",
+   "lat": -32.01354,
+   "lng": 115.76344,
+   "sa2": "Mosman Park - Peppermint Grove",
+   "kmCbd": 11.5,
+   "kmComo": 9.4,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "East Fremantle",
+   "pc": "6158",
+   "lat": -32.03675,
+   "lng": 115.7664,
+   "sa2": "East Fremantle",
+   "kmCbd": 13.0,
+   "kmComo": 9.8,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "North Fremantle",
+   "pc": "6159",
+   "lat": -32.0353,
+   "lng": 115.74864,
+   "sa2": "Fremantle",
+   "kmCbd": 14.1,
+   "kmComo": 11.3,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "Fremantle",
+   "pc": "6160",
+   "lat": -32.05393,
+   "lng": 115.76048,
+   "sa2": "Fremantle",
+   "kmCbd": 14.8,
+   "kmComo": 11.2,
+   "sector": "W",
+   "curated": false
+  },
+  {
+   "name": "White Gum Valley",
+   "pc": "6162",
+   "lat": -32.06135,
+   "lng": 115.7682,
+   "sa2": "Fremantle - South",
+   "kmCbd": 15.0,
+   "kmComo": 11.1,
+   "sector": "W",
+   "curated": false
+  }
+ ]
+}

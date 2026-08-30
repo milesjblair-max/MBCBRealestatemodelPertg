@@ -3,7 +3,14 @@ name: Refresh live listings (daily)
 # Pulls fresh property listings (with photos) into data/listings.json once a day
 # via the Realty in AU API (RapidAPI), then commits the change (which re-
 # publishes Pages on a branch deploy). With no RAPIDAPI_KEY set, the script is a
-# safe no-op and the committed sample data is left in place.
+# safe no-op and the committed data is left in place.
+#
+# QUOTA: the sweep covers every residential suburb within 15km of the Perth CBD
+# (data/perth_ring.json), which is one API call per suburb, so roughly 143 calls
+# a run and ~4,300 a month. The "Sweep plan" step below prints the exact number
+# into the log before anything is spent. To run cheaper, set SUBURB_CAP to the
+# slice size and rotate SUBURB_OFFSET so the whole ring is still covered over
+# several days.
 
 on:
   schedule:
@@ -20,6 +27,9 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    # ~143 sequential API calls with a throttle; well inside this, but bounded
+    # so a hanging endpoint cannot burn a job slot.
+    timeout-minutes: 30
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,6 +40,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Sweep plan (how much quota this run will spend)
+        run: python3 scripts/fetch_listings.py --plan
 
       - name: Fetch listings
         env:

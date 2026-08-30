@@ -24,6 +24,7 @@ perth-property-model/
 ├── data/
 │   ├── baseline.json       ← the forecast outputs = the "Reset" contract
 │   ├── suburbs.json        ← suburb dataset + dimension scores
+│   ├── perth_ring.json     ← the 143-suburb inner-Perth search ring (N/E/S/W)
 │   └── criteria.json       ← the ten criteria + weights
 └── .claude/skills/wa-property-expert/
     ├── SKILL.md            ← how the AI should think about WA property
@@ -106,39 +107,76 @@ have to touch the settings again.
 
 ---
 
-## Going live: real property listings (free, ~5 minutes)
+## The live property feed: how it works
 
-The "Properties that fit (or are a bargain)" section reads `data/listings.json`.
-Out of the box that file holds clearly-labelled **sample** properties. To switch
-it to **real listings that refresh every day**, give it a free Domain Developer
-API key. This is the only compliant route - the page never scrapes the portals.
+The "Properties that fit (or are a bargain)" section reads `data/listings.json`,
+refreshed every day by a scheduled GitHub Action.
 
-**Step 1 - get a free Domain API key (once).**
-1. Go to `https://developer.domain.com.au` and sign up (free).
-2. Create a **Project** on the free/sandbox plan and add the **Agents &amp;
-   Listings** package (the "Search residential listings" endpoint).
-3. From the project's **Credentials**, copy the **Client ID** and **Client
-   Secret**.
+**What it searches.** Not just your shortlist. Every residential suburb within
+**15km of the Perth CBD**, north, east, south and west: 143 suburbs, listed in
+`data/perth_ring.json`. The brief is unchanged (houses, 3+ beds, up to $1.1M,
+land favoured); what changed is the map, so a bargain two suburbs outside the
+shortlist is no longer invisible.
 
-**Step 2 - add them to the repo as secrets (once).**
-In GitHub: **Settings -> Secrets and variables -> Actions -> New repository
-secret**, and add two secrets:
-- `DOMAIN_CLIENT_ID`
-- `DOMAIN_CLIENT_SECRET`
+**What "bargain" means here.** No free public source gives a reliable house
+median for 143 suburbs, and inventing one would be worse than useless. So each
+listing is priced against **the other comparable houses on the market in its own
+suburb right now**: the median ask of that pool, adjusted for how the property
+differs on land, bedrooms and bathrooms. A "12% under local asking" figure means
+exactly that, and nothing more. It is not a valuation, not a suburb median, and
+not a forecast. The logic lives in `model/value.py`, with its reasoning in the
+file's docstring.
 
-(Nothing is ever committed - the secrets live only in GitHub Actions.)
+**What it refuses to call cheap:**
 
-**Step 3 - run it.**
-Go to the **Actions** tab -> **Refresh live listings (daily)** -> **Run
-workflow**. It pulls houses matching the brief (3+ beds, under $1.0M, in the
-target suburbs), flags any priced below the suburb median as **bargains**,
-writes `data/listings.json`, and commits it (which re-publishes the site). After
-that it runs **automatically once a day** - no further action needed.
+| Case | What happens |
+|---|---|
+| No published price ("Contact agent") | Never flagged as a bargain. Unknown is not cheap. |
+| "From $850,000" | Treated as a floor, not an ask, and compared at a modest uplift. |
+| A strata lot ("2/94 Wendouree Rd") | Dropped. A duplex half is cheap for an obvious reason. |
+| No land size published | Confidence capped at low, and it scores part marks on land, never full. |
+| Fewer than 3 comparables | Falls back to the wider side of the city, at low confidence. |
+| A gap over 45% | Flagged as odd pricing and pushed down the ranking, not celebrated. |
 
-Until the key is added, the daily job is a safe no-op: it leaves the sample data
-in place, so the page never breaks. The script (`scripts/fetch_listings.py`) and
-schedule (`.github/workflows/refresh-listings.yml`) are already wired; you only
-add the key.
+**Ranking.** "Best bargains" is 60% discount and 40% fit to the brief (land,
+bedrooms, budget, distance from Como), scaled by how much evidence sat behind
+the discount. So a cheap house that does not suit the family does not top the
+list. Every side of the city is guaranteed a slot, so a quiet week in the north
+cannot hand the whole page to the south.
+
+### Turning the feed on
+
+The feed uses the **Realty in AU API** via RapidAPI (a third-party surface for
+realestate.com.au data, chosen for this private tool; it is not an official REA
+feed).
+
+1. Get a RapidAPI key and subscribe to "Realty in AU".
+2. In GitHub: **Settings -> Secrets and variables -> Actions -> New repository
+   secret**, add `RAPIDAPI_KEY`.
+3. **Actions** tab -> **Refresh live listings (daily)** -> **Run workflow**.
+   After that it runs automatically once a day.
+
+Without the key the daily job is a safe no-op: it leaves the committed data in
+place, so the page never breaks.
+
+**Watch the quota.** A full sweep is one API call per suburb, so 143 calls a run
+and roughly 4,300 a month. Check what your plan covers before enabling it:
+
+```bash
+python3 scripts/fetch_listings.py --plan      # prints the exact call count
+```
+
+To spend less, set `SUBURB_CAP` (search only the first N ring suburbs) and
+`SUBURB_OFFSET` (start N in) on the workflow step, rotating the offset so the
+whole ring is still covered over several days. To change the radius, rebuild the
+ring: `python3 scripts/build_perth_ring.py 12`.
+
+After changing anything in `model/value.py`, re-value the committed feed without
+spending a single API call:
+
+```bash
+python3 scripts/fetch_listings.py --rescore
+```
 
 ---
 
@@ -152,9 +190,11 @@ fully briefed rather than guessing. The `.claude/skills/` folder gives it the
 deeper reference material on demand.
 
 Good first jobs for Claude Code:
-- Wire the Domain Developer API into a scheduled GitHub Action to populate
-  `data/listings.json` for a genuinely embedded, refreshing feed (see
-  `CLAUDE.md` and `references/data-sources.md` for the compliant approach).
+- Port `model/value.py` to TypeScript so the MCP server ranks bargains the same
+  way the page does (it currently serves the committed feed, which is already
+  Perth-wide, but its live per-request path still sweeps the shortlist only).
+- Move to the official Domain Developer API if you ever want a licensed feed
+  (see `CLAUDE.md` and `references/data-sources.md`).
 - Refresh the macro block and re-run the model when new RBA / Cotality / iron-ore
   data lands.
 - Swap the inline suburb data in `index.html` for a `fetch()` of the JSON files.

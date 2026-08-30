@@ -468,6 +468,102 @@ were honest or that the *tool design* was hard to misuse. That is the lesson.
 
 ---
 
+## Phase 3: bargains across Perth, not just the shortlist
+
+### 3.1 The search widened to the inner-Perth ring
+
+> **What changed** The daily listings sweep used to search eight suburbs: the
+> in-budget names from the model's own shortlist. It now searches every
+> residential suburb within 15km of the Perth CBD, north, east, south and west.
+> That is 143 suburbs, held in a new file, `data/perth_ring.json`, which is
+> built rather than typed: a script reads the public-domain coordinate layer,
+> keeps everything inside the radius, tags each suburb with its compass sector
+> and its straight-line distance to the CBD and to Como, and filters out the
+> postal-delivery rows that are not real suburbs ("Bentley Dc", "Perth Gpo",
+> "Canning Bridge Applecross"). Every dropped row is recorded in the file with
+> the reason it was dropped, so the filter is auditable rather than magic.
+>
+> **What it means** A genuinely good buy two suburbs outside the shortlist used
+> to be invisible. Now it is not. The buyer's brief did not change at all:
+> houses, 3+ beds, up to $1.1M, land favoured, Como still the anchor. The map
+> changed, not the buyer. Each card still shows how far from Como it sits, and
+> the shortlist suburbs are still marked, so widening the net never blurs the
+> question of where the model actually wants him to buy.
+>
+> **Where it lives** `scripts/build_perth_ring.py`, `data/perth_ring.json`.
+
+### 3.2 A bargain engine that refuses to invent a median
+
+> **What changed** Judging "cheap" used to be easy because each of the eight
+> suburbs had a researched median sitting in `data/suburbs.json`. Across 143
+> suburbs that number does not exist, and no free public source supplies it.
+> Rather than invent one, `model/value.py` prices each listing against the
+> houses it is genuinely competing with: the median asking price of the other
+> comparable houses on the market in the same suburb right now, adjusted for how
+> the property differs on land, bedrooms and bathrooms. The hedonic
+> coefficients are imported from `avm.py` rather than copied, so there is one
+> source of truth for them.
+>
+> **What it means** The page can now say "about 12% under local asking" and mean
+> exactly that: under what comparable houses in that suburb are asking this
+> weekend. It is not a valuation and not a suburb median, and the wording on the
+> page and in the data says so. The engine is deliberately hard to fool, because
+> each guard was written after a real false positive: a listing with no
+> published price is never treated as cheap; "From $850,000" is read as a floor,
+> not an ask; strata lots ("2/94 Wendouree Rd") are dropped, because a duplex
+> half is cheap for an obvious reason; a listing with no land size published can
+> never reach high confidence; fewer than three comparables falls back to the
+> wider side of the city and says so; and a gap over 45% is flagged as odd
+> pricing and pushed down the ranking instead of topping it. Ranking is 60%
+> discount and 40% fit to the brief, so a cheap house that does not suit the
+> family does not win.
+>
+> **Where it lives** `model/value.py` (with a 15-check self-test in the same
+> file), `scripts/fetch_listings.py`.
+
+### 3.3 A compass on the property feed
+
+> **What changed** The Properties section gained a row of buttons for the side
+> of the city: All Perth, North, East, South, West, each showing a live count.
+> Cards now carry the discount to local asking, the confidence behind it, the
+> straight-line distance to Como, and a "Shortlist" tag when the suburb is one
+> the model rates for a long family hold. The sort menu leads with "Best
+> bargains" and adds "Biggest discount" and "Closest to Como". The page also
+> stopped recomputing the bargain flag from the 14-suburb median table, which
+> would have silently blanked out every bargain outside the shortlist.
+>
+> **What it means** Four directions, one screen, and it stays legible for a
+> non-analyst: every number on a card can be traced to something real, and where
+> there is no real number the card says "no published price" instead of guessing.
+>
+> **Where it lives** `web/index.html` (mirrored to `index.html`).
+
+### 3.4 Guard rails so this cannot silently rot
+
+> **What changed** The deploy gate grew three checks: the value engine's
+> self-test, a rebuild check that fails if `data/perth_ring.json` has drifted
+> from the base layer it is derived from, and eight new browser assertions
+> covering the compass row, the discount line, the no-price case and the
+> off-shortlist bargain. The fetch script also gained two offline modes,
+> `--plan` (print the API call count before spending quota) and `--rescore`
+> (re-value the committed feed with zero API calls).
+>
+> **What it means** The expensive parts are now testable without an API key, and
+> the derived data cannot quietly disagree with its source.
+>
+> **Where it lives** `tests/run.sh`, `tests/regression.mjs`,
+> `scripts/fetch_listings.py`.
+
+### 3.5 Known gap
+
+> The MCP server serves the new Perth-wide feed (it vendors `data/listings.json`),
+> but its own live per-request path in `server/lib/listings-live.ts` still sweeps
+> the curated shortlist and does not run the value engine. Closing that means
+> porting `model/value.py` to TypeScript and extending the parity fixtures, which
+> is its own job.
+
+---
+
 ## Verify everything yourself
 
 ```bash
@@ -477,6 +573,12 @@ npm run demo                          # two buyers, two different answers
 
 # The whole project's deploy gate (model, page, sync, dashes)
 bash tests/run.sh                     # expect: ALL PASS
+
+# The Perth-wide listings pipeline, without spending any API quota
+python3 model/value.py                        # bargain-engine self-test
+python3 scripts/build_perth_ring.py           # rebuild the 143-suburb ring
+python3 scripts/fetch_listings.py --plan      # how many API calls a sweep costs
+python3 scripts/fetch_listings.py --rescore   # re-value the committed feed
 
 # Phase 2: build the server locally
 cd server && npm install && npm run build

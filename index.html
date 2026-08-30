@@ -183,6 +183,11 @@
   .pcard .specs{display:flex;flex-wrap:wrap;gap:6px}
   .pcard .spec{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:2px 8px;white-space:nowrap}
   .pcard .reason{font-size:12.5px;color:var(--muted);line-height:1.5}
+  /* value line: the discount to the local asking market, and how far from Como */
+  .pcard .pval{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-size:11.5px;color:var(--muted-2)}
+  .pcard .disc{font-weight:700;color:var(--sand)}
+  .pcard .disc.none{color:var(--muted-2);font-weight:600}
+  .pcard .conf{border:1px solid var(--line);border-radius:100px;padding:1px 7px;font-size:10px;letter-spacing:.03em;text-transform:uppercase}
   .pcard .go{margin-top:auto;font-size:12px;font-weight:600;color:var(--teal-bright);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:9px;text-align:center;background:rgba(58,166,160,.06)}
   .pcard .go:hover{background:rgba(58,166,160,.16)}
 
@@ -277,6 +282,13 @@
   .fchip:hover{color:var(--paper)}
   .fchip.active{color:var(--ink);background:var(--teal-bright);border-color:var(--teal-bright)}
   .fchip .ct{opacity:.65;font-weight:500;margin-left:3px}
+  /* the compass row: which side of the city a listing sits on */
+  .sector-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:-4px 0 14px}
+  .sector-row .lbl{font-size:12px;color:var(--muted-2);margin-right:2px}
+  .schip{font-size:12px;font-weight:600;color:var(--muted);background:transparent;border:1px solid var(--line);border-radius:8px;padding:6px 11px;cursor:pointer;white-space:nowrap;transition:background .12s,color .12s,border-color .12s}
+  .schip:hover{color:var(--paper);border-color:var(--teal)}
+  .schip.active{color:var(--ink);background:var(--sand);border-color:var(--sand)}
+  .schip .ct{opacity:.7;font-weight:500;margin-left:3px}
   .fchip:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
   .prop-empty{grid-column:1/-1;color:var(--muted-2);font-size:14px;padding:14px 2px}
 
@@ -428,15 +440,16 @@
 
   <section data-tab="listings" id="properties">
     <div class="sec-head"><span class="sec-num">B</span><h2>Properties that fit (or are a bargain)</h2></div>
-    <p class="sec-lead">Real houses with photos, matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. <b style="color:var(--sand)">Bargains</b> are priced below the suburb median. Each card links straight to the listing; refreshed daily.</p>
+    <p class="sec-lead">Real houses with photos, matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. This now sweeps <b>every suburb within 15km of the city</b>, north, east, south and west, not just the shortlist. <b style="color:var(--sand)">Bargains</b> are priced under what comparable houses on the market in the same suburb are asking. Each card links straight to the listing; refreshed daily.</p>
     <div class="status-bar" id="propStatus"></div>
+    <div class="sector-row" id="propSectors" role="group" aria-label="Filter by side of the city"></div>
     <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
     <div class="prop-grid" id="propGrid"></div>
   </section>
 
   <section data-tab="listings" id="listings">
     <div class="sec-head"><span class="sec-num">C</span><h2>Area watchlist</h2></div>
-    <p class="sec-lead">Your in-budget shortlist, ranked by fit score. It <strong>reorders live</strong> with the proximity-vs-schools slider, and every card opens <strong>current</strong> portal results.</p>
+    <p class="sec-lead">Your in-budget shortlist, ranked by fit score. This is the <strong>model's shortlist</strong>, not the whole search: the property cards above range across the inner city in every direction, while these are the suburbs the model rates for a long family hold. It <strong>reorders live</strong> with the proximity-vs-schools slider, and every card opens <strong>current</strong> portal results.</p>
     <p class="listings-caption" id="listingsCaption"></p>
     <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
     <div class="callout">
@@ -665,16 +678,16 @@ const CRITERIA = [
 const INLINE_LISTINGS = {
   meta:{generated:"2026-06-26",source:"sample"},
   listings:[
-    {suburb:"Bentley",pc:"6102",priceText:"$765,000",price:765000,beds:4,baths:1,cars:2,land:728,address:"Original 4-bed, Bentley 6102",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-bentley%2c+wa+6102/list-1?activeSort=list-date",bargain:true,meets:true,reason:"4-bed on 728sqm green-title at $765k, well under budget and the suburb median; strong KDR margin."},
-    {suburb:"Nollamara",pc:"6061",priceText:"$720,000",price:720000,beds:3,baths:1,cars:2,land:760,address:"Un-subdivided lot, Nollamara 6061",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-nollamara%2c+wa+6061/list-1?activeSort=list-date",bargain:true,meets:true,reason:"760sqm original block under $750k; large land for the money, subdivide or KDR upside."},
-    {suburb:"St James",pc:"6102",priceText:"$835,000",price:835000,beds:3,baths:1,cars:1,land:706,address:"706sqm near Curtin, St James 6102",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-st+james%2c+wa+6102/list-1?activeSort=list-date",bargain:true,meets:true,reason:"Genuinely close to Como on 706sqm, below the band midpoint, KDR-viable."},
-    {suburb:"Shelley",pc:"6148",priceText:"$985,000",price:985000,beds:3,baths:1,cars:2,land:696,address:"Rossmoyne-zone original, Shelley 6148",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-shelley%2c+wa+6148/list-1?activeSort=list-date",bargain:true,meets:true,reason:"Inside the Rossmoyne SHS catchment on 696sqm just under $1.0M; scarce school-zone land, KDR to add a 4th bed."},
-    {suburb:"Balcatta",pc:"6021",priceText:"$880,000",price:880000,beds:3,baths:1,cars:2,land:729,address:"729sqm with freeway access, Balcatta 6021",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-balcatta%2c+wa+6021/list-1?activeSort=list-date",bargain:true,meets:true,reason:"729sqm under $900k; large family block with KDR upside below the suburb median."},
-    {suburb:"Wilson",pc:"6107",priceText:"$925,000",price:925000,beds:4,baths:2,cars:2,land:683,address:"Renovated 4-bed, Wilson 6107",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-wilson%2c+wa+6107/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 2-bath on 683sqm near the river and Curtin; ticks beds, land and proximity in-band."},
-    {suburb:"Parkwood",pc:"6147",priceText:"$899,000",price:899000,beds:4,baths:2,cars:2,land:712,address:"712sqm family home, Parkwood 6147",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-parkwood%2c+wa+6147/list-1?activeSort=list-date",bargain:false,meets:true,reason:"Big 712sqm block, 4-bed, under $900k; comfortably inside budget with a backyard for kids."},
-    {suburb:"Embleton",pc:"6062",priceText:"$905,000",price:905000,beds:3,baths:1,cars:1,land:740,address:"740sqm original, Embleton 6062",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-embleton%2c+wa+6062/list-1?activeSort=list-date",bargain:false,meets:true,reason:"North-of-river 740sqm green-title near Inglewood; strong KDR economics within budget."},
-    {suburb:"Dianella",pc:"6059",priceText:"$960,000",price:960000,beds:4,baths:2,cars:2,land:683,address:"4-bed, Dianella 6059",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-dianella%2c+wa+6059/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 2-bath on 683sqm, Mt Lawley-adjacent; best north-of-river land/location balance under $1.0M."},
-    {suburb:"Riverton",pc:"6148",priceText:"$1,055,000",price:1055000,beds:4,baths:2,cars:2,land:705,address:"4-bed in the Rossmoyne zone, Riverton 6148",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-riverton%2c+wa+6148/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 705sqm inside the Rossmoyne SHS catchment at the top of the band; the soft ceiling means a touch over $1.0M is fine, and school-zone land is scarce."}
+    {suburb:"Bentley",sector:"S",kmComo:3.3,curated:true,pc:"6102",priceText:"$765,000",price:765000,beds:4,baths:1,cars:2,land:728,address:"Original 4-bed, Bentley 6102",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-bentley%2c+wa+6102/list-1?activeSort=list-date",bargain:true,meets:true,reason:"4-bed on 728sqm green-title at $765k, well under budget and the suburb median; strong KDR margin."},
+    {suburb:"Nollamara",sector:"N",kmComo:13.5,curated:true,pc:"6061",priceText:"$720,000",price:720000,beds:3,baths:1,cars:2,land:760,address:"Un-subdivided lot, Nollamara 6061",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-nollamara%2c+wa+6061/list-1?activeSort=list-date",bargain:true,meets:true,reason:"760sqm original block under $750k; large land for the money, subdivide or KDR upside."},
+    {suburb:"St James",sector:"S",kmComo:5.0,curated:true,pc:"6102",priceText:"$835,000",price:835000,beds:3,baths:1,cars:1,land:706,address:"706sqm near Curtin, St James 6102",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-st+james%2c+wa+6102/list-1?activeSort=list-date",bargain:true,meets:true,reason:"Genuinely close to Como on 706sqm, below the band midpoint, KDR-viable."},
+    {suburb:"Shelley",sector:"S",kmComo:4.0,curated:true,pc:"6148",priceText:"$985,000",price:985000,beds:3,baths:1,cars:2,land:696,address:"Rossmoyne-zone original, Shelley 6148",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-shelley%2c+wa+6148/list-1?activeSort=list-date",bargain:true,meets:true,reason:"Inside the Rossmoyne SHS catchment on 696sqm just under $1.0M; scarce school-zone land, KDR to add a 4th bed."},
+    {suburb:"Balcatta",sector:"N",kmComo:16.4,curated:true,pc:"6021",priceText:"$880,000",price:880000,beds:3,baths:1,cars:2,land:729,address:"729sqm with freeway access, Balcatta 6021",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-balcatta%2c+wa+6021/list-1?activeSort=list-date",bargain:true,meets:true,reason:"729sqm under $900k; large family block with KDR upside below the suburb median."},
+    {suburb:"Wilson",sector:"S",kmComo:5.1,curated:true,pc:"6107",priceText:"$925,000",price:925000,beds:4,baths:2,cars:2,land:683,address:"Renovated 4-bed, Wilson 6107",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-wilson%2c+wa+6107/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 2-bath on 683sqm near the river and Curtin; ticks beds, land and proximity in-band."},
+    {suburb:"Parkwood",sector:"S",kmComo:7.0,curated:true,pc:"6147",priceText:"$899,000",price:899000,beds:4,baths:2,cars:2,land:712,address:"712sqm family home, Parkwood 6147",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-parkwood%2c+wa+6147/list-1?activeSort=list-date",bargain:false,meets:true,reason:"Big 712sqm block, 4-bed, under $900k; comfortably inside budget with a backyard for kids."},
+    {suburb:"Embleton",sector:"E",kmComo:11.8,curated:true,pc:"6062",priceText:"$905,000",price:905000,beds:3,baths:1,cars:1,land:740,address:"740sqm original, Embleton 6062",url:"https://www.realestate.com.au/buy/property-house-with-3-bedrooms-between-0-1100000-in-embleton%2c+wa+6062/list-1?activeSort=list-date",bargain:false,meets:true,reason:"North-of-river 740sqm green-title near Inglewood; strong KDR economics within budget."},
+    {suburb:"Dianella",sector:"N",kmComo:13.0,curated:true,pc:"6059",priceText:"$960,000",price:960000,beds:4,baths:2,cars:2,land:683,address:"4-bed, Dianella 6059",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-dianella%2c+wa+6059/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 2-bath on 683sqm, Mt Lawley-adjacent; best north-of-river land/location balance under $1.0M."},
+    {suburb:"Riverton",sector:"S",kmComo:4.7,curated:true,pc:"6148",priceText:"$1,055,000",price:1055000,beds:4,baths:2,cars:2,land:705,address:"4-bed in the Rossmoyne zone, Riverton 6148",url:"https://www.realestate.com.au/buy/property-house-with-4-bedrooms-between-0-1100000-in-riverton%2c+wa+6148/list-1?activeSort=list-date",bargain:false,meets:true,reason:"4-bed, 705sqm inside the Rossmoyne SHS catchment at the top of the band; the soft ceiling means a touch over $1.0M is fine, and school-zone land is scarce."}
   ]
 };
 const BASE_W = {growth:.25,family:.15,land:.15,kdr:.10,prox:.20,post:.15};
@@ -1088,8 +1101,10 @@ function renderListings(scored){
     if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect(); strip.scrollLeft += (cr.left-sr.left)-(sr.width/2-cr.width/2); } }
 }
 
-let PROP_FILTER='all', PROP_SORT='bargain';
-const PROP_FILTERS={all:()=>true, new:p=>p.new, bargain:p=>p.bargain, beds4:p=>(p.beds||0)>=4};
+let PROP_FILTER='all', PROP_SORT='rank', PROP_SECTOR='all';
+const PROP_FILTERS={all:()=>true, new:p=>p.new, bargain:p=>p.bargain,
+                    beds4:p=>(p.beds||0)>=4, land:p=>(p.land||0)>=500};
+const SECTORS=[['all','All Perth'],['N','North'],['E','East'],['S','South'],['W','West']];
 // pull a dollar figure out of REA's free-text price ("From $999k", "Offers in
 // the $800,000's"); returns null when there is no real number ("Awaiting Price
 // Guide", "OFFERS INVITED").
@@ -1110,9 +1125,12 @@ function fixPhoto(u){
   if(!m) return u;
   return /^\d+x\d+$/.test(m[2].split('/')[0]) ? u : `${m[1]}/640x480/${m[2]}`;
 }
-// buyer-fit score (0-100) for a specific listing: the suburb's fit at the
-// current proximity-vs-schools setting, knocked down for misses on the hard
-// criteria (under 500sqm, under 4 beds, over the budget ceiling).
+// Legacy fit, used only for the older shortlist-only feed shape: the suburb's
+// model fit at the current proximity-vs-schools setting, knocked down for
+// misses on the hard criteria. The Perth-wide feed ships its own `fit`, built
+// from facts every listing carries, because growth/school/family scores exist
+// for the 14 shortlist suburbs only and a ring-wide score built on 14 of 143
+// suburbs would be a fiction.
 function listingFit(p){
   const s=SUBURBS.find(x=>x.name===p.suburb);
   if(!s) return null;
@@ -1126,41 +1144,84 @@ function listingFit(p){
 function renderProperties(){
   const data=LISTINGS;
   const list=(data.listings||[]).slice();
-  // parse a $ figure out of REA's free-text price ("Offers From $950,000") and
-  // flag a bargain when it sits at or below the bottom of the suburb's median
-  // range. Runs on the live data directly, so no re-fetch needed.
-  list.forEach(p=>{ const sb=SUBURBS.find(s=>s.name===p.suburb); const pr=parsePrice(p.priceText); if(pr) p.price=pr; p.bargain=!!(pr&&sb&&pr<=sb.mlo*1000); p._fit=listingFit(p); });
-  if(PROP_FILTER==='new' && !list.some(PROP_FILTERS.new)) PROP_FILTER='all';
-  if(PROP_SORT==='fit') list.sort((a,b)=>(b._fit||0)-(a._fit||0));
-  else if(PROP_SORT==='price') list.sort((a,b)=>(a.price||9e9)-(b.price||9e9));
-  else list.sort((a,b)=> (a.bargain===b.bargain) ? ((a.price||9e9)-(b.price||9e9)) : (a.bargain?-1:1));
   const src=(data.meta&&data.meta.source)||'sample', gen=(data.meta&&data.meta.generated)||'';
   const sample = src==='sample';
+  // Two separate facts, deliberately not conflated. `valued` means the feed
+  // carries server-side valuations (model/value.py), so the page must not
+  // recompute a bargain flag from the 14-suburb median table and blank out
+  // everything outside the shortlist. `swept` means the search really did cover
+  // the whole ring, which is the only case where the page may say so.
+  const ringed = !!(data.meta && (data.meta.valued==='local-asking' || data.meta.scope==='perth-ring'));
+  const swept = !!(data.meta && data.meta.scope==='perth-ring');
+  list.forEach(p=>{
+    const pr=parsePrice(p.priceText); if(pr) p.price=pr;
+    if(!ringed){
+      const sb=SUBURBS.find(s=>s.name===p.suburb);
+      p.bargain=!!(pr&&sb&&pr<=sb.mlo*1000);
+      p._fit=listingFit(p);
+      p.rank=(p.bargain?100:0)+(p._fit||0);
+    } else {
+      p._fit=(p.fit!=null)?p.fit:listingFit(p);
+    }
+    if(!p.sector) p.sector='?';
+  });
+  if(PROP_FILTER==='new' && !list.some(PROP_FILTERS.new)) PROP_FILTER='all';
+  const inSector=p=>PROP_SECTOR==='all'||p.sector===PROP_SECTOR;
+
+  if(PROP_SORT==='fit') list.sort((a,b)=>(b._fit||0)-(a._fit||0));
+  else if(PROP_SORT==='price') list.sort((a,b)=>(a.price||9e9)-(b.price||9e9));
+  else if(PROP_SORT==='disc') list.sort((a,b)=>(b.disc||-9)-(a.disc||-9));
+  else if(PROP_SORT==='como') list.sort((a,b)=>(a.kmComo==null?9e9:a.kmComo)-(b.kmComo==null?9e9:b.kmComo));
+  else list.sort((a,b)=>(b.rank||0)-(a.rank||0));
+
+  const scope = swept
+    ? `across every suburb within ${(data.meta.radius_km||15)}km of the city, in all four directions`
+    : 'across your shortlist suburbs';
   document.getElementById('propStatus').innerHTML =
     `<span class="status-dot ${sample?'sample':'live'}"></span>` +
     (sample
       ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a RapidAPI key (see README) and the daily action swaps them for real listings, with photos, whose buttons go <b>straight to the property</b>.</span>`
-      : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''}. Each card links straight to the property; bargains are priced below the suburb median.</span>`);
-  // filter chips with live counts
-  const newCount=list.filter(PROP_FILTERS.new).length;
-  const counts={all:list.length, new:newCount, bargain:list.filter(PROP_FILTERS.bargain).length, beds4:list.filter(PROP_FILTERS.beds4).length};
-  const chips=[['all','All'],...(newCount?[['new','New today']]:[]),['bargain','Bargains'],['beds4','4+ beds']];
+      : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''} &middot; searching ${scope}. Each card links straight to the property. A <b style="color:var(--sand)">bargain</b> is priced under what comparable houses on the market in the same suburb are asking, not under a valuation.</span>`);
+
+  // compass row: which side of the city. Counts respect the other filters, so
+  // the numbers always match what clicking would actually show.
+  const base=list.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
+  document.getElementById('propSectors').innerHTML =
+    `<span class="lbl">Side of the city</span>` + SECTORS.map(([k,lbl])=>{
+      const n=k==='all'?base.length:base.filter(p=>p.sector===k).length;
+      return `<button class="schip ${PROP_SECTOR===k?'active':''}" data-sector="${k}" aria-pressed="${PROP_SECTOR===k}"${(!n&&k!=='all')?' disabled style="opacity:.4;cursor:default"':''}>${lbl} <span class="ct">${n}</span></button>`;
+    }).join('');
+  document.querySelectorAll('#propSectors .schip').forEach(b=>{ b.onclick=()=>{ PROP_SECTOR=b.getAttribute('data-sector'); renderProperties(); }; });
+
+  // filter chips with live counts, within the chosen sector
+  const inSec=list.filter(inSector);
+  const newCount=inSec.filter(PROP_FILTERS.new).length;
+  const counts={all:inSec.length, new:newCount, bargain:inSec.filter(PROP_FILTERS.bargain).length,
+                beds4:inSec.filter(PROP_FILTERS.beds4).length, land:inSec.filter(PROP_FILTERS.land).length};
+  const chips=[['all','All'],...(newCount?[['new','New today']]:[]),['bargain','Bargains'],['beds4','4+ beds'],['land','500sqm+']];
+  const sortOpts=ringed
+    ? [['rank','Best bargains'],['disc','Biggest discount'],['fit','Best fit'],['price','Price: low to high'],['como','Closest to Como']]
+    : [['rank','Bargains first'],['fit','Best fit'],['price','Price: low to high']];
   const sortSel=`<label class="prop-sort">Sort <select id="propSort" aria-label="Sort properties">`+
-    [['bargain','Bargains first'],['fit','Best fit'],['price','Price: low to high']].map(([v,l])=>
-      `<option value="${v}"${PROP_SORT===v?' selected':''}>${l}</option>`).join('')+`</select></label>`;
+    sortOpts.map(([v,l])=>`<option value="${v}"${PROP_SORT===v?' selected':''}>${l}</option>`).join('')+`</select></label>`;
   document.getElementById('propFilters').innerHTML = chips.map(([k,lbl])=>
     `<button class="fchip ${PROP_FILTER===k?'active':''}" data-filter="${k}" aria-pressed="${PROP_FILTER===k}">${lbl} <span class="ct">${counts[k]}</span></button>`).join('') + sortSel;
   document.querySelectorAll('#propFilters .fchip').forEach(b=>{ b.onclick=()=>{ PROP_FILTER=b.getAttribute('data-filter'); renderProperties(); }; });
   const ps=document.getElementById('propSort'); if(ps) ps.onchange=e=>{ PROP_SORT=e.target.value; renderProperties(); };
-  const shown=list.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
-  if(!shown.length){ document.getElementById('propGrid').innerHTML=`<div class="prop-empty">No properties match this filter right now.</div>`; return; }
+
+  const shown=inSec.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
+  if(!shown.length){ document.getElementById('propGrid').innerHTML=`<div class="prop-empty">Nothing matches this combination right now. Try another side of the city, or clear the filter.</div>`; return; }
   document.getElementById('propGrid').innerHTML = shown.map(p=>{
-    const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land&&`${p.land}sqm`].filter(Boolean)
+    const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land?`${p.land}sqm`:'land not stated'].filter(Boolean)
       .map(x=>`<span class="spec">${x}</span>`).join('');
     const fit=p._fit;
-    const fitChip = fit!=null ? `<span class="pfit" title="Buyer-fit against your ten criteria">${fit}<small>/100</small></span>` : '';
+    const fitTitle = ringed
+      ? 'Fit to the brief: land, bedrooms, budget and distance from Como. Growth and school scores are not included, because they exist for the shortlist suburbs only.'
+      : 'Buyer-fit against your ten criteria';
+    const fitChip = fit!=null ? `<span class="pfit" title="${fitTitle}">${fit}<small>/100</small></span>` : '';
     const newBadge = p.new ? `<span class="badge new">New</span>` : '';
     const badge=p.bargain?`<span class="badge bargain">Bargain</span>`:'';
+    const shortlist=p.curated?`<span class="badge fit" title="One of the suburbs the model shortlists for a long family hold">Shortlist</span>`:'';
     // a card links straight to the property when it is a real listing (live feed
     // sets direct=true); samples have no underlying house, so they open a suburb search
     const direct = (p.direct!==undefined) ? p.direct : !sample;
@@ -1172,10 +1233,28 @@ function renderProperties(){
     const photo = img
       ? `<div class="pphoto"><img src="${img}" alt="${sub}" loading="lazy" onerror="this.closest('.pphoto').remove()"></div>`
       : '';
+    // the value line, only where there is a real number behind it
+    const bits=[];
+    if(p.disc!=null){
+      // use the feed's own figure so the badge and the sentence below it agree;
+      // Math.round and Python's round break ties in opposite directions
+      const pct=(p.discPct!=null)?p.discPct:Math.round(p.disc*100);
+      // gold reads as "this is the good one", so it is reserved for a listing
+      // that actually cleared the bargain bar; a 5% gap is stated, not sold
+      bits.push(pct>=1
+        ? `<span class="disc${p.bargain?'':' none'}" title="Asking price against the median ask of comparable current listings in the same suburb">${pct}% under local asking</span>`
+        : (pct<=-1 ? `<span class="disc none">${-pct}% above local asking</span>` : `<span class="disc none">at local asking</span>`));
+      if(p.conf) bits.push(`<span class="conf" title="How many comparable listings backed that figure${p.comps?`: ${p.comps}`:''}">${p.conf} confidence</span>`);
+    } else if(ringed){
+      bits.push(`<span class="disc none">no published price</span>`);
+    }
+    if(p.kmComo!=null) bits.push(`<span title="Straight line between suburb centres. By road it is further, and the shortlist cards use a road-style figure, so the two will not match.">${p.kmComo}km from Como, direct</span>`);
+    const valLine = bits.length?`<div class="pval">${bits.join('')}</div>`:'';
     return `<div class="pcard ${p.bargain?'bargain':''}">
       ${photo}
-      <div class="ptop"><div class="price">${p.priceText||''}</div><div class="ptags">${fitChip}${newBadge}${badge}</div></div>
+      <div class="ptop"><div class="price">${p.priceText||''}</div><div class="ptags">${fitChip}${newBadge}${badge}${shortlist}</div></div>
       <div><div class="addr">${p.address||p.suburb}</div><div class="loc">${p.suburb} ${p.pc||''}</div></div>
+      ${valLine}
       <div class="specs">${specs}</div>
       <div class="reason">${p.reason||''}</div>
       <a class="go" href="${p.url}" target="_blank" rel="noopener">${go} &#8599;</a>

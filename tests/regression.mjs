@@ -149,6 +149,62 @@ ok(bargain.p1 === 950000 && bargain.p2 === 999000 && bargain.p3 === null && barg
   'parsePrice reads REA free-text prices: ' + JSON.stringify(bargain));
 ok(Number(bargain.count) >= 1, 'a sub-median listing is flagged as a bargain: ' + bargain.count);
 
+// ---- Perth-wide sweep: the compass row, and the ring feed's own valuation ----
+const compass = await page.evaluate(() => {
+  const chips = [...document.querySelectorAll('#propSectors .schip')].map(b => b.getAttribute('data-sector'));
+  return { chips, hasAll: chips[0] === 'all' };
+});
+ok(compass.hasAll && ['N', 'E', 'S', 'W'].every(k => compass.chips.includes(k)),
+  'compass row offers all four sides of the city: ' + JSON.stringify(compass.chips));
+
+// Clicking a side filters the grid to that side only.
+const sectorFilter = await page.evaluate(() => {
+  LISTINGS = {
+    meta: { source: 'realty-in-au', scope: 'perth-ring', radius_km: 15, generated: '2026-08-30' },
+    listings: [
+      { suburb: 'Shelley', pc: '6148', sector: 'S', kmComo: 4.0, priceText: '$900,000', price: 900000, beds: 4, land: 700, address: 'S test', url: 'https://x.test/1', direct: true, disc: 0.12, conf: 'high', comps: 7, fit: 90, rank: 88, bargain: true, curated: true },
+      { suburb: 'Dianella', pc: '6059', sector: 'N', kmComo: 13.0, priceText: '$950,000', price: 950000, beds: 4, land: 650, address: 'N test', url: 'https://x.test/2', direct: true, disc: 0.02, conf: 'medium', comps: 5, fit: 70, rank: 55, bargain: false, curated: true },
+      { suburb: 'Bayswater', pc: '6053', sector: 'E', kmComo: 12.0, priceText: 'Contact agent', beds: 4, land: 600, address: 'E test', url: 'https://x.test/3', direct: true, disc: null, conf: 'none', fit: 65, rank: 26, bargain: false, curated: false }
+    ]
+  };
+  renderProperties();
+  const all = document.querySelectorAll('#propGrid .pcard').length;
+  PROP_SECTOR = 'N'; renderProperties();
+  const north = [...document.querySelectorAll('#propGrid .pcard .loc')].map(n => n.textContent.trim());
+  PROP_SECTOR = 'all'; renderProperties();
+  const firstFit = document.querySelector('#propGrid .pcard .pfit')?.textContent || '';
+  const discTexts = [...document.querySelectorAll('#propGrid .pcard .pval .disc')].map(n => n.textContent);
+  const shortlist = document.querySelectorAll('#propGrid .pcard .badge.fit').length;
+  return { all, north, firstFit, discTexts, shortlist };
+});
+ok(sectorFilter.all === 3, 'all three ring listings render unfiltered: ' + sectorFilter.all);
+ok(sectorFilter.north.length === 1 && sectorFilter.north[0].startsWith('Dianella'),
+  'selecting North shows only northern listings: ' + JSON.stringify(sectorFilter.north));
+ok(sectorFilter.firstFit.startsWith('90'),
+  "the ring feed's own fit score is used, not recomputed: " + sectorFilter.firstFit);
+ok(sectorFilter.discTexts[0] === '12% under local asking',
+  'the discount to the local asking market is shown: ' + JSON.stringify(sectorFilter.discTexts));
+ok(sectorFilter.discTexts.includes('no published price'),
+  'a listing with no price says so rather than reading as cheap: ' + JSON.stringify(sectorFilter.discTexts));
+ok(sectorFilter.shortlist === 2, 'shortlist suburbs are marked: ' + sectorFilter.shortlist);
+
+// The ring feed must NOT have its bargain flag overwritten by the 14-suburb
+// median table, which is what used to happen and would blank out every suburb
+// outside the shortlist.
+const trusted = await page.evaluate(() => {
+  LISTINGS = {
+    meta: { source: 'realty-in-au', scope: 'perth-ring', radius_km: 15 },
+    listings: [{ suburb: 'Balga', pc: '6061', sector: 'N', kmComo: 15, priceText: '$700,000', price: 700000, beds: 4, land: 720, address: 'Off-shortlist test', url: 'https://x.test/4', direct: true, disc: 0.15, conf: 'high', comps: 9, fit: 72, rank: 84, bargain: true, curated: false }]
+  };
+  renderProperties();
+  return document.querySelectorAll('#propGrid .pcard .badge.bargain').length;
+});
+ok(trusted === 1, 'a bargain outside the 14 shortlist suburbs survives rendering: ' + trusted);
+// hand the page back its real feed so the later sort/filter checks run against
+// a full list rather than these three fixtures
+await page.evaluate(() => { LISTINGS = INLINE_LISTINGS; PROP_SECTOR = 'all'; PROP_FILTER = 'all'; PROP_SORT = 'rank'; renderProperties(); });
+
+
 // ---- sort by best fit + new-listings filter ----
 const sortChk = await page.evaluate(() => {
   LISTINGS.listings.forEach((p, i) => { p.new = (i < 2); });
