@@ -11,6 +11,24 @@ echo "== 1. Python model =="
 if python3 model/scenario_model.py | grep -q "PASS"; then echo "  scenario_model.py PASS"; else echo "  scenario_model.py FAILED"; fail=1; fi
 python3 model/scoring.py >/dev/null 2>&1 && echo "  scoring.py ok" || { echo "  scoring.py FAILED"; fail=1; }
 python3 model/avm.py >/dev/null 2>&1 && echo "  avm.py ok" || { echo "  avm.py FAILED"; fail=1; }
+if out=$(python3 model/value.py 2>&1); then echo "  $out"; else echo "  value.py FAILED"; echo "$out"; fail=1; fi
+
+echo "== 1b. Perth ring is in sync with the base layer =="
+# The ring is derived data. Rebuild it and fail if the committed copy drifted,
+# so data/perth_ring.json can never quietly disagree with data/wa_suburbs.json.
+# Compare against a fresh build rather than git status, so the check works the
+# same whether the file is committed, staged or brand new.
+cp data/perth_ring.json /tmp/perth_ring.committed.json 2>/dev/null
+if python3 scripts/build_perth_ring.py >/dev/null 2>&1; then
+  if diff -q /tmp/perth_ring.committed.json data/perth_ring.json >/dev/null 2>&1; then
+    echo "  perth_ring.json matches a fresh build"
+  else
+    echo "  OUT OF SYNC: data/perth_ring.json was stale; it has just been rebuilt, commit it"; fail=1
+  fi
+else
+  echo "  build_perth_ring.py FAILED"; fail=1
+fi
+python3 scripts/fetch_listings.py --plan >/dev/null 2>&1 && echo "  fetch_listings.py --plan ok" || { echo "  fetch_listings.py FAILED"; fail=1; }
 
 echo "== 2. web == root copy (deploy serves /index.html) =="
 if diff -q web/index.html index.html >/dev/null; then echo "  in sync"; else echo "  OUT OF SYNC: cp web/index.html index.html"; fail=1; fi
@@ -71,7 +89,7 @@ else
 fi
 
 echo "== 7. no em/en/minus dashes in Phase 1/2 sources =="
-if grep -rlP "[\x{2013}\x{2014}\x{2212}]" mcp/src mcp/test mcp/*.md server/app server/lib server/scripts server/test server/*.md data/profile.schema.json data/profiles 2>/dev/null; then
+if grep -rlP "[\x{2013}\x{2014}\x{2212}]" mcp/src mcp/test mcp/*.md server/app server/lib server/scripts server/test server/*.md data/profile.schema.json data/profiles model/value.py scripts/build_perth_ring.py scripts/fetch_listings.py 2>/dev/null; then
   echo "  DASH FOUND ^^^"; fail=1
 else
   echo "  clean"

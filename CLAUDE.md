@@ -91,7 +91,7 @@ horizon. (Full rationale: `references/methodology.md`.)
 | 1 | **City VECM / error-correction spine** | calibrates `ANCHORS` | Anchors price to fundamentals (income, rents, build costs, real cash rate); judges over/under-valuation; sets the scenario anchor paths |
 | 2 | **Scenario-weighted Monte Carlo** | `model/scenario_model.py` | The 50/30/20 base/bear/bull fan chart + expected path |
 | 3 | **Suburb gradient-boosted panel** | `model/scoring.py` + `data/suburbs.json` | Relative suburb performance → the 0-100 Buyer-Fit score and heat map |
-| 4 | **Hedonic property adjustment** | per-listing | Land size, beds, KDR optionality - applied at the individual property |
+| 4 | **Hedonic property adjustment** | `model/avm.py`, `model/value.py` | Land size, beds, KDR optionality - applied at the individual property. `avm.py` estimates a range from the researched median (shortlist suburbs); `value.py` prices any listing in the ring against its own suburb's current asking market and owns the bargain flag |
 
 **Horizon decision: 3 years primary, 5-year tail.** Forecast error compounds and
 rate/policy uncertainty beyond 3 years is large; the buyer asked for ≤5; the
@@ -176,8 +176,9 @@ file, no build step, works offline. Four sections:
 2. **Where to buy** - every suburb scored 0-100, heat map + live ranking, with the
    **proximity-vs-schools slider** reordering everywhere.
 3. **The ten criteria** - filters vs weighted, in full.
-4. **Live listings** - pre-filtered saved-search deep-links that always open
-   *current* portal results.
+4. **Live listings** - the Perth-wide property feed (with a compass row to filter
+   by side of the city) plus pre-filtered saved-search deep-links that always
+   open *current* portal results.
 
 **Hard rules for the tool:**
 - The **Reset button must restore `BASELINE` exactly.** It is the contract.
@@ -194,7 +195,26 @@ file, no build step, works offline. Four sections:
 
 The buyer wants live ads and property suggestions refreshed on a cadence.
 
-**Owner decision (private tool):** the live Properties feed now uses the
+**Scope (changed): the feed is Perth-wide, not shortlist-only.** It sweeps every
+residential suburb within **15km of the Perth CBD**, north, east, south and
+west: `data/perth_ring.json`, 143 suburbs, built by
+`scripts/build_perth_ring.py` from the public-domain base layer. The buyer's
+brief is unchanged (houses, 3+ beds, up to $1.1M, land favoured, Como anchor);
+only the map widened, so a bargain outside the shortlist is no longer invisible.
+
+**Bargains are measured against the local asking market, never an invented
+median.** Only the 14 suburbs in `data/suburbs.json` have researched medians.
+For the other 129, `model/value.py` prices each listing against the median ask
+of comparable houses on the market in the same suburb right now, adjusted for
+land, beds and baths. Say "under local asking", never "under the suburb median",
+and never present it as a valuation. The guard rails are load-bearing and must
+not be loosened without a reason recorded here: no published price is never
+cheap; a "from" price is a floor, not an ask; strata lots are dropped; unknown
+land caps confidence at low; under 3 comparables falls back to the sector; a gap
+over 45% is flagged as odd, not celebrated. `python3 model/value.py` runs the
+self-test that pins all of this.
+
+**Owner decision (private tool):** the live Properties feed uses the
 **Realty in AU API (apidojo, via RapidAPI)**, which surfaces realestate.com.au
 listing data (with photos) through a third party. The owner has explicitly
 accepted this for a private tool shared only with his partner, so the earlier
@@ -205,7 +225,11 @@ official REA feed and is rate-limited, so:
   **scheduled GitHub Action** into `data/listings.json`, which the tool
   `fetch()`es. Auth is a `RAPIDAPI_KEY` repo secret; with no key the script is a
   safe no-op and the committed sample shows.
-- Keep API calls modest (cap suburbs, once daily) to stay inside the free quota.
+- A full sweep is **one call per suburb: 143 a run, ~4,300 a month.** The owner
+  chose the full daily sweep, which needs a paid RapidAPI plan. To spend less,
+  set `SUBURB_CAP` and rotate `SUBURB_OFFSET` on the workflow step rather than
+  shrinking the ring. `python3 scripts/fetch_listings.py --plan` prints the
+  exact count; `--rescore` re-values the committed feed with zero API calls.
 - The official **Domain Developer API** remains the clean upgrade path if the
   owner ever wants a licensed feed (its listings search is approval-gated/paid).
 
@@ -227,10 +251,14 @@ official REA feed and is rate-limited, so:
 - **Branch:** develop on `claude/repo-connection-mhn1nl`. Never push elsewhere
   without explicit permission. Commit with clear messages; push with
   `git push -u origin <branch>`.
-- **Reproducibility:** after any model/data change, run
-  `python3 model/scenario_model.py` (must print `PASS`) and
-  `python3 model/scoring.py`. Stdlib only - never add a runtime dependency to
-  the model or the tool.
+- **Reproducibility:** after any model/data change, run `bash tests/run.sh` and
+  get `ALL PASS`. That covers `model/scenario_model.py` (must print `PASS`),
+  `model/scoring.py`, `model/avm.py`, `model/value.py`'s self-test, and a
+  rebuild check on `data/perth_ring.json`. Stdlib only - never add a runtime
+  dependency to the model or the tool.
+- **Derived data stays derived.** `data/perth_ring.json` is built, not edited.
+  Change `scripts/build_perth_ring.py` and rebuild; the gate fails if the
+  committed file does not match a fresh build.
 - **One source of truth per number.** `data/*.json` is canonical; the tool's
   inline copy must match. If you touch one, touch the other and verify.
 - **Honesty over polish.** Medians are ranges (sources diverge 10-20%); no public

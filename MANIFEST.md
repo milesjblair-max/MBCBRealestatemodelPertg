@@ -248,18 +248,40 @@ rule is **enforced, not hoped for**.
 ### 4.7 Listings pipeline
 
 A scheduled GitHub Action runs `scripts/fetch_listings.py` daily into
-`data/listings.json`, which the tool `fetch()`es. The MCP server has a
-TypeScript port (`server/lib/listings-live.ts`) that pulls the same feed live
-per request. With no API key, both are a safe no-op showing the committed
-sample. The live path logs `api-rows` vs `kept` per suburb so the runtime logs
-are diagnosable (this is how we verified the feed end-to-end).
+`data/listings.json`, which the tool `fetch()`es. With no API key, it is a safe
+no-op leaving the committed data in place.
+
+**Scope: the inner-Perth ring, not the shortlist.** The sweep covers every
+residential suburb within 15km of the Perth CBD in all four directions, listed
+in `data/perth_ring.json` (143 suburbs, built by
+`scripts/build_perth_ring.py` from `data/wa_suburbs.json`, with postal-delivery
+rows filtered out and each drop recorded in the file's meta). One API call per
+suburb, so a full sweep is 143 calls; `--plan` prints the count and
+`SUBURB_CAP` / `SUBURB_OFFSET` support a rotating sweep on a smaller quota.
+
+**Valuation: `model/value.py`.** Only 14 suburbs carry researched medians, so
+every listing is instead priced against the median ask of comparable houses on
+the market in its own suburb, hedonically adjusted for land, beds and baths
+(coefficients imported from `avm.py`, so there is one source of truth). It
+publishes a fair value, a discount, a confidence, a buyer-fit and a rank per
+listing, and it is deliberately conservative about what it will call a bargain:
+no published price, a "from" price, a strata lot, unknown land, thin
+comparables and implausible gaps are each handled explicitly. `python3
+model/value.py` runs a 15-check self-test over exactly those cases.
+
+The MCP server has a TypeScript port of the older fetch
+(`server/lib/listings-live.ts`) that pulls live per request; it serves the
+Perth-wide committed feed, but its own live path still sweeps the curated
+shortlist and does not yet run the value engine. The live path logs `api-rows`
+vs `kept` per suburb so the runtime logs are diagnosable.
 
 ### 4.8 Testing surface
 
 - Engine (TypeScript == Python): **parity 179**, profile 34, base layer 18,
   match-listings 11.
 - Server: links 15, dashboard 14, area-recommend 19, find-listings 9.
-- Web: a headless-browser regression suite, 45 checks.
+- Web: a headless-browser regression suite, 53 checks.
+- Value engine: `model/value.py` self-test, 15 checks.
 - A single pre-deploy gate (`tests/run.sh`) runs the Python model, the web
   regression, the sync/drift check, both test suites, and a house-style lint -
   and prints `ALL PASS` or refuses to deploy.
