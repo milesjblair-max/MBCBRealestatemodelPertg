@@ -621,6 +621,31 @@ were honest or that the *tool design* was hard to misuse. That is the lesson.
 >
 > **Where it lives** `scripts/fetch_listings.py`, `web/index.html`.
 
+### 3.9 A rotating sweep, sized to the plan that actually exists
+
+> **What changed** The full daily sweep was replaced with a rotating one: 16
+> suburbs a day instead of 143, about 480 API calls a month instead of 4,300.
+> Two things make a smaller daily slice safe. The order is proportional rather
+> than round-robin, because the sides of the city are different sizes (54
+> southern suburbs against 21 western) and a plain rotation would finish the
+> west in six days while still grinding through the south a fortnight later; a
+> proportional spread means every slice mirrors the ring and every direction
+> finishes together, in nine days. And the page is no longer built from one
+> run: it is a rolling fourteen-day window, where a suburb searched today
+> replaces its old entries, anything not re-checked inside the window is
+> dropped rather than shown as current, and each card says how many days ago
+> its suburb was last looked at.
+>
+> **What it means** The feed works on the plan you have instead of silently
+> failing on the plan you do not. You give up same-day freshness on any one
+> suburb, and in exchange the page is actually live again, honest about the age
+> of every card, and covers the whole inner ring rather than whichever
+> direction the quota happened to reach first.
+>
+> **Where it lives** `scripts/fetch_listings.py`,
+> `.github/workflows/refresh-listings.yml`, `tests/test_rotation.py`,
+> `web/index.html`.
+
 ---
 
 ## Verify everything yourself
@@ -638,6 +663,7 @@ python3 model/value.py                        # bargain-engine self-test
 python3 scripts/build_perth_ring.py           # rebuild the 143-suburb ring
 python3 scripts/fetch_listings.py --plan      # how many API calls a sweep costs
 python3 scripts/fetch_listings.py --rescore   # re-value the committed feed
+python3 tests/test_rotation.py                # rotating sweep + rolling window
 
 # Phase 2: build the server locally
 cd server && npm install && npm run build

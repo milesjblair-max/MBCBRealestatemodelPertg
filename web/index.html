@@ -1159,6 +1159,9 @@ function listingFit(p){
 // act on a price. The refresh runs daily, so anything beyond a few days means
 // the job has been failing quietly.
 const STALE_DAYS = 3;
+// A rotating sweep re-checks each suburb every cycle, so a card being a few
+// days old is normal and only worth saying once it is past that.
+const CARD_STALE_DAYS = 4;
 function ageInDays(generated){
   if(!/^\d{4}-\d{2}-\d{2}$/.test(generated||'')) return null;
   const d = Date.parse(generated + 'T00:00:00Z');
@@ -1218,14 +1221,18 @@ function renderProperties(){
   else if(PROP_SORT==='como') list.sort((a,b)=>(a.kmComo==null?9e9:a.kmComo)-(b.kmComo==null?9e9:b.kmComo));
   else list.sort((a,b)=>(b.rank||0)-(a.rank||0));
 
+  const m=data.meta||{};
   const scope = swept
-    ? `across every suburb within ${(data.meta.radius_km||15)}km of the city, in all four directions`
+    ? `across every suburb within ${(m.radius_km||15)}km of the city, in all four directions`
     : 'across your shortlist suburbs';
+  const rota = (swept && m.rotating)
+    ? ` A slice of ${m.slice_size} suburbs is re-checked each day, so the ring cycles every ${m.cycle_days} days and this is a rolling ${m.window_days}-day window of ${m.suburbs_in_window} suburbs. Each card says when it was last checked.`
+    : '';
   document.getElementById('propStatus').innerHTML =
     `<span class="status-dot ${sample?'sample':'live'}"></span>` +
     (sample
       ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a RapidAPI key (see README) and the daily action swaps them for real listings, with photos, whose buttons go <b>straight to the property</b>.</span>`
-      : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''} &middot; searching ${scope}. Each card links straight to the property. A <b style="color:var(--sand)">bargain</b> is priced under what comparable houses on the market in the same suburb are asking, not under a valuation.</span>`);
+      : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''} &middot; searching ${scope}. Each card links straight to the property. A <b style="color:var(--sand)">bargain</b> is priced under what comparable houses on the market in the same suburb are asking, not under a valuation.${rota}</span>`);
 
   // An unfinished sweep must announce itself. A sector reading 0 because the
   // job ran out of API quota before it got there looks identical to a sector
@@ -1326,6 +1333,11 @@ function renderProperties(){
     } else if(ringed){
       bits.push(`<span class="disc none">no published price</span>`);
     }
+    // On a rotating sweep a card can be a few days old, so say so per card
+    // rather than letting one "refreshed" date at the top speak for all of them.
+    const checkedAge = ageInDays(p.checked);
+    if(checkedAge!==null && checkedAge>=CARD_STALE_DAYS) bits.push(
+      `<span class="conf" title="This suburb was last searched on ${p.checked}; the rotating sweep re-checks it within the window.">checked ${checkedAge}d ago</span>`);
     if(p.kmComo!=null) bits.push(`<span title="Straight line between suburb centres. By road it is further, and the shortlist cards use a road-style figure, so the two will not match.">${p.kmComo}km from Como, direct</span>`);
     const valLine = bits.length?`<div class="pval">${bits.join('')}</div>`:'';
     return `<div class="pcard ${p.bargain?'bargain':''}">

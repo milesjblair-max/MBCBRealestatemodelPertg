@@ -42,11 +42,21 @@ jobs:
           python-version: '3.12'
 
       - name: Sweep plan (how much quota this run will spend)
+        env:
+          SUBURB_CAP: '16'
         run: python3 scripts/fetch_listings.py --plan
 
       - name: Fetch listings
         env:
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+          # Rotating sweep. The RapidAPI BASIC plan's monthly quota was spent by
+          # early September on a full 143-call daily sweep, so every run after
+          # that returned HTTP 429 and published nothing for 25 days. 16 suburbs
+          # a day is ~480 calls a month, the slice is balanced across north,
+          # east, south and west, and the whole ring cycles every 9 days. Raise
+          # this only alongside a bigger plan; fetch_listings.py --plan prints
+          # the cost.
+          SUBURB_CAP: '16'
         run: python3 scripts/fetch_listings.py
 
       - name: Commit if changed

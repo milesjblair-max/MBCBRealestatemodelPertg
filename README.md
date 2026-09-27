@@ -166,17 +166,24 @@ feed).
 Without the key the daily job is a safe no-op: it leaves the committed data in
 place, so the page never breaks.
 
-**Watch the quota.** A full sweep is one API call per suburb, so 143 calls a run
-and roughly 4,300 a month. Check what your plan covers before enabling it:
+**The sweep rotates.** A full sweep is one API call per suburb: 143 a run, about
+4,300 a month, which exhausted the RapidAPI BASIC quota in September 2026 and
+froze the feed for 25 days. The workflow now searches **16 suburbs a day**
+(about 480 calls a month). Each slice mirrors the ring's composition, the whole
+ring cycles every 9 days, and the page shows a rolling 14-day window with the
+last-checked date on any card older than a few days. To see the cost of any
+setting:
 
 ```bash
 python3 scripts/fetch_listings.py --plan      # prints the exact call count
 ```
 
-To spend less, set `SUBURB_CAP` (search only the first N ring suburbs) and
-`SUBURB_OFFSET` (start N in) on the workflow step, rotating the offset so the
-whole ring is still covered over several days. To change the radius, rebuild the
-ring: `python3 scripts/build_perth_ring.py 12`.
+`SUBURB_CAP` sets the daily slice; the starting point rotates automatically off
+the date, so there is no cursor to maintain. Raise it only alongside a bigger
+plan, and keep the cycle inside `WINDOW_DAYS` (14) or listings will expire
+before they are re-checked, which `python3 tests/test_rotation.py` will fail on.
+To change the radius, rebuild the ring:
+`python3 scripts/build_perth_ring.py 12`.
 
 After changing anything in `model/value.py`, re-value the committed feed without
 spending a single API call:

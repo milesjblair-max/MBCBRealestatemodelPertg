@@ -68,6 +68,12 @@ MIN_LAND = 500
 PER_SUBURB = 4                                   # cap so no one suburb floods the page
 TOTAL_CAP = int(os.environ.get("TOTAL_CAP", 72))
 PER_SECTOR_FLOOR = 10                            # keep all four directions visible
+# A rotating sweep refreshes a slice of the ring each day, so the page is built
+# from a rolling window rather than from one run. Anything not re-confirmed
+# inside this many days is dropped: with the default slice the whole ring cycles
+# in about nine days, so fourteen leaves headroom for a missed run without ever
+# showing a listing that has not been checked in a fortnight.
+WINDOW_DAYS = int(os.environ.get("WINDOW_DAYS", 14))
 PAGE_SIZE = 30                                   # bigger page = better benchmark
 THROTTLE_S = 0.25                                # be polite across ~140 calls
 IMG_SIZE = "640x480"                             # fills the {size} slot in reastatic URLs
@@ -311,22 +317,51 @@ def interleave_by_sector(suburbs):
     lanes = {}
     for s in suburbs:
         lanes.setdefault(s["sector"], []).append(s)
+    if not lanes:
+        return []
     for lane in lanes.values():
         lane.sort(key=lambda x: x["kmCbd"])
-    out, keys = [], sorted(lanes)
-    for i in range(max(len(v) for v in lanes.values()) if lanes else 0):
-        for k in keys:
-            if i < len(lanes[k]):
-                out.append(lanes[k][i])
-    return out
+
+    # Plain round-robin looks right and is not: the lanes are different lengths
+    # (54 southern suburbs against 21 western), so once the short lanes run out
+    # the tail of the list is pure south, and a daily slice landing there covers
+    # one direction. Instead each suburb is placed at its FRACTIONAL position
+    # within its own lane, and the lanes are merged on that fraction. Every lane
+    # is then spread evenly over the whole order, so any run of consecutive
+    # suburbs mirrors the ring's real composition and, just as importantly,
+    # every lane finishes in the same number of days.
+    spread = []
+    for sec in sorted(lanes):
+        lane = lanes[sec]
+        for i, s in enumerate(lane):
+            spread.append(((i + 0.5) / len(lane), sec, s))
+    spread.sort(key=lambda t: (t[0], t[1]))
+    return [t[2] for t in spread]
+
+
+def rotation_offset(cap, total):
+    """Where today's slice starts, derived from the date.
+
+    A rotating sweep needs to start somewhere different each day, and GitHub
+    Actions keeps no state between runs. Deriving it from the day number means
+    no cursor to store and no drift if a run is skipped: consecutive days
+    advance by one slice, and the whole ring is covered in total/cap days.
+    """
+    if cap <= 0 or total <= 0:
+        return 0
+    day = datetime.date.today().toordinal()
+    return (day * cap) % total
 
 
 def load_ring():
     with open(RING_PATH) as fh:
         ring = json.load(fh)
+    # Interleave FIRST, so every slice taken out of this list is already
+    # balanced across north, east, south and west.
     targets = interleave_by_sector(ring["suburbs"])
-    offset = int(os.environ.get("SUBURB_OFFSET", 0))
     cap = int(os.environ.get("SUBURB_CAP", 0))
+    env_offset = os.environ.get("SUBURB_OFFSET")
+    offset = int(env_offset) if env_offset else rotation_offset(cap, len(targets))
     if offset:
         targets = targets[offset:] + targets[:offset]
     if cap > 0:
@@ -405,6 +440,44 @@ def select(scored):
     return chosen[:TOTAL_CAP]
 
 
+def carry_over(fresh_suburbs, today):
+    """Listings from previous runs that this run did not re-check.
+
+    A rotating sweep only refreshes a slice of the ring each day, so publishing
+    just today's results would shrink the page from the whole of inner Perth to
+    sixteen suburbs. Instead the feed is a rolling window: anything from a
+    suburb searched today is replaced by today's answer, anything older than
+    WINDOW_DAYS is dropped as too stale to show, and the rest is carried.
+
+    Carried listings keep the value fields computed when they were last seen,
+    because those were measured against that suburb's asking market at the time
+    and re-deriving them against a pool we did not refresh would be inventing.
+    """
+    try:
+        with open(OUT_PATH) as fh:
+            prev = json.load(fh).get("listings", [])
+    except (OSError, ValueError):
+        return [], 0, 0
+
+    kept, superseded, expired = [], 0, 0
+    for p in prev:
+        if p.get("suburb") in fresh_suburbs:
+            superseded += 1
+            continue
+        checked = p.get("checked")
+        age = None
+        if checked:
+            try:
+                age = (today - datetime.date.fromisoformat(checked)).days
+            except ValueError:
+                age = None
+        if age is None or age > WINDOW_DAYS:
+            expired += 1
+            continue
+        kept.append(p)
+    return kept, superseded, expired
+
+
 def mark_new(listings):
     """Flag listings that were not in yesterday's file, keyed on property URL."""
     prev = set()
@@ -422,7 +495,13 @@ def mark_new(listings):
 
 def write(listings, ring, attempted, coverage, stopped, failures, benches):
     priced = [b for b in benches.values() if b.get("price")]
-    complete = not stopped and attempted >= ring["meta"]["count"]
+    # "complete" means this run finished the slice it set out to search. On a
+    # rotating sweep a slice IS the intended run, so a healthy rotation must not
+    # trip the page's unfinished-sweep warning; only an early stop should.
+    complete = not stopped
+    cap = int(os.environ.get("SUBURB_CAP", 0))
+    rotating = cap > 0 and cap < ring["meta"]["count"]
+    window_subs = sorted({p["suburb"] for p in listings})
     out = {
         "meta": {
             "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
@@ -436,13 +515,24 @@ def write(listings, ring, attempted, coverage, stopped, failures, benches):
             "sweep_complete": complete,
             "stopped_early": stopped,
             "coverage": coverage,
+            "rotating": rotating,
+            "slice_size": cap or ring["meta"]["count"],
+            "window_days": WINDOW_DAYS if rotating else None,
+            "cycle_days": (ring["meta"]["count"] + cap - 1) // cap if rotating else 1,
+            "suburbs_in_window": len(window_subs),
             "note": "Best-value houses across the inner-Perth ring (every "
                     "residential suburb within "
                     f"{ring['meta']['radius_km']:g}km of the CBD, north, east, "
                     "south and west). Brief unchanged: houses, 3+ beds, up to "
                     "$1.1M, land favoured. Ranked by how far under comparable "
                     "CURRENT listings in the same suburb each one is priced, "
-                    "blended with fit to the buyer's brief. Refreshed daily.",
+                    "blended with fit to the buyer's brief."
+                    + (f" A slice of {cap} suburbs is refreshed each day, so the "
+                       f"whole ring cycles about every "
+                       f"{(ring['meta']['count'] + cap - 1) // cap} days and the "
+                       f"page shows a rolling {WINDOW_DAYS}-day window; each "
+                       f"listing carries the date it was last checked."
+                       if rotating else " Refreshed daily."),
             "value_note": "A discount is measured against the median ask of "
                           "comparable listings on the market now in that suburb, "
                           "not against a suburb median and not against a "
@@ -473,8 +563,13 @@ def rescore():
     ring_by_name = {s["name"]: s for s in ring["suburbs"]}
     med = curated_medians()
 
+    # Stamp the date these listings were actually checked, so the rolling window
+    # can age them correctly. A pull with no date on it is treated as being as
+    # old as the file says it is, never as fresh.
+    stamp = doc.get("meta", {}).get("generated")
     pools, dropped = {}, 0
     for p in doc.get("listings", []):
+        p.setdefault("checked", stamp)
         # apply the same quality filters a live sweep applies, so a re-score
         # cleans out strata lots the older, looser pull let through
         if STRATA_ADDR.match(str(p.get("address") or "")):
@@ -538,6 +633,12 @@ def plan():
     print(f"This sweep would search {len(targets)} suburbs = "
           f"{len(targets)} API calls per run.")
     print(f"  daily: ~{len(targets) * 30} calls/month")
+    total = ring["meta"]["count"]
+    if len(targets) < total:
+        cycle = (total + len(targets) - 1) // len(targets)
+        print(f"  rotating: the whole ring is covered every {cycle} days; the "
+              f"page shows a rolling {WINDOW_DAYS}-day window, so every suburb "
+              f"is re-checked well inside it")
     for sec in sorted(by_sector):
         print(f"  {sec}: {by_sector[sec]}")
     return 0
@@ -626,7 +727,16 @@ def main(argv):
         return 0
 
     scored, benches = score_pools(pools, ring_by_name, med)
-    listings = select(scored)
+    today = datetime.date.today()
+    for p in scored:
+        p["checked"] = today.isoformat()
+
+    carried, superseded, expired = carry_over(set(pools), today)
+    if carried or superseded or expired:
+        print(f"  rolling window: {len(carried)} carried from earlier runs, "
+              f"{superseded} replaced by today's search, {expired} dropped as "
+              f"older than {WINDOW_DAYS} days")
+    listings = select(scored + carried)
     new_count = mark_new(listings)
 
     sec_counts = {}

@@ -252,12 +252,17 @@ official REA feed and is rate-limited, so:
   **scheduled GitHub Action** into `data/listings.json`, which the tool
   `fetch()`es. Auth is a `RAPIDAPI_KEY` repo secret; with no key the script is a
   safe no-op and the committed sample shows.
-- A full sweep is **one call per suburb: 143 a run, ~4,300 a month.** The owner
-  chose the full daily sweep. **As at 2026-09, the RapidAPI plan is BASIC and
-  its monthly quota was exhausted in early September**, so the sweep has been
-  returning HTTP 429 and publishing nothing since 2026-09-02. Either the plan
-  goes up, or `SUBURB_CAP` comes down and `SUBURB_OFFSET` rotates. Do not leave
-  it as a full daily sweep on a quota that cannot serve it. To spend less,
+- **The sweep rotates, because the plan is BASIC.** A full sweep is one call per
+  suburb: 143 a run, ~4,300 a month, which exhausted the monthly quota in early
+  September 2026 and left the feed frozen for 25 days. The workflow now sets
+  `SUBURB_CAP: 16`, about 480 calls a month. Each slice mirrors the ring's
+  composition (the sectors are different sizes, so the slice is proportional,
+  not equal), the whole ring cycles every 9 days, and the page is built from a
+  rolling `WINDOW_DAYS` (14) window: suburbs searched today replace their old
+  entries, anything not re-checked inside the window is dropped, and each
+  listing carries a `checked` date the card displays once it is over 4 days
+  old. Raise `SUBURB_CAP` only alongside a bigger plan, and keep the cycle
+  comfortably inside the window (`tests/test_rotation.py` fails if it is not). To spend less,
   set `SUBURB_CAP` and rotate `SUBURB_OFFSET` on the workflow step rather than
   shrinking the ring. `python3 scripts/fetch_listings.py --plan` prints the
   exact count; `--rescore` re-values the committed feed with zero API calls.
