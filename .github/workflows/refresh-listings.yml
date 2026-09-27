@@ -1,16 +1,15 @@
 name: Refresh live listings (weekly)
 
-# Pulls fresh property listings (with photos) into data/listings.json once a day
-# via the Realty in AU API (RapidAPI), then commits the change (which re-
-# publishes Pages on a branch deploy). With no RAPIDAPI_KEY set, the script is a
-# safe no-op and the committed data is left in place.
+# Pulls fresh property listings (with photos) into data/listings.json once a
+# week via the Realty in AU API (RapidAPI), then commits the change (which
+# re-publishes Pages on a branch deploy). With no RAPIDAPI_KEY set, the script
+# is a safe no-op and the committed data is left in place.
 #
 # QUOTA: the sweep covers every residential suburb within 15km of the Perth CBD
-# (data/perth_ring.json), which is one API call per suburb, so roughly 143 calls
-# a run and ~4,300 a month. The "Sweep plan" step below prints the exact number
-# into the log before anything is spent. To run cheaper, set SUBURB_CAP to the
-# slice size and rotate SUBURB_OFFSET so the whole ring is still covered over
-# several days.
+# (data/perth_ring.json), one API call per suburb, so 143 calls a run and ~613 a
+# month. The "Sweep plan" step prints the exact number before anything is spent.
+# To fit a smaller plan, set SUBURB_CAP to the suburbs per run; the starting
+# point rotates itself, and --plan warns if the cycle would outrun WINDOW_DAYS.
 
 on:
   schedule:
@@ -19,6 +18,15 @@ on:
     # deliberate; scheduled jobs queued on the hour are the ones GitHub delays.
     - cron: '47 22 * * 5'
   workflow_dispatch:
+  # A "run it now" lever that does not need the Actions UI: touch the trigger
+  # file and push. The path filter is what makes this safe, and it is not
+  # optional. This job commits data/listings.json back to the same branch, so
+  # an unfiltered push trigger would re-fire itself on its own commit forever.
+  # That commit never touches .github/refresh-now, so it cannot loop.
+  push:
+    paths:
+      - '.github/refresh-now'
+
 
 permissions:
   contents: write

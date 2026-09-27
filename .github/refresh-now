@@ -1,0 +1,9 @@
+Touch this file and push to run "Refresh live listings" immediately, without
+opening the Actions tab. The workflow triggers on a push that changes this path
+and nothing else, so the listings commit it makes cannot re-trigger it.
+
+Equivalent to: Actions -> Refresh live listings (weekly) -> Run workflow.
+
+Last manual run requested: 2026-09-27 05:02 UTC
+Reason: first run on the weekly schedule, and a check on whether the RapidAPI
+monthly quota has rolled over since it was exhausted on 2026-09-02.
