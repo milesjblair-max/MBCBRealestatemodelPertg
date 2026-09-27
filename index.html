@@ -289,6 +289,14 @@
   .schip:hover{color:var(--paper);border-color:var(--teal)}
   .schip.active{color:var(--ink);background:var(--sand);border-color:var(--sand)}
   .schip .ct{opacity:.7;font-weight:500;margin-left:3px}
+  .schip[disabled]{opacity:.4;cursor:default}
+  .sub-pick{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted-2)}
+  .sub-pick select{background:var(--ink-2);color:var(--paper);border:1px solid var(--line);border-radius:8px;padding:7px 10px;font:inherit;font-size:12.5px;cursor:pointer;outline:none;max-width:210px}
+  .sub-pick select:focus{border-color:var(--teal-bright)}
+  @media(max-width:700px){.sub-pick{margin-left:0;width:100%}.sub-pick select{flex:1;max-width:none;padding:10px 12px;font-size:13.5px}}
+  /* an incomplete sweep must say so; an empty sector is otherwise read as "no bargains there" */
+  .sweep-warn{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.5;color:var(--sand);background:rgba(216,166,87,.08);border:1px solid rgba(216,166,87,.4);border-radius:10px;padding:11px 14px;margin:0 0 14px}
+  .sweep-warn .ic{flex:none;font-weight:700}
   .fchip:focus-visible{outline:2px solid var(--teal-bright);outline-offset:2px}
   .prop-empty{grid-column:1/-1;color:var(--muted-2);font-size:14px;padding:14px 2px}
 
@@ -442,6 +450,7 @@
     <div class="sec-head"><span class="sec-num">B</span><h2>Properties that fit (or are a bargain)</h2></div>
     <p class="sec-lead">Real houses with photos, matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. This now sweeps <b>every suburb within 15km of the city</b>, north, east, south and west, not just the shortlist. <b style="color:var(--sand)">Bargains</b> are priced under what comparable houses on the market in the same suburb are asking. Each card links straight to the listing; refreshed daily.</p>
     <div class="status-bar" id="propStatus"></div>
+    <div id="propSweep"></div>
     <div class="sector-row" id="propSectors" role="group" aria-label="Filter by side of the city"></div>
     <div class="prop-filters" id="propFilters" role="group" aria-label="Filter properties"></div>
     <div class="prop-grid" id="propGrid"></div>
@@ -1101,10 +1110,11 @@ function renderListings(scored){
     if(card){ const cr=card.getBoundingClientRect(), sr=strip.getBoundingClientRect(); strip.scrollLeft += (cr.left-sr.left)-(sr.width/2-cr.width/2); } }
 }
 
-let PROP_FILTER='all', PROP_SORT='rank', PROP_SECTOR='all';
+let PROP_FILTER='all', PROP_SORT='rank', PROP_SECTOR='all', PROP_SUBURB='all';
 const PROP_FILTERS={all:()=>true, new:p=>p.new, bargain:p=>p.bargain,
                     beds4:p=>(p.beds||0)>=4, land:p=>(p.land||0)>=500};
 const SECTORS=[['all','All Perth'],['N','North'],['E','East'],['S','South'],['W','West']];
+const SECTOR_NAME={N:'North',E:'East',S:'South',W:'West','?':'Unplaced'};
 // pull a dollar figure out of REA's free-text price ("From $999k", "Offers in
 // the $800,000's"); returns null when there is no real number ("Awaiting Price
 // Guide", "OFFERS INVITED").
@@ -1140,6 +1150,26 @@ function listingFit(p){
   const pr=p.price||parsePrice(p.priceText);
   if(pr && pr>1100000) fit*=0.9;
   return Math.max(0,Math.min(100,Math.round(fit)));
+}
+// Every suburb that actually appears in the feed, grouped under the side of the
+// city it sits on, so the list doubles as the answer to "which suburbs are
+// north / east / south / west". Counts are of the whole feed, not the current
+// compass selection, so picking a suburb always shows something.
+// the feed writes its reason as a sentence fragment; it follows a full stop here
+function cap1(t){ return t ? String(t).charAt(0).toUpperCase()+String(t).slice(1) : ''; }
+function suburbPicker(list, names){
+  if(names.length<2) return '';
+  const byName={}; list.forEach(p=>{ byName[p.suburb]=(byName[p.suburb]||0)+1; });
+  const sectorOf={}; list.forEach(p=>{ sectorOf[p.suburb]=p.sector||'?'; });
+  const groups={};
+  names.forEach(n=>{ (groups[sectorOf[n]] ||= []).push(n); });
+  const opts=['N','E','S','W','?'].filter(k=>groups[k]).map(k=>
+    `<optgroup label="${SECTOR_NAME[k]||k}">`+
+    groups[k].sort().map(n=>`<option value="${n.replace(/"/g,'&quot;')}"${PROP_SUBURB===n?' selected':''}>${n} (${byName[n]})</option>`).join('')+
+    `</optgroup>`).join('');
+  return `<label class="sub-pick">Suburb <select id="propSuburb" aria-label="Filter by suburb">`+
+    `<option value="all"${PROP_SUBURB==='all'?' selected':''}>All suburbs (${names.length})</option>`+
+    opts+`</select></label>`;
 }
 function renderProperties(){
   const data=LISTINGS;
@@ -1183,18 +1213,40 @@ function renderProperties(){
       ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a RapidAPI key (see README) and the daily action swaps them for real listings, with photos, whose buttons go <b>straight to the property</b>.</span>`
       : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''} &middot; searching ${scope}. Each card links straight to the property. A <b style="color:var(--sand)">bargain</b> is priced under what comparable houses on the market in the same suburb are asking, not under a valuation.</span>`);
 
+  // An unfinished sweep must announce itself. A sector reading 0 because the
+  // job ran out of API quota before it got there looks identical to a sector
+  // with no bargains in it, and the second reading is the dangerous one.
+  const cov=(data.meta&&data.meta.coverage)||null;
+  const incomplete = ringed && data.meta && data.meta.sweep_complete===false;
+  document.getElementById('propSweep').innerHTML = incomplete
+    ? `<div class="sweep-warn"><span class="ic">!</span><span><b>This sweep did not finish.</b> ${cap1(data.meta.stopped_early)||'It stopped before covering the whole ring.'}${cov?` Suburbs searched: ${['N','E','S','W'].filter(k=>cov[k]).map(k=>`${SECTOR_NAME[k]} ${cov[k].searched}/${cov[k].in_ring}`).join(', ')}.`:''} A side of the city showing zero here means <b>not searched</b>, not "no bargains there". Re-run the refresh action once quota allows.</span></div>`
+    : '';
+
   // compass row: which side of the city. Counts respect the other filters, so
   // the numbers always match what clicking would actually show.
   const base=list.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
+  const subsInFeed=[...new Set(list.map(p=>p.suburb))];
   document.getElementById('propSectors').innerHTML =
     `<span class="lbl">Side of the city</span>` + SECTORS.map(([k,lbl])=>{
       const n=k==='all'?base.length:base.filter(p=>p.sector===k).length;
-      return `<button class="schip ${PROP_SECTOR===k?'active':''}" data-sector="${k}" aria-pressed="${PROP_SECTOR===k}"${(!n&&k!=='all')?' disabled style="opacity:.4;cursor:default"':''}>${lbl} <span class="ct">${n}</span></button>`;
-    }).join('');
-  document.querySelectorAll('#propSectors .schip').forEach(b=>{ b.onclick=()=>{ PROP_SECTOR=b.getAttribute('data-sector'); renderProperties(); }; });
+      const why=(!n&&k!=='all')
+        ? (incomplete?`No ${lbl.toLowerCase()} listings: this sweep did not reach that side of the city.`
+                     :`Nothing in the ${lbl.toLowerCase()} matches the current filter.`)
+        : `${lbl}: ${n} listing${n===1?'':'s'}`;
+      return `<button class="schip ${PROP_SECTOR===k?'active':''}" data-sector="${k}" aria-pressed="${PROP_SECTOR===k}" title="${why}"${(!n&&k!=='all')?' disabled':''}>${lbl} <span class="ct">${n}</span></button>`;
+    }).join('') + suburbPicker(list, subsInFeed);
+  document.querySelectorAll('#propSectors .schip').forEach(b=>{ b.onclick=()=>{ PROP_SECTOR=b.getAttribute('data-sector'); PROP_SUBURB='all'; renderProperties(); }; });
+  const sp=document.getElementById('propSuburb');
+  if(sp) sp.onchange=e=>{
+    PROP_SUBURB=e.target.value;
+    // picking a suburb from another side of the city would otherwise show
+    // nothing, so clear the compass selection and just show the suburb
+    if(PROP_SUBURB!=='all') PROP_SECTOR='all';
+    renderProperties();
+  };
 
-  // filter chips with live counts, within the chosen sector
-  const inSec=list.filter(inSector);
+  // filter chips with live counts, within the chosen sector and suburb
+  const inSec=list.filter(p=>inSector(p)&&(PROP_SUBURB==='all'||p.suburb===PROP_SUBURB));
   const newCount=inSec.filter(PROP_FILTERS.new).length;
   const counts={all:inSec.length, new:newCount, bargain:inSec.filter(PROP_FILTERS.bargain).length,
                 beds4:inSec.filter(PROP_FILTERS.beds4).length, land:inSec.filter(PROP_FILTERS.land).length};
@@ -1210,7 +1262,11 @@ function renderProperties(){
   const ps=document.getElementById('propSort'); if(ps) ps.onchange=e=>{ PROP_SORT=e.target.value; renderProperties(); };
 
   const shown=inSec.filter(PROP_FILTERS[PROP_FILTER]||PROP_FILTERS.all);
-  if(!shown.length){ document.getElementById('propGrid').innerHTML=`<div class="prop-empty">Nothing matches this combination right now. Try another side of the city, or clear the filter.</div>`; return; }
+  if(!shown.length){
+    const where = PROP_SUBURB!=='all' ? `in ${PROP_SUBURB}`
+                : PROP_SECTOR!=='all' ? `in the ${(SECTOR_NAME[PROP_SECTOR]||'').toLowerCase()}` : 'right now';
+    document.getElementById('propGrid').innerHTML=`<div class="prop-empty">Nothing matches this combination ${where}. Try another suburb or side of the city, or clear the filter.</div>`;
+    return; }
   document.getElementById('propGrid').innerHTML = shown.map(p=>{
     const specs=[p.beds&&`${p.beds} bed`,p.baths&&`${p.baths} bath`,p.cars&&`${p.cars} car`,p.land?`${p.land}sqm`:'land not stated'].filter(Boolean)
       .map(x=>`<span class="spec">${x}</span>`).join('');

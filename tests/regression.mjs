@@ -200,6 +200,64 @@ const trusted = await page.evaluate(() => {
   return document.querySelectorAll('#propGrid .pcard .badge.bargain').length;
 });
 ok(trusted === 1, 'a bargain outside the 14 shortlist suburbs survives rendering: ' + trusted);
+
+// ---- suburb filter, grouped by the side of the city it sits on ----
+const RING_FIXTURE = {
+  meta: { source: 'realty-in-au', scope: 'perth-ring', valued: 'local-asking', radius_km: 15, sweep_complete: true },
+  listings: [
+    { suburb: 'Kenwick', pc: '6107', sector: 'S', kmComo: 9, priceText: '$700,000', price: 700000, beds: 4, land: 700, address: 'S one', url: 'https://x.test/a', direct: true, disc: 0.10, discPct: 10, conf: 'high', comps: 7, fit: 80, rank: 80, bargain: true },
+    { suburb: 'Kenwick', pc: '6107', sector: 'S', kmComo: 9, priceText: '$760,000', price: 760000, beds: 4, land: 680, address: 'S two', url: 'https://x.test/b', direct: true, disc: 0.03, discPct: 3, conf: 'high', comps: 7, fit: 78, rank: 60, bargain: false },
+    { suburb: 'Bayswater', pc: '6053', sector: 'E', kmComo: 12, priceText: '$820,000', price: 820000, beds: 4, land: 600, address: 'E one', url: 'https://x.test/c', direct: true, disc: 0.05, discPct: 5, conf: 'medium', comps: 5, fit: 70, rank: 55, bargain: false },
+    { suburb: 'Dianella', pc: '6059', sector: 'N', kmComo: 13, priceText: '$900,000', price: 900000, beds: 4, land: 650, address: 'N one', url: 'https://x.test/d', direct: true, disc: 0.01, discPct: 1, conf: 'medium', comps: 5, fit: 66, rank: 40, bargain: false },
+    { suburb: 'Nedlands', pc: '6009', sector: 'W', kmComo: 8, priceText: '$1,090,000', price: 1090000, beds: 4, land: 520, address: 'W one', url: 'https://x.test/e', direct: true, disc: 0.02, discPct: 2, conf: 'low', comps: 3, fit: 60, rank: 35, bargain: false }
+  ]
+};
+const picker = await page.evaluate((fix) => {
+  LISTINGS = fix; PROP_SECTOR = 'all'; PROP_SUBURB = 'all'; PROP_FILTER = 'all'; renderProperties();
+  const sel = document.getElementById('propSuburb');
+  return {
+    exists: !!sel,
+    allLabel: sel ? sel.options[0].text : '',
+    groups: sel ? [...sel.querySelectorAll('optgroup')].map(g => g.label + ':' + [...g.children].map(o => o.text).join('|')) : [],
+    warn: document.getElementById('propSweep').innerHTML.trim()
+  };
+}, RING_FIXTURE);
+ok(picker.exists, 'a suburb filter is offered on the Perth-wide feed');
+ok(picker.allLabel === 'All suburbs (4)', 'the suburb filter offers every suburb in the feed: ' + picker.allLabel);
+ok(JSON.stringify(picker.groups) === JSON.stringify(['North:Dianella (1)', 'East:Bayswater (1)', 'South:Kenwick (2)', 'West:Nedlands (1)']),
+  'suburbs are grouped under the side of the city they sit on: ' + JSON.stringify(picker.groups));
+ok(picker.warn === '', 'a complete sweep shows no warning banner');
+
+// picking a suburb narrows the grid to it, whatever the compass chip said
+const narrowed = await page.evaluate(() => {
+  PROP_SECTOR = 'N';                        // deliberately the wrong side
+  PROP_SUBURB = 'Kenwick';
+  document.getElementById('propSuburb').value = 'Kenwick';
+  document.getElementById('propSuburb').onchange({ target: { value: 'Kenwick' } });
+  return { locs: [...document.querySelectorAll('#propGrid .pcard .loc')].map(n => n.textContent.trim()), sector: PROP_SECTOR };
+});
+ok(narrowed.locs.length === 2 && narrowed.locs.every(l => l.startsWith('Kenwick')),
+  'choosing a suburb shows only that suburb: ' + JSON.stringify(narrowed.locs));
+ok(narrowed.sector === 'all', 'choosing a suburb clears a conflicting compass filter: ' + narrowed.sector);
+
+// ---- an unfinished sweep must say so, and must not read as "no bargains" ----
+const partial = await page.evaluate((fix) => {
+  const f = JSON.parse(JSON.stringify(fix));
+  f.meta.sweep_complete = false;
+  f.meta.stopped_early = 'the API refused further calls (HTTP 429: the plan quota is spent)';
+  f.meta.coverage = { E: { searched: 27, in_ring: 27 }, N: { searched: 14, in_ring: 41 }, S: { searched: 0, in_ring: 54 }, W: { searched: 0, in_ring: 21 } };
+  f.listings = f.listings.filter(l => l.sector === 'E' || l.sector === 'N');
+  LISTINGS = f; PROP_SECTOR = 'all'; PROP_SUBURB = 'all'; renderProperties();
+  const chip = document.querySelector('#propSectors .schip[data-sector="S"]');
+  return { warn: document.getElementById('propSweep').textContent.replace(/\s+/g, ' ').trim(), disabled: chip.disabled, title: chip.getAttribute('title') };
+}, RING_FIXTURE);
+ok(/did not finish/i.test(partial.warn), 'an unfinished sweep is announced: ' + partial.warn.slice(0, 90));
+ok(/South 0\/54/.test(partial.warn), 'the warning reports per-side coverage: ' + partial.warn.slice(0, 160));
+ok(/This sweep did not finish\. The API refused/.test(partial.warn),
+  'the reason is capitalised so the banner reads as sentences: ' + partial.warn.slice(0, 80));
+ok(partial.disabled && /did not reach/.test(partial.title),
+  'an empty side of the city says it was not searched, not that it has no bargains: ' + partial.title);
+
 // hand the page back its real feed so the later sort/filter checks run against
 // a full list rather than these three fixtures
 await page.evaluate(() => { LISTINGS = INLINE_LISTINGS; PROP_SECTOR = 'all'; PROP_FILTER = 'all'; PROP_SORT = 'rank'; renderProperties(); });

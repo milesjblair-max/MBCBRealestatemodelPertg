@@ -562,6 +562,48 @@ were honest or that the *tool design* was hard to misuse. That is the lesson.
 > porting `model/value.py` to TypeScript and extending the parity fixtures, which
 > is its own job.
 
+### 3.6 The compass was wrong, and the sweep was lying about its coverage
+
+> **What changed** The first live Perth-wide sweep published 67 eastern
+> listings, 5 northern, and nothing from the south or west, and the page's
+> "Side of the city" filter looked broken. Three faults, all fixed. First, the
+> sweep order: the ring file is grouped by sector, so the run walked all of the
+> east, part of the north, and then hit its API limit and stopped, having never
+> searched Como, Bentley or Fremantle. It now takes one suburb from each
+> direction in turn, so a sweep that covers half the ring still covers all four
+> sides. Second, the count: the feed reported 137 of 143 suburbs searched, a
+> figure computed as ring size minus failures, on a run that stopped after 41.
+> It now counts what was actually attempted, per direction, and records whether
+> the sweep finished. Third, the direction itself: a compass bearing from the
+> CBD called Victoria Park, Carlisle, Queens Park, East Cannington and Kenwick
+> "east", and Dalkeith "south". Perth is not organised around a compass rose, it
+> is organised around the Swan, so the rule now traces the river: south of it is
+> south, bar the Belmont and foothills run, and north of it splits north, east
+> and west by bearing.
+>
+> **What it means** The filter tells the truth now, and where it cannot, it says
+> so: an unfinished sweep puts a banner on the page stating which sides were not
+> reached and how far it got, because a direction reading zero because the job
+> ran out of quota looks exactly like a direction with no bargains in it, and
+> the second reading is the one that would cost money.
+>
+> **Where it lives** `scripts/build_perth_ring.py` (river rule plus a 47-suburb
+> self-test), `scripts/fetch_listings.py` (`interleave_by_sector`, coverage
+> tracking), `web/index.html`, `tests/run.sh`, `tests/regression.mjs`.
+
+### 3.7 A suburb filter
+
+> **What changed** The property feed gained a suburb picker listing every suburb
+> present in the feed, grouped under the side of the city it sits on, with a
+> count each and an "All suburbs" default. Choosing a suburb clears a
+> conflicting compass selection, so picking one always shows it.
+>
+> **What it means** The grouped list doubles as the answer to "which suburbs are
+> north, south, east and west", and you can jump straight to one suburb without
+> working out which chip it lives under.
+>
+> **Where it lives** `web/index.html`.
+
 ---
 
 ## Verify everything yourself

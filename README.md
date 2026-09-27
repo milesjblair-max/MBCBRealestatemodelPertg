@@ -138,6 +138,13 @@ file's docstring.
 | Fewer than 3 comparables | Falls back to the wider side of the city, at low confidence. |
 | A gap over 45% | Flagged as odd pricing and pushed down the ranking, not celebrated. |
 
+**Filtering.** A compass row splits the feed by side of the city, decided by
+which bank of the Swan a suburb sits on rather than a bearing from the CBD (so
+Victoria Park and Kenwick read south, and Dalkeith reads west). A suburb picker
+lists every suburb in the feed, grouped under its direction. If a sweep stops
+early on API limits, the page says which sides it never reached, so a direction
+showing zero is never mistaken for a direction with no bargains.
+
 **Ranking.** "Best bargains" is 60% discount and 40% fit to the brief (land,
 bedrooms, budget, distance from Como), scaled by how much evidence sat behind
 the discount. So a cheap house that does not suit the family does not top the

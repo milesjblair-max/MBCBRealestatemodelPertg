@@ -202,6 +202,25 @@ west: `data/perth_ring.json`, 143 suburbs, built by
 brief is unchanged (houses, 3+ beds, up to $1.1M, land favoured, Como anchor);
 only the map widened, so a bargain outside the shortlist is no longer invisible.
 
+**Sides of the city are decided by the Swan, not by a compass.** Bearing from
+the CBD alone filed Victoria Park, Carlisle, Queens Park, East Cannington and
+Kenwick as "east" when every Perth local calls them south of the river, and put
+Dalkeith in the south. `scripts/build_perth_ring.py` now traces the Swan's main
+stem: south of it is `S`, except the Belmont / airport / foothills run which is
+`E`; north of it splits `N` / `E` / `W` by bearing. A 47-suburb self-test in
+that script pins the suburbs that sit closest to the line and fails the build if
+one moves.
+
+**A sweep that did not finish must say so.** The 2026-09-02 run hit its API
+limit partway through, and because the ring file is grouped by sector it had
+searched all of the east, part of the north, and none of the south or west, yet
+reported `suburbs_searched: 137` of 143. Two rules follow, both load-bearing:
+the sweep is **interleaved** across N/E/S/W (`interleave_by_sector`) so any early
+stop still covers all four sides, and the feed records what was actually
+**attempted** per sector (`coverage`, `sweep_complete`, `stopped_early`), which
+the page surfaces as a banner. A side of the city showing zero must never be
+allowed to read as "no bargains there" when the truth is "never searched".
+
 **Bargains are measured against the local asking market, never an invented
 median.** Only the 14 suburbs in `data/suburbs.json` have researched medians.
 For the other 129, `model/value.py` prices each listing against the median ask

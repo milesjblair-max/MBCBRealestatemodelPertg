@@ -13,20 +13,20 @@
   },
   "radius_km": 15,
   "km_note": "kmCbd and kmComo are straight-line distances between suburb centre points. By road they are further; the curated km field in data/suburbs.json is a road-style figure and will not match.",
+  "sector_rule": "The Swan decides first, then the bearing from the CBD. South of the river is S, except the eastern run (Belmont, Kewdale, Forrestfield, High Wycombe) which is E. North of the river splits N / E / W by bearing. This is why Victoria Park and Kenwick read south, and Dalkeith reads west, where a plain compass quadrant got all four wrong.",
   "sectors": {
-   "N": "bearing 300 to 30 degrees from the CBD",
-   "E": "bearing 30 to 130 degrees from the CBD",
-   "S": "bearing 130 to 215 degrees from the CBD",
-   "W": "bearing 215 to 300 degrees from the CBD"
+   "N": "north of the river, above the city",
+   "E": "the Bayswater to Guildford run, plus the Belmont / airport / foothills run south of the Swan",
+   "S": "south of the river",
+   "W": "the western suburbs, Subiaco out to North Fremantle"
   },
-  "sector_note": "Bounds are rotated off true quadrants to match how Perth is actually described: the coastal strip north of the CBD reads north, the western suburbs run Nedlands to Fremantle, and across the river reads south.",
   "note": "Geography only. No medians, scores or prices are set here; only the 14 suburbs in data/suburbs.json carry researched medians, and everything else is valued off live comparable listings at fetch time.",
   "count": 143,
   "by_sector": {
-   "E": 35,
+   "E": 27,
    "N": 41,
-   "S": 41,
-   "W": 26
+   "S": 54,
+   "W": 21
   },
   "curated_in_ring": 14,
   "dropped": [
@@ -166,6 +166,7 @@
    "kmCbd": 1.7,
    "kmComo": 5.5,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -177,6 +178,7 @@
    "kmCbd": 3.6,
    "kmComo": 5.3,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -188,17 +190,7 @@
    "kmCbd": 4.2,
    "kmComo": 8.0,
    "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "Victoria Park",
-   "pc": "6100",
-   "lat": -31.97504,
-   "lng": 115.89772,
-   "sa2": "Victoria Park - Lathlain - Burswood",
-   "kmCbd": 4.3,
-   "kmComo": 4.5,
-   "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -210,6 +202,7 @@
    "kmCbd": 4.7,
    "kmComo": 5.7,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -221,28 +214,7 @@
    "kmCbd": 5.6,
    "kmComo": 7.1,
    "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "East Victoria Park",
-   "pc": "6101",
-   "lat": -31.98466,
-   "lng": 115.90836,
-   "sa2": "Bentley - Wilson - St James",
-   "kmCbd": 5.7,
-   "kmComo": 4.8,
-   "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "Carlisle",
-   "pc": "6101",
-   "lat": -31.97863,
-   "lng": 115.91711,
-   "sa2": "Bentley - Wilson - St James",
-   "kmCbd": 6.0,
-   "kmComo": 5.8,
-   "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -254,6 +226,7 @@
    "kmCbd": 6.1,
    "kmComo": 8.0,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -265,6 +238,7 @@
    "kmCbd": 6.6,
    "kmComo": 10.8,
    "sector": "E",
+   "bank": "north",
    "curated": true
   },
   {
@@ -276,6 +250,7 @@
    "kmCbd": 6.7,
    "kmComo": 9.7,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -287,6 +262,7 @@
    "kmCbd": 7.2,
    "kmComo": 11.8,
    "sector": "E",
+   "bank": "north",
    "curated": true
   },
   {
@@ -298,6 +274,7 @@
    "kmCbd": 7.9,
    "kmComo": 10.4,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -309,6 +286,7 @@
    "kmCbd": 8.0,
    "kmComo": 8.9,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -320,6 +298,7 @@
    "kmCbd": 8.1,
    "kmComo": 11.7,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -331,6 +310,7 @@
    "kmCbd": 8.9,
    "kmComo": 13.6,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -342,28 +322,7 @@
    "kmCbd": 9.1,
    "kmComo": 12.9,
    "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "Welshpool",
-   "pc": "6106",
-   "lat": -31.99151,
-   "lng": 115.94976,
-   "sa2": "Welshpool",
-   "kmCbd": 9.4,
-   "kmComo": 8.4,
-   "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "Queens Park",
-   "pc": "6107",
-   "lat": -32.00424,
-   "lng": 115.9423,
-   "sa2": "Forrestfield - Wattle Grove",
-   "kmCbd": 9.6,
-   "kmComo": 7.6,
-   "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -375,6 +334,7 @@
    "kmCbd": 9.8,
    "kmComo": 9.5,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -386,6 +346,7 @@
    "kmCbd": 10.3,
    "kmComo": 14.4,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -397,6 +358,7 @@
    "kmCbd": 10.5,
    "kmComo": 14.8,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -408,17 +370,7 @@
    "kmCbd": 11.0,
    "kmComo": 14.2,
    "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "East Cannington",
-   "pc": "6107",
-   "lat": -32.00567,
-   "lng": 115.96332,
-   "sa2": "Forrestfield - Wattle Grove",
-   "kmCbd": 11.3,
-   "kmComo": 9.6,
-   "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -430,6 +382,7 @@
    "kmCbd": 11.5,
    "kmComo": 15.6,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -441,6 +394,7 @@
    "kmCbd": 11.9,
    "kmComo": 16.5,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -452,6 +406,7 @@
    "kmCbd": 12.0,
    "kmComo": 15.4,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -463,6 +418,7 @@
    "kmCbd": 13.5,
    "kmComo": 13.2,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -474,6 +430,7 @@
    "kmCbd": 13.7,
    "kmComo": 17.6,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -485,17 +442,7 @@
    "kmCbd": 13.8,
    "kmComo": 15.4,
    "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "Wattle Grove",
-   "pc": "6107",
-   "lat": -32.00815,
-   "lng": 115.997,
-   "sa2": "Forrestfield - Wattle Grove",
-   "kmCbd": 14.2,
-   "kmComo": 12.8,
-   "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -507,17 +454,7 @@
    "kmCbd": 14.2,
    "kmComo": 17.4,
    "sector": "E",
-   "curated": false
-  },
-  {
-   "name": "Kenwick",
-   "pc": "6107",
-   "lat": -32.03319,
-   "lng": 115.98216,
-   "sa2": "Forrestfield - Wattle Grove",
-   "kmCbd": 14.5,
-   "kmComo": 11.9,
-   "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -529,6 +466,7 @@
    "kmCbd": 14.8,
    "kmComo": 19.1,
    "sector": "E",
+   "bank": "north",
    "curated": false
   },
   {
@@ -540,6 +478,7 @@
    "kmCbd": 14.8,
    "kmComo": 17.2,
    "sector": "E",
+   "bank": "south",
    "curated": false
   },
   {
@@ -551,6 +490,7 @@
    "kmCbd": 1.2,
    "kmComo": 6.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -562,6 +502,7 @@
    "kmCbd": 1.5,
    "kmComo": 6.3,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -573,6 +514,7 @@
    "kmCbd": 1.6,
    "kmComo": 6.9,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -584,6 +526,7 @@
    "kmCbd": 2.6,
    "kmComo": 7.8,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -595,6 +538,7 @@
    "kmCbd": 2.8,
    "kmComo": 8.2,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -606,6 +550,7 @@
    "kmCbd": 2.9,
    "kmComo": 7.9,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -617,6 +562,7 @@
    "kmCbd": 3.2,
    "kmComo": 8.7,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -628,6 +574,7 @@
    "kmCbd": 4.3,
    "kmComo": 9.7,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -639,6 +586,7 @@
    "kmCbd": 4.4,
    "kmComo": 9.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -650,6 +598,7 @@
    "kmCbd": 4.5,
    "kmComo": 9.6,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -661,6 +610,7 @@
    "kmCbd": 4.6,
    "kmComo": 9.7,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -672,6 +622,7 @@
    "kmCbd": 4.8,
    "kmComo": 10.1,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -683,6 +634,7 @@
    "kmCbd": 5.4,
    "kmComo": 9.9,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -694,6 +646,7 @@
    "kmCbd": 5.6,
    "kmComo": 10.3,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -705,6 +658,7 @@
    "kmCbd": 5.8,
    "kmComo": 11.1,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -716,6 +670,7 @@
    "kmCbd": 6.7,
    "kmComo": 11.9,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -727,6 +682,7 @@
    "kmCbd": 7.6,
    "kmComo": 13.0,
    "sector": "N",
+   "bank": "north",
    "curated": true
   },
   {
@@ -738,6 +694,7 @@
    "kmCbd": 8.1,
    "kmComo": 13.5,
    "sector": "N",
+   "bank": "north",
    "curated": true
   },
   {
@@ -749,6 +706,7 @@
    "kmCbd": 8.1,
    "kmComo": 12.1,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -760,6 +718,7 @@
    "kmCbd": 8.8,
    "kmComo": 13.7,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -771,6 +730,7 @@
    "kmCbd": 8.9,
    "kmComo": 13.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -782,6 +742,7 @@
    "kmCbd": 9.2,
    "kmComo": 14.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -793,6 +754,7 @@
    "kmCbd": 9.5,
    "kmComo": 13.6,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -804,6 +766,7 @@
    "kmCbd": 9.6,
    "kmComo": 15.0,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -815,6 +778,7 @@
    "kmCbd": 9.7,
    "kmComo": 15.1,
    "sector": "N",
+   "bank": "north",
    "curated": true
   },
   {
@@ -826,6 +790,7 @@
    "kmCbd": 10.4,
    "kmComo": 14.3,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -837,6 +802,7 @@
    "kmCbd": 10.5,
    "kmComo": 15.7,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -848,6 +814,7 @@
    "kmCbd": 10.8,
    "kmComo": 16.1,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -859,6 +826,7 @@
    "kmCbd": 11.1,
    "kmComo": 15.9,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -870,6 +838,7 @@
    "kmCbd": 11.3,
    "kmComo": 16.4,
    "sector": "N",
+   "bank": "north",
    "curated": true
   },
   {
@@ -881,6 +850,7 @@
    "kmCbd": 12.1,
    "kmComo": 17.2,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -892,6 +862,7 @@
    "kmCbd": 12.2,
    "kmComo": 16.5,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -903,6 +874,7 @@
    "kmCbd": 12.3,
    "kmComo": 17.8,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -914,6 +886,7 @@
    "kmCbd": 12.6,
    "kmComo": 18.0,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -925,6 +898,7 @@
    "kmCbd": 12.9,
    "kmComo": 17.1,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -936,6 +910,7 @@
    "kmCbd": 13.1,
    "kmComo": 18.3,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -947,6 +922,7 @@
    "kmCbd": 13.2,
    "kmComo": 18.5,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -958,6 +934,7 @@
    "kmCbd": 13.7,
    "kmComo": 18.5,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -969,6 +946,7 @@
    "kmCbd": 14.0,
    "kmComo": 19.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -980,6 +958,7 @@
    "kmCbd": 14.0,
    "kmComo": 19.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -991,6 +970,7 @@
    "kmCbd": 14.0,
    "kmComo": 18.4,
    "sector": "N",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1002,6 +982,7 @@
    "kmCbd": 3.2,
    "kmComo": 2.2,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1013,6 +994,19 @@
    "kmCbd": 4.0,
    "kmComo": 2.8,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Victoria Park",
+   "pc": "6100",
+   "lat": -31.97504,
+   "lng": 115.89772,
+   "sa2": "Victoria Park - Lathlain - Burswood",
+   "kmCbd": 4.3,
+   "kmComo": 4.5,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1024,7 +1018,32 @@
    "kmCbd": 5.4,
    "kmComo": 0.0,
    "sector": "S",
+   "bank": "south",
    "curated": true
+  },
+  {
+   "name": "East Victoria Park",
+   "pc": "6101",
+   "lat": -31.98466,
+   "lng": 115.90836,
+   "sa2": "Bentley - Wilson - St James",
+   "kmCbd": 5.7,
+   "kmComo": 4.8,
+   "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Carlisle",
+   "pc": "6101",
+   "lat": -31.97863,
+   "lng": 115.91711,
+   "sa2": "Bentley - Wilson - St James",
+   "kmCbd": 6.0,
+   "kmComo": 5.8,
+   "sector": "S",
+   "bank": "south",
+   "curated": false
   },
   {
    "name": "Bentley",
@@ -1035,6 +1054,7 @@
    "kmCbd": 6.6,
    "kmComo": 3.3,
    "sector": "S",
+   "bank": "south",
    "curated": true
   },
   {
@@ -1046,6 +1066,7 @@
    "kmCbd": 6.6,
    "kmComo": 2.0,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1057,6 +1078,7 @@
    "kmCbd": 6.6,
    "kmComo": 1.4,
    "sector": "S",
+   "bank": "south",
    "curated": true
   },
   {
@@ -1068,6 +1090,7 @@
    "kmCbd": 6.9,
    "kmComo": 2.5,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1079,6 +1102,7 @@
    "kmCbd": 7.0,
    "kmComo": 5.0,
    "sector": "S",
+   "bank": "south",
    "curated": true
   },
   {
@@ -1090,6 +1114,7 @@
    "kmCbd": 7.4,
    "kmComo": 3.0,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1101,6 +1126,7 @@
    "kmCbd": 7.7,
    "kmComo": 2.2,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1112,6 +1138,7 @@
    "kmCbd": 8.1,
    "kmComo": 3.4,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1123,6 +1150,7 @@
    "kmCbd": 8.2,
    "kmComo": 2.9,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1134,6 +1162,7 @@
    "kmCbd": 8.8,
    "kmComo": 4.0,
    "sector": "S",
+   "bank": "south",
    "curated": true
   },
   {
@@ -1145,7 +1174,20 @@
    "kmCbd": 8.9,
    "kmComo": 5.1,
    "sector": "S",
+   "bank": "south",
    "curated": true
+  },
+  {
+   "name": "Welshpool",
+   "pc": "6106",
+   "lat": -31.99151,
+   "lng": 115.94976,
+   "sa2": "Welshpool",
+   "kmCbd": 9.4,
+   "kmComo": 8.4,
+   "sector": "S",
+   "bank": "south",
+   "curated": false
   },
   {
    "name": "Booragoon",
@@ -1156,6 +1198,19 @@
    "kmCbd": 9.6,
    "kmComo": 4.5,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Queens Park",
+   "pc": "6107",
+   "lat": -32.00424,
+   "lng": 115.9423,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 9.6,
+   "kmComo": 7.6,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1167,6 +1222,7 @@
    "kmCbd": 9.6,
    "kmComo": 4.7,
    "sector": "S",
+   "bank": "south",
    "curated": true
   },
   {
@@ -1178,6 +1234,7 @@
    "kmCbd": 9.6,
    "kmComo": 4.2,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1189,6 +1246,19 @@
    "kmCbd": 9.7,
    "kmComo": 5.3,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Attadale",
+   "pc": "6156",
+   "lat": -32.02486,
+   "lng": 115.79968,
+   "sa2": "Willagee",
+   "kmCbd": 9.9,
+   "kmComo": 6.4,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1200,6 +1270,7 @@
    "kmCbd": 10.1,
    "kmComo": 4.8,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1211,6 +1282,7 @@
    "kmCbd": 10.1,
    "kmComo": 7.1,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1222,6 +1294,7 @@
    "kmCbd": 10.6,
    "kmComo": 6.8,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1233,6 +1306,7 @@
    "kmCbd": 10.7,
    "kmComo": 6.1,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1244,6 +1318,31 @@
    "kmCbd": 11.1,
    "kmComo": 6.0,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Bicton",
+   "pc": "6157",
+   "lat": -32.03006,
+   "lng": 115.7845,
+   "sa2": "Bicton - Palmyra",
+   "kmCbd": 11.3,
+   "kmComo": 8.0,
+   "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "East Cannington",
+   "pc": "6107",
+   "lat": -32.00567,
+   "lng": 115.96332,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 11.3,
+   "kmComo": 9.6,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1255,6 +1354,7 @@
    "kmCbd": 11.3,
    "kmComo": 7.1,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1266,6 +1366,7 @@
    "kmCbd": 11.5,
    "kmComo": 6.4,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1277,6 +1378,7 @@
    "kmCbd": 11.6,
    "kmComo": 6.2,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1288,6 +1390,7 @@
    "kmCbd": 11.6,
    "kmComo": 7.0,
    "sector": "S",
+   "bank": "south",
    "curated": true
   },
   {
@@ -1299,6 +1402,7 @@
    "kmCbd": 11.8,
    "kmComo": 8.8,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1310,6 +1414,7 @@
    "kmCbd": 11.8,
    "kmComo": 7.9,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1321,6 +1426,7 @@
    "kmCbd": 12.0,
    "kmComo": 6.7,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1332,6 +1438,7 @@
    "kmCbd": 12.5,
    "kmComo": 8.0,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1343,6 +1450,7 @@
    "kmCbd": 12.7,
    "kmComo": 9.2,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1354,6 +1462,19 @@
    "kmCbd": 12.7,
    "kmComo": 8.8,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "East Fremantle",
+   "pc": "6158",
+   "lat": -32.03675,
+   "lng": 115.7664,
+   "sa2": "East Fremantle",
+   "kmCbd": 13.0,
+   "kmComo": 9.8,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1365,6 +1486,7 @@
    "kmCbd": 13.2,
    "kmComo": 7.9,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1376,6 +1498,7 @@
    "kmCbd": 13.6,
    "kmComo": 9.2,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1387,6 +1510,7 @@
    "kmCbd": 13.7,
    "kmComo": 8.7,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1398,6 +1522,31 @@
    "kmCbd": 14.2,
    "kmComo": 8.7,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Wattle Grove",
+   "pc": "6107",
+   "lat": -32.00815,
+   "lng": 115.997,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 14.2,
+   "kmComo": 12.8,
+   "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Kenwick",
+   "pc": "6107",
+   "lat": -32.03319,
+   "lng": 115.98216,
+   "sa2": "Forrestfield - Wattle Grove",
+   "kmCbd": 14.5,
+   "kmComo": 11.9,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1409,6 +1558,7 @@
    "kmCbd": 14.5,
    "kmComo": 10.6,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1420,6 +1570,7 @@
    "kmCbd": 14.6,
    "kmComo": 9.4,
    "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1431,6 +1582,19 @@
    "kmCbd": 14.6,
    "kmComo": 9.8,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "Fremantle",
+   "pc": "6160",
+   "lat": -32.05393,
+   "lng": 115.76048,
+   "sa2": "Fremantle",
+   "kmCbd": 14.8,
+   "kmComo": 11.2,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1442,6 +1606,19 @@
    "kmCbd": 15.0,
    "kmComo": 10.6,
    "sector": "S",
+   "bank": "south",
+   "curated": false
+  },
+  {
+   "name": "White Gum Valley",
+   "pc": "6162",
+   "lat": -32.06135,
+   "lng": 115.7682,
+   "sa2": "Fremantle - South",
+   "kmCbd": 15.0,
+   "kmComo": 11.1,
+   "sector": "S",
+   "bank": "south",
    "curated": false
   },
   {
@@ -1453,6 +1630,7 @@
    "kmCbd": 0.0,
    "kmComo": 5.4,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1464,6 +1642,7 @@
    "kmCbd": 3.1,
    "kmComo": 6.8,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1475,6 +1654,7 @@
    "kmCbd": 3.1,
    "kmComo": 7.3,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1486,6 +1666,7 @@
    "kmCbd": 4.4,
    "kmComo": 8.4,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1497,6 +1678,7 @@
    "kmCbd": 4.7,
    "kmComo": 7.6,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1508,6 +1690,7 @@
    "kmCbd": 4.9,
    "kmComo": 7.4,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1519,6 +1702,7 @@
    "kmCbd": 5.3,
    "kmComo": 7.1,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1530,6 +1714,7 @@
    "kmCbd": 5.8,
    "kmComo": 5.3,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1541,6 +1726,7 @@
    "kmCbd": 6.2,
    "kmComo": 6.0,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1552,6 +1738,7 @@
    "kmCbd": 7.0,
    "kmComo": 10.0,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1563,6 +1750,7 @@
    "kmCbd": 7.4,
    "kmComo": 8.4,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1574,6 +1762,7 @@
    "kmCbd": 7.6,
    "kmComo": 11.1,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1585,6 +1774,7 @@
    "kmCbd": 7.6,
    "kmComo": 6.0,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1596,6 +1786,7 @@
    "kmCbd": 8.6,
    "kmComo": 8.1,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1607,6 +1798,7 @@
    "kmCbd": 9.2,
    "kmComo": 9.6,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1618,6 +1810,7 @@
    "kmCbd": 9.3,
    "kmComo": 11.5,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1629,17 +1822,7 @@
    "kmCbd": 9.4,
    "kmComo": 12.9,
    "sector": "W",
-   "curated": false
-  },
-  {
-   "name": "Attadale",
-   "pc": "6156",
-   "lat": -32.02486,
-   "lng": 115.79968,
-   "sa2": "Willagee",
-   "kmCbd": 9.9,
-   "kmComo": 6.4,
-   "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1651,6 +1834,7 @@
    "kmCbd": 10.2,
    "kmComo": 9.4,
    "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1662,17 +1846,7 @@
    "kmCbd": 10.2,
    "kmComo": 8.9,
    "sector": "W",
-   "curated": false
-  },
-  {
-   "name": "Bicton",
-   "pc": "6157",
-   "lat": -32.03006,
-   "lng": 115.7845,
-   "sa2": "Bicton - Palmyra",
-   "kmCbd": 11.3,
-   "kmComo": 8.0,
-   "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1684,17 +1858,7 @@
    "kmCbd": 11.5,
    "kmComo": 9.4,
    "sector": "W",
-   "curated": false
-  },
-  {
-   "name": "East Fremantle",
-   "pc": "6158",
-   "lat": -32.03675,
-   "lng": 115.7664,
-   "sa2": "East Fremantle",
-   "kmCbd": 13.0,
-   "kmComo": 9.8,
-   "sector": "W",
+   "bank": "north",
    "curated": false
   },
   {
@@ -1706,28 +1870,7 @@
    "kmCbd": 14.1,
    "kmComo": 11.3,
    "sector": "W",
-   "curated": false
-  },
-  {
-   "name": "Fremantle",
-   "pc": "6160",
-   "lat": -32.05393,
-   "lng": 115.76048,
-   "sa2": "Fremantle",
-   "kmCbd": 14.8,
-   "kmComo": 11.2,
-   "sector": "W",
-   "curated": false
-  },
-  {
-   "name": "White Gum Valley",
-   "pc": "6162",
-   "lat": -32.06135,
-   "lng": 115.7682,
-   "sa2": "Fremantle - South",
-   "kmCbd": 15.0,
-   "kmComo": 11.1,
-   "sector": "W",
+   "bank": "north",
    "curated": false
   }
  ]

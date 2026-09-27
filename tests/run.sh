@@ -29,6 +29,24 @@ else
   echo "  build_perth_ring.py FAILED"; fail=1
 fi
 python3 scripts/fetch_listings.py --plan >/dev/null 2>&1 && echo "  fetch_listings.py --plan ok" || { echo "  fetch_listings.py FAILED"; fail=1; }
+# A sweep that stops early must still have covered all four sides of the city.
+if out=$(python3 - <<'PYEOF'
+import sys, collections
+sys.path.insert(0, "scripts"); sys.path.insert(0, "model")
+import fetch_listings as F
+ring, targets = F.load_ring()
+for n in (8, 20, 40, 80):
+    c = collections.Counter(t["sector"] for t in targets[:n])
+    missing = [k for k in "NESW" if not c.get(k)]
+    if missing:
+        print(f"  SWEEP ORDER FAILED: the first {n} suburbs miss {missing}")
+        raise SystemExit(1)
+    if max(c.values()) - min(c.values()) > 1:
+        print(f"  SWEEP ORDER FAILED: first {n} unbalanced: {dict(c)}")
+        raise SystemExit(1)
+print(f"  sweep order stays balanced across N/E/S/W at every truncation point")
+PYEOF
+); then echo "$out"; else echo "$out"; fail=1; fi
 
 echo "== 2. web == root copy (deploy serves /index.html) =="
 if diff -q web/index.html index.html >/dev/null; then echo "  in sync"; else echo "  OUT OF SYNC: cp web/index.html index.html"; fail=1; fi

@@ -296,10 +296,35 @@ def search_suburb(key, suburb, pc):
 # ---------------------------------------------------------------------------
 
 
+def interleave_by_sector(suburbs):
+    """Round-robin the sweep across north, east, south and west.
+
+    This is not cosmetic. The ring file is grouped by sector for humans to read,
+    and sweeping it in that order means any early stop, a rate limit, a timeout,
+    a cancelled job, silently amputates whole directions: the 2026-09-02 run hit
+    its API limit partway through and published 67 eastern listings, 5 northern
+    and nothing at all from the south or west, having never searched Como,
+    Bentley or Fremantle. Taking one suburb from each sector in turn, nearest
+    the CBD first, means a sweep that covers only half the ring still covers all
+    four sides of the city, and the meta records what was missed.
+    """
+    lanes = {}
+    for s in suburbs:
+        lanes.setdefault(s["sector"], []).append(s)
+    for lane in lanes.values():
+        lane.sort(key=lambda x: x["kmCbd"])
+    out, keys = [], sorted(lanes)
+    for i in range(max(len(v) for v in lanes.values()) if lanes else 0):
+        for k in keys:
+            if i < len(lanes[k]):
+                out.append(lanes[k][i])
+    return out
+
+
 def load_ring():
     with open(RING_PATH) as fh:
         ring = json.load(fh)
-    targets = ring["suburbs"]
+    targets = interleave_by_sector(ring["suburbs"])
     offset = int(os.environ.get("SUBURB_OFFSET", 0))
     cap = int(os.environ.get("SUBURB_CAP", 0))
     if offset:
@@ -395,8 +420,9 @@ def mark_new(listings):
     return sum(1 for x in listings if x["new"])
 
 
-def write(listings, ring, searched, benches):
+def write(listings, ring, attempted, coverage, stopped, failures, benches):
     priced = [b for b in benches.values() if b.get("price")]
+    complete = not stopped and attempted >= ring["meta"]["count"]
     out = {
         "meta": {
             "generated": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
@@ -404,8 +430,12 @@ def write(listings, ring, searched, benches):
             "scope": "perth-ring",
             "valued": "local-asking",
             "radius_km": ring["meta"]["radius_km"],
-            "suburbs_searched": searched,
+            "suburbs_searched": attempted,
             "suburbs_in_ring": ring["meta"]["count"],
+            "suburbs_failed": failures,
+            "sweep_complete": complete,
+            "stopped_early": stopped,
+            "coverage": coverage,
             "note": "Best-value houses across the inner-Perth ring (every "
                     "residential suburb within "
                     f"{ring['meta']['radius_km']:g}km of the CBD, north, east, "
@@ -468,6 +498,24 @@ def rescore():
     doc["meta"]["valued"] = "local-asking"
     doc["meta"]["rescored"] = datetime.datetime.now(
         datetime.timezone.utc).strftime("%Y-%m-%d")
+
+    # A feed pulled before the coverage fields existed carries a
+    # suburbs_searched that was computed as (ring size - failures), so a sweep
+    # that died after 41 suburbs still claimed 137. We cannot recover the true
+    # figure here, but a whole sector with zero listings out of dozens of
+    # suburbs is not a quiet market, it is a sector that was never searched. Flag
+    # it rather than leave a number that flatters the pull.
+    if "sweep_complete" not in doc["meta"]:
+        present = {p.get("sector") for p in scored}
+        empty = [k for k in ("N", "E", "S", "W") if k not in present]
+        doc["meta"]["suburbs_searched"] = None
+        doc["meta"]["sweep_complete"] = not empty
+        if empty:
+            doc["meta"]["stopped_early"] = (
+                "this pull predates coverage tracking and returned nothing at "
+                "all from " + "/".join(empty) + ", so it did not finish the ring")
+            print(f"  flagged as an incomplete sweep: no listings from "
+                  f"{'/'.join(empty)}")
     with open(OUT_PATH, "w") as fh:
         json.dump(doc, fh, indent=2)
         fh.write("\n")
@@ -513,8 +561,18 @@ def main(argv):
           f"{ring['meta']['radius_km']:g}km of the Perth CBD "
           f"(N/E/S/W), {PAGE_SIZE} results each.")
 
-    pools, logged_shape, failures = {}, False, 0
+    # Count what was actually ATTEMPTED, per sector. The old code reported
+    # len(targets) - failures, which claimed 137 of 143 suburbs searched on a run
+    # that stopped after 41 and never touched the south or west at all. A number
+    # that flatters a broken sweep is worse than no number.
+    total_by_sector = {}
+    for s in ring["suburbs"]:
+        total_by_sector[s["sector"]] = total_by_sector.get(s["sector"], 0) + 1
+    tried_by_sector = {k: 0 for k in total_by_sector}
+
+    pools, logged_shape, failures, stopped = {}, False, 0, None
     for i, s in enumerate(targets, 1):
+        tried_by_sector[s["sector"]] = tried_by_sector.get(s["sector"], 0) + 1
         try:
             payload = search_suburb(key, s["name"], s["pc"])
         except urllib.error.HTTPError as e:
@@ -522,8 +580,10 @@ def main(argv):
             print(f"  warn: {s['name']} HTTP {e.code}: {detail}", file=sys.stderr)
             failures += 1
             if e.code in (401, 403) or (e.code == 429 and failures > 5):
-                print("  stopping the sweep: the API is refusing calls "
-                      "(bad key or quota exhausted).", file=sys.stderr)
+                stopped = ("the API refused further calls (HTTP "
+                           f"{e.code}: bad key, or the plan's quota is spent)")
+                print(f"  STOPPING the sweep after {i} of {len(targets)} "
+                      f"suburbs: {stopped}", file=sys.stderr)
                 break
             continue
         except Exception as e:
@@ -544,7 +604,13 @@ def main(argv):
                   f"{len(items)} raw, {len(got)} in brief")
         time.sleep(THROTTLE_S)
 
-    searched = len(targets) - failures
+    attempted = sum(tried_by_sector.values())
+    coverage = {k: {"searched": tried_by_sector.get(k, 0), "in_ring": v}
+                for k, v in sorted(total_by_sector.items())}
+    if stopped:
+        print(f"  coverage after the stop: "
+              + ", ".join(f"{k} {c['searched']}/{c['in_ring']}"
+                          for k, c in coverage.items()), file=sys.stderr)
     if not pools:
         print("No live listings parsed. Keeping the committed data so the page "
               "does not go blank. Check the [shape] logs above and adjust field "
@@ -560,12 +626,16 @@ def main(argv):
         sec_counts[p["sector"]] = sec_counts.get(p["sector"], 0) + 1
     print(f"\n{len(scored)} listings in brief across {len(pools)} suburbs; "
           f"publishing {len(listings)}.")
-    print(f"  by sector: " + ", ".join(f"{k}={v}" for k, v in sorted(sec_counts.items())))
+    print("  by sector (published / suburbs searched / suburbs in ring): "
+          + ", ".join(f"{k}={sec_counts.get(k, 0)}/{coverage[k]['searched']}"
+                      f"/{coverage[k]['in_ring']}" for k in sorted(coverage)))
+    if stopped:
+        print(f"  WARNING: incomplete sweep, {stopped}. The page will say so.")
     print(f"  {sum(1 for p in listings if p['bargain'])} bargains, "
           f"{new_count} new since the last refresh, "
           f"{sum(1 for p in listings if not p['curated'])} outside the curated 14.")
 
-    write(listings, ring, searched, benches)
+    write(listings, ring, attempted, coverage, stopped, failures, benches)
     print(f"Wrote {len(listings)} listings to data/listings.json")
     return 0
 
