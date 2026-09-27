@@ -544,7 +544,9 @@ def write(listings, ring, attempted, coverage, stopped, failures, benches):
             "rotating": rotating,
             "cadence_days": PERIOD_DAYS,
             "slice_size": cap or ring["meta"]["count"],
-            "window_days": WINDOW_DAYS if rotating else None,
+            # The rolling window applies to every run, not just a rotating one:
+            # a full sweep cut short by quota also leans on carried listings.
+            "window_days": WINDOW_DAYS,
             "cycle_days": (((ring["meta"]["count"] + cap - 1) // cap) * PERIOD_DAYS
                            if rotating else PERIOD_DAYS),
             "suburbs_in_window": len(window_subs),
