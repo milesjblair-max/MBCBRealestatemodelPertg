@@ -1155,8 +1155,22 @@ function listingFit(p){
 // city it sits on, so the list doubles as the answer to "which suburbs are
 // north / east / south / west". Counts are of the whole feed, not the current
 // compass selection, so picking a suburb always shows something.
+// Past this, the feed is old enough that a buyer should be told before they
+// act on a price. The refresh runs daily, so anything beyond a few days means
+// the job has been failing quietly.
+const STALE_DAYS = 3;
+function ageInDays(generated){
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(generated||'')) return null;
+  const d = Date.parse(generated + 'T00:00:00Z');
+  if(isNaN(d)) return null;
+  return Math.max(0, Math.floor((Date.now() - d) / 86400000));
+}
 // the feed writes its reason as a sentence fragment; it follows a full stop here
-function cap1(t){ return t ? String(t).charAt(0).toUpperCase()+String(t).slice(1) : ''; }
+function cap1(t){
+  if(!t) return '';
+  const x=String(t).trim();
+  return x.charAt(0).toUpperCase()+x.slice(1)+(/[.!?]$/.test(x)?'':'.');
+}
 function suburbPicker(list, names){
   if(names.length<2) return '';
   const byName={}; list.forEach(p=>{ byName[p.suburb]=(byName[p.suburb]||0)+1; });
@@ -1218,9 +1232,17 @@ function renderProperties(){
   // with no bargains in it, and the second reading is the dangerous one.
   const cov=(data.meta&&data.meta.coverage)||null;
   const incomplete = ringed && data.meta && data.meta.sweep_complete===false;
-  document.getElementById('propSweep').innerHTML = incomplete
-    ? `<div class="sweep-warn"><span class="ic">!</span><span><b>This sweep did not finish.</b> ${cap1(data.meta.stopped_early)||'It stopped before covering the whole ring.'}${cov?` Suburbs searched: ${['N','E','S','W'].filter(k=>cov[k]).map(k=>`${SECTOR_NAME[k]} ${cov[k].searched}/${cov[k].in_ring}`).join(', ')}.`:''} A side of the city showing zero here means <b>not searched</b>, not "no bargains there". Re-run the refresh action once quota allows.</span></div>`
-    : '';
+  // Stale data is the quieter failure and the more dangerous one: the daily job
+  // exits cleanly when the API refuses it, so the page kept saying "live" while
+  // serving listings that were weeks old and largely sold. Say the age out loud.
+  const age = ageInDays(gen);
+  const warns=[];
+  if(age!==null && age>STALE_DAYS) warns.push(
+    `<b>These listings are ${age} days old.</b> The daily refresh has not published since ${gen}, usually because the data plan's monthly request quota is spent. Treat prices as indicative and check each listing before acting on it.`);
+  if(incomplete) warns.push(
+    `<b>The last sweep did not finish.</b> ${cap1(data.meta.stopped_early)||'It stopped before covering the whole ring.'}${cov?` Suburbs searched: ${['N','E','S','W'].filter(k=>cov[k]).map(k=>`${SECTOR_NAME[k]} ${cov[k].searched}/${cov[k].in_ring}`).join(', ')}.`:''} A side of the city showing zero here means <b>not searched</b>, not "no bargains there".`);
+  document.getElementById('propSweep').innerHTML = warns.map(w=>
+    `<div class="sweep-warn"><span class="ic">!</span><span>${w}</span></div>`).join('');
 
   // compass row: which side of the city. Counts respect the other filters, so
   // the numbers always match what clicking would actually show.

@@ -221,6 +221,14 @@ stop still covers all four sides, and the feed records what was actually
 the page surfaces as a banner. A side of the city showing zero must never be
 allowed to read as "no bargains there" when the truth is "never searched".
 
+**Stale is a failure state, and must be visible.** `fetch_listings.py` exits 0
+when the API refuses it, so the daily job showed a green tick for 25 days while
+publishing nothing and the page still read "Live". The feed now emits a GitHub
+Actions `::warning::` when it publishes nothing, and the page shows the data's
+age whenever it is more than `STALE_DAYS` (3) old. Never remove either: a buyer
+reading month-old asking prices as current is the worst outcome this tool can
+produce.
+
 **Bargains are measured against the local asking market, never an invented
 median.** Only the 14 suburbs in `data/suburbs.json` have researched medians.
 For the other 129, `model/value.py` prices each listing against the median ask
@@ -245,7 +253,11 @@ official REA feed and is rate-limited, so:
   `fetch()`es. Auth is a `RAPIDAPI_KEY` repo secret; with no key the script is a
   safe no-op and the committed sample shows.
 - A full sweep is **one call per suburb: 143 a run, ~4,300 a month.** The owner
-  chose the full daily sweep, which needs a paid RapidAPI plan. To spend less,
+  chose the full daily sweep. **As at 2026-09, the RapidAPI plan is BASIC and
+  its monthly quota was exhausted in early September**, so the sweep has been
+  returning HTTP 429 and publishing nothing since 2026-09-02. Either the plan
+  goes up, or `SUBURB_CAP` comes down and `SUBURB_OFFSET` rotates. Do not leave
+  it as a full daily sweep on a quota that cannot serve it. To spend less,
   set `SUBURB_CAP` and rotate `SUBURB_OFFSET` on the workflow step rather than
   shrinking the ring. `python3 scripts/fetch_listings.py --plan` prints the
   exact count; `--rescore` re-values the committed feed with zero API calls.

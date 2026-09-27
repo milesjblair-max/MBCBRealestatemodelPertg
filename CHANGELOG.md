@@ -604,6 +604,23 @@ were honest or that the *tool design* was hard to misuse. That is the lesson.
 >
 > **Where it lives** `web/index.html`.
 
+### 3.8 Stale data now says it is stale
+
+> **What changed** Checking why the south was empty turned up something worse:
+> the RapidAPI plan's monthly quota ran out in early September, so every daily
+> run since 2026-09-02 had returned HTTP 429, published nothing, and finished
+> with a green tick. The page went on saying "Live from Realty in AU" over
+> listings that were three and a half weeks old. The fetch now writes a GitHub
+> Actions warning annotation when it publishes nothing, so the run stops looking
+> like a clean pass, and the page shows the data's age whenever it is more than
+> three days old.
+>
+> **What it means** The tool can be behind. What it must never do is look
+> current while it is behind, because the whole point is deciding whether to act
+> on a price this weekend.
+>
+> **Where it lives** `scripts/fetch_listings.py`, `web/index.html`.
+
 ---
 
 ## Verify everything yourself

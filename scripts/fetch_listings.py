@@ -612,6 +612,14 @@ def main(argv):
               + ", ".join(f"{k} {c['searched']}/{c['in_ring']}"
                           for k, c in coverage.items()), file=sys.stderr)
     if not pools:
+        # A green tick on a job that published nothing is how the feed sat
+        # untouched for 25 days while the page still looked live. Exit 0 so the
+        # committed data stays put, but annotate the run so the Actions tab
+        # shows a warning instead of a clean pass.
+        why = stopped or ("the API returned no matching houses, so a response "
+                          "shape may have changed")
+        print(f"::warning title=Listings not refreshed::No listings published: "
+              f"{why}. The page is still serving data from the last good run.")
         print("No live listings parsed. Keeping the committed data so the page "
               "does not go blank. Check the [shape] logs above and adjust field "
               "paths in normalise()/_image() if needed.")

@@ -251,12 +251,25 @@ const partial = await page.evaluate((fix) => {
   const chip = document.querySelector('#propSectors .schip[data-sector="S"]');
   return { warn: document.getElementById('propSweep').textContent.replace(/\s+/g, ' ').trim(), disabled: chip.disabled, title: chip.getAttribute('title') };
 }, RING_FIXTURE);
-ok(/did not finish/i.test(partial.warn), 'an unfinished sweep is announced: ' + partial.warn.slice(0, 90));
+ok(/sweep did not finish/i.test(partial.warn), 'an unfinished sweep is announced: ' + partial.warn.slice(0, 90));
 ok(/South 0\/54/.test(partial.warn), 'the warning reports per-side coverage: ' + partial.warn.slice(0, 160));
-ok(/This sweep did not finish\. The API refused/.test(partial.warn),
+ok(/did not finish\. The API refused/.test(partial.warn),
   'the reason is capitalised so the banner reads as sentences: ' + partial.warn.slice(0, 80));
 ok(partial.disabled && /did not reach/.test(partial.title),
   'an empty side of the city says it was not searched, not that it has no bargains: ' + partial.title);
+
+// ---- stale data must announce itself; a clean-looking page served 25-day-old
+// ---- listings because the daily job exits 0 when the API quota is spent ----
+const stale = await page.evaluate((fix) => {
+  const old = new Date(Date.now() - 25 * 86400000).toISOString().slice(0, 10);
+  const fresh = new Date().toISOString().slice(0, 10);
+  const run = (gen) => { const f = JSON.parse(JSON.stringify(fix)); f.meta.generated = gen;
+    LISTINGS = f; PROP_SECTOR = 'all'; PROP_SUBURB = 'all'; renderProperties();
+    return document.getElementById('propSweep').textContent.replace(/\s+/g, ' ').trim(); };
+  return { old: run(old), fresh: run(fresh) };
+}, RING_FIXTURE);
+ok(/listings are 25 days old/.test(stale.old), 'a stale feed states its age: ' + stale.old.slice(0, 90));
+ok(stale.fresh === '', 'a feed refreshed today shows no staleness warning: ' + stale.fresh);
 
 // hand the page back its real feed so the later sort/filter checks run against
 // a full list rather than these three fixtures
