@@ -56,7 +56,8 @@
       "rank": 88.3,
       "underMedian": false,
       "reason": "3-bed, 1012sqm in Redcliffe, 10.4km from Como, asking about 20% under the other houses on the market in the suburb (3 compared, medium confidence).",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bayswater",
@@ -89,7 +90,8 @@
       "rank": 76.7,
       "underMedian": true,
       "reason": "4-bed, 532sqm in Bayswater, 10.8km from Como, asking about 15% under the other houses on the market in the suburb (4 compared, medium confidence).",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "East Cannington",
@@ -122,7 +124,8 @@
       "rank": 72.3,
       "underMedian": false,
       "reason": "5-bed, 694sqm in East Cannington, 9.6km from Como, asking about 13% under the other houses on the market in the suburb (4 compared, medium confidence). The price is a 'from' figure, so expect it to sell above.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Hazelmere",
@@ -155,7 +158,8 @@
       "rank": 69.9,
       "underMedian": false,
       "reason": "3-bed, 1032sqm in Hazelmere, 17.2km from Como, asking about 19% under comparable listings across this side of the city (47 compared, low confidence). The price is a 'from' figure, so expect it to sell above.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Lockridge",
@@ -188,7 +192,8 @@
       "rank": 66.3,
       "underMedian": false,
       "reason": "3-bed, 1426sqm in Lockridge, 15.6km from Como, asking about 13% under the other houses on the market in the suburb (3 compared, medium confidence). The price is a 'from' figure, so expect it to sell above.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Queens Park",
@@ -221,7 +226,8 @@
       "rank": 59.2,
       "underMedian": false,
       "reason": "4-bed in Queens Park, 7.6km from Como, asking about 14% under the other houses on the market in the suburb (4 compared, low confidence). No land size published, so confirm the block before anything else.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Beechboro",
@@ -254,7 +260,8 @@
       "rank": 59.1,
       "underMedian": false,
       "reason": "3-bed in Beechboro, 16.5km from Como, asking about 17% under comparable listings across this side of the city (47 compared, low confidence). No land size published, so confirm the block before anything else.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "High Wycombe",
@@ -287,7 +294,8 @@
       "rank": 58.7,
       "underMedian": false,
       "reason": "3-bed, 839sqm in High Wycombe, 15.4km from Como, asking about 11% under the other houses on the market in the suburb (4 compared, medium confidence).",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bayswater",
@@ -320,7 +328,8 @@
       "rank": 57.0,
       "underMedian": true,
       "reason": "3-bed, 524sqm in Bayswater, 10.8km from Como, asking about 9% under the other houses on the market in the suburb (4 compared, medium confidence). The price is a 'from' figure, so expect it to sell above.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Cloverdale",
@@ -353,7 +362,8 @@
       "rank": 54.1,
       "underMedian": false,
       "reason": "4-bed, 873sqm in Cloverdale, 8.9km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Ashfield",
@@ -386,7 +396,8 @@
       "rank": 50.1,
       "underMedian": false,
       "reason": "3-bed in Ashfield, 11.7km from Como, asking about 12% under comparable listings across this side of the city (47 compared, low confidence). No land size published, so confirm the block before anything else.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Cloverdale",
@@ -419,7 +430,8 @@
       "rank": 49.2,
       "underMedian": false,
       "reason": "3-bed in Cloverdale, 8.9km from Como, asking about 11% under the other houses on the market in the suburb (4 compared, low confidence). No land size published, so confirm the block before anything else.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Beechboro",
@@ -452,7 +464,8 @@
       "rank": 45.3,
       "underMedian": false,
       "reason": "4-bed, 737sqm in Beechboro, 16.5km from Como, asking about 8% under comparable listings across this side of the city (47 compared, low confidence). The price is a 'from' figure, so expect it to sell above.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Wattle Grove",
@@ -485,7 +498,8 @@
       "rank": 44.1,
       "underMedian": false,
       "reason": "4-bed, 606sqm in Wattle Grove, 12.8km from Como, priced in line with comparable listings (3 compared). Fits the brief rather than undercutting it.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bedford",
@@ -518,7 +532,8 @@
       "rank": 43.3,
       "underMedian": false,
       "reason": "3-bed, 607sqm in Bedford, 9.7km from Como, priced in line with comparable listings (3 compared). Fits the brief rather than undercutting it.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kewdale",
@@ -551,7 +566,8 @@
       "rank": 42.5,
       "underMedian": false,
       "reason": "3-bed in Kewdale, 9.5km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "South Guildford",
@@ -584,7 +600,8 @@
       "rank": 41.7,
       "underMedian": false,
       "reason": "4-bed in South Guildford, 14.2km from Como, asking about 8% under the other houses on the market in the suburb (4 compared, low confidence). No land size published, so confirm the block before anything else.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Dayton",
@@ -617,7 +634,8 @@
       "rank": 40.9,
       "underMedian": false,
       "reason": "3-bed in Dayton, 19.1km from Como, asking about 10% under comparable listings across this side of the city (47 compared, low confidence). No land size published, so confirm the block before anything else.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Lockridge",
@@ -650,7 +668,8 @@
       "rank": 39.3,
       "underMedian": false,
       "reason": "4-bed, 923sqm in Lockridge, 15.6km from Como, priced in line with comparable listings (3 compared). Fits the brief rather than undercutting it.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Belmont",
@@ -683,7 +702,8 @@
       "rank": 38.3,
       "underMedian": false,
       "reason": "3-bed, 865sqm in Belmont, 8km from Como, priced in line with comparable listings (3 compared). Fits the brief rather than undercutting it.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kenwick",
@@ -716,7 +736,8 @@
       "rank": 38.2,
       "underMedian": false,
       "reason": "3-bed in Kenwick, 11.9km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "High Wycombe",
@@ -749,7 +770,8 @@
       "rank": 37.0,
       "underMedian": false,
       "reason": "4-bed, 884sqm in High Wycombe, 15.4km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Queens Park",
@@ -782,7 +804,8 @@
       "rank": 36.8,
       "underMedian": false,
       "reason": "4-bed, 1069sqm in Queens Park, 7.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Belmont",
@@ -815,7 +838,8 @@
       "rank": 36.8,
       "underMedian": false,
       "reason": "4-bed, 556sqm in Belmont, 8km from Como. No price published, so it cannot be ranked on value; the agent sets the guide on enquiry.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "East Cannington",
@@ -848,7 +872,8 @@
       "rank": 35.7,
       "underMedian": false,
       "reason": "4-bed, 595sqm in East Cannington, 9.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "East Cannington",
@@ -881,7 +906,8 @@
       "rank": 35.7,
       "underMedian": false,
       "reason": "5-bed, 531sqm in East Cannington, 9.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kewdale",
@@ -914,7 +940,8 @@
       "rank": 35.7,
       "underMedian": false,
       "reason": "4-bed, 683sqm in Kewdale, 9.5km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kewdale",
@@ -947,7 +974,8 @@
       "rank": 35.7,
       "underMedian": false,
       "reason": "4-bed, 769sqm in Kewdale, 9.5km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kenwick",
@@ -980,7 +1008,8 @@
       "rank": 35.3,
       "underMedian": false,
       "reason": "4-bed, 702sqm in Kenwick, 11.9km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Forrestfield",
@@ -1013,73 +1042,8 @@
       "rank": 35.2,
       "underMedian": false,
       "reason": "3-bed, 836sqm in Forrestfield, 13.2km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": false
-    },
-    {
-      "suburb": "Queens Park",
-      "pc": "6107",
-      "price": 1000000,
-      "priceText": "Inviting offers in $1,000,000s",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 1066,
-      "address": "226 George Street",
-      "image": "https://i3.au.reastatic.net/640x480/fc3ca4bb559093f0146713b77227b219587f340aeed9ff6d74e2a8c1d19db088/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-queens+park-151952384",
-      "direct": true,
-      "meets": true,
-      "guide": false,
-      "sector": "S",
-      "kmCbd": 9.6,
-      "kmComo": 7.6,
-      "curated": false,
-      "fair": 888000,
-      "comps": 4,
-      "basis": "suburb",
-      "conf": "medium",
-      "disc": -0.127,
-      "discPct": -13,
-      "fit": 95,
-      "bargain": false,
-      "odd": false,
-      "rank": 35.0,
-      "underMedian": false,
-      "reason": "3-bed, 1066sqm in Queens Park, 7.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
-    },
-    {
-      "suburb": "Queens Park",
-      "pc": "6107",
-      "price": 799000,
-      "priceText": "From $799,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 1,
-      "land": 809,
-      "address": "27 Stephen Street",
-      "image": "https://i3.au.reastatic.net/640x480/a2eda385b431ba138089920852f7e1799f52cbf1cacbe55ef0d02e87d56ae1e1/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-queens+park-151317532",
-      "direct": true,
-      "meets": true,
-      "guide": true,
-      "sector": "S",
-      "kmCbd": 9.6,
-      "kmComo": 7.6,
-      "curated": false,
-      "fair": 633000,
-      "comps": 4,
-      "basis": "suburb",
-      "conf": "medium",
-      "disc": -0.313,
-      "discPct": -31,
-      "fit": 95,
-      "bargain": false,
-      "odd": false,
-      "rank": 35.0,
-      "underMedian": false,
-      "reason": "3-bed, 809sqm in Queens Park, 7.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Redcliffe",
@@ -1112,7 +1076,8 @@
       "rank": 35.0,
       "underMedian": false,
       "reason": "4-bed, 613sqm in Redcliffe, 10.4km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Redcliffe",
@@ -1145,7 +1110,76 @@
       "rank": 35.0,
       "underMedian": false,
       "reason": "4-bed, 584sqm in Redcliffe, 10.4km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Queens Park",
+      "pc": "6107",
+      "price": 1000000,
+      "priceText": "Inviting offers in $1,000,000s",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 1066,
+      "address": "226 George Street",
+      "image": "https://i3.au.reastatic.net/640x480/fc3ca4bb559093f0146713b77227b219587f340aeed9ff6d74e2a8c1d19db088/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-queens+park-151952384",
+      "direct": true,
+      "meets": true,
+      "guide": false,
+      "sector": "S",
+      "kmCbd": 9.6,
+      "kmComo": 7.6,
+      "curated": false,
+      "fair": 888000,
+      "comps": 4,
+      "basis": "suburb",
+      "conf": "medium",
+      "disc": -0.127,
+      "discPct": -13,
+      "fit": 95,
+      "bargain": false,
+      "odd": false,
+      "rank": 35.0,
+      "underMedian": false,
+      "reason": "3-bed, 1066sqm in Queens Park, 7.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
+      "new": false,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Queens Park",
+      "pc": "6107",
+      "price": 799000,
+      "priceText": "From $799,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 1,
+      "land": 809,
+      "address": "27 Stephen Street",
+      "image": "https://i3.au.reastatic.net/640x480/a2eda385b431ba138089920852f7e1799f52cbf1cacbe55ef0d02e87d56ae1e1/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-queens+park-151317532",
+      "direct": true,
+      "meets": true,
+      "guide": true,
+      "sector": "S",
+      "kmCbd": 9.6,
+      "kmComo": 7.6,
+      "curated": false,
+      "fair": 633000,
+      "comps": 4,
+      "basis": "suburb",
+      "conf": "medium",
+      "disc": -0.313,
+      "discPct": -31,
+      "fit": 95,
+      "bargain": false,
+      "odd": false,
+      "rank": 35.0,
+      "underMedian": false,
+      "reason": "3-bed, 809sqm in Queens Park, 7.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Belmont",
@@ -1178,40 +1212,8 @@
       "rank": 35.0,
       "underMedian": false,
       "reason": "3-bed, 769sqm in Belmont, 8km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": false
-    },
-    {
-      "suburb": "Bayswater",
-      "pc": "6053",
-      "price": 1099000,
-      "priceText": "$1,099,000",
-      "beds": 4,
-      "baths": 1,
-      "cars": 4,
-      "land": 559,
-      "address": "12 Frinton Street",
-      "image": "https://i3.au.reastatic.net/640x480/1574732c677c2c17b70d2bfdbd2f68b45d5b90c9a7a420d50451575cda290003/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151905780",
-      "direct": true,
-      "meets": true,
-      "guide": false,
-      "sector": "E",
-      "kmCbd": 6.6,
-      "kmComo": 10.8,
-      "curated": true,
-      "fair": 972000,
-      "comps": 4,
-      "basis": "suburb",
-      "conf": "medium",
-      "disc": -0.131,
-      "discPct": -13,
-      "fit": 94,
-      "bargain": false,
-      "odd": false,
-      "rank": 34.6,
-      "underMedian": false,
-      "reason": "4-bed, 559sqm in Bayswater, 10.8km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Redcliffe",
@@ -1244,7 +1246,42 @@
       "rank": 34.6,
       "underMedian": false,
       "reason": "4-bed, 508sqm in Redcliffe, 10.4km from Como. No price published, so it cannot be ranked on value; the agent sets the guide on enquiry.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Bayswater",
+      "pc": "6053",
+      "price": 1099000,
+      "priceText": "$1,099,000",
+      "beds": 4,
+      "baths": 1,
+      "cars": 4,
+      "land": 559,
+      "address": "12 Frinton Street",
+      "image": "https://i3.au.reastatic.net/640x480/1574732c677c2c17b70d2bfdbd2f68b45d5b90c9a7a420d50451575cda290003/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bayswater-151905780",
+      "direct": true,
+      "meets": true,
+      "guide": false,
+      "sector": "E",
+      "kmCbd": 6.6,
+      "kmComo": 10.8,
+      "curated": true,
+      "fair": 972000,
+      "comps": 4,
+      "basis": "suburb",
+      "conf": "medium",
+      "disc": -0.131,
+      "discPct": -13,
+      "fit": 94,
+      "bargain": false,
+      "odd": false,
+      "rank": 34.6,
+      "underMedian": false,
+      "reason": "4-bed, 559sqm in Bayswater, 10.8km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Embleton",
@@ -1277,40 +1314,8 @@
       "rank": 34.4,
       "underMedian": true,
       "reason": "4-bed in Embleton, 11.8km from Como, priced in line with comparable listings (47 compared). Fits the brief rather than undercutting it.",
-      "new": true
-    },
-    {
-      "suburb": "Bassendean",
-      "pc": "6054",
-      "price": 1000000,
-      "priceText": "Offers in the Low $1,000,000's",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": 682,
-      "address": "5 Culworth Place",
-      "image": "https://i3.au.reastatic.net/640x480/04d5eba2335a7ef9019a95bd4b0d99f7329aae4d0d35798f31b38e04d0c1f126/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bassendean-152220452",
-      "direct": true,
-      "meets": true,
-      "guide": false,
-      "sector": "E",
-      "kmCbd": 9.1,
-      "kmComo": 12.9,
-      "curated": false,
-      "fair": 1004000,
-      "comps": 4,
-      "basis": "suburb",
-      "conf": "medium",
-      "disc": 0.004,
-      "discPct": 0,
-      "fit": 90,
-      "bargain": false,
-      "odd": false,
-      "rank": 34.2,
-      "underMedian": false,
-      "reason": "4-bed, 682sqm in Bassendean, 12.9km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Cloverdale",
@@ -1343,7 +1348,8 @@
       "rank": 34.2,
       "underMedian": false,
       "reason": "3-bed, 739sqm in Cloverdale, 8.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Cloverdale",
@@ -1376,7 +1382,42 @@
       "rank": 34.2,
       "underMedian": false,
       "reason": "3-bed, 746sqm in Cloverdale, 8.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Bassendean",
+      "pc": "6054",
+      "price": 1000000,
+      "priceText": "Offers in the Low $1,000,000's",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "land": 682,
+      "address": "5 Culworth Place",
+      "image": "https://i3.au.reastatic.net/640x480/04d5eba2335a7ef9019a95bd4b0d99f7329aae4d0d35798f31b38e04d0c1f126/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bassendean-152220452",
+      "direct": true,
+      "meets": true,
+      "guide": false,
+      "sector": "E",
+      "kmCbd": 9.1,
+      "kmComo": 12.9,
+      "curated": false,
+      "fair": 1004000,
+      "comps": 4,
+      "basis": "suburb",
+      "conf": "medium",
+      "disc": 0.004,
+      "discPct": 0,
+      "fit": 90,
+      "bargain": false,
+      "odd": false,
+      "rank": 34.2,
+      "underMedian": false,
+      "reason": "4-bed, 682sqm in Bassendean, 12.9km from Como, priced in line with comparable listings (4 compared). Fits the brief rather than undercutting it.",
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kenwick",
@@ -1409,7 +1450,8 @@
       "rank": 33.9,
       "underMedian": false,
       "reason": "4-bed, 682sqm in Kenwick, 11.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kenwick",
@@ -1442,7 +1484,8 @@
       "rank": 33.9,
       "underMedian": false,
       "reason": "5-bed, 676sqm in Kenwick, 11.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bayswater",
@@ -1475,7 +1518,8 @@
       "rank": 33.5,
       "underMedian": false,
       "reason": "4-bed, 452sqm in Bayswater, 10.8km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "East Cannington",
@@ -1508,40 +1552,8 @@
       "rank": 33.1,
       "underMedian": false,
       "reason": "3-bed, 473sqm in East Cannington, 9.6km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
-    },
-    {
-      "suburb": "Bassendean",
-      "pc": "6054",
-      "price": 865000,
-      "priceText": "OFFERS FROM $865,000",
-      "beds": 5,
-      "baths": 1,
-      "cars": 4,
-      "land": 543,
-      "address": "42 Scaddan Street",
-      "image": "https://i3.au.reastatic.net/640x480/3f2b176d1c5d2399576fb6c73b898fffc28903c9732ba526d3aaed0c568edfb7/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bassendean-152198552",
-      "direct": true,
-      "meets": true,
-      "guide": true,
-      "sector": "E",
-      "kmCbd": 9.1,
-      "kmComo": 12.9,
-      "curated": false,
-      "fair": 875000,
-      "comps": 4,
-      "basis": "suburb",
-      "conf": "medium",
-      "disc": -0.028,
-      "discPct": -3,
-      "fit": 90,
-      "bargain": false,
-      "odd": false,
-      "rank": 33.1,
-      "underMedian": false,
-      "reason": "5-bed, 543sqm in Bassendean, 12.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Wattle Grove",
@@ -1574,7 +1586,42 @@
       "rank": 33.1,
       "underMedian": false,
       "reason": "4-bed, 531sqm in Wattle Grove, 12.8km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Bassendean",
+      "pc": "6054",
+      "price": 865000,
+      "priceText": "OFFERS FROM $865,000",
+      "beds": 5,
+      "baths": 1,
+      "cars": 4,
+      "land": 543,
+      "address": "42 Scaddan Street",
+      "image": "https://i3.au.reastatic.net/640x480/3f2b176d1c5d2399576fb6c73b898fffc28903c9732ba526d3aaed0c568edfb7/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bassendean-152198552",
+      "direct": true,
+      "meets": true,
+      "guide": true,
+      "sector": "E",
+      "kmCbd": 9.1,
+      "kmComo": 12.9,
+      "curated": false,
+      "fair": 875000,
+      "comps": 4,
+      "basis": "suburb",
+      "conf": "medium",
+      "disc": -0.028,
+      "discPct": -3,
+      "fit": 90,
+      "bargain": false,
+      "odd": false,
+      "rank": 33.1,
+      "underMedian": false,
+      "reason": "5-bed, 543sqm in Bassendean, 12.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Forrestfield",
@@ -1607,7 +1654,8 @@
       "rank": 32.8,
       "underMedian": false,
       "reason": "4-bed, 727sqm in Forrestfield, 13.2km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Forrestfield",
@@ -1640,7 +1688,8 @@
       "rank": 32.8,
       "underMedian": false,
       "reason": "4-bed, 809sqm in Forrestfield, 13.2km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "South Guildford",
@@ -1673,7 +1722,8 @@
       "rank": 32.0,
       "underMedian": false,
       "reason": "4-bed, 601sqm in South Guildford, 14.2km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "South Guildford",
@@ -1706,7 +1756,8 @@
       "rank": 32.0,
       "underMedian": false,
       "reason": "4-bed, 501sqm in South Guildford, 14.2km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "High Wycombe",
@@ -1739,7 +1790,8 @@
       "rank": 30.9,
       "underMedian": false,
       "reason": "4-bed, 890sqm in High Wycombe, 15.4km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "High Wycombe",
@@ -1772,40 +1824,8 @@
       "rank": 30.9,
       "underMedian": false,
       "reason": "6-bed, 746sqm in High Wycombe, 15.4km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
-    },
-    {
-      "suburb": "Bassendean",
-      "pc": "6054",
-      "price": 949000,
-      "priceText": "From $949,000",
-      "beds": 3,
-      "baths": 1,
-      "cars": 4,
-      "land": 692,
-      "address": "43 Penzance Street",
-      "image": "https://i3.au.reastatic.net/640x480/175aa9eb4e8bd806784103869874db27a4793fb5c6083f1971a6eee7f258ade7/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-bassendean-152050972",
-      "direct": true,
-      "meets": true,
-      "guide": true,
-      "sector": "E",
-      "kmCbd": 9.1,
-      "kmComo": 12.9,
-      "curated": false,
-      "fair": 974000,
-      "comps": 4,
-      "basis": "suburb",
-      "conf": "medium",
-      "disc": -0.013,
-      "discPct": -1,
-      "fit": 84,
-      "bargain": false,
-      "odd": false,
-      "rank": 30.9,
-      "underMedian": false,
-      "reason": "3-bed, 692sqm in Bassendean, 12.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Forrestfield",
@@ -1838,7 +1858,42 @@
       "rank": 30.9,
       "underMedian": false,
       "reason": "3-bed, 704sqm in Forrestfield, 13.2km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Bassendean",
+      "pc": "6054",
+      "price": 949000,
+      "priceText": "From $949,000",
+      "beds": 3,
+      "baths": 1,
+      "cars": 4,
+      "land": 692,
+      "address": "43 Penzance Street",
+      "image": "https://i3.au.reastatic.net/640x480/175aa9eb4e8bd806784103869874db27a4793fb5c6083f1971a6eee7f258ade7/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-bassendean-152050972",
+      "direct": true,
+      "meets": true,
+      "guide": true,
+      "sector": "E",
+      "kmCbd": 9.1,
+      "kmComo": 12.9,
+      "curated": false,
+      "fair": 974000,
+      "comps": 4,
+      "basis": "suburb",
+      "conf": "medium",
+      "disc": -0.013,
+      "discPct": -1,
+      "fit": 84,
+      "bargain": false,
+      "odd": false,
+      "rank": 30.9,
+      "underMedian": false,
+      "reason": "3-bed, 692sqm in Bassendean, 12.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bedford",
@@ -1871,7 +1926,8 @@
       "rank": 30.7,
       "underMedian": false,
       "reason": "6-bed, 493sqm in Bedford, 9.7km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Victoria Park",
@@ -1904,7 +1960,8 @@
       "rank": 30.4,
       "underMedian": false,
       "reason": "3-bed, 532sqm in Victoria Park, 4.5km from Como, asking above comparable listings (18 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bassendean",
@@ -1937,7 +1994,8 @@
       "rank": 30.2,
       "underMedian": false,
       "reason": "3-bed, 464sqm in Bassendean, 12.9km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "South Guildford",
@@ -1970,7 +2028,8 @@
       "rank": 29.8,
       "underMedian": false,
       "reason": "3-bed, 485sqm in South Guildford, 14.2km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Ashfield",
@@ -2003,7 +2062,8 @@
       "rank": 29.4,
       "underMedian": false,
       "reason": "4-bed, 554sqm in Ashfield, 11.7km from Como, asking above comparable listings (47 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Lockridge",
@@ -2036,40 +2096,8 @@
       "rank": 29.1,
       "underMedian": false,
       "reason": "3-bed, 817sqm in Lockridge, 15.6km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
-    },
-    {
-      "suburb": "Embleton",
-      "pc": "6062",
-      "price": 1100000,
-      "priceText": "Offers from $1.1 million",
-      "beds": 3,
-      "baths": 1,
-      "cars": 2,
-      "land": 972,
-      "address": "70 Broun Avenue",
-      "image": "https://i3.au.reastatic.net/640x480/81d97d437181cb70f7ff3e87ec95dc3870cb937914cf32dbad02e8dfb1742686/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-embleton-151893364",
-      "direct": true,
-      "meets": true,
-      "guide": true,
-      "sector": "E",
-      "kmCbd": 7.2,
-      "kmComo": 11.8,
-      "curated": true,
-      "fair": 1085000,
-      "comps": 47,
-      "basis": "sector",
-      "conf": "low",
-      "disc": -0.055,
-      "discPct": -5,
-      "fit": 87,
-      "bargain": false,
-      "odd": false,
-      "rank": 27.8,
-      "underMedian": false,
-      "reason": "3-bed, 972sqm in Embleton, 11.8km from Como, asking above comparable listings (47 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bedford",
@@ -2102,7 +2130,42 @@
       "rank": 27.8,
       "underMedian": false,
       "reason": "3-bed, 475sqm in Bedford, 9.7km from Como. No price published, so it cannot be ranked on value; the agent sets the guide on enquiry.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Embleton",
+      "pc": "6062",
+      "price": 1100000,
+      "priceText": "Offers from $1.1 million",
+      "beds": 3,
+      "baths": 1,
+      "cars": 2,
+      "land": 972,
+      "address": "70 Broun Avenue",
+      "image": "https://i3.au.reastatic.net/640x480/81d97d437181cb70f7ff3e87ec95dc3870cb937914cf32dbad02e8dfb1742686/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-embleton-151893364",
+      "direct": true,
+      "meets": true,
+      "guide": true,
+      "sector": "E",
+      "kmCbd": 7.2,
+      "kmComo": 11.8,
+      "curated": true,
+      "fair": 1085000,
+      "comps": 47,
+      "basis": "sector",
+      "conf": "low",
+      "disc": -0.055,
+      "discPct": -5,
+      "fit": 87,
+      "bargain": false,
+      "odd": false,
+      "rank": 27.8,
+      "underMedian": false,
+      "reason": "3-bed, 972sqm in Embleton, 11.8km from Como, asking above comparable listings (47 compared). Included because it fits the brief on land and beds.",
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Morley",
@@ -2135,7 +2198,8 @@
       "rank": 26.6,
       "underMedian": false,
       "reason": "3-bed, 728sqm in Morley, 13.6km from Como, asking above comparable listings (47 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Morley",
@@ -2168,40 +2232,8 @@
       "rank": 26.6,
       "underMedian": false,
       "reason": "3-bed, 563sqm in Morley, 13.6km from Como, asking above comparable listings (47 compared). Included because it fits the brief on land and beds.",
-      "new": false
-    },
-    {
-      "suburb": "Victoria Park",
-      "pc": "6100",
-      "price": 1000000,
-      "priceText": "Brand New House at Early $1 Million",
-      "beds": 4,
-      "baths": 2,
-      "cars": 2,
-      "land": null,
-      "address": "Address available on request",
-      "image": "https://i3.au.reastatic.net/640x480/401763fd8934d42ceb8abb91630f8ec8629c1f503ce5d4a3788d300b02456262/image.jpg",
-      "url": "https://www.realestate.com.au/property-house-wa-victoria+park-151937892",
-      "direct": true,
-      "meets": false,
-      "guide": false,
-      "sector": "S",
-      "kmCbd": 4.3,
-      "kmComo": 4.5,
-      "curated": false,
-      "fair": 800000,
-      "comps": 18,
-      "basis": "sector",
-      "conf": "low",
-      "disc": -0.25,
-      "discPct": -25,
-      "fit": 82,
-      "bargain": false,
-      "odd": false,
-      "rank": 26.2,
-      "underMedian": false,
-      "reason": "4-bed in Victoria Park, 4.5km from Como, asking above comparable listings (18 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Wattle Grove",
@@ -2234,7 +2266,42 @@
       "rank": 26.2,
       "underMedian": false,
       "reason": "4-bed in Wattle Grove, 12.8km from Como, priced in line with comparable listings (3 compared). Fits the brief rather than undercutting it.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
+    },
+    {
+      "suburb": "Victoria Park",
+      "pc": "6100",
+      "price": 1000000,
+      "priceText": "Brand New House at Early $1 Million",
+      "beds": 4,
+      "baths": 2,
+      "cars": 2,
+      "land": null,
+      "address": "Address available on request",
+      "image": "https://i3.au.reastatic.net/640x480/401763fd8934d42ceb8abb91630f8ec8629c1f503ce5d4a3788d300b02456262/image.jpg",
+      "url": "https://www.realestate.com.au/property-house-wa-victoria+park-151937892",
+      "direct": true,
+      "meets": false,
+      "guide": false,
+      "sector": "S",
+      "kmCbd": 4.3,
+      "kmComo": 4.5,
+      "curated": false,
+      "fair": 800000,
+      "comps": 18,
+      "basis": "sector",
+      "conf": "low",
+      "disc": -0.25,
+      "discPct": -25,
+      "fit": 82,
+      "bargain": false,
+      "odd": false,
+      "rank": 26.2,
+      "underMedian": false,
+      "reason": "4-bed in Victoria Park, 4.5km from Como, asking above comparable listings (18 compared). Included because it fits the brief on land and beds.",
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Belmont",
@@ -2267,7 +2334,8 @@
       "rank": 24.6,
       "underMedian": false,
       "reason": "3-bed in Belmont, 8km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Carlisle",
@@ -2300,7 +2368,8 @@
       "rank": 24.6,
       "underMedian": false,
       "reason": "3-bed in Carlisle, 5.8km from Como, asking above comparable listings (18 compared). Included because it fits the brief on land and beds.",
-      "new": false
+      "new": false,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "North Perth",
@@ -2333,7 +2402,8 @@
       "rank": 24.6,
       "underMedian": false,
       "reason": "3-bed in North Perth, 8.2km from Como, asking above comparable listings (3 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Kewdale",
@@ -2366,7 +2436,8 @@
       "rank": 23.7,
       "underMedian": false,
       "reason": "3-bed in Kewdale, 9.5km from Como, asking above comparable listings (4 compared). Included because it fits the brief on land and beds.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     },
     {
       "suburb": "Bedford",
@@ -2399,7 +2470,8 @@
       "rank": 21.4,
       "underMedian": false,
       "reason": "3-bed in Bedford, 9.7km from Como. No price published, so it cannot be ranked on value; the agent sets the guide on enquiry.",
-      "new": true
+      "new": true,
+      "checked": "2026-09-02"
     }
   ]
 }

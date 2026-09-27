@@ -160,25 +160,30 @@ feed).
 1. Get a RapidAPI key and subscribe to "Realty in AU".
 2. In GitHub: **Settings -> Secrets and variables -> Actions -> New repository
    secret**, add `RAPIDAPI_KEY`.
-3. **Actions** tab -> **Refresh live listings (daily)** -> **Run workflow**.
-   After that it runs automatically once a day.
+3. **Actions** tab -> **Refresh live listings (weekly)** -> **Run workflow**.
+   After that it runs automatically every Saturday morning Perth time, ahead of
+   the weekend home opens.
 
-Without the key the daily job is a safe no-op: it leaves the committed data in
+Without the key the job is a safe no-op: it leaves the committed data in
 place, so the page never breaks.
 
-**The sweep rotates.** A full sweep is one API call per suburb: 143 a run, about
-4,300 a month, which exhausted the RapidAPI BASIC quota in September 2026 and
-froze the feed for 25 days. The workflow now searches **16 suburbs a day**
-(about 480 calls a month). Each slice mirrors the ring's composition, the whole
-ring cycles every 9 days, and the page shows a rolling 14-day window with the
-last-checked date on any card older than a few days. To see the cost of any
-setting:
+**The sweep runs weekly.** One API call per suburb, so a full sweep of the ring
+is 143 calls a run, about 613 a month. That is more than the RapidAPI BASIC plan
+appears to allow: a single full sweep exhausted September 2026's quota and the
+feed sat frozen for 25 days.
+
+An over-quota sweep is no longer dangerous, though. It stops early, publishes
+what it got balanced across north, east, south and west, rotates its starting
+point so a different part of the ring is reached next week, and the page states
+which sides were not searched. Coverage accumulates across the rolling 21-day
+window rather than collapsing onto one direction. To fit a known quota exactly,
+set `SUBURB_CAP` to the suburbs per run. Either way, check the cost first:
 
 ```bash
 python3 scripts/fetch_listings.py --plan      # prints the exact call count
 ```
 
-`SUBURB_CAP` sets the daily slice; the starting point rotates automatically off
+`SUBURB_CAP` sets the suburbs per run; the starting point rotates automatically off
 the date, so there is no cursor to maintain. Raise it only alongside a bigger
 plan, and keep the cycle inside `WINDOW_DAYS` (14) or listings will expire
 before they are re-checked, which `python3 tests/test_rotation.py` will fail on.

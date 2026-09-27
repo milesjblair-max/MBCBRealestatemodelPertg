@@ -45,7 +45,40 @@ def main():
     ok(len(inter) == total, f"interleaving keeps every suburb: {len(inter)}/{total}")
     ok(len({s["name"] for s in inter}) == total, "interleaving duplicates nothing")
 
-    # 1. every daily slice mirrors the ring. Not equal counts: the sectors are
+    # 0. the rotation must advance per RUN, not per day. On a weekly schedule
+    # indexing by day would move the start seven slices a week and walk past
+    # most of the ring, which is exactly the bug that switching to weekly would
+    # otherwise have introduced.
+    day0 = datetime.date.today().toordinal()
+    weekly = [F.rotation_offset(16, total, 7) for _ in (0,)]
+    offs = []
+    for w in range(6):
+        run_index = (day0 + 7 * w) // 7
+        offs.append((run_index * 16) % total)
+    steps = {(offs[i + 1] - offs[i]) % total for i in range(len(offs) - 1)}
+    ok(steps == {16}, f"a weekly run advances by exactly one slice: {steps}")
+    same_week = {(((day0 + d) // 7) * 16) % total for d in range(0, 5)}
+    ok(len(same_week) <= 2,
+       f"runs inside one week share a starting point: {same_week}")
+    ok(isinstance(weekly[0], int) and 0 <= weekly[0] < total,
+       "rotation_offset returns a valid index")
+
+    # an uncapped sweep must still rotate, or a quota that always cuts it short
+    # would always cut it in the same place and never reach the tail
+    ok(F.rotation_stride(0, total) > 0,
+       "a full-ring sweep still rotates its starting point")
+    ok(F.rotation_stride(16, total) == 16,
+       "a capped sweep strides by exactly its slice")
+    reach = set()
+    for w in range(4):
+        st = F.rotation_stride(0, total)
+        off = (((day0 + 7 * w) // 7) * st) % total
+        reach |= {x["name"] for x in (inter[off:] + inter[:off])[:45]}
+    ok(len(reach) > total * 0.85,
+       f"four short weeks of a full sweep still reach most of the ring: "
+       f"{len(reach)}/{total}")
+
+    # 1. every slice mirrors the ring. Not equal counts: the sectors are
     # different sizes (54 southern suburbs against 21 western), so an equal
     # slice would finish the west in six days and still be working through the
     # south a fortnight later. Proportional is what keeps every lane cycling
@@ -53,8 +86,7 @@ def main():
     share = collections.Counter(s["sector"] for s in ring["suburbs"])
     cap, bad = 16, []
     for d in range(60):
-        day = datetime.date.today().toordinal() + d
-        off = (day * cap) % len(inter)
+        off = (d * cap) % len(inter)
         sl = (inter[off:] + inter[:off])[:cap]
         c = collections.Counter(x["sector"] for x in sl)
         if len(c) < 4:
@@ -67,17 +99,26 @@ def main():
     ok(not bad, f"every daily slice mirrors the ring's composition: {bad[:3]}")
 
     # 2. the whole ring is covered inside the rolling window
-    cycle = (total + cap - 1) // cap
+    runs = (total + cap - 1) // cap
     seen = set()
-    for d in range(cycle):
-        day = datetime.date.today().toordinal() + d
-        off = (day * cap) % len(inter)
+    for r in range(runs):
+        off = (r * cap) % len(inter)
         seen |= {x["name"] for x in (inter[off:] + inter[:off])[:cap]}
     ok(seen == {s["name"] for s in ring["suburbs"]},
-       f"the ring is fully covered in one {cycle}-day cycle: {len(seen)}/{total}")
-    ok(cycle < F.WINDOW_DAYS,
-       f"a full cycle ({cycle}d) finishes inside the window ({F.WINDOW_DAYS}d), "
-       f"so nothing expires before it is re-checked")
+       f"the ring is fully covered in {runs} runs: {len(seen)}/{total}")
+
+    # 2b. the shipped configuration must not expire listings faster than the
+    # rotation returns to them. This is the check that makes the cadence and the
+    # cap safe to change: get it wrong and the page silently empties out.
+    import subprocess
+    env = dict(os.environ); env.pop("SUBURB_CAP", None)
+    plan = subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "fetch_listings.py"),
+                           "--plan"], capture_output=True, text=True, env=env, cwd=ROOT)
+    ok("TOO SLOW" not in plan.stdout,
+       "the shipped schedule covers the ring inside the window:\n" + plan.stdout)
+    ok(F.PERIOD_DAYS < F.WINDOW_DAYS,
+       f"the window ({F.WINDOW_DAYS}d) outlasts the cadence ({F.PERIOD_DAYS}d), "
+       f"so a single missed run does not empty the page")
 
     # 3. the rolling window carries, replaces and expires the right listings
     today = datetime.date.today()

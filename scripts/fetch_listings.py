@@ -73,7 +73,15 @@ PER_SECTOR_FLOOR = 10                            # keep all four directions visi
 # inside this many days is dropped: with the default slice the whole ring cycles
 # in about nine days, so fourteen leaves headroom for a missed run without ever
 # showing a listing that has not been checked in a fortnight.
-WINDOW_DAYS = int(os.environ.get("WINDOW_DAYS", 14))
+# How often the workflow runs. The rotation and the staleness thresholds are
+# both derived from this, so changing the cron means changing this and nothing
+# else. Weekly as at 2026-09.
+PERIOD_DAYS = int(os.environ.get("SWEEP_PERIOD_DAYS", 7))
+# Anything not re-confirmed inside this many days is dropped rather than shown
+# as current. It has to comfortably exceed one full cycle of the ring, or
+# listings expire before the rotation gets back to them; tests/test_rotation.py
+# fails if it does not.
+WINDOW_DAYS = int(os.environ.get("WINDOW_DAYS", 21))
 PAGE_SIZE = 30                                   # bigger page = better benchmark
 THROTTLE_S = 0.25                                # be polite across ~140 calls
 IMG_SIZE = "640x480"                             # fills the {size} slot in reastatic URLs
@@ -339,18 +347,35 @@ def interleave_by_sector(suburbs):
     return [t[2] for t in spread]
 
 
-def rotation_offset(cap, total):
-    """Where today's slice starts, derived from the date.
+def rotation_stride(cap, total):
+    """How far the starting point moves between runs.
 
-    A rotating sweep needs to start somewhere different each day, and GitHub
-    Actions keeps no state between runs. Deriving it from the day number means
-    no cursor to store and no drift if a run is skipped: consecutive days
-    advance by one slice, and the whole ring is covered in total/cap days.
+    With a capped slice that is the slice itself, so consecutive runs sit end to
+    end and the ring is covered in total/cap runs. With no cap the run intends
+    to sweep the whole ring, and rotating still matters: if the quota cuts the
+    sweep short it always gets cut in the same place, so without a moving start
+    the tail of the ring would never be searched at all. A quarter-ring stride
+    means four short weeks still reach every part of it.
     """
-    if cap <= 0 or total <= 0:
+    if total <= 0:
         return 0
-    day = datetime.date.today().toordinal()
-    return (day * cap) % total
+    return cap if cap > 0 else max(1, total // 4)
+
+
+def rotation_offset(stride, total, period_days=None):
+    """Where this run's slice starts, derived from the date.
+
+    GitHub Actions keeps no state between runs, so the cursor is computed rather
+    than stored: no file to update, and a skipped run causes no drift. The index
+    counts RUNS, not days. That distinction is the whole point on a weekly
+    schedule: indexing by day would advance the start by seven slices a week and
+    walk straight past most of the ring.
+    """
+    if stride <= 0 or total <= 0:
+        return 0
+    period = max(1, period_days if period_days is not None else PERIOD_DAYS)
+    run_index = datetime.date.today().toordinal() // period
+    return (run_index * stride) % total
 
 
 def load_ring():
@@ -361,7 +386,8 @@ def load_ring():
     targets = interleave_by_sector(ring["suburbs"])
     cap = int(os.environ.get("SUBURB_CAP", 0))
     env_offset = os.environ.get("SUBURB_OFFSET")
-    offset = int(env_offset) if env_offset else rotation_offset(cap, len(targets))
+    offset = (int(env_offset) if env_offset
+              else rotation_offset(rotation_stride(cap, len(targets)), len(targets)))
     if offset:
         targets = targets[offset:] + targets[:offset]
     if cap > 0:
@@ -516,9 +542,11 @@ def write(listings, ring, attempted, coverage, stopped, failures, benches):
             "stopped_early": stopped,
             "coverage": coverage,
             "rotating": rotating,
+            "cadence_days": PERIOD_DAYS,
             "slice_size": cap or ring["meta"]["count"],
             "window_days": WINDOW_DAYS if rotating else None,
-            "cycle_days": (ring["meta"]["count"] + cap - 1) // cap if rotating else 1,
+            "cycle_days": (((ring["meta"]["count"] + cap - 1) // cap) * PERIOD_DAYS
+                           if rotating else PERIOD_DAYS),
             "suburbs_in_window": len(window_subs),
             "note": "Best-value houses across the inner-Perth ring (every "
                     "residential suburb within "
@@ -632,13 +660,22 @@ def plan():
           f"{ring['meta']['count']} suburbs in the ring.")
     print(f"This sweep would search {len(targets)} suburbs = "
           f"{len(targets)} API calls per run.")
-    print(f"  daily: ~{len(targets) * 30} calls/month")
+
     total = ring["meta"]["count"]
+    every = ("day" if PERIOD_DAYS == 1 else
+             "week" if PERIOD_DAYS == 7 else f"{PERIOD_DAYS} days")
+    print(f"  schedule: one run every {every} = "
+          f"~{round(len(targets) * 30 / PERIOD_DAYS)} calls/month")
     if len(targets) < total:
-        cycle = (total + len(targets) - 1) // len(targets)
+        cycle = ((total + len(targets) - 1) // len(targets)) * PERIOD_DAYS
         print(f"  rotating: the whole ring is covered every {cycle} days; the "
-              f"page shows a rolling {WINDOW_DAYS}-day window, so every suburb "
-              f"is re-checked well inside it")
+              f"page shows a rolling {WINDOW_DAYS}-day window"
+              + ("" if cycle < WINDOW_DAYS else
+                 "  <-- TOO SLOW: listings will expire before the rotation "
+                 "returns to them. Raise SUBURB_CAP or WINDOW_DAYS."))
+    else:
+        print(f"  full ring every run; rolling window {WINDOW_DAYS} days, so the "
+              f"page survives {WINDOW_DAYS // PERIOD_DAYS - 1} missed run(s)")
     for sec in sorted(by_sector):
         print(f"  {sec}: {by_sector[sec]}")
     return 0

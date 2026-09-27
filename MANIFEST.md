@@ -93,7 +93,7 @@ general WA home-buying engine you can talk to.**
    buyer-fit read (pros and cons) for an individual listing.
 
 4. **What is actually for sale right now?** Live listings with photos, filtered
-   to the buyer's criteria, refreshed on a daily cadence.
+   to the buyer's criteria, refreshed weekly.
 
 ### 3.2 The dynamic, profile-driven layer (the big shift)
 
@@ -237,7 +237,8 @@ rule is **enforced, not hoped for**.
 - **Live listings:** the "Realty in AU" API (apidojo, via RapidAPI), which
   surfaces realestate.com.au listing data with photos. The owner explicitly
   accepted this third-party feed for a private tool shared only with family. It
-  is rate-limited, so the design keeps calls modest (cap suburbs, once daily) and
+  is rate-limited, so the design keeps calls modest (weekly, with an optional
+  per-run suburb cap) and
   always falls back to a committed sample when the key is absent.
 - **Saved-search deep-links** are the always-on, zero-infrastructure fallback:
   they open current portal results without claiming to scrape them.
@@ -247,7 +248,7 @@ rule is **enforced, not hoped for**.
 
 ### 4.7 Listings pipeline
 
-A scheduled GitHub Action runs `scripts/fetch_listings.py` daily into
+A scheduled GitHub Action runs `scripts/fetch_listings.py` weekly into
 `data/listings.json`, which the tool `fetch()`es. With no API key, it is a safe
 no-op leaving the committed data in place.
 

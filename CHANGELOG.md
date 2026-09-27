@@ -646,6 +646,27 @@ were honest or that the *tool design* was hard to misuse. That is the lesson.
 > `.github/workflows/refresh-listings.yml`, `tests/test_rotation.py`,
 > `web/index.html`.
 
+### 3.10 Weekly, ahead of the weekend
+
+> **What changed** The refresh moved from daily to weekly, Saturday 06:47 AWST,
+> which is the morning the listings actually get used. Two things had to change
+> with it. The rotation was indexed by day, so a seven-day gap would have
+> advanced the starting point by seven slices a week and walked straight past
+> most of the ring; it now counts runs, not days. And the page's "this is
+> stale" thresholds were tuned for a daily job, so a five-day-old feed would
+> have shown a permanent warning; the feed now publishes its own cadence and the
+> page derives the thresholds from it, so five days old is silent on a weekly
+> schedule and alarming on a daily one.
+>
+> **What it means** One run a week, the whole ring, timed for home opens. If the
+> API quota cuts a sweep short it stops early, publishes what it got balanced
+> across all four directions, starts somewhere different next week, and says
+> which sides it missed, so coverage builds up across the rolling window instead
+> of collapsing onto whichever direction the quota reached first.
+>
+> **Where it lives** `.github/workflows/refresh-listings.yml`,
+> `scripts/fetch_listings.py`, `web/index.html`, `tests/test_rotation.py`.
+
 ---
 
 ## Verify everything yourself

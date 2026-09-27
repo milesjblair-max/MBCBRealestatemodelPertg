@@ -448,7 +448,7 @@
 
   <section data-tab="listings" id="properties">
     <div class="sec-head"><span class="sec-num">B</span><h2>Properties that fit (or are a bargain)</h2></div>
-    <p class="sec-lead">Real houses with photos, matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. This now sweeps <b>every suburb within 15km of the city</b>, north, east, south and west, not just the shortlist. <b style="color:var(--sand)">Bargains</b> are priced under what comparable houses on the market in the same suburb are asking. Each card links straight to the listing; refreshed daily.</p>
+    <p class="sec-lead">Real houses with photos, matching the brief: 3+ beds, 500sqm+, up to ~$1.1M. This now sweeps <b>every suburb within 15km of the city</b>, north, east, south and west, not just the shortlist. <b style="color:var(--sand)">Bargains</b> are priced under what comparable houses on the market in the same suburb are asking. Each card links straight to the listing; refreshed weekly, before the weekend home opens.</p>
     <div class="status-bar" id="propStatus"></div>
     <div id="propSweep"></div>
     <div class="sector-row" id="propSectors" role="group" aria-label="Filter by side of the city"></div>
@@ -463,7 +463,7 @@
     <div class="listings-strip" id="listingsStrip" aria-label="In-budget suburb listings, ranked"></div>
     <div class="callout">
       <div class="ic">!</div>
-      <p><b style="color:var(--teal-bright)">Both feeds are live.</b> The property cards above are real listings, refreshed daily. These area cards open <strong>current</strong> REA, Domain and REIWA results for each suburb, pre-filtered to <strong>houses, 3+ beds, up to $1.1M</strong> (REIWA filters to houses in the suburb). They reorder live with the proximity-vs-schools slider.</p>
+      <p><b style="color:var(--teal-bright)">Both feeds are live.</b> The property cards above are real listings, refreshed weekly. These area cards open <strong>current</strong> REA, Domain and REIWA results for each suburb, pre-filtered to <strong>houses, 3+ beds, up to $1.1M</strong> (REIWA filters to houses in the suburb). They reorder live with the proximity-vs-schools slider.</p>
     </div>
   </section>
 
@@ -1155,13 +1155,15 @@ function listingFit(p){
 // city it sits on, so the list doubles as the answer to "which suburbs are
 // north / east / south / west". Counts are of the whole feed, not the current
 // compass selection, so picking a suburb always shows something.
-// Past this, the feed is old enough that a buyer should be told before they
-// act on a price. The refresh runs daily, so anything beyond a few days means
-// the job has been failing quietly.
-const STALE_DAYS = 3;
-// A rotating sweep re-checks each suburb every cycle, so a card being a few
-// days old is normal and only worth saying once it is past that.
-const CARD_STALE_DAYS = 4;
+// How old is too old depends on how often the job runs, so both thresholds are
+// derived from the cadence the feed publishes rather than hardcoded. On the
+// weekly schedule a five-day-old listing is completely normal and flagging it
+// would be noise; on a daily one it would mean the job had been failing.
+// GRACE absorbs a single missed run before the page starts complaining.
+const STALE_GRACE = 3;
+function staleAfter(meta){ return ((meta&&meta.cadence_days)||1) + STALE_GRACE; }
+// A card is worth flagging once it has missed a full cycle of the rotation.
+function cardStaleAfter(meta){ return ((meta&&meta.cadence_days)||1) + 1; }
 function ageInDays(generated){
   if(!/^\d{4}-\d{2}-\d{2}$/.test(generated||'')) return null;
   const d = Date.parse(generated + 'T00:00:00Z');
@@ -1225,13 +1227,15 @@ function renderProperties(){
   const scope = swept
     ? `across every suburb within ${(m.radius_km||15)}km of the city, in all four directions`
     : 'across your shortlist suburbs';
-  const rota = (swept && m.rotating)
-    ? ` A slice of ${m.slice_size} suburbs is re-checked each day, so the ring cycles every ${m.cycle_days} days and this is a rolling ${m.window_days}-day window of ${m.suburbs_in_window} suburbs. Each card says when it was last checked.`
-    : '';
+  const cad = m.cadence_days===1?'day':(m.cadence_days===7?'week':`${m.cadence_days} days`);
+  const rota = !swept ? ''
+    : m.rotating
+      ? ` A slice of ${m.slice_size} suburbs is re-checked every ${cad}, so the ring cycles every ${m.cycle_days} days and this is a rolling window of ${m.suburbs_in_window} suburbs. Each card says when it was last checked.`
+      : (m.cadence_days>1 ? ` The whole ring is re-checked every ${cad}.` : '');
   document.getElementById('propStatus').innerHTML =
     `<span class="status-dot ${sample?'sample':'live'}"></span>` +
     (sample
-      ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a RapidAPI key (see README) and the daily action swaps them for real listings, with photos, whose buttons go <b>straight to the property</b>.</span>`
+      ? `<span><b style="color:var(--sand)">Illustrative examples</b> (not live)${gen?` &middot; generated ${gen}`:''}. These are placeholders, so each opens a current suburb search. Add a RapidAPI key (see README) and the weekly action swaps them for real listings, with photos, whose buttons go <b>straight to the property</b>.</span>`
       : `<span><b style="color:var(--bull)">Live from Realty in AU</b>${gen?` &middot; refreshed ${gen}`:''} &middot; searching ${scope}. Each card links straight to the property. A <b style="color:var(--sand)">bargain</b> is priced under what comparable houses on the market in the same suburb are asking, not under a valuation.${rota}</span>`);
 
   // An unfinished sweep must announce itself. A sector reading 0 because the
@@ -1239,13 +1243,15 @@ function renderProperties(){
   // with no bargains in it, and the second reading is the dangerous one.
   const cov=(data.meta&&data.meta.coverage)||null;
   const incomplete = ringed && data.meta && data.meta.sweep_complete===false;
-  // Stale data is the quieter failure and the more dangerous one: the daily job
+  // Stale data is the quieter failure and the more dangerous one: the refresh job
   // exits cleanly when the API refuses it, so the page kept saying "live" while
   // serving listings that were weeks old and largely sold. Say the age out loud.
   const age = ageInDays(gen);
+  const cadence = (data.meta&&data.meta.cadence_days)||1;
+  const every = cadence===1?'daily':(cadence===7?'weekly':`every ${cadence} days`);
   const warns=[];
-  if(age!==null && age>STALE_DAYS) warns.push(
-    `<b>These listings are ${age} days old.</b> The daily refresh has not published since ${gen}, usually because the data plan's monthly request quota is spent. Treat prices as indicative and check each listing before acting on it.`);
+  if(age!==null && age>staleAfter(data.meta)) warns.push(
+    `<b>These listings are ${age} days old.</b> The ${every} refresh has not published since ${gen}, usually because the data plan's monthly request quota is spent. Treat prices as indicative and check each listing before acting on it.`);
   if(incomplete) warns.push(
     `<b>The last sweep did not finish.</b> ${cap1(data.meta.stopped_early)||'It stopped before covering the whole ring.'}${cov?` Suburbs searched: ${['N','E','S','W'].filter(k=>cov[k]).map(k=>`${SECTOR_NAME[k]} ${cov[k].searched}/${cov[k].in_ring}`).join(', ')}.`:''} A side of the city showing zero here means <b>not searched</b>, not "no bargains there".`);
   document.getElementById('propSweep').innerHTML = warns.map(w=>
@@ -1336,7 +1342,7 @@ function renderProperties(){
     // On a rotating sweep a card can be a few days old, so say so per card
     // rather than letting one "refreshed" date at the top speak for all of them.
     const checkedAge = ageInDays(p.checked);
-    if(checkedAge!==null && checkedAge>=CARD_STALE_DAYS) bits.push(
+    if(checkedAge!==null && checkedAge>=cardStaleAfter(data.meta)) bits.push(
       `<span class="conf" title="This suburb was last searched on ${p.checked}; the rotating sweep re-checks it within the window.">checked ${checkedAge}d ago</span>`);
     if(p.kmComo!=null) bits.push(`<span title="Straight line between suburb centres. By road it is further, and the shortlist cards use a road-style figure, so the two will not match.">${p.kmComo}km from Como, direct</span>`);
     const valLine = bits.length?`<div class="pval">${bits.join('')}</div>`:'';

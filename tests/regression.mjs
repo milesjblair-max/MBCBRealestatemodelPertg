@@ -271,6 +271,20 @@ const stale = await page.evaluate((fix) => {
 ok(/listings are 25 days old/.test(stale.old), 'a stale feed states its age: ' + stale.old.slice(0, 90));
 ok(stale.fresh === '', 'a feed refreshed today shows no staleness warning: ' + stale.fresh);
 
+// On a weekly schedule a five-day-old feed is normal and must not warn, while
+// the same age on a daily schedule means the job has been failing quietly.
+const cadence = await page.evaluate((fix) => {
+  const gen = new Date(Date.now() - 5 * 86400000).toISOString().slice(0, 10);
+  const run = (days) => { const f = JSON.parse(JSON.stringify(fix));
+    f.meta.generated = gen; f.meta.cadence_days = days;
+    LISTINGS = f; PROP_SECTOR = 'all'; PROP_SUBURB = 'all'; renderProperties();
+    return document.getElementById('propSweep').textContent.replace(/\s+/g, ' ').trim(); };
+  return { weekly: run(7), daily: run(1) };
+}, RING_FIXTURE);
+ok(cadence.weekly === '', 'five days old on a weekly schedule is normal, no warning: ' + cadence.weekly.slice(0, 80));
+ok(/5 days old/.test(cadence.daily) && /daily refresh/.test(cadence.daily),
+  'the same age on a daily schedule warns, and names the cadence: ' + cadence.daily.slice(0, 100));
+
 // hand the page back its real feed so the later sort/filter checks run against
 // a full list rather than these three fixtures
 await page.evaluate(() => { LISTINGS = INLINE_LISTINGS; PROP_SECTOR = 'all'; PROP_FILTER = 'all'; PROP_SORT = 'rank'; renderProperties(); });

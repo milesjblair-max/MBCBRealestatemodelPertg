@@ -1,4 +1,4 @@
-name: Refresh live listings (daily)
+name: Refresh live listings (weekly)
 
 # Pulls fresh property listings (with photos) into data/listings.json once a day
 # via the Realty in AU API (RapidAPI), then commits the change (which re-
@@ -14,7 +14,10 @@ name: Refresh live listings (daily)
 
 on:
   schedule:
-    - cron: '0 9 * * *'   # 17:00 AWST (5pm Perth) daily
+    # Saturday 06:47 AWST (Friday 22:47 UTC): fresh listings before the weekend
+    # home opens, which is when they actually get used. The odd minute is
+    # deliberate; scheduled jobs queued on the hour are the ones GitHub delays.
+    - cron: '47 22 * * 5'
   workflow_dispatch:
 
 permissions:
@@ -42,21 +45,23 @@ jobs:
           python-version: '3.12'
 
       - name: Sweep plan (how much quota this run will spend)
-        env:
-          SUBURB_CAP: '16'
         run: python3 scripts/fetch_listings.py --plan
 
       - name: Fetch listings
         env:
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
-          # Rotating sweep. The RapidAPI BASIC plan's monthly quota was spent by
-          # early September on a full 143-call daily sweep, so every run after
-          # that returned HTTP 429 and published nothing for 25 days. 16 suburbs
-          # a day is ~480 calls a month, the slice is balanced across north,
-          # east, south and west, and the whole ring cycles every 9 days. Raise
-          # this only alongside a bigger plan; fetch_listings.py --plan prints
-          # the cost.
-          SUBURB_CAP: '16'
+          # Weekly, whole ring: 143 calls a run, ~613 a month. That is more
+          # than the RapidAPI BASIC plan appears to allow (a single full sweep
+          # exhausted September's quota), but an over-quota sweep is no longer
+          # dangerous: it stops early, publishes what it got balanced across
+          # north / east / south / west, rotates its starting point so a
+          # different part of the ring is reached next week, and the page states
+          # which sides were not searched. Coverage accumulates across the
+          # rolling window instead of collapsing to one direction.
+          #
+          # To fit a known quota instead, set SUBURB_CAP to the suburbs per run
+          # and keep the cycle inside WINDOW_DAYS:
+          #   python3 scripts/fetch_listings.py --plan   (prints both, and warns)
         run: python3 scripts/fetch_listings.py
 
       - name: Commit if changed

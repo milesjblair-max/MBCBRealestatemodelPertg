@@ -222,7 +222,7 @@ the page surfaces as a banner. A side of the city showing zero must never be
 allowed to read as "no bargains there" when the truth is "never searched".
 
 **Stale is a failure state, and must be visible.** `fetch_listings.py` exits 0
-when the API refuses it, so the daily job showed a green tick for 25 days while
+when the API refuses it, so the job showed a green tick for 25 days while
 publishing nothing and the page still read "Live". The feed now emits a GitHub
 Actions `::warning::` when it publishes nothing, and the page shows the data's
 age whenever it is more than `STALE_DAYS` (3) old. Never remove either: a buyer
@@ -252,17 +252,28 @@ official REA feed and is rate-limited, so:
   **scheduled GitHub Action** into `data/listings.json`, which the tool
   `fetch()`es. Auth is a `RAPIDAPI_KEY` repo secret; with no key the script is a
   safe no-op and the committed sample shows.
-- **The sweep rotates, because the plan is BASIC.** A full sweep is one call per
-  suburb: 143 a run, ~4,300 a month, which exhausted the monthly quota in early
-  September 2026 and left the feed frozen for 25 days. The workflow now sets
-  `SUBURB_CAP: 16`, about 480 calls a month. Each slice mirrors the ring's
-  composition (the sectors are different sizes, so the slice is proportional,
-  not equal), the whole ring cycles every 9 days, and the page is built from a
-  rolling `WINDOW_DAYS` (14) window: suburbs searched today replace their old
-  entries, anything not re-checked inside the window is dropped, and each
-  listing carries a `checked` date the card displays once it is over 4 days
-  old. Raise `SUBURB_CAP` only alongside a bigger plan, and keep the cycle
-  comfortably inside the window (`tests/test_rotation.py` fails if it is not). To spend less,
+- **The sweep runs WEEKLY** (Saturday 06:47 AWST, before the weekend home
+  opens), whole ring: 143 calls a run, ~613 a month. That exceeds what the
+  BASIC plan appears to allow, since one full sweep exhausted September 2026's
+  quota and froze the feed for 25 days, but an over-quota sweep is no longer
+  destructive: it stops early, publishes what it got balanced across N/E/S/W,
+  rotates its starting point so next week reaches a different part of the ring,
+  and the page names the sides it missed. Coverage accumulates across the
+  rolling window instead of collapsing onto one direction.
+- **Cadence lives in one place.** `PERIOD_DAYS` in `fetch_listings.py` must
+  match the cron. The rotation indexes by RUN, not by day (indexing by day on a
+  weekly schedule would advance seven slices a week and skip most of the ring),
+  and the page derives its staleness thresholds from the `cadence_days` the
+  feed publishes, so a five-day-old feed is normal weekly and alarming daily.
+- **The window must outlast the cycle.** The page is built from a rolling
+  `WINDOW_DAYS` (21) window: suburbs searched this run replace their old
+  entries, anything not re-checked inside the window is dropped rather than
+  shown as current, an entry with no `checked` date is dropped because unknown
+  age is never fresh, and cards display their age once past one cycle. If
+  `SUBURB_CAP` is set, the rotation must still cover the ring inside the window
+  or listings expire before they are re-checked;
+  `python3 scripts/fetch_listings.py --plan` prints and warns, and
+  `tests/test_rotation.py` fails. To spend less,
   set `SUBURB_CAP` and rotate `SUBURB_OFFSET` on the workflow step rather than
   shrinking the ring. `python3 scripts/fetch_listings.py --plan` prints the
   exact count; `--rescore` re-values the committed feed with zero API calls.
